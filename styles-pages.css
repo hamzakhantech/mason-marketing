@@ -4,34 +4,23 @@
    ============================================================ */
 
 /* ─── GSAP animation base classes ──────────────────────────── */
-.gsap-fade-up {
-  opacity: 0;
-  transform: translateY(40px);
-}
-.gsap-fade-in {
-  opacity: 0;
-}
-.gsap-slide-left {
-  opacity: 0;
-  transform: translateX(-40px);
-}
-.gsap-slide-right {
-  opacity: 0;
-  transform: translateX(40px);
-}
-.gsap-scale-in {
-  opacity: 0;
-  transform: scale(0.92);
-}
+/* NOTE: No opacity:0 here — content is visible by default.
+   GSAP fromTo() sets the initial hidden state via inline styles
+   at animation start, so CSS must NOT hide elements. */
+.gsap-fade-up {}
+.gsap-fade-in {}
+.gsap-slide-left {}
+.gsap-slide-right {}
+.gsap-scale-in {}
 
-/* Already-animated state (fallback without GSAP) */
+/* Safety fallback: if gsap-ready is set, ensure full visibility */
 .gsap-ready .gsap-fade-up,
 .gsap-ready .gsap-fade-in,
 .gsap-ready .gsap-slide-left,
 .gsap-ready .gsap-slide-right,
 .gsap-ready .gsap-scale-in {
-  opacity: 1;
-  transform: none;
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 /* ─── Page hero (interior pages) ───────────────────────────── */
@@ -1506,6 +1495,4 @@
 .changelog-entry__header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 4px;
-}
+  justify-content: space-between
