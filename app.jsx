@@ -122,4 +122,8 @@ function hexA(hex, a) {
   return `rgba(${r},${g},${b},${a})`;
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+// Defer render until after all Babel external scripts have executed.
+requestAnimationFrame(function() {
+  var root = document.getElementById('root');
+  if (root) ReactDOM.createRoot(root).render(React.createElement(App));
+});
