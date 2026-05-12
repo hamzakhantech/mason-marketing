@@ -594,17 +594,27 @@ const PricingPage = () => {
   }
 
   React.useEffect(function() {
-    if (typeof gsap === 'undefined') return;
-    gsap.registerPlugin(ScrollTrigger);
-    function animateEls(selector, vars) {
-      document.querySelectorAll(selector).forEach(function(el) {
-        gsap.fromTo(el, { opacity: 0, y: vars.y || 0 }, {
-          opacity: 1, y: 0, duration: 0.7, ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
-        });
-      });
+    // Safety net: if GSAP never loads, CSS .gsap-ready fallback makes elements visible
+    if (typeof gsap === 'undefined') {
+      document.body.classList.add('gsap-ready');
+      return;
     }
-    animateEls('.gsap-fade-up', { y: 40 });
+    gsap.registerPlugin(ScrollTrigger);
+    var stOpts = { start: 'top 88%', toggleActions: 'play none none none' };
+    // Fade + slide up
+    document.querySelectorAll('.gsap-fade-up').forEach(function(el) {
+      gsap.fromTo(el, { opacity: 0, y: 40 }, {
+        opacity: 1, y: 0, duration: 0.7, ease: 'power2.out',
+        scrollTrigger: Object.assign({ trigger: el }, stOpts)
+      });
+    });
+    // Scale in — pricing cards + feature cards
+    document.querySelectorAll('.gsap-scale-in').forEach(function(el) {
+      gsap.fromTo(el, { opacity: 0, scale: 0.92 }, {
+        opacity: 1, scale: 1, duration: 0.55, ease: 'power2.out',
+        scrollTrigger: Object.assign({ trigger: el }, stOpts)
+      });
+    });
     return function() { ScrollTrigger.getAll().forEach(function(t) { t.kill(); }); };
   }, []);
 
@@ -617,16 +627,4 @@ const PricingPage = () => {
       <div className="container" style={{ textAlign: 'center', paddingTop: '2rem' }}>
         <BillingToggle billing={billing} onChange={setBilling} savingPct={pricing.annualSavingPct || DEFAULT_PRICING.annualSavingPct} />
       </div>
-      <PricingGrid billing={billing} tiers={tiers} appUrl={appUrl} onUpdate={editMode ? onTierUpdate : null} editMode={editMode} />
-      <PricingPhilosophy />
-      <PricingIncludes />
-      <PricingCompareTable tiers={tiers} />
-      <TrialExplainer appUrl={appUrl} trialDays={trialDays} />
-      <PricingFAQ faqItems={faqItems} />
-      <PricingCTA appUrl={appUrl} />
-      <Footer />
-    </div>
-  );
-};
-
-ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(PricingPage));
+      <PricingGrid billing={billing} tiers={tiers} appUrl={appUrl} onUp
