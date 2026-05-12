@@ -52,7 +52,7 @@ const MobOffline = () => (
             "AR overlay for models cached on the device"
           ].map((item,i)=>(
             <div key={i} style={{display:"flex",gap:10,padding:"7px 0",borderBottom:"1px solid var(--line)"}}>
-              <span style={{color:"#4ade80",fontWeight:700,flexShrink:0}}>✓</span>
+              <span style={{color:"#4ade80",fontWeight:700,flexShrink:0}}>check</span>
               <span style={{fontSize:14,color:"var(--text-muted)"}}>{item}</span>
             </div>
           ))}
@@ -63,7 +63,7 @@ const MobOffline = () => (
             <div className="mobile-phone__screen">
               <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:8}}>
                 <span style={{fontWeight:700,fontSize:13}}>Daily Log</span>
-                <span className="mob-offline-badge">● Offline</span>
+                <span className="mob-offline-badge">? Offline</span>
               </div>
               <div className="mob-row">
                 <div className="mob-row__label">Date</div>
@@ -71,7 +71,7 @@ const MobOffline = () => (
               </div>
               <div className="mob-row">
                 <div className="mob-row__label">Workforce on site</div>
-                <div className="mob-row__val">47 workers · 3 supervisors</div>
+                <div className="mob-row__val">47 workers . 3 supervisors</div>
               </div>
               <div className="mob-row">
                 <div className="mob-row__label">Progress note</div>
@@ -101,7 +101,7 @@ const MobAR = () => (
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:72,alignItems:"center"}} className="about-story-grid">
         <div className="gsap-slide-left" style={{order:2}}>
           <div style={{background:"var(--bg-elev)",border:"1px solid var(--line)",borderRadius:16,padding:32,textAlign:"center"}}>
-            <div style={{fontSize:80,marginBottom:16}}>📱</div>
+            <div style={{fontSize:80,marginBottom:16}}>?</div>
             <p style={{fontWeight:700,fontSize:16,marginBottom:8}}>Point. See the model.</p>
             <p style={{fontSize:14,color:"var(--text-muted)",lineHeight:1.7}}>
               Hold up your Android phone at any point on site. MASON's AR engine overlays
@@ -163,14 +163,14 @@ const MobFeatures = () => (
       </div>
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))",gap:24,marginTop:48}}>
         {[
-          {icon:"📋",heading:"Daily logs",body:"Create structured daily logs with workforce counts, progress notes, weather records, and photo evidence. Works fully offline. Logs sync when connectivity returns."},
-          {icon:"⚠",heading:"Issue management",body:"Create, update, and close issues on site with photo evidence and location tags. Issues link automatically to BIM elements if created from the AR view."},
-          {icon:"📝",heading:"RFI access",body:"View the full RFI register, update status, add responses, and attach photos. Create new RFIs from the field with all the required fields pre-populated from the project template."},
-          {icon:"📁",heading:"Document access",body:"Download and view any document in the project register. PDF drawings, IFC models, and all file types supported. Cached documents available offline."},
-          {icon:"🏗",heading:"BIM viewer",body:"Full IFC model viewer in the app. Navigate between floors, filter disciplines, measure elements, and create issues directly from the model. Works offline for cached models."},
-          {icon:"🔭",heading:"AR overlay",body:"Overlay the federated BIM model onto the physical building through the camera. Filter by discipline, adjust opacity, and capture screenshots to the project record."},
-          {icon:"✅",heading:"Punch lists and inspections",body:"Run structured inspection checklists with pass, fail, and observation outcomes. Attach photos to each item. Generate the inspection report directly from the completed checklist."},
-          {icon:"🔔",heading:"Push notifications",body:"Receive real-time notifications for RFIs assigned to you, issues that require your action, and daily log reminders configured by the project administrator."}
+          {icon:"?",heading:"Daily logs",body:"Create structured daily logs with workforce counts, progress notes, weather records, and photo evidence. Works fully offline. Logs sync when connectivity returns."},
+          {icon:"?",heading:"Issue management",body:"Create, update, and close issues on site with photo evidence and location tags. Issues link automatically to BIM elements if created from the AR view."},
+          {icon:"?",heading:"RFI access",body:"View the full RFI register, update status, add responses, and attach photos. Create new RFIs from the field with all the required fields pre-populated from the project template."},
+          {icon:"?",heading:"Document access",body:"Download and view any document in the project register. PDF drawings, IFC models, and all file types supported. Cached documents available offline."},
+          {icon:"?",heading:"BIM viewer",body:"Full IFC model viewer in the app. Navigate between floors, filter disciplines, measure elements, and create issues directly from the model. Works offline for cached models."},
+          {icon:"?",heading:"AR overlay",body:"Overlay the federated BIM model onto the physical building through the camera. Filter by discipline, adjust opacity, and capture screenshots to the project record."},
+          {icon:"?",heading:"Punch lists and inspections",body:"Run structured inspection checklists with pass, fail, and observation outcomes. Attach photos to each item. Generate the inspection report directly from the completed checklist."},
+          {icon:"?",heading:"Push notifications",body:"Receive real-time notifications for RFIs assigned to you, issues that require your action, and daily log reminders configured by the project administrator."}
         ].map((f,i)=>(
           <div key={i} className="value-card gsap-fade-up">
             <div style={{fontSize:28,marginBottom:14}}>{f.icon}</div>

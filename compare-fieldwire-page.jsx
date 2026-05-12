@@ -82,7 +82,7 @@ const CFWhenToChoose = () => (
             "You want a full construction platform rather than a field tool"
           ].map((item,i)=>(
             <div key={i} style={{display:"flex",gap:10,padding:"8px 0",borderBottom:"1px solid var(--line)"}}>
-              <span style={{color:"#4ade80",fontWeight:700,flexShrink:0}}>✓</span>
+              <span style={{color:"#4ade80",fontWeight:700,flexShrink:0}}>check</span>
               <span style={{fontSize:14,color:"var(--text-muted)"}}>{item}</span>
             </div>
           ))}
@@ -97,7 +97,7 @@ const CFWhenToChoose = () => (
             "You have a small team that fits within Fieldwire's free user limit"
           ].map((item,i)=>(
             <div key={i} style={{display:"flex",gap:10,padding:"8px 0",borderBottom:"1px solid var(--line)"}}>
-              <span style={{color:"var(--text-muted)",fontWeight:700,flexShrink:0}}>→</span>
+              <span style={{color:"var(--text-muted)",fontWeight:700,flexShrink:0}}>-></span>
               <span style={{fontSize:14,color:"var(--text-muted)"}}>{item}</span>
             </div>
           ))}

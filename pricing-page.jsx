@@ -1,12 +1,12 @@
-// pricing-page.jsx — Full Pricing page, CMS-driven with inline editing
+// pricing-page.jsx -- Full Pricing page, CMS-driven with inline editing
 
-// ─── Default content (rendered immediately; CMS overrides when loaded) ─────────
+// --- Default content (rendered immediately; CMS overrides when loaded) ---------
 const DEFAULT_PRICING = {
   annualSavingPct: 20,
   tiers: [
     {
       id: 'starter', name: 'Starter',
-      tagline: 'For small teams running 1–3 concurrent projects.',
+      tagline: 'For small teams running 1-3 concurrent projects.',
       monthly: 49, annual: 39,
       projectsLabel: '3 active projects',
       highlight: false, cta: 'Start free trial',
@@ -68,19 +68,19 @@ const DEFAULT_PRICING = {
   faq: [
     { q: 'What counts as a project?', a: 'A project is any active construction project in your MASON account. Archived projects do not count toward your limit.' },
     { q: 'Can I add unlimited team members?', a: 'Yes. Every plan includes unlimited team members per project at no extra cost. There are no per-seat fees anywhere in the product.' },
-    { q: 'What happens when my trial ends?', a: 'At day 30 you choose a plan. Your data stays exactly where it is — no migration, no downtime, no re-importing anything.' },
+    { q: 'What happens when my trial ends?', a: 'At day 30 you choose a plan. Your data stays exactly where it is -- no migration, no downtime, no re-importing anything.' },
     { q: 'Do you offer annual billing?', a: 'Yes. Annual billing saves 20% compared to monthly. You can switch between monthly and annual at any time from your account settings.' },
     { q: 'Can I change plans later?', a: 'Yes. You can upgrade, downgrade, or cancel at any time from your account settings. Upgrades are prorated to the day.' },
     { q: 'Is there a setup fee?', a: 'No. There are no setup fees, onboarding fees, or implementation fees. The monthly price is the only cost.' },
   ],
 };
 
-// ─── Trial Banner ──────────────────────────────────────────────────────────────
+// --- Trial Banner --------------------------------------------------------------
 const TrialBanner = ({ appUrl, trialDays }) => (
   <div className="trial-banner">
     <span className="trial-banner__badge">{trialDays || 30}-day free trial</span>
     <span className="trial-banner__text">
-      Every plan starts with {trialDays || 30} days fully unlocked — all features, all modules, unlimited team members. No credit card required.
+      Every plan starts with {trialDays || 30} days fully unlocked -- all features, all modules, unlimited team members. No credit card required.
     </span>
     <a href={`${appUrl}/register`} className="trial-banner__cta">
       Start free <IconArrowRight size={14} stroke={2} />
@@ -88,7 +88,7 @@ const TrialBanner = ({ appUrl, trialDays }) => (
   </div>
 );
 
-// ─── Pricing Hero ──────────────────────────────────────────────────────────────
+// --- Pricing Hero --------------------------------------------------------------
 const PricingHero = () => (
   <section className="page-hero">
     <div className="page-hero__glow" aria-hidden="true" />
@@ -99,7 +99,7 @@ const PricingHero = () => (
         <span className="accent">No seat fees.</span>
       </h1>
       <p className="lede gsap-fade-up">
-        MASON is priced per project — not per user. Add your entire team, every subcontractor,
+        MASON is priced per project -- not per user. Add your entire team, every subcontractor,
         every reviewer. The price doesn't change. Every plan includes every module. No feature gates.
         No add-ons required to make the product useful.
       </p>
@@ -107,7 +107,7 @@ const PricingHero = () => (
   </section>
 );
 
-// ─── Billing Toggle ───────────────────────────────────────────────────────────
+// --- Billing Toggle -----------------------------------------------------------
 const BillingToggle = ({ billing, onChange, savingPct }) => (
   <div className="billing-toggle gsap-fade-up">
     <button className={"billing-toggle__btn" + (billing === 'monthly' ? ' is-active' : '')} onClick={() => onChange('monthly')}>Monthly</button>
@@ -117,7 +117,7 @@ const BillingToggle = ({ billing, onChange, savingPct }) => (
   </div>
 );
 
-// ─── Editable text helper (used in inline edit mode) ─────────────────────────
+// --- Editable text helper (used in inline edit mode) -------------------------
 const EditableText = ({ value, onChange, as: Tag = 'span', className, style, multiline }) => {
   const editMode = typeof useEditMode === 'function' ? useEditMode() : false;
   if (!editMode) return <Tag className={className} style={style}>{value}</Tag>;
@@ -144,7 +144,7 @@ const EditableText = ({ value, onChange, as: Tag = 'span', className, style, mul
   );
 };
 
-// ─── Pricing Grid ─────────────────────────────────────────────────────────────
+// --- Pricing Grid -------------------------------------------------------------
 const PricingGrid = ({ billing, tiers, appUrl, onUpdate, editMode }) => (
   <section className="section">
     <div className="container">
@@ -211,7 +211,7 @@ const PricingGrid = ({ billing, tiers, appUrl, onUpdate, editMode }) => (
               </div>
 
               {billing === 'annual' && (
-                <p className="pricing-card__annual-note">Billed annually · Save {tiers.__savingPct || 20}%</p>
+                <p className="pricing-card__annual-note">Billed annually . Save {tiers.__savingPct || 20}%</p>
               )}
 
               {editMode ? (
@@ -228,12 +228,12 @@ const PricingGrid = ({ billing, tiers, appUrl, onUpdate, editMode }) => (
               <ul className="pricing-card__features">
                 {(plan.features || []).map((f, fi) => (
                   <li key={fi} style={{ display: 'flex', alignItems: 'flex-start', gap: 6 }}>
-                    <span className="pricing-feature-check" style={{ flexShrink: 0 }}>✓</span>
+                    <span className="pricing-feature-check" style={{ flexShrink: 0 }}>check</span>
                     {editMode ? (
                       <span style={{ display: 'flex', flex: 1, gap: 4, alignItems: 'center' }}>
                         <input value={f} onChange={e => updateFeature(fi, e.target.value)}
                           style={{ flex: 1, background: 'rgba(232,148,46,.05)', border: '1px dashed rgba(232,148,46,.3)', borderRadius: 4, color: 'inherit', fontSize: 'inherit', fontFamily: 'inherit', padding: '1px 4px' }} />
-                        <button onClick={() => removeFeature(fi)} style={{ background: 'none', border: 'none', color: '#e26d5c', cursor: 'pointer', fontSize: 14, flexShrink: 0 }}>×</button>
+                        <button onClick={() => removeFeature(fi)} style={{ background: 'none', border: 'none', color: '#e26d5c', cursor: 'pointer', fontSize: 14, flexShrink: 0 }}>?</button>
                       </span>
                     ) : f}
                   </li>
@@ -287,7 +287,7 @@ const EnterpriseBlock = ({ appUrl, onUpdate, editMode }) => {
           {editMode ? (
             <input value={ent.heading || ''} onChange={e => update('pricing.enterprise.heading', e.target.value)}
               style={{ background: 'rgba(232,148,46,.07)', border: '1px dashed rgba(232,148,46,.4)', borderRadius: 4, color: 'inherit', fontSize: 'inherit', fontWeight: 'inherit', fontFamily: 'inherit', width: '100%', marginBottom: 8, padding: '4px 8px' }} />
-          ) : <h3>{ent.heading || 'Enterprise — custom contract'}</h3>}
+          ) : <h3>{ent.heading || 'Enterprise -- custom contract'}</h3>}
           {editMode ? (
             <textarea value={ent.body || ''} onChange={e => update('pricing.enterprise.body', e.target.value)} rows={3}
               style={{ background: 'rgba(232,148,46,.07)', border: '1px dashed rgba(232,148,46,.4)', borderRadius: 4, color: 'inherit', fontSize: 'inherit', fontFamily: 'inherit', width: '100%', resize: 'vertical', padding: '4px 8px' }} />
@@ -299,7 +299,7 @@ const EnterpriseBlock = ({ appUrl, onUpdate, editMode }) => {
   );
 };
 
-// ─── What's Included ──────────────────────────────────────────────────────────
+// --- What's Included ----------------------------------------------------------
 const PricingIncludes = () => (
   <section className="section bg-subtle">
     <div className="container">
@@ -314,10 +314,10 @@ const PricingIncludes = () => (
       </div>
       <div className="feature-grid">
         {[
-          { icon: <IconBIM size={24} />, title: 'BIM viewer — everyone', body: 'A Starter-plan project on a $3M residential development deserves the same BIM capability as a Scale-plan megaproject. Every subscriber gets the full IFC viewer, federation, clash detection, and AR.' },
-          { icon: <IconConcierge size={24} />, title: 'AI Concierge — everyone', body: 'Starter plans get 60 AI queries per project per month — enough for daily use on a small project. Professional and Scale are unlimited. The intelligence is the same model on all plans.' },
+          { icon: <IconBIM size={24} />, title: 'BIM viewer -- everyone', body: 'A Starter-plan project on a $3M residential development deserves the same BIM capability as a Scale-plan megaproject. Every subscriber gets the full IFC viewer, federation, clash detection, and AR.' },
+          { icon: <IconConcierge size={24} />, title: 'AI Concierge -- everyone', body: 'Starter plans get 60 AI queries per project per month -- enough for daily use on a small project. Professional and Scale are unlimited. The intelligence is the same model on all plans.' },
           { icon: <IconProjects size={24} />, title: 'Unlimited team members', body: 'Add your whole team, all your subcontractors, your client, the design team. No seat fees. On a $20M project with 40 subcontractors, you\'re not paying more because you have 200 users.' },
-          { icon: <IconSchedule size={24} />, title: 'Full Gantt + CPM', body: 'The interactive Gantt chart with critical path method analysis is standard on every plan. A schedule is fundamental to managing a construction project — not a premium feature.' },
+          { icon: <IconSchedule size={24} />, title: 'Full Gantt + CPM', body: 'The interactive Gantt chart with critical path method analysis is standard on every plan. A schedule is fundamental to managing a construction project -- not a premium feature.' },
           { icon: <IconDocuments size={24} />, title: 'Document control', body: 'Version-controlled documents with IFC approval workflow, permission-based access, and full-text search are on every plan. File storage is 100 GB on Starter, 500 GB on Professional, unlimited on Scale.' },
           { icon: <IconIssues size={24} />, title: 'Issues + RFIs + Submittals', body: 'The three core quality and communication modules are fully featured on every plan. No limits on open items, no restrictions on attachments, no paywalling of the audit trail export.' },
         ].map((item, i) => (
@@ -332,7 +332,7 @@ const PricingIncludes = () => (
   </section>
 );
 
-// ─── Philosophy ───────────────────────────────────────────────────────────────
+// --- Philosophy ---------------------------------------------------------------
 const PricingPhilosophy = () => (
   <section className="section">
     <div className="container">
@@ -340,15 +340,15 @@ const PricingPhilosophy = () => (
         <div className="split-copy">
           <span className="eyebrow">Our pricing philosophy</span>
           <h2 className="h2">Why per-project, not per-user?</h2>
-          <p className="split-copy__body">Construction project management software is typically priced per user — which creates a perverse incentive: the better you collaborate (more stakeholders, more subcontractors, more visibility), the more you pay. We think that's backwards.</p>
-          <p className="split-copy__body">A project is a project. It has a scope, a budget, and a team. The overhead of managing it with MASON is fixed, regardless of whether you have 10 team members or 100. So we charge per project — and let you add everyone who needs access.</p>
+          <p className="split-copy__body">Construction project management software is typically priced per user -- which creates a perverse incentive: the better you collaborate (more stakeholders, more subcontractors, more visibility), the more you pay. We think that's backwards.</p>
+          <p className="split-copy__body">A project is a project. It has a scope, a budget, and a team. The overhead of managing it with MASON is fixed, regardless of whether you have 10 team members or 100. So we charge per project -- and let you add everyone who needs access.</p>
           <p className="split-copy__body">The result: project managers add subcontractors, consultants, and owner's representatives without worrying about the bill increasing. More visibility. Better outcomes. No gaming the system.</p>
         </div>
         <div className="split-visual">
           <div className="pricing-philosophy-card">
             <div className="pp-card__row">
               <span className="pp-card__label">Procore model</span>
-              <span className="pp-card__calc">$399/mo base + $19/user × 50 users = <strong className="red">$1,349/mo</strong> per project</span>
+              <span className="pp-card__calc">$399/mo base + $19/user ? 50 users = <strong className="red">$1,349/mo</strong> per project</span>
             </div>
             <div className="pp-card__divider" />
             <div className="pp-card__row">
@@ -363,7 +363,7 @@ const PricingPhilosophy = () => (
   </section>
 );
 
-// ─── Comparison Table ─────────────────────────────────────────────────────────
+// --- Comparison Table ---------------------------------------------------------
 const PricingCompareTable = ({ tiers }) => {
   const tierNames = (tiers || []).map(t => t.name);
   const [t0, t1, t2] = tierNames;
@@ -414,8 +414,8 @@ const PricingCompareTable = ({ tiers }) => {
   ];
 
   const renderCell = v => {
-    if (v === true)  return <span className="compare-yes">✓</span>;
-    if (v === false) return <span className="compare-no">{"—"}</span>;
+    if (v === true)  return <span className="compare-yes">check</span>;
+    if (v === false) return <span className="compare-no">{"--"}</span>;
     return <span>{v}</span>;
   };
 
@@ -460,20 +460,20 @@ const PricingCompareTable = ({ tiers }) => {
   );
 };
 
-// ─── Trial Explainer ──────────────────────────────────────────────────────────
+// --- Trial Explainer ----------------------------------------------------------
 const TrialExplainer = ({ appUrl, trialDays }) => (
   <section className="section">
     <div className="container">
       <div className="section__header gsap-fade-up">
         <span className="eyebrow">Free trial</span>
         <h2 className="h2">{trialDays || 30} days. Full access. No card.</h2>
-        <p className="section__sub">We don't believe in trial versions. The free trial is the real product — every feature, every module, every integration — for {trialDays || 30} days.</p>
+        <p className="section__sub">We don't believe in trial versions. The free trial is the real product -- every feature, every module, every integration -- for {trialDays || 30} days.</p>
       </div>
       <div className="steps gsap-fade-up">
         {[
           { n: '01', heading: 'Sign up', body: 'Create your organisation account. No credit card. Takes 60 seconds.' },
           { n: '02', heading: 'Import your project', body: 'Upload your IFC, import your schedule CSV, and invite your team. The onboarding wizard walks you through each step. Most teams are up and running in under an hour.' },
-          { n: '03', heading: 'Use the real product', body: `All 12 modules. Unlimited team members. AI Concierge without query limits. You're not using a demo environment — you're using the same system paying customers use.` },
+          { n: '03', heading: 'Use the real product', body: `All 12 modules. Unlimited team members. AI Concierge without query limits. You're not using a demo environment -- you're using the same system paying customers use.` },
           { n: '04', heading: 'Choose a plan', body: `At day ${trialDays || 30}, choose a plan based on how many projects you're running. Your data stays exactly where it is. There's no migration.` },
         ].map(s => (
           <div key={s.n} className="step">
@@ -489,7 +489,7 @@ const TrialExplainer = ({ appUrl, trialDays }) => (
   </section>
 );
 
-// ─── Pricing FAQ (CMS driven) ─────────────────────────────────────────────────
+// --- Pricing FAQ (CMS driven) -------------------------------------------------
 const PricingFAQ = ({ faqItems }) => {
   const [open, setOpen] = React.useState(null);
   const items = faqItems || [];
@@ -505,7 +505,7 @@ const PricingFAQ = ({ faqItems }) => {
             <div key={i} className={"faq-item gsap-fade-up" + (open === i ? ' is-open' : '')}>
               <button className="faq-item__btn" onClick={() => setOpen(open === i ? null : i)}>
                 <span>{item.q}</span>
-                <span className="faq-item__chevron">{open === i ? '−' : '+'}</span>
+                <span className="faq-item__chevron">{open === i ? '?' : '+'}</span>
               </button>
               {open === i && <div className="faq-item__body"><p>{item.a}</p></div>}
             </div>
@@ -516,7 +516,7 @@ const PricingFAQ = ({ faqItems }) => {
   );
 };
 
-// ─── Pricing CTA ──────────────────────────────────────────────────────────────
+// --- Pricing CTA --------------------------------------------------------------
 const PricingCTA = ({ appUrl }) => (
   <section className="cta-band">
     <div className="container cta-band__inner">
@@ -551,13 +551,13 @@ const EditModeBar = ({ editMode }) => {
   );
 };
 
-// ─── Root Pricing Page ────────────────────────────────────────────────────────
+// --- Root Pricing Page --------------------------------------------------------
 const PricingPage = () => {
-  // CMS hook — works when cms.jsx loads before this component
+  // CMS hook -- works when cms.jsx loads before this component
   const hasCmsHook = typeof useSiteContent === 'function';
   const cmsResult  = hasCmsHook ? useSiteContent() : null;
 
-  // Polling fallback — cms.jsx may load AFTER this component mounts
+  // Polling fallback -- cms.jsx may load AFTER this component mounts
   const [asyncContent, setAsyncContent] = React.useState(window.__masonContent || null);
   React.useEffect(() => {
     if (window.__masonContent) { setAsyncContent(window.__masonContent); return; }
@@ -608,7 +608,7 @@ const PricingPage = () => {
         scrollTrigger: Object.assign({ trigger: el }, stOpts)
       });
     });
-    // Scale in — pricing cards + feature cards
+    // Scale in -- pricing cards + feature cards
     document.querySelectorAll('.gsap-scale-in').forEach(function(el) {
       gsap.fromTo(el, { opacity: 0, scale: 0.92 }, {
         opacity: 1, scale: 1, duration: 0.55, ease: 'power2.out',

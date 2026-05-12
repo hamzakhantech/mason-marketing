@@ -1,4 +1,4 @@
-// app.jsx — Root component. Content driven by CMS (useSiteContent).
+// app.jsx -- Root component. Content driven by CMS (useSiteContent).
 
 function App() {
   // useSiteContent is provided by cms.jsx (loaded after this script)
@@ -48,18 +48,18 @@ function App() {
     <div className="site">
       <Header />
 
-      {/* Hero — CMS driven */}
+      {/* Hero -- CMS driven */}
       <section className="hero" id="top">
         <div className="grid-bg" aria-hidden="true" />
         <div className="hero__glow" aria-hidden="true" />
         <div className="container hero__inner">
           <div className="hero__copy">
-            <span className="eyebrow fade-up">{hero.eyebrow || 'Management · Analytics · Site'}</span>
+            <span className="eyebrow fade-up">{hero.eyebrow || 'Management . Analytics . Site'}</span>
             <h1 className="display fade-up" style={{ animationDelay: '80ms' }}>
               {headlineEl}
             </h1>
             <p className="lede fade-up" style={{ animationDelay: '160ms' }}>
-              {hero.subheadline || 'From BIM and schedule to RFIs, issues, and field logs — MASON brings the office and the jobsite into a single, permission-aware system, with an AI Concierge that knows your project.'}
+              {hero.subheadline || 'From BIM and schedule to RFIs, issues, and field logs -- MASON brings the office and the jobsite into a single, permission-aware system, with an AI Concierge that knows your project.'}
             </p>
             <div className="hero__cta fade-up" style={{ animationDelay: '240ms' }}>
               <a href={`${appUrl}/register`} className="btn btn-primary">
@@ -74,7 +74,7 @@ function App() {
                 <span className="hero__meta-dot ok" /> {hero.meta1 || 'Live on 47 active projects'}
               </div>
               <div className="hero__meta-sep" />
-              <div className="hero__meta-item">{hero.meta2 || 'Desk · Mobile · Android'}</div>
+              <div className="hero__meta-item">{hero.meta2 || 'Desk . Mobile . Android'}</div>
             </div>
           </div>
 
@@ -84,7 +84,7 @@ function App() {
         </div>
 
         <div className="hero__expansion container">
-          <span className="mono">M·A·S·O·N</span>
+          <span className="mono">M.A.S.O.N</span>
           <span className="hero__expansion-sep" aria-hidden="true">/</span>
           <span className="hero__expansion-text">
             <span>Management</span><span>Analytics</span><span>System</span>
@@ -93,7 +93,7 @@ function App() {
         </div>
       </section>
 
-      {/* Sections — toggle visibility from CMS */}
+      {/* Sections -- toggle visibility from CMS */}
       <Pillars />
       {sections.personas !== false && <Personas />}
       <ModuleGrid />

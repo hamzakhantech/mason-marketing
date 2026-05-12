@@ -1,4 +1,4 @@
-// about-page.jsx — Full About page for MASON
+// about-page.jsx -- Full About page for MASON
 
 const AboutHero = () => (
   <section className="page-hero">
@@ -245,7 +245,7 @@ const AboutValues = () => (
       <div className="values-grid" style={{marginTop:48}}>
         {[
           {
-            icon:"🏗",
+            icon:"?",
             heading:"Field first, always",
             body:`Every feature we build gets tested by someone who is not sitting at a desk.
             If the daily log form does not work with gloves on a cold morning, it does not ship.
@@ -253,7 +253,7 @@ const AboutValues = () => (
             launch it. The person in the field is not a secondary user. They are the primary user.`
           },
           {
-            icon:"🔓",
+            icon:"?",
             heading:"Transparent pricing, no traps",
             body:`We charge per active project, not per seat. Every team member on your account
             gets full access to every module on the plan you are on. There are no module add-ons.
@@ -261,7 +261,7 @@ const AboutValues = () => (
             The price you see on the pricing page is the price you pay. Period.`
           },
           {
-            icon:"🧠",
+            icon:"?",
             heading:"AI that understands context",
             body:`We think general purpose AI assistants that have no knowledge of your project
             are a gimmick. The MASON Concierge reads your project data before it responds.
@@ -270,7 +270,7 @@ const AboutValues = () => (
             Context is not optional. Context is the whole point.`
           },
           {
-            icon:"📐",
+            icon:"?",
             heading:"One source of truth",
             body:`If the same piece of information exists in two places, it will eventually
             disagree with itself. MASON is designed around a single data model. Your schedule
@@ -279,7 +279,7 @@ const AboutValues = () => (
             synced between systems.`
           },
           {
-            icon:"⚡",
+            icon:"?",
             heading:"Speed is a feature",
             body:`Construction teams do not have time to wait for software to load. We obsess
             over load times, render performance, and the number of taps it takes to complete
@@ -288,7 +288,7 @@ const AboutValues = () => (
             to your active project in under two taps.`
           },
           {
-            icon:"🌍",
+            icon:"?",
             heading:"Built for global teams",
             body:`Construction projects run across time zones, languages, and regulatory
             environments. MASON's AI Concierge operates in eight languages. The platform
@@ -322,12 +322,12 @@ const AboutTeam = () => (
       </div>
       <div className="team-grid">
         {[
-          {emoji:"👷",name:"Karim Al-Nassar",role:"Co-founder and CEO",bio:"Former senior PM on infrastructure megaprojects across the Gulf. Spent 11 years managing BIM coordination before deciding to build better tools."},
-          {emoji:"🏛",name:"Priya Ranganathan",role:"Co-founder and CTO",bio:"Construction technologist with a background in computational design. Built the original IFC parsing engine that powers the MASON BIM viewer."},
-          {emoji:"📋",name:"James Okafor",role:"Head of Product",bio:"Quantity surveyor turned product manager. Responsible for the cost control and reporting modules. If it involves numbers on a construction project, James has an opinion."},
-          {emoji:"📱",name:"Nadia Petrova",role:"Head of Mobile",bio:"Lead engineer on the Android app and AR system. Previously built field data tools for civil construction in Eastern Europe. Offline first is her religion."},
-          {emoji:"🤖",name:"Tae-yang Kim",role:"Head of AI",bio:"Applied ML researcher who left academia to work on domain specific AI. Designed the context engine that makes the Concierge project aware rather than generally chatty."},
-          {emoji:"🌐",name:"Sarah Chen",role:"Head of Partnerships",bio:"Construction technology strategist. Built the integration layer connecting MASON to Autodesk, Procore, and MS Project. She speaks fluent API."}
+          {emoji:"?",name:"Karim Al-Nassar",role:"Co-founder and CEO",bio:"Former senior PM on infrastructure megaprojects across the Gulf. Spent 11 years managing BIM coordination before deciding to build better tools."},
+          {emoji:"?",name:"Priya Ranganathan",role:"Co-founder and CTO",bio:"Construction technologist with a background in computational design. Built the original IFC parsing engine that powers the MASON BIM viewer."},
+          {emoji:"?",name:"James Okafor",role:"Head of Product",bio:"Quantity surveyor turned product manager. Responsible for the cost control and reporting modules. If it involves numbers on a construction project, James has an opinion."},
+          {emoji:"?",name:"Nadia Petrova",role:"Head of Mobile",bio:"Lead engineer on the Android app and AR system. Previously built field data tools for civil construction in Eastern Europe. Offline first is her religion."},
+          {emoji:"?",name:"Tae-yang Kim",role:"Head of AI",bio:"Applied ML researcher who left academia to work on domain specific AI. Designed the context engine that makes the Concierge project aware rather than generally chatty."},
+          {emoji:"?",name:"Sarah Chen",role:"Head of Partnerships",bio:"Construction technology strategist. Built the integration layer connecting MASON to Autodesk, Procore, and MS Project. She speaks fluent API."}
         ].map((m, i) => (
           <div key={i} className="team-card gsap-fade-up">
             <div className="team-card__avatar">{m.emoji}</div>
@@ -400,7 +400,7 @@ const AboutPricing = () => (
               ["30 day free trial","All features, no credit card required, cancel anytime"]
             ].map(([title,desc],i)=>(
               <div key={i} style={{display:"flex",gap:14,paddingBottom:14,marginBottom:14,borderBottom:"1px solid var(--line)"}}>
-                <span style={{color:"#4ade80",fontWeight:700,flexShrink:0}}>✓</span>
+                <span style={{color:"#4ade80",fontWeight:700,flexShrink:0}}>check</span>
                 <div>
                   <p style={{fontWeight:600,fontSize:14,margin:"0 0 3px"}}>{title}</p>
                   <p style={{fontSize:13,color:"var(--text-muted)",margin:0,lineHeight:1.5}}>{desc}</p>
@@ -589,7 +589,7 @@ const AboutFAQ = () => {
           {items.map((item,i)=>(
             <div key={i} className="faq-entry">
               <button className={"faq-entry__q"+(open===i?" is-open":"")} onClick={()=>setOpen(open===i?null:i)}>
-                {item.q}<span className="faq-entry__chevron">▾</span>
+                {item.q}<span className="faq-entry__chevron">?</span>
               </button>
               <div className={"faq-entry__a"+(open===i?" is-open":"")}>
                 <p>{item.a}</p>

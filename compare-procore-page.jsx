@@ -41,7 +41,7 @@ const CPPriceBlock = () => (
           <div style={{marginTop:16,fontSize:13,color:"var(--text-muted)",textAlign:"left"}}>
             {["15 active projects","All 12 modules included","All users included","BIM viewer included","AI Concierge included","API included"].map((f,i)=>(
               <div key={i} style={{display:"flex",gap:8,padding:"6px 0",borderBottom:"1px solid var(--line)"}}>
-                <span style={{color:"#4ade80",fontWeight:700}}>✓</span>{f}
+                <span style={{color:"#4ade80",fontWeight:700}}>check</span>{f}
               </div>
             ))}
           </div>
@@ -54,7 +54,7 @@ const CPPriceBlock = () => (
           <div style={{marginTop:16,fontSize:13,color:"var(--text-muted)",textAlign:"left"}}>
             {["Per-user licensing","Modules sold separately","BIM requires Autodesk integration","AI features in early access","API on enterprise plans","Annual contracts typically required"].map((f,i)=>(
               <div key={i} style={{display:"flex",gap:8,padding:"6px 0",borderBottom:"1px solid var(--line)"}}>
-                <span style={{color:"#ef4444",fontWeight:700}}>✕</span>{f}
+                <span style={{color:"#ef4444",fontWeight:700}}>x</span>{f}
               </div>
             ))}
           </div>
@@ -143,7 +143,7 @@ const CPWhenToChoose = () => (
             "You want AR model overlay on Android without extra hardware"
           ].map((item,i)=>(
             <div key={i} style={{display:"flex",gap:10,padding:"8px 0",borderBottom:"1px solid var(--line)"}}>
-              <span style={{color:"#4ade80",fontWeight:700,flexShrink:0}}>✓</span>
+              <span style={{color:"#4ade80",fontWeight:700,flexShrink:0}}>check</span>
               <span style={{fontSize:14,color:"var(--text-muted)"}}>{item}</span>
             </div>
           ))}
@@ -160,7 +160,7 @@ const CPWhenToChoose = () => (
             "You need a pre-built integration with a specific ERP that MASON does not yet support"
           ].map((item,i)=>(
             <div key={i} style={{display:"flex",gap:10,padding:"8px 0",borderBottom:"1px solid var(--line)"}}>
-              <span style={{color:"var(--text-muted)",fontWeight:700,flexShrink:0}}>→</span>
+              <span style={{color:"var(--text-muted)",fontWeight:700,flexShrink:0}}>-></span>
               <span style={{fontSize:14,color:"var(--text-muted)"}}>{item}</span>
             </div>
           ))}

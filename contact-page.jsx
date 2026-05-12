@@ -1,4 +1,4 @@
-// contact-page.jsx — Full Contact page for MASON
+// contact-page.jsx -- Full Contact page for MASON
 
 const ContactHero = () => (
   <section className="page-hero">
@@ -27,7 +27,7 @@ const ContactOptions = () => (
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:24,marginBottom:72}}>
         {[
           {
-            icon:"🎯",
+            icon:"?",
             heading:"Book a product demo",
             sub:"30 minutes, live walkthrough",
             body:`We will walk you through the platform using your specific project type as the
@@ -38,7 +38,7 @@ const ContactOptions = () => (
             href:"#contact-form"
           },
           {
-            icon:"💬",
+            icon:"?",
             heading:"Ask a technical question",
             sub:"We answer the same day",
             body:`Have a specific question about how the BIM viewer handles federated models, or
@@ -49,7 +49,7 @@ const ContactOptions = () => (
             href:"#contact-form"
           },
           {
-            icon:"🔄",
+            icon:"?",
             heading:"Migration consultation",
             sub:"Moving from Procore, Aconex, Fieldwire",
             body:`If you are currently on another platform and thinking about switching, we can
@@ -60,7 +60,7 @@ const ContactOptions = () => (
             href:"#contact-form"
           },
           {
-            icon:"🤝",
+            icon:"?",
             heading:"Partnership enquiry",
             sub:"Integrations, resellers, referrals",
             body:`If you represent a software company that wants to build an integration with
@@ -99,7 +99,7 @@ const ContactForm = () => {
       <section className="section bg-subtle" id="contact-form">
         <div className="container" style={{maxWidth:600,textAlign:"center"}}>
           <div className="gsap-fade-up" style={{background:"var(--bg-elev)",border:"1px solid var(--line)",borderRadius:16,padding:48}}>
-            <div style={{width:64,height:64,borderRadius:"50%",background:"rgba(74,222,128,.12)",border:"1px solid rgba(74,222,128,.3)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:28,margin:"0 auto 24px"}}>✓</div>
+            <div style={{width:64,height:64,borderRadius:"50%",background:"rgba(74,222,128,.12)",border:"1px solid rgba(74,222,128,.3)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:28,margin:"0 auto 24px"}}>check</div>
             <h2 style={{fontSize:24,fontWeight:700,marginBottom:12}}>Message sent</h2>
             <p style={{fontSize:15,color:"var(--text-muted)",lineHeight:1.7,marginBottom:24}}>
               Thank you. We will get back to you at {form.email} within one business day.
@@ -353,7 +353,7 @@ const ContactBeforeDemo = () => (
               "How to start your 30 day trial on the same call"
             ].map((item,i)=>(
               <div key={i} style={{display:"flex",gap:12,padding:"10px 0",borderBottom:"1px solid var(--line)"}}>
-                <span style={{color:"var(--accent)",fontWeight:700,flexShrink:0}}>→</span>
+                <span style={{color:"var(--accent)",fontWeight:700,flexShrink:0}}>-></span>
                 <span style={{fontSize:14,color:"var(--text-muted)"}}>{item}</span>
               </div>
             ))}
@@ -431,7 +431,7 @@ const ContactFAQ = () => {
           {items.map((item,i)=>(
             <div key={i} className="faq-entry">
               <button className={"faq-entry__q"+(open===i?" is-open":"")} onClick={()=>setOpen(open===i?null:i)}>
-                {item.q}<span className="faq-entry__chevron">▾</span>
+                {item.q}<span className="faq-entry__chevron">?</span>
               </button>
               <div className={"faq-entry__a"+(open===i?" is-open":"")}>
                 <p>{item.a}</p>

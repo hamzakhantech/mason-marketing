@@ -1,6 +1,6 @@
-// sections.jsx — Why MASON, Module grid, BIM, Surfaces, Trust, CTA, Footer
+// sections.jsx -- Why MASON, Module grid, BIM, Surfaces, Trust, CTA, Footer
 
-// ─── Why MASON: 3 pillars ───────────────────────────────────────────────────
+// --- Why MASON: 3 pillars ---------------------------------------------------
 
 const Pillars = () => (
   <section className="sect" id="product">
@@ -34,7 +34,7 @@ const Pillars = () => (
         <PillarCard
           n="03"
           title="Clarity"
-          body="An AI Concierge grounded in your project data. Search across projects, summarize logs, and triage notifications — without leaving the tab you’re in."
+          body="An AI Concierge grounded in your project data. Search across projects, summarize logs, and triage notifications -- without leaving the tab you're in."
           accent={<PillarVizClarity />}
         />
       </div>
@@ -130,7 +130,7 @@ const PillarVizClarity = () => (
   </svg>
 );
 
-// ─── Module grid ───────────────────────────────────────────────────────────
+// --- Module grid -----------------------------------------------------------
 
 const MODULES = {
   Plan: [
@@ -165,8 +165,8 @@ const ModuleGrid = () => (
   <section className="sect" id="modules">
     <div className="container">
       <div className="sect-head">
-        <span className="eyebrow">What’s inside</span>
-        <h2 className="h2">Every module your team already lives in — in one place.</h2>
+        <span className="eyebrow">What's inside</span>
+        <h2 className="h2">Every module your team already lives in -- in one place.</h2>
         <p className="lede">
           Grouped the way work actually flows: <strong>Plan</strong> the job,
           <strong> Execute</strong> on it, draw <strong>Insight</strong> from the data it generates.
@@ -204,7 +204,7 @@ const ModuleGrid = () => (
   </section>
 );
 
-// ─── BIM + Field proof ────────────────────────────────────────────────────
+// --- BIM + Field proof ----------------------------------------------------
 
 const BIMProof = () => (
   <section className="sect bim-proof" id="bim">
@@ -212,7 +212,7 @@ const BIMProof = () => (
     <div className="container bim-proof__inner">
       <div className="bim-proof__copy">
         <span className="eyebrow">BIM &amp; field</span>
-        <h2 className="h2">The model your office trusts — on the phone in your foreman’s pocket.</h2>
+        <h2 className="h2">The model your office trusts -- on the phone in your foreman's pocket.</h2>
         <p className="lede">
           MASON federates IFC models in a web viewer that runs natively in the browser
           on any desktop and on a mid-tier Android phone. No Autodesk account. No Forge
@@ -237,7 +237,7 @@ const BIMProof = () => (
           <li><IconCheck size={16} stroke={2} /> IFC 2x3 and IFC4 supported natively, no format conversion needed</li>
         </ul>
         <a href="bim-ar.html" className="btn btn-ghost" style={{marginTop:24,display:"inline-flex",alignItems:"center",gap:8}}>
-          Read more about BIM and AR →
+          Read more about BIM and AR ->
         </a>
       </div>
       <div className="bim-proof__visual">
@@ -251,7 +251,7 @@ const BIMHeroVisual = () => (
   <div className="bim-card">
     <div className="bim-card__hd">
       <span className="chip accent"><span className="dot" /> BIM viewer</span>
-      <span className="mono">RIVERSIDE TOWER · L19–L24</span>
+      <span className="mono">RIVERSIDE TOWER . L19-L24</span>
     </div>
     <div className="bim-card__stage">
       <svg viewBox="0 0 480 320" className="bim-card__svg" aria-hidden="true">
@@ -266,7 +266,7 @@ const BIMHeroVisual = () => (
         </defs>
         <rect x="0" y="0" width="480" height="320" fill="url(#bm-grid)" />
 
-        {/* tower stack — 6 floors isometric */}
+        {/* tower stack -- 6 floors isometric */}
         <g transform="translate(140 40)">
           {[0,1,2,3,4,5].map(i => {
             const y = i * 32;
@@ -302,8 +302,8 @@ const BIMHeroVisual = () => (
           </g>
           <g fontFamily="ui-monospace, Menlo, monospace">
             <rect x="244" y="22" width="120" height="36" rx="6" fill="rgba(7,7,10,.85)" stroke="rgba(255,255,255,.18)" />
-            <text x="252" y="38" fontSize="10" fill="#e26d5c" fontWeight="600">CLASH · 3 elements</text>
-            <text x="252" y="51" fontSize="9" fill="rgba(255,255,255,.7)">Conduit ⊥ HVAC duct</text>
+            <text x="252" y="38" fontSize="10" fill="#e26d5c" fontWeight="600">CLASH . 3 elements</text>
+            <text x="252" y="51" fontSize="9" fill="rgba(255,255,255,.7)">Conduit ? HVAC duct</text>
           </g>
         </g>
       </svg>
@@ -317,7 +317,7 @@ const BIMHeroVisual = () => (
         <div className="bim-card__rfi-title">Coordination needed: penetration through L23 slab.</div>
         <div className="bim-card__rfi-meta">
           <span>Auto-linked from clash</span>
-          <span>·</span>
+          <span>.</span>
           <span>Due in 2 days</span>
         </div>
       </div>
@@ -325,7 +325,7 @@ const BIMHeroVisual = () => (
   </div>
 );
 
-// ─── Surfaces strip ────────────────────────────────────────────────────────
+// --- Surfaces strip --------------------------------------------------------
 
 const Surfaces = () => (
   <section className="sect" id="surfaces">
@@ -347,13 +347,13 @@ const Surfaces = () => (
         <SurfaceCard
           tag="Desktop browser"
           title="The full command deck."
-          bullets={["Sidebar + topbar AppShell", "BIM viewer · Gantt · Reports", "Print &amp; PDF for handoff"]}
+          bullets={["Sidebar + topbar AppShell", "BIM viewer . Gantt . Reports", "Print &amp; PDF for handoff"]}
           frame={<DesktopFrame />}
         />
         <SurfaceCard
           tag="Mobile browser"
           title="Same workflows. No compromise."
-          bullets={["Issues, RFIs, Documents — all unblocked", "BIM &amp; AR on phone", "“Best on desktop” hint only where needed"]}
+          bullets={["Issues, RFIs, Documents -- all unblocked", "BIM &amp; AR on phone", ""Best on desktop" hint only where needed"]}
           frame={<MobileFrame />}
           spotlight
         />
@@ -420,7 +420,7 @@ const MobileFrame = () => (
       {[
         { k: "RFI-204", s: "danger", t: "L23 slab penetration" },
         { k: "RFI-203", s: "warn",   t: "Curtain wall bracket spec" },
-        { k: "RFI-198", s: "ok",     t: "Roof drain location · resolved" },
+        { k: "RFI-198", s: "ok",     t: "Roof drain location . resolved" },
       ].map((r) => (
         <div className="frm-mob__row" key={r.k}>
           <div className="frm-mob__row-top">
@@ -445,14 +445,14 @@ const AndroidFrame = () => (
       <img src="assets/mason_mark_grid.png" alt="" />
     </div>
     <div className="frm-and__chat">
-      <div className="frm-and__bub frm-and__bub--user">Daily on L23 — what changed?</div>
+      <div className="frm-and__bub frm-and__bub--user">Daily on L23 -- what changed?</div>
       <div className="frm-and__bub">
         <span className="mono">MASON</span>
         2 issues raised, RFI-204 still open, concrete pour pushed 1d.
       </div>
       <div className="frm-and__bub frm-and__bub--user">Draft the daily.</div>
       <div className="frm-and__bub frm-and__bub--accent">
-        <span className="mono">Drafting · 4 sources</span>
+        <span className="mono">Drafting . 4 sources</span>
       </div>
     </div>
     <div className="frm-and__nav">
@@ -464,7 +464,7 @@ const AndroidFrame = () => (
   </div>
 );
 
-// ─── Trust ────────────────────────────────────────────────────────────────
+// --- Trust ----------------------------------------------------------------
 
 const Trust = () => (
   <section className="sect trust" id="trust">
@@ -476,7 +476,7 @@ const Trust = () => (
         </div>
         <div className="trust__grid">
           <TrustCard Icon={IconKey} title="Role-based access"
-            body="Project, company, and module-level permissions. Cost and audit logs are gated by default — admins decide who sees what." />
+            body="Project, company, and module-level permissions. Cost and audit logs are gated by default -- admins decide who sees what." />
           <TrustCard Icon={IconAudit} title="Audit-friendly workflows"
             body="Every RFI, issue, and submittal has a provable trail. The in-app Audit log mirrors what your QA team needs at handover." />
           <TrustCard Icon={IconShield} title="Modern cloud hosting"
@@ -495,7 +495,7 @@ const TrustCard = ({ Icon, title, body }) => (
   </div>
 );
 
-// ─── CTA + Footer ─────────────────────────────────────────────────────────
+// --- CTA + Footer ---------------------------------------------------------
 
 const CTABand = () => (
   <section className="sect cta-band" id="contact">
@@ -553,7 +553,7 @@ const Footer = () => (
       </div>
     </div>
     <div className="container site-footer__legal">
-      <span>© 2026 MASON · masononsite.com</span>
+      <span>(c) 2026 MASON . masononsite.com</span>
       <span>Built for the jobsite.</span>
     </div>
   </footer>

@@ -26,15 +26,15 @@ const SecCards = () => (
     <div className="container">
       <div className="security-grid">
         {[
-          {icon:"🔒",heading:"Encryption at rest and in transit",body:`All data stored in MASON is encrypted at rest using AES-256. All data in transit uses TLS 1.3. This applies to everything, project documents, IFC models, daily log photos, cost data, and user records. There are no unencrypted data stores in the MASON infrastructure.`},
-          {icon:"☁",heading:"AWS infrastructure, EU West by default",body:`MASON runs on Amazon Web Services in the EU West (Ireland) region. Compute, storage, and database services are all within the same region by default. Scale plan customers can request specific regional deployment for data residency requirements.`},
-          {icon:"🔑",heading:"Role-based access control",body:`Every user in MASON has a role that defines exactly what they can see and do. Roles are applied at the project level and the module level. An external consultant can be given read-only access to the BIM module while being completely unable to see the cost module. This is not an optional configuration. It is how the platform works.`},
-          {icon:"📜",heading:"Audit logs for every action",body:`Every significant action in MASON is logged with a timestamp, user identity, and action detail. Document views, record edits, user role changes, and permission modifications are all captured. Audit logs are available to account administrators and cannot be deleted by any user including administrators.`},
-          {icon:"🏢",heading:"Single sign-on and SAML",body:`SAML 2.0 SSO is available on the Scale plan, enabling integration with your corporate identity provider including Okta, Azure AD, and Google Workspace. SSO enforces your organisation's authentication policies including MFA requirements across all MASON access.`},
-          {icon:"🛡",heading:"Two factor authentication",body:`All MASON accounts support two factor authentication via an authenticator app or SMS. Administrators can enforce 2FA as a requirement for all users on their account. We recommend enabling this on any account that contains commercially sensitive project data.`},
-          {icon:"📤",heading:"Data export at any time",body:`You can export your complete project data in standard formats at any time, without contacting support. Documents export as original files. RFIs, issues, and logs export as structured CSV or JSON. IFC models export as they were uploaded. Your data is never held hostage.`},
-          {icon:"🗑",heading:"Right to deletion",body:`If you close your MASON account, all project data is deleted from production servers within 30 days and from backup archives within 90 days. We provide a written confirmation of deletion on request. We do not retain project data for training AI models.`},
-          {icon:"🤖",heading:"Your data is not used to train AI",body:`The AI Concierge is powered by a language model that MASON runs on dedicated infrastructure. Your project content is used as context for responses within your account only. It is never shared with other customers, never used to train or fine-tune any model, and never sent to third party AI providers.`}
+          {icon:"?",heading:"Encryption at rest and in transit",body:`All data stored in MASON is encrypted at rest using AES-256. All data in transit uses TLS 1.3. This applies to everything, project documents, IFC models, daily log photos, cost data, and user records. There are no unencrypted data stores in the MASON infrastructure.`},
+          {icon:"?",heading:"AWS infrastructure, EU West by default",body:`MASON runs on Amazon Web Services in the EU West (Ireland) region. Compute, storage, and database services are all within the same region by default. Scale plan customers can request specific regional deployment for data residency requirements.`},
+          {icon:"?",heading:"Role-based access control",body:`Every user in MASON has a role that defines exactly what they can see and do. Roles are applied at the project level and the module level. An external consultant can be given read-only access to the BIM module while being completely unable to see the cost module. This is not an optional configuration. It is how the platform works.`},
+          {icon:"?",heading:"Audit logs for every action",body:`Every significant action in MASON is logged with a timestamp, user identity, and action detail. Document views, record edits, user role changes, and permission modifications are all captured. Audit logs are available to account administrators and cannot be deleted by any user including administrators.`},
+          {icon:"?",heading:"Single sign-on and SAML",body:`SAML 2.0 SSO is available on the Scale plan, enabling integration with your corporate identity provider including Okta, Azure AD, and Google Workspace. SSO enforces your organisation's authentication policies including MFA requirements across all MASON access.`},
+          {icon:"?",heading:"Two factor authentication",body:`All MASON accounts support two factor authentication via an authenticator app or SMS. Administrators can enforce 2FA as a requirement for all users on their account. We recommend enabling this on any account that contains commercially sensitive project data.`},
+          {icon:"?",heading:"Data export at any time",body:`You can export your complete project data in standard formats at any time, without contacting support. Documents export as original files. RFIs, issues, and logs export as structured CSV or JSON. IFC models export as they were uploaded. Your data is never held hostage.`},
+          {icon:"?",heading:"Right to deletion",body:`If you close your MASON account, all project data is deleted from production servers within 30 days and from backup archives within 90 days. We provide a written confirmation of deletion on request. We do not retain project data for training AI models.`},
+          {icon:"?",heading:"Your data is not used to train AI",body:`The AI Concierge is powered by a language model that MASON runs on dedicated infrastructure. Your project content is used as context for responses within your account only. It is never shared with other customers, never used to train or fine-tune any model, and never sent to third party AI providers.`}
         ].map((c,i)=>(
           <div key={i} className="sec-card gsap-fade-up">
             <div className="sec-card__icon">{c.icon}</div>
@@ -58,12 +58,12 @@ const SecCompliance = () => (
       </div>
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:20,marginTop:48}}>
         {[
-          {status:"✓",color:"#4ade80",heading:"GDPR compliant",body:"MASON's data processing practices comply with EU GDPR requirements. A Data Processing Agreement is available on request for customers who need it for their own compliance documentation."},
-          {status:"✓",color:"#4ade80",heading:"ISO 27001 aligned",body:"Our security management practices are aligned with ISO 27001. We are currently preparing for formal certification, which we expect to complete in 2026."},
-          {status:"✓",color:"#4ade80",heading:"TLS 1.3 and AES-256",body:"All connections use TLS 1.3 minimum. Older TLS versions are not accepted. Data at rest uses AES-256 encryption across all storage systems."},
-          {status:"⏳",color:"var(--accent)",heading:"SOC 2 Type II in progress",body:"We are currently undergoing a SOC 2 Type II audit. The audit period started in Q1 2026. We expect to have the report available in Q4 2026. Contact us if you need a draft controls description in the meantime."},
-          {status:"✓",color:"#4ade80",heading:"UK GDPR and DPA 2018",body:"For customers based in the UK, MASON's data handling complies with UK GDPR and the Data Protection Act 2018. A UK-specific DPA is available alongside the EU version."},
-          {status:"✓",color:"#4ade80",heading:"Penetration tested annually",body:"MASON undergoes annual penetration testing by an independent third party security firm. The most recent test was completed in Q1 2026. Executive summary available to Scale plan customers under NDA."}
+          {status:"check",color:"#4ade80",heading:"GDPR compliant",body:"MASON's data processing practices comply with EU GDPR requirements. A Data Processing Agreement is available on request for customers who need it for their own compliance documentation."},
+          {status:"check",color:"#4ade80",heading:"ISO 27001 aligned",body:"Our security management practices are aligned with ISO 27001. We are currently preparing for formal certification, which we expect to complete in 2026."},
+          {status:"check",color:"#4ade80",heading:"TLS 1.3 and AES-256",body:"All connections use TLS 1.3 minimum. Older TLS versions are not accepted. Data at rest uses AES-256 encryption across all storage systems."},
+          {status:"?",color:"var(--accent)",heading:"SOC 2 Type II in progress",body:"We are currently undergoing a SOC 2 Type II audit. The audit period started in Q1 2026. We expect to have the report available in Q4 2026. Contact us if you need a draft controls description in the meantime."},
+          {status:"check",color:"#4ade80",heading:"UK GDPR and DPA 2018",body:"For customers based in the UK, MASON's data handling complies with UK GDPR and the Data Protection Act 2018. A UK-specific DPA is available alongside the EU version."},
+          {status:"check",color:"#4ade80",heading:"Penetration tested annually",body:"MASON undergoes annual penetration testing by an independent third party security firm. The most recent test was completed in Q1 2026. Executive summary available to Scale plan customers under NDA."}
         ].map((c,i)=>(
           <div key={i} className="value-card gsap-fade-up">
             <p style={{fontSize:20,marginBottom:8,color:c.color}}>{c.status}</p>
@@ -94,7 +94,7 @@ const SecFAQ = () => {
           {items.map((item,i)=>(
             <div key={i} className="faq-entry">
               <button className={"faq-entry__q"+(open===i?" is-open":"")} onClick={()=>setOpen(open===i?null:i)}>
-                {item.q}<span className="faq-entry__chevron">▾</span>
+                {item.q}<span className="faq-entry__chevron">?</span>
               </button>
               <div className={"faq-entry__a"+(open===i?" is-open":"")}>
                 <p>{item.a}</p>
@@ -110,7 +110,7 @@ const SecFAQ = () => {
             email security@masononsite.com. We respond within two business days.
           </p>
           <a href="mailto:security@masononsite.com" style={{color:"var(--accent)",fontWeight:600,textDecoration:"none",fontSize:14}}>
-            security@masononsite.com →
+            security@masononsite.com ->
           </a>
         </div>
       </div>

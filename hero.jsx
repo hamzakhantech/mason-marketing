@@ -1,4 +1,4 @@
-// hero.jsx — Header with full dropdown navigation + Hero
+// hero.jsx -- Header with full dropdown navigation + Hero
 
 const Header = ({ onSignIn }) => {
   const [scrolled, setScrolled] = React.useState(false);
@@ -35,21 +35,21 @@ const Header = ({ onSignIn }) => {
                 <div className="nav-drop__col">
                   <p className="nav-drop__heading">Platform</p>
                   <a href="features.html" className="nav-drop__item">
-                    <span className="nav-drop__icon">⬡</span>
+                    <span className="nav-drop__icon">?</span>
                     <span>
                       <strong>All Features</strong>
                       <span className="nav-drop__sub">12 integrated modules in one login</span>
                     </span>
                   </a>
                   <a href="bim-ar.html" className="nav-drop__item">
-                    <span className="nav-drop__icon">◈</span>
+                    <span className="nav-drop__icon">?</span>
                     <span>
                       <strong>BIM and AR</strong>
                       <span className="nav-drop__sub">Browser native IFC viewer plus Android AR overlay</span>
                     </span>
                   </a>
                   <a href="mobile.html" className="nav-drop__item">
-                    <span className="nav-drop__icon">◉</span>
+                    <span className="nav-drop__icon">?</span>
                     <span>
                       <strong>Mobile App</strong>
                       <span className="nav-drop__sub">Android with full offline mode for the field</span>
@@ -59,21 +59,21 @@ const Header = ({ onSignIn }) => {
                 <div className="nav-drop__col">
                   <p className="nav-drop__heading">Platform Details</p>
                   <a href="integrations.html" className="nav-drop__item">
-                    <span className="nav-drop__icon">⟁</span>
+                    <span className="nav-drop__icon">?</span>
                     <span>
                       <strong>Integrations</strong>
                       <span className="nav-drop__sub">Connect with Procore, Autodesk, MS Project and more</span>
                     </span>
                   </a>
                   <a href="security.html" className="nav-drop__item">
-                    <span className="nav-drop__icon">◫</span>
+                    <span className="nav-drop__icon">?</span>
                     <span>
                       <strong>Security</strong>
                       <span className="nav-drop__sub">Encryption, access control and audit logs</span>
                     </span>
                   </a>
                   <a href="changelog.html" className="nav-drop__item">
-                    <span className="nav-drop__icon">◌</span>
+                    <span className="nav-drop__icon">?</span>
                     <span>
                       <strong>Changelog</strong>
                       <span className="nav-drop__sub">What we shipped this month</span>
@@ -93,21 +93,21 @@ const Header = ({ onSignIn }) => {
               <div className="nav-drop__panel">
                 <p className="nav-drop__heading">Side by Side Comparisons</p>
                 <a href="compare-procore.html" className="nav-drop__item">
-                  <span className="nav-drop__icon">↔</span>
+                  <span className="nav-drop__icon">?</span>
                   <span>
                     <strong>MASON vs Procore</strong>
                     <span className="nav-drop__sub">Pricing, features, seat fees compared</span>
                   </span>
                 </a>
                 <a href="compare-fieldwire.html" className="nav-drop__item">
-                  <span className="nav-drop__icon">↔</span>
+                  <span className="nav-drop__icon">?</span>
                   <span>
                     <strong>MASON vs Fieldwire</strong>
                     <span className="nav-drop__sub">Field tool vs full platform</span>
                   </span>
                 </a>
                 <a href="compare-asite.html" className="nav-drop__item">
-                  <span className="nav-drop__icon">↔</span>
+                  <span className="nav-drop__icon">?</span>
                   <span>
                     <strong>MASON vs Asite</strong>
                     <span className="nav-drop__sub">Document management and beyond</span>
@@ -128,21 +128,21 @@ const Header = ({ onSignIn }) => {
               <div className="nav-drop__panel">
                 <p className="nav-drop__heading">Learn and Decide</p>
                 <a href="case-studies.html" className="nav-drop__item">
-                  <span className="nav-drop__icon">◎</span>
+                  <span className="nav-drop__icon">?</span>
                   <span>
                     <strong>Case Studies</strong>
                     <span className="nav-drop__sub">Real projects, real numbers</span>
                   </span>
                 </a>
                 <a href="roi-calculator.html" className="nav-drop__item">
-                  <span className="nav-drop__icon">◐</span>
+                  <span className="nav-drop__icon">?</span>
                   <span>
                     <strong>ROI Calculator</strong>
                     <span className="nav-drop__sub">What MASON saves your team per year</span>
                   </span>
                 </a>
                 <a href="blog.html" className="nav-drop__item">
-                  <span className="nav-drop__icon">◑</span>
+                  <span className="nav-drop__icon">?</span>
                   <span>
                     <strong>Blog and Guides</strong>
                     <span className="nav-drop__sub">Construction tech, tips and best practices</span>
@@ -160,14 +160,14 @@ const Header = ({ onSignIn }) => {
             {openMenu === "company" && (
               <div className="nav-drop__panel">
                 <a href="about.html" className="nav-drop__item">
-                  <span className="nav-drop__icon">◩</span>
+                  <span className="nav-drop__icon">?</span>
                   <span>
                     <strong>About MASON</strong>
                     <span className="nav-drop__sub">Why we built it and what drives us</span>
                   </span>
                 </a>
                 <a href="contact.html" className="nav-drop__item">
-                  <span className="nav-drop__icon">◪</span>
+                  <span className="nav-drop__icon">?</span>
                   <span>
                     <strong>Contact Us</strong>
                     <span className="nav-drop__sub">Book a demo or ask us anything</span>
@@ -228,7 +228,7 @@ const Header = ({ onSignIn }) => {
   );
 };
 
-// ─── Hero ───────────────────────────────────────────────────────────────────
+// --- Hero -------------------------------------------------------------------
 
 const Hero = () => {
   return (
@@ -238,7 +238,7 @@ const Hero = () => {
       <div className="container hero__inner">
         <div className="hero__copy">
           <span className="eyebrow fade-up" style={{ animationDelay: "0ms" }}>
-            Management · Analytics · Site
+            Management . Analytics . Site
           </span>
           <h1 className="display fade-up" style={{ animationDelay: "80ms" }}>
             One command center<br />
@@ -270,7 +270,7 @@ const Hero = () => {
       </div>
 
       <div className="hero__expansion container">
-        <span className="mono">M·A·S·O·N</span>
+        <span className="mono">M.A.S.O.N</span>
         <span className="hero__expansion-sep" aria-hidden="true">/</span>
         <span className="hero__expansion-text">
           <span>Management</span>
@@ -284,7 +284,7 @@ const Hero = () => {
   );
 };
 
-// ─── Product preview mockup ─────────────────────────────────────────────────
+// --- Product preview mockup -------------------------------------------------
 
 const ProductPreview = () => {
   return (
@@ -325,7 +325,7 @@ const ProductPreview = () => {
               <span>Riverside Tower</span><i>/</i><span>BIM</span><i>/</i><span className="strong">L23 MEP</span>
             </div>
             <div className="prod__topbar-right">
-              <span className="chip">IFC · Federated</span>
+              <span className="chip">IFC . Federated</span>
               <span className="prod__avatar" />
             </div>
           </div>
@@ -338,8 +338,8 @@ const ProductPreview = () => {
                 <span className="chip danger"><span className="dot" /> Open</span>
                 <span className="prod__rail-key">RFI-204</span>
               </div>
-              <div className="prod__rail-title">Penetration through L23 slab — coordination needed with structural.</div>
-              <div className="prod__rail-meta">Due in 2 days · K. Okafor</div>
+              <div className="prod__rail-title">Penetration through L23 slab -- coordination needed with structural.</div>
+              <div className="prod__rail-meta">Due in 2 days . K. Okafor</div>
             </div>
             <div className="prod__rail-card">
               <div className="prod__rail-row">
@@ -347,7 +347,7 @@ const ProductPreview = () => {
                 <span className="prod__rail-key">ISS-118</span>
               </div>
               <div className="prod__rail-title">Conduit clash with duct, gridline E/4, at +12.40 m.</div>
-              <div className="prod__rail-meta">From BIM viewer · auto-linked</div>
+              <div className="prod__rail-meta">From BIM viewer . auto-linked</div>
             </div>
           </div>
         </main>
@@ -360,7 +360,7 @@ const ProductPreview = () => {
         </div>
         <div className="prod__orb-bubble">
           <span className="prod__orb-bubble-pre">Concierge</span>
-          <span>Drafting RFI from clash ISS-118…</span>
+          <span>Drafting RFI from clash ISS-118...</span>
         </div>
       </div>
     </div>
@@ -414,7 +414,7 @@ const BIMViewerStage = () => (
       <g stroke="rgba(255,255,255,.4)" fill="rgba(255,255,255,.7)" fontSize="9" fontFamily="ui-monospace, Menlo, monospace">
         <line x1="380" y1="220" x2="430" y2="195" />
         <circle cx="430" cy="195" r="2.5" fill="#e8942e" stroke="none" />
-        <text x="436" y="193" fill="#e8942e">L23 · +71.40m</text>
+        <text x="436" y="193" fill="#e8942e">L23 . +71.40m</text>
       </g>
     </svg>
     <div className="prod__viewer-controls">
@@ -423,7 +423,7 @@ const BIMViewerStage = () => (
       <button title="Hide"><IconCheck size={14} /></button>
     </div>
     <div className="prod__viewer-legend">
-      <span><i style={{ background: "#e8942e" }} /> Selected · L23 MEP</span>
+      <span><i style={{ background: "#e8942e" }} /> Selected . L23 MEP</span>
       <span><i style={{ background: "#e26d5c" }} /> 1 clash</span>
     </div>
   </div>

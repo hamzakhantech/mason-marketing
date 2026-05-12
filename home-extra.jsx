@@ -1,7 +1,7 @@
-// home-extra.jsx — Homepage sections: HowItWorks, CompareOldWay, SocialProof,
+// home-extra.jsx -- Homepage sections: HowItWorks, CompareOldWay, SocialProof,
 // PricingTeaser, HomeFAQ, TrustExtended, FinalCTA
 
-// ─── How It Works ─────────────────────────────────────────────────────────────
+// --- How It Works -------------------------------------------------------------
 
 const HowItWorks = () => (
   <section className="sect" id="how">
@@ -135,7 +135,7 @@ const HowItWorks = () => (
   </section>
 );
 
-// ─── Compare: MASON vs the old way ────────────────────────────────────────────
+// --- Compare: MASON vs the old way --------------------------------------------
 
 const CompareOldWay = () => (
   <section className="sect sect--alt" id="compare">
@@ -170,7 +170,7 @@ const CompareOldWay = () => (
               "New subcontractors get added to a Dropbox folder and a WhatsApp group and nothing else",
               "When something goes wrong, establishing a timeline takes days of manual reconstruction",
             ].map(t => (
-              <li key={t}><span className="compare-x">✕</span> {t}</li>
+              <li key={t}><span className="compare-x">x</span> {t}</li>
             ))}
           </ul>
         </div>
@@ -205,7 +205,7 @@ const CompareOldWay = () => (
             {stat:"6 to 10h",desc:"Average hours per week per project manager spent on RFI admin and coordination in fragmented tool environments"},
             {stat:"5 to 15%",desc:"Construction rework as a percentage of total project value, much of it caused by coordination failures and information gaps"},
             {stat:"3 days",desc:"Average delay added to RFI response time when the answerer does not have direct access to the current model revision"},
-            {stat:"$50k+",desc:"Annual per-user licensing cost for enterprise platforms like Procore at scale — MASON charges per project instead"},
+            {stat:"$50k+",desc:"Annual per-user licensing cost for enterprise platforms like Procore at scale -- MASON charges per project instead"},
           ].map((item,i)=>(
             <div key={i} className="reveal" style={{background:"var(--bg-elev)",border:"1px solid var(--line)",borderRadius:12,padding:"20px 24px"}}>
               <p style={{fontSize:32,fontWeight:800,color:"var(--accent)",margin:"0 0 8px",letterSpacing:"-1px"}}>{item.stat}</p>
@@ -218,7 +218,7 @@ const CompareOldWay = () => (
   </section>
 );
 
-// ─── Social Proof ─────────────────────────────────────────────────────────────
+// --- Social Proof -------------------------------------------------------------
 
 const SocialProof = () => (
   <section className="sect" id="proof">
@@ -295,7 +295,7 @@ const SocialProof = () => (
   </section>
 );
 
-// ─── Pricing Teaser ───────────────────────────────────────────────────────────
+// --- Pricing Teaser -----------------------------------------------------------
 
 const PricingTeaser = () => (
   <section className="sect sect--alt" id="pricing-teaser">
@@ -352,7 +352,7 @@ const PricingTeaser = () => (
           ))}
           <p className="pricing-teaser__note">
             <IconShield size={13} /> Every plan includes all 12 modules. No upsells. No add-ons.{" "}
-            <a href="pricing.html" style={{color:"var(--accent)"}}>Full pricing details →</a>
+            <a href="pricing.html" style={{color:"var(--accent)"}}>Full pricing details -></a>
           </p>
           <div style={{marginTop:16,padding:"16px 20px",background:"rgba(232,148,46,.06)",border:"1px solid rgba(232,148,46,.2)",borderRadius:10}}>
             <p style={{fontSize:13,fontWeight:700,margin:"0 0 4px",color:"var(--text)"}}>Annual plans save 20%</p>
@@ -364,7 +364,7 @@ const PricingTeaser = () => (
   </section>
 );
 
-// ─── Homepage FAQ ─────────────────────────────────────────────────────────────
+// --- Homepage FAQ -------------------------------------------------------------
 
 const HOME_FAQS = [
   {
@@ -472,7 +472,7 @@ const HomeFAQ = () => {
   );
 };
 
-// ─── Security and Trust ───────────────────────────────────────────────────────
+// --- Security and Trust -------------------------------------------------------
 
 const TrustExtended = () => (
   <section className="sect sect--alt" id="trust">
@@ -585,13 +585,13 @@ const TrustExtended = () => (
       </div>
 
       <div style={{textAlign:"center",marginTop:48}} className="reveal">
-        <a href="security.html" className="btn btn-ghost">Read our full security documentation →</a>
+        <a href="security.html" className="btn btn-ghost">Read our full security documentation -></a>
       </div>
     </div>
   </section>
 );
 
-// ─── Final CTA ────────────────────────────────────────────────────────────────
+// --- Final CTA ----------------------------------------------------------------
 
 const FinalCTA = () => (
   <section className="sect cta-band" id="contact">

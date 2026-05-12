@@ -1,5 +1,5 @@
-// icons.jsx — minimal stroke icons used across the page
-// All 24×24 viewBox, currentColor stroke.
+// icons.jsx -- minimal stroke icons used across the page
+// All 24?24 viewBox, currentColor stroke.
 
 const Icon = ({ children, size = 22, stroke = 1.6, ...rest }) => (
   <svg
@@ -17,7 +17,7 @@ const Icon = ({ children, size = 22, stroke = 1.6, ...rest }) => (
   </svg>
 );
 
-// Module icons — keep them feeling "drafted" / engineering-grade
+// Module icons -- keep them feeling "drafted" / engineering-grade
 const IconDashboard = (p) => (<Icon {...p}><path d="M4 4h7v9H4z"/><path d="M13 4h7v5h-7z"/><path d="M13 11h7v9h-7z"/><path d="M4 15h7v5H4z"/></Icon>);
 const IconProjects = (p) => (<Icon {...p}><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4"/><path d="M3 17l9 4 9-4"/></Icon>);
 const IconSchedule = (p) => (<Icon {...p}><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 3v4M16 3v4"/><path d="M7 14h4M13 17h6"/></Icon>);

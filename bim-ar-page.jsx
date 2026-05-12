@@ -1,4 +1,4 @@
-// bim-ar-page.jsx — BIM & AR deep-dive
+// bim-ar-page.jsx -- BIM & AR deep-dive
 
 const BIMARHero = () => (
   <section className="page-hero">
@@ -10,9 +10,9 @@ const BIMARHero = () => (
         <span className="accent">in the browser</span> and on the wall.
       </h1>
       <p className="lede gsap-fade-up">
-        MASON loads IFC files natively in the browser — no plugins, no Autodesk account,
+        MASON loads IFC files natively in the browser -- no plugins, no Autodesk account,
         no desktop app. Federate multiple discipline models. Detect clashes automatically.
-        Pin issues to elements. Then take the model to the field in AR — point your Android
+        Pin issues to elements. Then take the model to the field in AR -- point your Android
         camera at the wall and see the MEP behind it.
       </p>
       <div className="hero__cta gsap-fade-up">
@@ -25,18 +25,18 @@ const BIMARHero = () => (
   </section>
 );
 
-// ─── BIM tech grid ────────────────────────────────────────────────────────────
+// --- BIM tech grid ------------------------------------------------------------
 const BIMTechGrid = () => (
   <section className="section">
     <div className="container">
       <div className="section__header gsap-fade-up">
         <span className="eyebrow">How it works</span>
-        <h2 className="h2">Browser-native BIM — no compromise.</h2>
+        <h2 className="h2">Browser-native BIM -- no compromise.</h2>
         <p className="section__sub">
           MASON's BIM viewer is built on web-ifc, an open-source WebAssembly library
           that parses IFC files directly in the browser. Combined with a Three.js rendering
           engine and a custom scene graph optimised for construction models, it delivers
-          a viewer experience previously only possible in desktop software — without the
+          a viewer experience previously only possible in desktop software -- without the
           installation overhead or the Autodesk licence cost.
         </p>
       </div>
@@ -48,7 +48,7 @@ const BIMTechGrid = () => (
           { label: "Three.js r165", desc: "WebGL 2.0 rendering with instancing for large repetitive elements" },
           { label: "Federated scenes", desc: "Merge multiple discipline IFCs into one coordinated scene" },
           { label: "Property sets", desc: "Every IfcPropertySet exposed in the inspector panel" },
-          { label: "Spatial structure", desc: "Site → Building → Storey → Space hierarchy navigation" },
+          { label: "Spatial structure", desc: "Site -> Building -> Storey -> Space hierarchy navigation" },
           { label: "Clash detection", desc: "Server-side intersection analysis on federation upload" },
         ].map((t, i) => (
           <div key={i} className="bim-tech-cell gsap-scale-in">
@@ -61,7 +61,7 @@ const BIMTechGrid = () => (
   </section>
 );
 
-// ─── IFC workflow ─────────────────────────────────────────────────────────────
+// --- IFC workflow -------------------------------------------------------------
 const IFCWorkflow = () => (
   <section className="section bg-subtle">
     <div className="container">
@@ -78,12 +78,12 @@ const IFCWorkflow = () => (
           {
             n: "01",
             heading: "Export IFC from your BIM tool",
-            body: `In Revit: File → Export → IFC. Choose IFC 2x3 or IFC4. The Revit IFC exporter is free and built-in — no additional plugin required for basic export. For higher-quality exports with better geometry and property mapping, the open-source OpenBIM Revit exporter (IFCexporter on GitHub) is recommended and free. In ArchiCAD: File → Save As → IFC. In Tekla: File → Export → IFC. The process is the same — open standard, any BIM tool.`
+            body: `In Revit: File -> Export -> IFC. Choose IFC 2x3 or IFC4. The Revit IFC exporter is free and built-in -- no additional plugin required for basic export. For higher-quality exports with better geometry and property mapping, the open-source OpenBIM Revit exporter (IFCexporter on GitHub) is recommended and free. In ArchiCAD: File -> Save As -> IFC. In Tekla: File -> Export -> IFC. The process is the same -- open standard, any BIM tool.`
           },
           {
             n: "02",
             heading: "Upload to MASON",
-            body: `In MASON, open your project and go to BIM. Click Upload Model. Select the IFC file (up to 300 MB on Pro and Scale plans). MASON processes the file server-side: parsing the spatial structure, extracting property sets, building a search index, and running the initial clash analysis if other discipline models are already loaded. Processing typically takes 30–90 seconds for a 100 MB file. You'll get a notification when it's ready.`
+            body: `In MASON, open your project and go to BIM. Click Upload Model. Select the IFC file (up to 300 MB on Pro and Scale plans). MASON processes the file server-side: parsing the spatial structure, extracting property sets, building a search index, and running the initial clash analysis if other discipline models are already loaded. Processing typically takes 30-90 seconds for a 100 MB file. You'll get a notification when it's ready.`
           },
           {
             n: "03",
@@ -93,7 +93,7 @@ const IFCWorkflow = () => (
           {
             n: "04",
             heading: "Navigate, inspect, and annotate",
-            body: `The BIM viewer loads in the browser — no install required. Use the tree panel to navigate disciplines, floors, and building systems. Click any element to see its full property set. Use the Isolate, Section, and Hide tools to focus on specific areas. Pin issues directly to elements. The viewer saves your camera position between sessions so you pick up where you left off.`
+            body: `The BIM viewer loads in the browser -- no install required. Use the tree panel to navigate disciplines, floors, and building systems. Click any element to see its full property set. Use the Isolate, Section, and Hide tools to focus on specific areas. Pin issues directly to elements. The viewer saves your camera position between sessions so you pick up where you left off.`
           },
           {
             n: "05",
@@ -114,7 +114,7 @@ const IFCWorkflow = () => (
   </section>
 );
 
-// ─── Viewer capabilities ──────────────────────────────────────────────────────
+// --- Viewer capabilities ------------------------------------------------------
 const ViewerCapabilities = () => (
   <section className="section">
     <div className="container">
@@ -130,11 +130,11 @@ const ViewerCapabilities = () => (
           },
           {
             title: "Element inspection",
-            body: "Click any element to open the inspector panel: IFC type, GUID, name, material, and all custom property sets. Quantities are extracted automatically — area, volume, count — useful for take-off verification. Copy the GUID to cross-reference with the BIM authoring tool."
+            body: "Click any element to open the inspector panel: IFC type, GUID, name, material, and all custom property sets. Quantities are extracted automatically -- area, volume, count -- useful for take-off verification. Copy the GUID to cross-reference with the BIM authoring tool."
           },
           {
             title: "Isolate and section",
-            body: "Isolate command shows only selected elements (useful for single-system coordination). Section cuts through the model on any axis — horizontal for floor plans, vertical for sections. The section plane is draggable. Save up to 5 named section positions per project."
+            body: "Isolate command shows only selected elements (useful for single-system coordination). Section cuts through the model on any axis -- horizontal for floor plans, vertical for sections. The section plane is draggable. Save up to 5 named section positions per project."
           },
           {
             title: "Discipline layers",
@@ -142,7 +142,7 @@ const ViewerCapabilities = () => (
           },
           {
             title: "Issue pins",
-            body: "Tap any element and select 'Pin Issue'. A 3D pin appears at the click point on the element surface. The pin links bidirectionally to an Issue card — the issue ID, status, and priority are shown on the pin. Closed issues show green pins; open issues show amber or red based on priority."
+            body: "Tap any element and select 'Pin Issue'. A 3D pin appears at the click point on the element surface. The pin links bidirectionally to an Issue card -- the issue ID, status, and priority are shown on the pin. Closed issues show green pins; open issues show amber or red based on priority."
           },
           {
             title: "Measurement",
@@ -150,11 +150,11 @@ const ViewerCapabilities = () => (
           },
           {
             title: "Clash markers",
-            body: "Clashes detected on federation upload are shown as red markers in the model. Click a clash marker to see the two elements involved, their discipline origin, the intersection volume, and the linked Issue card. The marker disappears when the linked issue is closed — giving you a visual 'cleared clash' view."
+            body: "Clashes detected on federation upload are shown as red markers in the model. Click a clash marker to see the two elements involved, their discipline origin, the intersection volume, and the linked Issue card. The marker disappears when the linked issue is closed -- giving you a visual 'cleared clash' view."
           },
           {
             title: "Saved views",
-            body: "Save named camera positions for use in meetings and reports. 'South elevation', 'L23 MEP plan', 'Clash E/4 detail' — share a named view link and your colleague opens the model at exactly that camera position. Views are per-project and visible to all permissioned users."
+            body: "Save named camera positions for use in meetings and reports. 'South elevation', 'L23 MEP plan', 'Clash E/4 detail' -- share a named view link and your colleague opens the model at exactly that camera position. Views are per-project and visible to all permissioned users."
           }
         ].map((item, i) => (
           <div key={i} className="feature-card gsap-scale-in">
@@ -167,7 +167,7 @@ const ViewerCapabilities = () => (
   </section>
 );
 
-// ─── AR deep-dive ─────────────────────────────────────────────────────────────
+// --- AR deep-dive -------------------------------------------------------------
 const ARDeepDive = () => (
   <section className="section bg-subtle">
     <div className="container">
@@ -178,7 +178,7 @@ const ARDeepDive = () => (
           <p className="split-copy__body">
             MASON AR overlays the digital building model on the physical site using the
             Android device camera. It uses a combination of ARCore (Google's AR platform,
-            built into modern Android devices) and WebXR — so no app update is required
+            built into modern Android devices) and WebXR -- so no app update is required
             when AR capabilities improve.
           </p>
           <p className="split-copy__body">
@@ -230,7 +230,7 @@ const ARDeepDive = () => (
                 <line x1="240" y1="80" x2="240" y2="200" stroke="rgba(255,255,255,.08)" />
                 {/* AR overlaid MEP duct */}
                 <rect x="50" y="90" width="180" height="20" fill="rgba(232,148,46,.12)" stroke="#e8942e" strokeWidth="1" rx="3" />
-                <text x="140" y="104" textAnchor="middle" fill="#e8942e" fontSize="7" fontFamily="monospace">HVAC SUPPLY 600×300 · L4</text>
+                <text x="140" y="104" textAnchor="middle" fill="#e8942e" fontSize="7" fontFamily="monospace">HVAC SUPPLY 600?300 . L4</text>
                 {/* AR overlaid conduit */}
                 <rect x="100" y="115" width="80" height="8" fill="rgba(59,130,246,.12)" stroke="#3b82f6" strokeWidth="1" rx="1.5" />
                 <text x="140" y="121" textAnchor="middle" fill="#93c5fd" fontSize="6" fontFamily="monospace">ELE 100mm conduit</text>
@@ -239,13 +239,13 @@ const ARDeepDive = () => (
                 <text x="138" y="116" textAnchor="middle" fill="#e26d5c" fontSize="7" fontWeight="bold">!</text>
                 {/* HUD bottom */}
                 <rect x="0" y="175" width="280" height="25" fill="rgba(0,0,0,.5)" />
-                <text x="14" y="190" fill="rgba(232,148,46,.9)" fontSize="8" fontFamily="monospace">AR · L4 MEP · 1 clash detected</text>
+                <text x="14" y="190" fill="rgba(232,148,46,.9)" fontSize="8" fontFamily="monospace">AR . L4 MEP . 1 clash detected</text>
                 <text x="200" y="190" fill="rgba(255,255,255,.5)" fontSize="7" fontFamily="monospace">Calibrated</text>
                 <circle cx="252" cy="187" r="4" fill="none" stroke="rgba(74,222,128,.8)" strokeWidth="1.5" />
               </svg>
             </div>
             <div className="ar-demo-card__caption">
-              AR overlay — HVAC duct and electrical conduit on Level 4.
+              AR overlay -- HVAC duct and electrical conduit on Level 4.
               Clash marker visible at intersection.
             </div>
           </div>
@@ -255,7 +255,7 @@ const ARDeepDive = () => (
   </section>
 );
 
-// ─── Clash detection deep-dive ────────────────────────────────────────────────
+// --- Clash detection deep-dive ------------------------------------------------
 const ClashDetection = () => (
   <section className="section">
     <div className="container">
@@ -265,7 +265,7 @@ const ClashDetection = () => (
         <p className="section__sub">
           Clash detection happens automatically when you upload a discipline model to a
           federated project. Every geometric intersection between discipline models is
-          recorded — element IDs, discipline pair, intersection bounding box, grid reference,
+          recorded -- element IDs, discipline pair, intersection bounding box, grid reference,
           and elevation. Clashes are classified by severity (hard, soft, workflow) and
           written directly into the Issues register.
         </p>
@@ -278,7 +278,7 @@ const ClashDetection = () => (
           },
           {
             title: "Soft clashes (clearance)",
-            body: "Objects are within a defined clearance threshold but not actually intersecting. An electrical cable tray with less than 50mm clearance to a structural beam — technically compliant but likely to cause installation problems. Clearance thresholds are configurable per project."
+            body: "Objects are within a defined clearance threshold but not actually intersecting. An electrical cable tray with less than 50mm clearance to a structural beam -- technically compliant but likely to cause installation problems. Clearance thresholds are configurable per project."
           },
           {
             title: "Workflow clashes",
@@ -286,7 +286,7 @@ const ClashDetection = () => (
           },
           {
             title: "Clash-to-RFI workflow",
-            body: "Select a clash in the Issues register. Tap 'Draft RFI'. The AI Concierge reads the element properties, the relevant specification section, and your project's RFI template, then drafts the RFI body. Review, edit, assign — the RFI is raised in under 2 minutes."
+            body: "Select a clash in the Issues register. Tap 'Draft RFI'. The AI Concierge reads the element properties, the relevant specification section, and your project's RFI template, then drafts the RFI body. Review, edit, assign -- the RFI is raised in under 2 minutes."
           },
           {
             title: "Grouping and filtering",
@@ -307,17 +307,17 @@ const ClashDetection = () => (
   </section>
 );
 
-// ─── BIM FAQ ──────────────────────────────────────────────────────────────────
+// --- BIM FAQ ------------------------------------------------------------------
 const BIMFAQ = () => {
   const [open, setOpen] = React.useState(null);
   const items = [
-    { q: "Do I need an Autodesk account to use MASON BIM?", a: "No. MASON parses IFC files natively in the browser using web-ifc, an open-source library. IFC is an open BIM standard — any BIM tool can export it, and MASON reads it without any Autodesk products. You don't need Autodesk Construction Cloud, BIM 360, Autodesk Docs, Navisworks, or any other Autodesk product." },
-    { q: "What's the maximum IFC file size?", a: "Starter plan: 500 MB per file upload, with up to 100 GB total document storage. Professional: 2 GB per file, 500 GB total. Scale: 5 GB per file, unlimited total. Practical performance in the browser viewer is best for models under 300 MB on desktop and under 80 MB on Android. Larger models load and work — they're just slower on initial load. The server-side clash detection process has no size limit." },
-    { q: "Can multiple people be in the BIM viewer simultaneously?", a: "Yes. The BIM viewer is a shared view — any permissioned user can open it simultaneously. Issue pins, clash markers, and saved views are shared in real time. However, the viewer is not a collaborative editing environment — MASON is a viewer, not a BIM authoring tool. Users see the same model and can annotate it, but they're not editing the IFC geometry." },
+    { q: "Do I need an Autodesk account to use MASON BIM?", a: "No. MASON parses IFC files natively in the browser using web-ifc, an open-source library. IFC is an open BIM standard -- any BIM tool can export it, and MASON reads it without any Autodesk products. You don't need Autodesk Construction Cloud, BIM 360, Autodesk Docs, Navisworks, or any other Autodesk product." },
+    { q: "What's the maximum IFC file size?", a: "Starter plan: 500 MB per file upload, with up to 100 GB total document storage. Professional: 2 GB per file, 500 GB total. Scale: 5 GB per file, unlimited total. Practical performance in the browser viewer is best for models under 300 MB on desktop and under 80 MB on Android. Larger models load and work -- they're just slower on initial load. The server-side clash detection process has no size limit." },
+    { q: "Can multiple people be in the BIM viewer simultaneously?", a: "Yes. The BIM viewer is a shared view -- any permissioned user can open it simultaneously. Issue pins, clash markers, and saved views are shared in real time. However, the viewer is not a collaborative editing environment -- MASON is a viewer, not a BIM authoring tool. Users see the same model and can annotate it, but they're not editing the IFC geometry." },
     { q: "Why IFC and not RVT or NWC?", a: "Proprietary formats lock you into a vendor. RVT requires Revit. NWC requires Navisworks. IFC is an open ISO standard (ISO 16739) supported by every serious BIM tool in the world. Choosing IFC means your project data remains interoperable and accessible regardless of which tools your team or your clients use in the future." },
-    { q: "How accurate is the AR overlay?", a: "After calibration, AR accuracy is typically 5–15mm at close range, degrading to 30–50mm at distances over 10m. This is sufficient for verifying service routes, checking clearances, and confirming element positions, but not for precision tasks like setting out. The calibration accuracy depends on the quality of the physical reference point used — a laser-punched survey mark is more accurate than a pencil mark on a concrete floor." },
+    { q: "How accurate is the AR overlay?", a: "After calibration, AR accuracy is typically 5-15mm at close range, degrading to 30-50mm at distances over 10m. This is sufficient for verifying service routes, checking clearances, and confirming element positions, but not for precision tasks like setting out. The calibration accuracy depends on the quality of the physical reference point used -- a laser-punched survey mark is more accurate than a pencil mark on a concrete floor." },
     { q: "Is AR available on iOS?", a: "Not yet. AR on iOS requires WebXR support in Safari, which has been inconsistently implemented by Apple. We're monitoring Safari's WebXR implementation and plan to add iOS AR support when the quality is sufficient. The rest of the MASON platform (BIM viewer, issues, logs, etc.) works fully on iOS via the mobile browser." },
-    { q: "Can I use the BIM viewer offline?", a: "On Android (native app), models you've previously opened are cached locally and available offline for viewing and inspection. Issue pinning and annotation work offline and sync when connectivity resumes. On desktop browser, offline BIM viewing is not currently supported — the model loads fresh from the server each session, though property data is indexed and fast to load." },
+    { q: "Can I use the BIM viewer offline?", a: "On Android (native app), models you've previously opened are cached locally and available offline for viewing and inspection. Issue pinning and annotation work offline and sync when connectivity resumes. On desktop browser, offline BIM viewing is not currently supported -- the model loads fresh from the server each session, though property data is indexed and fast to load." },
   ];
 
   return (
@@ -332,7 +332,7 @@ const BIMFAQ = () => {
             <div key={i} className={"faq-item gsap-fade-up" + (open === i ? " is-open" : "")}>
               <button className="faq-item__btn" onClick={() => setOpen(open === i ? null : i)}>
                 <span>{item.q}</span>
-                <span className="faq-item__chevron">{open === i ? "−" : "+"}</span>
+                <span className="faq-item__chevron">{open === i ? "?" : "+"}</span>
               </button>
               {open === i && <div className="faq-item__body"><p>{item.a}</p></div>}
             </div>
@@ -343,7 +343,7 @@ const BIMFAQ = () => {
   );
 };
 
-// ─── CTA ──────────────────────────────────────────────────────────────────────
+// --- CTA ----------------------------------------------------------------------
 const BIMARCTA = () => (
   <section className="cta-band">
     <div className="container cta-band__inner">
@@ -363,7 +363,7 @@ const BIMARCTA = () => (
   </section>
 );
 
-// ─── Root ─────────────────────────────────────────────────────────────────────
+// --- Root ---------------------------------------------------------------------
 const BIMARPage = () => {
   React.useEffect(() => {
     document.body.classList.add('gsap-ready'); // CSS fallback: elements visible even if GSAP fails

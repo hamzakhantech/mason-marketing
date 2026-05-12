@@ -1,4 +1,4 @@
-// layout.jsx — Shared Footer for all interior pages
+// layout.jsx -- Shared Footer for all interior pages
 // Header is already exported by hero.jsx
 
 const Footer = () => (
@@ -51,7 +51,7 @@ const Footer = () => (
       </div>
     </div>
     <div className="container site-footer__legal">
-      <span>© 2026 MASON · masononsite.com · Built by Certiva LLC</span>
+      <span>(c) 2026 MASON . masononsite.com . Built by Certiva LLC</span>
       <span>Built for the jobsite.</span>
     </div>
   </footer>

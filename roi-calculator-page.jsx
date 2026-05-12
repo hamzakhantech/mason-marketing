@@ -215,7 +215,7 @@ const ROIContext = () => (
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:24,marginTop:48}}>
         {[
           {
-            icon:"📋",
+            icon:"?",
             heading:"RFI admin time",
             body:`The average site engineer on a mid-size project spends between six and ten hours
             per week just on RFI coordination. That is writing them, chasing responses, logging
@@ -225,7 +225,7 @@ const ROIContext = () => (
             and linking RFIs to the BIM model so context is always in the same place.`
           },
           {
-            icon:"📊",
+            icon:"?",
             heading:"Reporting overhead",
             body:`Daily logs, weekly progress reports, monthly owner reports, and end-of-project
             handover documents are all necessary. But on most projects, the same data gets
@@ -236,7 +236,7 @@ const ROIContext = () => (
             disconnected apps.`
           },
           {
-            icon:"🔁",
+            icon:"?",
             heading:"Rework from coordination failures",
             body:`Industry benchmarks put construction rework costs at between 5% and 15% of
             total project value. The primary cause is coordination failures: clashes that were
@@ -247,7 +247,7 @@ const ROIContext = () => (
             rework is available to everyone at the same time.`
           },
           {
-            icon:"💸",
+            icon:"?",
             heading:"Per-user software licensing",
             body:`Most construction platforms charge per user per month. A 30-person project
             team at $50 per user per month is $18,000 per year before you add a second project.
@@ -257,7 +257,7 @@ const ROIContext = () => (
             more obvious as team size grows.`
           },
           {
-            icon:"🔧",
+            icon:"?",
             heading:"Integration and data re-entry",
             body:`When BIM lives in one tool, RFIs in another, cost in a spreadsheet, and
             schedule in a third application, someone has to keep them all in sync. That someone
@@ -267,7 +267,7 @@ const ROIContext = () => (
             the same project data without any manual synchronisation.`
           },
           {
-            icon:"⏰",
+            icon:"?",
             heading:"Decision delays from poor visibility",
             body:`Decisions that could be made in an hour when the right information is
             immediately available can take days when that information is scattered across

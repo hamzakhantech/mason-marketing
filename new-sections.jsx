@@ -1,25 +1,25 @@
-// new-sections.jsx — Personas, Concierge spotlight, Workflow
+// new-sections.jsx -- Personas, Concierge spotlight, Workflow
 
 const PERSONAS = [
   {
     id: "pm",
-    tag: "Project managers · engineers",
+    tag: "Project managers . engineers",
     title: "Portfolio truth, every project, one click away.",
-    body: "Dashboard, schedule, BIM, cost roll-up, reports — at the desk where decisions actually get made. Federated models open in the same tab as the RFI they’re tied to.",
+    body: "Dashboard, schedule, BIM, cost roll-up, reports -- at the desk where decisions actually get made. Federated models open in the same tab as the RFI they're tied to.",
     bullets: ["Multi-project Dashboard", "Schedule (Gantt) + Reports", "Federated BIM viewer", "Cost & document control"],
     surface: "desk",
   },
   {
     id: "super",
-    tag: "Supers · owners' reps",
+    tag: "Supers . owners' reps",
     title: "Mobile that doesn't apologize for being mobile.",
-    body: "Issues, RFIs, documents, and the BIM model — full workflows on a phone browser. No locked-out screens, no “open this on desktop” walls in the way of your day.",
+    body: "Issues, RFIs, documents, and the BIM model -- full workflows on a phone browser. No locked-out screens, no "open this on desktop" walls in the way of your day.",
     bullets: ["BIM + AR on phone browser", "Issues & RFIs unblocked", "Documents in one tap", "Full read/write parity"],
     surface: "mob",
   },
   {
     id: "field",
-    tag: "Foremen · field staff",
+    tag: "Foremen . field staff",
     title: "Capture-first. Built for the jobsite.",
     body: "The native Android app puts the camera, push notifications, GPS, and AI Concierge directly in the hands of the field team. Daily logs can be drafted from the issues and activities recorded during the shift rather than typed from memory at the end of the day. Offline mode means the work continues in basements, plant rooms, and any other location where signal disappears. Data syncs the moment connectivity returns.",
     bullets: ["Full offline mode with automatic sync", "Camera integration for issue photos", "GPS location tagging for every issue", "Push notifications for assigned RFIs", "AI Concierge aware of your current project", "Bottom navigation designed for one-handed use"],
@@ -38,7 +38,7 @@ const Personas = () => {
           <h2 className="h2">Office. Mobile. Site.<br/>One product, three jobs to do.</h2>
           <p className="lede">
             MASON respects how construction teams actually divide work across a desk, a phone browser,
-            and a foreman’s pocket — without forking the data.
+            and a foreman's pocket -- without forking the data.
           </p>
         </div>
 
@@ -76,7 +76,7 @@ const Personas = () => {
   );
 };
 
-// ─── Concierge spotlight ────────────────────────────────────────────────────
+// --- Concierge spotlight ----------------------------------------------------
 
 const ConciergeSpotlight = () => (
   <section className="sect concierge" id="concierge">
@@ -84,7 +84,7 @@ const ConciergeSpotlight = () => (
     <div className="container concierge__inner">
       <div className="concierge__copy">
         <span className="eyebrow">AI Concierge</span>
-        <h2 className="h2">An assistant that knows<br/><span className="accent">your project</span> — not just the internet.</h2>
+        <h2 className="h2">An assistant that knows<br/><span className="accent">your project</span> -- not just the internet.</h2>
         <p className="lede">
           Concierge is grounded in your portfolio data: documents, RFIs, schedule, BIM model, daily logs,
           issues, and cost records. It cites the specific source it drew from rather than generating a
@@ -101,8 +101,8 @@ const ConciergeSpotlight = () => (
           every other module reads from.
         </p>
         <div className="concierge__stats">
-          <div><span className="mono">Sources</span><b>RFIs · Docs · BIM · Logs</b></div>
-          <div><span className="mono">Surfaces</span><b>Desk · Mobile · Android</b></div>
+          <div><span className="mono">Sources</span><b>RFIs . Docs . BIM . Logs</b></div>
+          <div><span className="mono">Surfaces</span><b>Desk . Mobile . Android</b></div>
           <div><span className="mono">Permissions</span><b>Role-aware by default</b></div>
         </div>
       </div>
@@ -121,7 +121,7 @@ const ConciergeChat = () => (
       </div>
       <div className="cnc__hd-t">
         <span>MASON Concierge</span>
-        <em>Riverside Tower · L23 context</em>
+        <em>Riverside Tower . L23 context</em>
       </div>
       <span className="chip ok"><span className="dot" /> Live</span>
     </div>
@@ -130,7 +130,7 @@ const ConciergeChat = () => (
 
       <div className="cnc__msg">
         <span className="mono">Concierge</span>
-        Two factors. RFI-204 (slab penetration) is open — blocking pour 23-A. Yesterday’s daily log shows
+        Two factors. RFI-204 (slab penetration) is open -- blocking pour 23-A. Yesterday's daily log shows
         the ductwork install slipped half a day at gridline E/4 due to a clash with conduit (ISS-118).
       </div>
 
@@ -138,19 +138,19 @@ const ConciergeChat = () => (
         <span className="mono">Cited</span>
         <span className="cnc__src"><IconRFI size={11} /> RFI-204</span>
         <span className="cnc__src"><IconIssues size={11} /> ISS-118</span>
-        <span className="cnc__src"><IconLogs size={11} /> Log · May 6</span>
-        <span className="cnc__src"><IconBIM size={11} /> Model · L23 MEP</span>
+        <span className="cnc__src"><IconLogs size={11} /> Log . May 6</span>
+        <span className="cnc__src"><IconBIM size={11} /> Model . L23 MEP</span>
       </div>
 
       <div className="cnc__msg cnc__msg--user">Draft an RFI from ISS-118.</div>
 
       <div className="cnc__msg cnc__msg--draft">
-        <span className="mono">Drafting RFI · 4 sources</span>
+        <span className="mono">Drafting RFI . 4 sources</span>
         <div className="cnc__draft">
-          <div className="cnc__draft-row"><span>Subject</span><b>Coordination — conduit/duct clash, gridline E/4, +12.40 m</b></div>
+          <div className="cnc__draft-row"><span>Subject</span><b>Coordination -- conduit/duct clash, gridline E/4, +12.40 m</b></div>
           <div className="cnc__draft-row"><span>To</span><b>K. Okafor (Structural)</b></div>
           <div className="cnc__draft-row"><span>Due</span><b>2 days</b></div>
-          <div className="cnc__draft-row"><span>Attached</span><b>Model snapshot · ISS-118</b></div>
+          <div className="cnc__draft-row"><span>Attached</span><b>Model snapshot . ISS-118</b></div>
         </div>
         <div className="cnc__draft-actions">
           <button className="btn btn-primary btn-sm">Send <IconArrowRight size={12} stroke={2} /></button>
@@ -161,7 +161,7 @@ const ConciergeChat = () => (
   </div>
 );
 
-// ─── Workflow ribbon ────────────────────────────────────────────────────────
+// --- Workflow ribbon --------------------------------------------------------
 
 const Workflow = () => (
   <section className="sect-tight workflow" id="workflow">

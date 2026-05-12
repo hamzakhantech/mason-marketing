@@ -175,7 +175,7 @@ const CAWhenToChoose = () => (
             "You want all modules included without per-feature pricing"
           ].map((item,i)=>(
             <div key={i} style={{display:"flex",gap:10,padding:"8px 0",borderBottom:"1px solid var(--line)"}}>
-              <span style={{color:"#4ade80",fontWeight:700,flexShrink:0}}>✓</span>
+              <span style={{color:"#4ade80",fontWeight:700,flexShrink:0}}>check</span>
               <span style={{fontSize:14,color:"var(--text-muted)"}}>{item}</span>
             </div>
           ))}
@@ -191,7 +191,7 @@ const CAWhenToChoose = () => (
             "The project is a large infrastructure programme with multi-decade record keeping"
           ].map((item,i)=>(
             <div key={i} style={{display:"flex",gap:10,padding:"8px 0",borderBottom:"1px solid var(--line)"}}>
-              <span style={{color:"var(--text-muted)",fontWeight:700,flexShrink:0}}>→</span>
+              <span style={{color:"var(--text-muted)",fontWeight:700,flexShrink:0}}>-></span>
               <span style={{fontSize:14,color:"var(--text-muted)"}}>{item}</span>
             </div>
           ))}

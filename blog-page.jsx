@@ -27,7 +27,7 @@ const BlogFeatured = () => (
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:32,alignItems:"start"}} className="about-story-grid">
         <a href="#" className="blog-card blog-card--featured gsap-slide-left" style={{textDecoration:"none",display:"block"}}>
           <div className="blog-card__img" style={{height:220,background:"linear-gradient(135deg,rgba(232,148,46,.15),rgba(232,148,46,.05))",borderRadius:"12px 12px 0 0",display:"flex",alignItems:"center",justifyContent:"center",fontSize:64}}>
-            🏗
+            ?
           </div>
           <div className="blog-card__body">
             <div style={{display:"flex",gap:8,marginBottom:12}}>
@@ -44,8 +44,8 @@ const BlogFeatured = () => (
               talk about enough.
             </p>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
-              <span style={{fontSize:12,color:"var(--text-muted)"}}>12 min read · May 2026</span>
-              <span style={{fontSize:13,color:"var(--accent)",fontWeight:600}}>Read article →</span>
+              <span style={{fontSize:12,color:"var(--text-muted)"}}>12 min read . May 2026</span>
+              <span style={{fontSize:13,color:"var(--accent)",fontWeight:600}}>Read article -></span>
             </div>
           </div>
         </a>
@@ -53,25 +53,25 @@ const BlogFeatured = () => (
         <div style={{display:"flex",flexDirection:"column",gap:20}} className="gsap-slide-right">
           {[
             {
-              emoji:"📋",
+              emoji:"?",
               tags:["RFIs","Workflow"],
               title:"The RFI is the most important document on a construction project. Here is why it fails so often.",
               excerpt:"Most RFI failures are not about the quality of the question. They are about the speed of the response and whether the answer reaches everyone who needed it.",
-              time:"9 min read · May 2026"
+              time:"9 min read . May 2026"
             },
             {
-              emoji:"📱",
+              emoji:"?",
               tags:["Mobile","Offline"],
               title:"What actually happens when field teams lose connectivity on a 40-storey building site",
               excerpt:"Most project management apps treat offline mode as a marketing checkbox. Here is what real offline capability looks like and why the difference matters.",
-              time:"7 min read · April 2026"
+              time:"7 min read . April 2026"
             },
             {
-              emoji:"💰",
+              emoji:"?",
               tags:["Pricing","Software"],
               title:"Per user pricing in construction software is fundamentally broken. Here is a better model.",
               excerpt:"When adding a subcontractor to a platform costs money, project managers find workarounds. Those workarounds cost more than the seat would have.",
-              time:"6 min read · April 2026"
+              time:"6 min read . April 2026"
             }
           ].map((article,i)=>(
             <a key={i} href="#" style={{textDecoration:"none",display:"flex",gap:16,padding:16,background:"var(--bg-elev)",border:"1px solid var(--line)",borderRadius:12,transition:"border-color .2s"}}
@@ -99,67 +99,67 @@ const BlogFeatured = () => (
 const BlogGrid = () => {
   const articles = [
     {
-      emoji:"🔭",
+      emoji:"?",
       tags:["AR","Technology"],
       title:"Augmented reality on a construction site: what works, what is hype, and what comes next",
       excerpt:"AR has been promised as a construction game-changer for a decade. This is an honest look at what it actually does well on a real project today, with current hardware in real field conditions.",
-      time:"11 min read · April 2026"
+      time:"11 min read . April 2026"
     },
     {
-      emoji:"📊",
+      emoji:"?",
       tags:["Cost control","Finance"],
       title:"How construction cost forecasts go wrong and what better data management actually fixes",
       excerpt:"The final account being higher than the original budget is normal in construction. But how much higher, and how late you find out, depends almost entirely on the quality of your cost data management.",
-      time:"8 min read · April 2026"
+      time:"8 min read . April 2026"
     },
     {
-      emoji:"🤖",
+      emoji:"?",
       tags:["AI","Productivity"],
       title:"What construction project managers actually do with AI tools today",
       excerpt:"We asked 40 construction project managers what they used AI for in their daily work. The answers were more specific and more useful than the usual AI-will-change-everything narrative.",
-      time:"10 min read · March 2026"
+      time:"10 min read . March 2026"
     },
     {
-      emoji:"📁",
+      emoji:"?",
       tags:["Documents","Version control"],
       title:"The hidden cost of the wrong drawing revision reaching the trades",
       excerpt:"A contractor building to revision C when revision D was issued last week is not a technology problem. It is an information distribution problem. Here is how it happens and how to prevent it.",
-      time:"7 min read · March 2026"
+      time:"7 min read . March 2026"
     },
     {
-      emoji:"🔧",
+      emoji:"?",
       tags:["Punch lists","Commissioning"],
       title:"Punch list management at scale: why the last 5% of a project takes 30% of the time",
       excerpt:"Closing out a construction project is harder than it should be. The punch list process reveals every information gap that accumulated throughout the build. Better data management earlier makes commissioning faster.",
-      time:"9 min read · March 2026"
+      time:"9 min read . March 2026"
     },
     {
-      emoji:"🌍",
+      emoji:"?",
       tags:["International","Teams"],
       title:"Running construction projects across multiple countries and time zones",
       excerpt:"International construction programmes have a communication overhead that domestic projects do not. The tools that work for a single-site project start to fail when your project spans three countries and two languages.",
-      time:"8 min read · February 2026"
+      time:"8 min read . February 2026"
     },
     {
-      emoji:"📐",
+      emoji:"?",
       tags:["IFC","Standards"],
       title:"A practical guide to IFC for project managers who do not have a BIM background",
       excerpt:"IFC is the open standard for sharing building information. Understanding it well enough to have an informed conversation with your design team takes about 30 minutes. Here is that 30 minutes.",
-      time:"12 min read · February 2026"
+      time:"12 min read . February 2026"
     },
     {
-      emoji:"⚠",
+      emoji:"?",
       tags:["Issues","Quality"],
       title:"Issue management on construction projects: the difference between a list and a system",
       excerpt:"Every project manager has a list of issues. Fewer have a system that ensures those issues get resolved before they affect the programme. Here is what makes the difference.",
-      time:"7 min read · February 2026"
+      time:"7 min read . February 2026"
     },
     {
-      emoji:"🏢",
+      emoji:"?",
       tags:["Case study","Residential"],
       title:"How a 45-storey residential tower cut RFI response time from 12 days to 3 days",
       excerpt:"The project had the same number of RFIs as before. What changed was who could see them, when, and what information was attached. A detailed look at the workflow changes and the results.",
-      time:"14 min read · January 2026"
+      time:"14 min read . January 2026"
     }
   ];
 
@@ -181,7 +181,7 @@ const BlogGrid = () => {
                 <p style={{fontSize:12.5,color:"var(--text-muted)",lineHeight:1.6,margin:"0 0 12px"}}>{article.excerpt}</p>
                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"auto"}}>
                   <span style={{fontSize:11,color:"var(--text-muted)"}}>{article.time}</span>
-                  <span style={{fontSize:12,color:"var(--accent)",fontWeight:600}}>Read →</span>
+                  <span style={{fontSize:12,color:"var(--accent)",fontWeight:600}}>Read -></span>
                 </div>
               </div>
             </a>
@@ -208,37 +208,37 @@ const BlogGuides = () => (
             title:"The Complete Guide to RFI Management in Construction",
             desc:"Everything from writing a good RFI to managing a 500-item register on a fast-track commercial build. Covers templates, approval chains, BIM-linked RFIs, and common failure modes.",
             pages:"28 pages",
-            icon:"📋"
+            icon:"?"
           },
           {
             title:"BIM for Project Managers: A Non-Technical Introduction",
             desc:"IFC files, federated models, clash detection, and 4D scheduling explained without assuming any BIM software knowledge. Written for the PM who needs to work with a BIM manager, not become one.",
             pages:"22 pages",
-            icon:"🏗"
+            icon:"?"
           },
           {
             title:"Construction Software Procurement Guide",
             desc:"How to evaluate, compare, and select construction management software for your organisation. Includes a scorecard template, a list of questions to ask vendors, and a guide to avoiding common procurement mistakes.",
             pages:"18 pages",
-            icon:"📊"
+            icon:"?"
           },
           {
             title:"Mobile Field Management: Setting Up Your Android Team",
             desc:"A practical guide to rolling out mobile field management tools to a site team. Covers device selection, training approaches, offline policies, and how to get daily log compliance above 90%.",
             pages:"15 pages",
-            icon:"📱"
+            icon:"?"
           },
           {
             title:"Construction Cost Control: The Project Manager's Handbook",
             desc:"Forecast at completion, committed cost tracking, variation management, and how to give the client an honest picture of where the budget stands without triggering panic. A pragmatic guide from project practitioners.",
             pages:"24 pages",
-            icon:"💰"
+            icon:"?"
           },
           {
             title:"Data Handover at Practical Completion: What to Prepare and When",
             desc:"The O&M manuals, as-built drawings, commissioning records, and warranties that a building owner needs at handover. A checklist-based guide to accumulating handover data throughout the project rather than scrambling at the end.",
             pages:"16 pages",
-            icon:"🗂"
+            icon:"?"
           }
         ].map((guide,i)=>(
           <div key={i} className="value-card gsap-fade-up" style={{cursor:"pointer"}}
@@ -249,7 +249,7 @@ const BlogGuides = () => (
             <p style={{fontSize:13,color:"var(--text-muted)",lineHeight:1.6,margin:"0 0 12px"}}>{guide.desc}</p>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
               <span style={{fontSize:11,color:"var(--text-muted)",fontFamily:"var(--font-mono)"}}>{guide.pages}</span>
-              <span style={{fontSize:12,color:"var(--accent)",fontWeight:600}}>Download →</span>
+              <span style={{fontSize:12,color:"var(--accent)",fontWeight:600}}>Download -></span>
             </div>
           </div>
         ))}
