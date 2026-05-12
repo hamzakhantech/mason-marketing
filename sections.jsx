@@ -353,7 +353,7 @@ const Surfaces = () => (
         <SurfaceCard
           tag="Mobile browser"
           title="Same workflows. No compromise."
-          bullets={["Issues, RFIs, Documents -- all unblocked", "BIM &amp; AR on phone", ""Best on desktop" hint only where needed"]}
+          bullets={["Issues, RFIs, Documents -- all unblocked", "BIM &amp; AR on phone", '"Best on desktop" hint only where needed']}
           frame={<MobileFrame />}
           spotlight
         />
