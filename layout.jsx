@@ -24,6 +24,11 @@ const Footer = () => (
           <a href="changelog.html">Changelog</a>
         </div>
         <div>
+          <span className="mono">Solutions</span>
+          <a href="smb.html">Small and Mid-Size GCs</a>
+          <a href="enterprise.html">Enterprise</a>
+        </div>
+        <div>
           <span className="mono">Compare</span>
           <a href="compare-procore.html">MASON vs Procore</a>
           <a href="compare-fieldwire.html">MASON vs Fieldwire</a>

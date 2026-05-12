@@ -27,10 +27,8 @@ const BlogFeatured = () => (
     <div className="container">
       <h2 className="h2 gsap-fade-up" style={{marginBottom:32}}>Featured</h2>
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:32,alignItems:"start"}} className="about-story-grid">
-        <a href="#" className="blog-card blog-card--featured gsap-slide-left" style={{textDecoration:"none",display:"block"}}>
-          <div className="blog-card__img" style={{height:220,background:"linear-gradient(135deg,rgba(232,148,46,.15),rgba(232,148,46,.05))",borderRadius:"12px 12px 0 0",display:"flex",alignItems:"center",justifyContent:"center",fontSize:64}}>
-            ?
-          </div>
+        <a href="blog.html" className="blog-card blog-card--featured gsap-slide-left" style={{textDecoration:"none",display:"block"}}>
+          <div className="blog-card__img" style={{height:220,background:"linear-gradient(135deg,rgba(232,148,46,.15),rgba(232,148,46,.05))",borderRadius:"12px 12px 0 0",display:"flex",alignItems:"center",justifyContent:"center",display:"flex",alignItems:"center",justifyContent:"center"}><span dangerouslySetInnerHTML={{__html:`<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(232,148,46,0.6)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`}} /></div>
           <div className="blog-card__body">
             <div style={{display:"flex",gap:8,marginBottom:12}}>
               <span className="blog-tag">BIM</span>
@@ -76,7 +74,7 @@ const BlogFeatured = () => (
               time:"6 min read . April 2026"
             }
           ].map((article,i)=>(
-            <a key={i} href="#" style={{textDecoration:"none",display:"flex",gap:16,padding:16,background:"var(--bg-elev)",border:"1px solid var(--line)",borderRadius:12,transition:"border-color .2s"}}
+            <a key={i} href="blog.html" style={{textDecoration:"none",display:"flex",gap:16,padding:16,background:"var(--bg-elev)",border:"1px solid var(--line)",borderRadius:12,transition:"border-color .2s"}}
               onMouseEnter={e=>e.currentTarget.style.borderColor="rgba(232,148,46,.4)"}
               onMouseLeave={e=>e.currentTarget.style.borderColor="var(--line)"}>
               <div style={{fontSize:28,flexShrink:0,width:48,height:48,display:"flex",alignItems:"center",justifyContent:"center",background:"rgba(232,148,46,.08)",borderRadius:10}}>
@@ -171,7 +169,7 @@ const BlogGrid = () => {
         <h2 className="h2 gsap-fade-up" style={{marginBottom:32}}>All articles</h2>
         <div className="blog-grid">
           {articles.map((article,i)=>(
-            <a key={i} href="#" className="blog-card gsap-fade-up" style={{textDecoration:"none",display:"flex",flexDirection:"column"}}>
+            <a key={i} href="blog.html" className="blog-card gsap-fade-up" style={{textDecoration:"none",display:"flex",flexDirection:"column"}}>
               <div style={{height:120,background:"linear-gradient(135deg,rgba(232,148,46,.1),rgba(232,148,46,.03))",borderRadius:"10px 10px 0 0",display:"flex",alignItems:"center",justifyContent:"center",fontSize:40}}>
                 <span dangerouslySetInnerHTML={{__html:BLOG_ICON}}/>
               </div>

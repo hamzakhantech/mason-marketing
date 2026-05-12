@@ -14,7 +14,7 @@ const AuthShell = ({ children, visual }) => (
       {children}
 
       <div className="auth-form__legal">
-        (c) 2026 MASON . <a href="#">Privacy</a> . <a href="#">Terms</a>
+        (c) 2026 MASON . <a href="privacy.html">Privacy</a> . <a href="terms.html">Terms</a>
       </div>
     </div>
 
