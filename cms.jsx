@@ -555,6 +555,8 @@ async function bootCMS() {
       // Re-merge with any saved draft
       _content = getInitialContent();
       _listeners.forEach(fn => fn(_content));
+      // Let non-hook components (e.g. pricing-page) know content is ready
+      window.dispatchEvent(new CustomEvent('mason:ready', { detail: _content }));
     }
   } catch(e) {
     console.warn('[MASON CMS] Could not load content.json, using defaults.');
@@ -564,10 +566,4 @@ async function bootCMS() {
   const el = document.createElement('div');
   el.id = 'mason-cms-root';
   document.body.appendChild(el);
-  ReactDOM.createRoot(el).render(<CMSPanel />);
-}
-
-bootCMS();
-
-// Expose to window for page components
-Object.assign(window, { toggleEditMode, isEditMode, useEditMode, CMSPanel });
+  ReactDOM.createRoot(el

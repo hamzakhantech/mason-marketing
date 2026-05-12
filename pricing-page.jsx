@@ -1,5 +1,80 @@
 // pricing-page.jsx — Full Pricing page, CMS-driven with inline editing
 
+// ─── Default content (rendered immediately; CMS overrides when loaded) ─────────
+const DEFAULT_PRICING = {
+  annualSavingPct: 20,
+  tiers: [
+    {
+      id: 'starter', name: 'Starter',
+      tagline: 'For small teams running 1–3 concurrent projects.',
+      monthly: 49, annual: 39,
+      projectsLabel: '3 active projects',
+      highlight: false, cta: 'Start free trial',
+      features: [
+        'All 12 modules included',
+        'Unlimited team members per project',
+        'BIM viewer (IFC 2x3 + IFC4)',
+        'AR on Android',
+        'Interactive Gantt + CPM schedule',
+        'RFI management',
+        'Issues register',
+        'Daily logs (offline)',
+        'Cost control + FAC',
+        'AI Concierge (60 queries/project/mo)',
+        '100 GB document storage',
+        'Email support (48-hr response)',
+      ]
+    },
+    {
+      id: 'professional', name: 'Professional',
+      tagline: 'For growing firms running multiple active projects.',
+      monthly: 149, annual: 119,
+      projectsLabel: '15 active projects',
+      highlight: true, cta: 'Start free trial',
+      features: [
+        'Everything in Starter',
+        'Unlimited AI Concierge queries',
+        'Full REST API access',
+        '20 webhook endpoints',
+        'Google Drive + OneDrive sync',
+        'Xero + QuickBooks export',
+        '500 GB document storage',
+        'Onboarding call included',
+        'Migration assistance',
+        'Priority email (12-hr response)',
+        '99.9% uptime SLA',
+      ]
+    },
+    {
+      id: 'scale', name: 'Scale',
+      tagline: 'For large programmes and enterprise accounts.',
+      monthly: 349, annual: 279,
+      projectsLabel: 'Unlimited active projects',
+      highlight: false, cta: 'Start free trial',
+      features: [
+        'Everything in Professional',
+        'SAML 2.0 SSO',
+        'Custom branding',
+        'Unlimited webhooks',
+        'Unlimited document storage',
+        'Dedicated Slack / Teams support',
+        'Dedicated onboarding consultant',
+        '4-hour response SLA',
+        'Annual business review',
+        'Custom data residency on request',
+      ]
+    },
+  ],
+  faq: [
+    { q: 'What counts as a project?', a: 'A project is any active construction project in your MASON account. Archived projects do not count toward your limit.' },
+    { q: 'Can I add unlimited team members?', a: 'Yes. Every plan includes unlimited team members per project at no extra cost. There are no per-seat fees anywhere in the product.' },
+    { q: 'What happens when my trial ends?', a: 'At day 30 you choose a plan. Your data stays exactly where it is — no migration, no downtime, no re-importing anything.' },
+    { q: 'Do you offer annual billing?', a: 'Yes. Annual billing saves 20% compared to monthly. You can switch between monthly and annual at any time from your account settings.' },
+    { q: 'Can I change plans later?', a: 'Yes. You can upgrade, downgrade, or cancel at any time from your account settings. Upgrades are prorated to the day.' },
+    { q: 'Is there a setup fee?', a: 'No. There are no setup fees, onboarding fees, or implementation fees. The monthly price is the only cost.' },
+  ],
+};
+
 // ─── Trial Banner ──────────────────────────────────────────────────────────────
 const TrialBanner = ({ appUrl, trialDays }) => (
   <div className="trial-banner">
@@ -467,77 +542,4 @@ const EditModeBar = ({ editMode, onToggle }) => {
       padding: '8px 24px', display: 'flex', alignItems: 'center', gap: 12,
       backdropFilter: 'blur(8px)'
     }}>
-      <span style={{ fontSize: 12, fontWeight: 600, color: '#e8942e' }}>✏ Pricing Edit Mode — click any price, name, or feature to edit inline</span>
-      <span style={{ marginLeft: 'auto', fontSize: 11, color: 'rgba(232,148,46,.6)' }}>Use the panel on the right to add/remove tiers and features</span>
-    </div>
-  );
-};
-
-// ─── Root Pricing Page ────────────────────────────────────────────────────────
-const PricingPage = () => {
-  const { content, update } = typeof useSiteContent === 'function'
-    ? useSiteContent()
-    : { content: window.__masonContent || {}, update: () => {} };
-
-  const editMode = typeof useEditMode === 'function' ? useEditMode() : false;
-  const [billing, setBilling] = React.useState('monthly');
-
-  const appUrl   = content.site?.appUrl   || 'https://app.masononsite.com';
-  const trialDays = content.site?.trialDays || 30;
-  const pricing   = content.pricing        || {};
-  const tiers     = pricing.tiers          || [];
-  const faqItems  = pricing.faq            || [];
-
-  // Handler for inline tier updates
-  function onTierUpdate(tierIdxOrAction, field, value) {
-    if (tierIdxOrAction === '__add') {
-      update('pricing.tiers', [...tiers, {
-        id: `tier-${Date.now()}`, name: 'New Tier', tagline: 'Plan description',
-        monthly: 0, annual: 0, projectsLabel: 'X active projects',
-        highlight: false, cta: 'Start free trial', features: ['Feature 1', 'Feature 2']
-      }]);
-      return;
-    }
-    const next = tiers.map((t, i) => i === tierIdxOrAction ? { ...t, [field]: value } : t);
-    update('pricing.tiers', next);
-  }
-
-  React.useEffect(() => {
-    if (typeof gsap === 'undefined') return;
-    gsap.registerPlugin(ScrollTrigger);
-    const animateEls = (selector, vars) => {
-      document.querySelectorAll(selector).forEach(el => {
-        gsap.fromTo(el, { opacity: 0, ...vars.from }, {
-          opacity: 1, ...vars.to, duration: 0.7, ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
-        });
-      });
-    };
-    animateEls('.gsap-fade-up',   { from: { y: 40 },       to: { y: 0 } });
-    animateEls('.gsap-slide-left',{ from: { x: -50 },      to: { x: 0 } });
-    animateEls('.gsap-scale-in',  { from: { scale: 0.92 }, to: { scale: 1 } });
-    return () => ScrollTrigger.getAll().forEach(t => t.kill());
-  }, []);
-
-  return (
-    <div className="site">
-      <Header />
-      <EditModeBar editMode={editMode} />
-      <TrialBanner appUrl={appUrl} trialDays={trialDays} />
-      <PricingHero />
-      <div className="container" style={{ textAlign: 'center', paddingTop: '2rem' }}>
-        <BillingToggle billing={billing} onChange={setBilling} savingPct={pricing.annualSavingPct} />
-      </div>
-      <PricingGrid billing={billing} tiers={tiers} appUrl={appUrl} onUpdate={editMode ? onTierUpdate : null} editMode={editMode} />
-      <PricingPhilosophy />
-      <PricingIncludes />
-      <PricingCompareTable tiers={tiers} />
-      <TrialExplainer appUrl={appUrl} trialDays={trialDays} />
-      <PricingFAQ faqItems={faqItems} />
-      <PricingCTA appUrl={appUrl} />
-      <Footer />
-    </div>
-  );
-};
-
-ReactDOM.createRoot(document.getElementById('root')).render(<PricingPage />);
+      <span style={{ fontSize: 12, fontWeight: 600, color: '#e8942e' }}>✏ Pricing Edit Mode — click any price, name, or feature to edit inline</
