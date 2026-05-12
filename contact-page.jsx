@@ -1,5 +1,7 @@
 // contact-page.jsx -- Full Contact page for MASON
 
+var CON_ICONS={"calendar":"<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>","mail":"<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>","refresh":"<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>","handshake":"<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 7.65l.77.77L12 21.23l7.65-7.65.77-.77a5.4 5.4 0 0 0 0-7.23z"/></svg>"};
+
 const ContactHero = () => (
   <section className="page-hero">
     <div className="grid-bg" aria-hidden="true" />
@@ -27,7 +29,7 @@ const ContactOptions = () => (
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:24,marginBottom:72}}>
         {[
           {
-            icon:"?",
+            icon:"calendar",
             heading:"Book a product demo",
             sub:"30 minutes, live walkthrough",
             body:`We will walk you through the platform using your specific project type as the
@@ -38,7 +40,7 @@ const ContactOptions = () => (
             href:"#contact-form"
           },
           {
-            icon:"?",
+            icon:"mail",
             heading:"Ask a technical question",
             sub:"We answer the same day",
             body:`Have a specific question about how the BIM viewer handles federated models, or
@@ -49,7 +51,7 @@ const ContactOptions = () => (
             href:"#contact-form"
           },
           {
-            icon:"?",
+            icon:"refresh",
             heading:"Migration consultation",
             sub:"Moving from Procore, Aconex, Fieldwire",
             body:`If you are currently on another platform and thinking about switching, we can
@@ -60,7 +62,7 @@ const ContactOptions = () => (
             href:"#contact-form"
           },
           {
-            icon:"?",
+            icon:"handshake",
             heading:"Partnership enquiry",
             sub:"Integrations, resellers, referrals",
             body:`If you represent a software company that wants to build an integration with
@@ -72,7 +74,7 @@ const ContactOptions = () => (
           }
         ].map((opt,i)=>(
           <div key={i} className="value-card gsap-fade-up" style={{display:"flex",flexDirection:"column"}}>
-            <div style={{fontSize:32,marginBottom:14}}>{opt.icon}</div>
+            <div style={{fontSize:32,marginBottom:14}}><span style={{display:"inline-flex",alignItems:"center",justifyContent:"center",width:48,height:48,background:"rgba(232,148,46,.1)",borderRadius:12,marginBottom:14}} dangerouslySetInnerHTML={{__html:CON_ICONS[opt.icon]||""}}/></div>
             <p style={{fontWeight:700,fontSize:16,margin:"0 0 4px"}}>{opt.heading}</p>
             <p style={{fontSize:12,color:"var(--accent)",fontWeight:600,margin:"0 0 14px",letterSpacing:".04em"}}>{opt.sub}</p>
             <p style={{fontSize:13.5,color:"var(--text-muted)",lineHeight:1.7,flex:1,margin:"0 0 20px"}}>{opt.body}</p>

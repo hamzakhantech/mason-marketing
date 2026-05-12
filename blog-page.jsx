@@ -1,5 +1,7 @@
 // blog-page.jsx
 
+var BLOG_ICON='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>';
+
 const BlogHero = () => (
   <section className="page-hero">
     <div className="grid-bg" aria-hidden="true" /><div className="page-hero__glow" aria-hidden="true" />
@@ -53,21 +55,21 @@ const BlogFeatured = () => (
         <div style={{display:"flex",flexDirection:"column",gap:20}} className="gsap-slide-right">
           {[
             {
-              emoji:"?",
+              emoji:"article",
               tags:["RFIs","Workflow"],
               title:"The RFI is the most important document on a construction project. Here is why it fails so often.",
               excerpt:"Most RFI failures are not about the quality of the question. They are about the speed of the response and whether the answer reaches everyone who needed it.",
               time:"9 min read . May 2026"
             },
             {
-              emoji:"?",
+              emoji:"article",
               tags:["Mobile","Offline"],
               title:"What actually happens when field teams lose connectivity on a 40-storey building site",
               excerpt:"Most project management apps treat offline mode as a marketing checkbox. Here is what real offline capability looks like and why the difference matters.",
               time:"7 min read . April 2026"
             },
             {
-              emoji:"?",
+              emoji:"article",
               tags:["Pricing","Software"],
               title:"Per user pricing in construction software is fundamentally broken. Here is a better model.",
               excerpt:"When adding a subcontractor to a platform costs money, project managers find workarounds. Those workarounds cost more than the seat would have.",
@@ -78,7 +80,7 @@ const BlogFeatured = () => (
               onMouseEnter={e=>e.currentTarget.style.borderColor="rgba(232,148,46,.4)"}
               onMouseLeave={e=>e.currentTarget.style.borderColor="var(--line)"}>
               <div style={{fontSize:28,flexShrink:0,width:48,height:48,display:"flex",alignItems:"center",justifyContent:"center",background:"rgba(232,148,46,.08)",borderRadius:10}}>
-                {article.emoji}
+                <span dangerouslySetInnerHTML={{__html:BLOG_ICON}}/>
               </div>
               <div>
                 <div style={{display:"flex",gap:6,marginBottom:6}}>
@@ -99,63 +101,63 @@ const BlogFeatured = () => (
 const BlogGrid = () => {
   const articles = [
     {
-      emoji:"?",
+      emoji:"article",
       tags:["AR","Technology"],
       title:"Augmented reality on a construction site: what works, what is hype, and what comes next",
       excerpt:"AR has been promised as a construction game-changer for a decade. This is an honest look at what it actually does well on a real project today, with current hardware in real field conditions.",
       time:"11 min read . April 2026"
     },
     {
-      emoji:"?",
+      emoji:"article",
       tags:["Cost control","Finance"],
       title:"How construction cost forecasts go wrong and what better data management actually fixes",
       excerpt:"The final account being higher than the original budget is normal in construction. But how much higher, and how late you find out, depends almost entirely on the quality of your cost data management.",
       time:"8 min read . April 2026"
     },
     {
-      emoji:"?",
+      emoji:"article",
       tags:["AI","Productivity"],
       title:"What construction project managers actually do with AI tools today",
       excerpt:"We asked 40 construction project managers what they used AI for in their daily work. The answers were more specific and more useful than the usual AI-will-change-everything narrative.",
       time:"10 min read . March 2026"
     },
     {
-      emoji:"?",
+      emoji:"article",
       tags:["Documents","Version control"],
       title:"The hidden cost of the wrong drawing revision reaching the trades",
       excerpt:"A contractor building to revision C when revision D was issued last week is not a technology problem. It is an information distribution problem. Here is how it happens and how to prevent it.",
       time:"7 min read . March 2026"
     },
     {
-      emoji:"?",
+      emoji:"article",
       tags:["Punch lists","Commissioning"],
       title:"Punch list management at scale: why the last 5% of a project takes 30% of the time",
       excerpt:"Closing out a construction project is harder than it should be. The punch list process reveals every information gap that accumulated throughout the build. Better data management earlier makes commissioning faster.",
       time:"9 min read . March 2026"
     },
     {
-      emoji:"?",
+      emoji:"article",
       tags:["International","Teams"],
       title:"Running construction projects across multiple countries and time zones",
       excerpt:"International construction programmes have a communication overhead that domestic projects do not. The tools that work for a single-site project start to fail when your project spans three countries and two languages.",
       time:"8 min read . February 2026"
     },
     {
-      emoji:"?",
+      emoji:"article",
       tags:["IFC","Standards"],
       title:"A practical guide to IFC for project managers who do not have a BIM background",
       excerpt:"IFC is the open standard for sharing building information. Understanding it well enough to have an informed conversation with your design team takes about 30 minutes. Here is that 30 minutes.",
       time:"12 min read . February 2026"
     },
     {
-      emoji:"?",
+      emoji:"article",
       tags:["Issues","Quality"],
       title:"Issue management on construction projects: the difference between a list and a system",
       excerpt:"Every project manager has a list of issues. Fewer have a system that ensures those issues get resolved before they affect the programme. Here is what makes the difference.",
       time:"7 min read . February 2026"
     },
     {
-      emoji:"?",
+      emoji:"article",
       tags:["Case study","Residential"],
       title:"How a 45-storey residential tower cut RFI response time from 12 days to 3 days",
       excerpt:"The project had the same number of RFIs as before. What changed was who could see them, when, and what information was attached. A detailed look at the workflow changes and the results.",
@@ -171,7 +173,7 @@ const BlogGrid = () => {
           {articles.map((article,i)=>(
             <a key={i} href="#" className="blog-card gsap-fade-up" style={{textDecoration:"none",display:"flex",flexDirection:"column"}}>
               <div style={{height:120,background:"linear-gradient(135deg,rgba(232,148,46,.1),rgba(232,148,46,.03))",borderRadius:"10px 10px 0 0",display:"flex",alignItems:"center",justifyContent:"center",fontSize:40}}>
-                {article.emoji}
+                <span dangerouslySetInnerHTML={{__html:BLOG_ICON}}/>
               </div>
               <div className="blog-card__body" style={{flex:1,display:"flex",flexDirection:"column"}}>
                 <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:10}}>
@@ -208,43 +210,43 @@ const BlogGuides = () => (
             title:"The Complete Guide to RFI Management in Construction",
             desc:"Everything from writing a good RFI to managing a 500-item register on a fast-track commercial build. Covers templates, approval chains, BIM-linked RFIs, and common failure modes.",
             pages:"28 pages",
-            icon:"?"
+            icon:"article"
           },
           {
             title:"BIM for Project Managers: A Non-Technical Introduction",
             desc:"IFC files, federated models, clash detection, and 4D scheduling explained without assuming any BIM software knowledge. Written for the PM who needs to work with a BIM manager, not become one.",
             pages:"22 pages",
-            icon:"?"
+            icon:"article"
           },
           {
             title:"Construction Software Procurement Guide",
             desc:"How to evaluate, compare, and select construction management software for your organisation. Includes a scorecard template, a list of questions to ask vendors, and a guide to avoiding common procurement mistakes.",
             pages:"18 pages",
-            icon:"?"
+            icon:"article"
           },
           {
             title:"Mobile Field Management: Setting Up Your Android Team",
             desc:"A practical guide to rolling out mobile field management tools to a site team. Covers device selection, training approaches, offline policies, and how to get daily log compliance above 90%.",
             pages:"15 pages",
-            icon:"?"
+            icon:"article"
           },
           {
             title:"Construction Cost Control: The Project Manager's Handbook",
             desc:"Forecast at completion, committed cost tracking, variation management, and how to give the client an honest picture of where the budget stands without triggering panic. A pragmatic guide from project practitioners.",
             pages:"24 pages",
-            icon:"?"
+            icon:"article"
           },
           {
             title:"Data Handover at Practical Completion: What to Prepare and When",
             desc:"The O&M manuals, as-built drawings, commissioning records, and warranties that a building owner needs at handover. A checklist-based guide to accumulating handover data throughout the project rather than scrambling at the end.",
             pages:"16 pages",
-            icon:"?"
+            icon:"article"
           }
         ].map((guide,i)=>(
           <div key={i} className="value-card gsap-fade-up" style={{cursor:"pointer"}}
             onMouseEnter={e=>e.currentTarget.style.borderColor="rgba(232,148,46,.35)"}
             onMouseLeave={e=>e.currentTarget.style.borderColor="var(--line)"}>
-            <div style={{fontSize:28,marginBottom:12}}>{guide.icon}</div>
+            <div style={{fontSize:28,marginBottom:12}}><span dangerouslySetInnerHTML={{__html:BLOG_ICON}}/></div>
             <p style={{fontWeight:700,fontSize:14,lineHeight:1.4,margin:"0 0 8px",color:"var(--text)"}}>{guide.title}</p>
             <p style={{fontSize:13,color:"var(--text-muted)",lineHeight:1.6,margin:"0 0 12px"}}>{guide.desc}</p>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>

@@ -1,5 +1,7 @@
 // roi-calculator-page.jsx
 
+var ROI_ICONS={"clock":"<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>","activity":"<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>","refresh":"<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>","dollar":"<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>","trending":"<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>","eye":"<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>"};
+
 const ROIHero = () => (
   <section className="page-hero">
     <div className="grid-bg" aria-hidden="true" /><div className="page-hero__glow" aria-hidden="true" />
@@ -215,7 +217,7 @@ const ROIContext = () => (
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:24,marginTop:48}}>
         {[
           {
-            icon:"?",
+            icon:"clock",
             heading:"RFI admin time",
             body:`The average site engineer on a mid-size project spends between six and ten hours
             per week just on RFI coordination. That is writing them, chasing responses, logging
@@ -225,7 +227,7 @@ const ROIContext = () => (
             and linking RFIs to the BIM model so context is always in the same place.`
           },
           {
-            icon:"?",
+            icon:"activity",
             heading:"Reporting overhead",
             body:`Daily logs, weekly progress reports, monthly owner reports, and end-of-project
             handover documents are all necessary. But on most projects, the same data gets
@@ -247,7 +249,7 @@ const ROIContext = () => (
             rework is available to everyone at the same time.`
           },
           {
-            icon:"?",
+            icon:"dollar",
             heading:"Per-user software licensing",
             body:`Most construction platforms charge per user per month. A 30-person project
             team at $50 per user per month is $18,000 per year before you add a second project.
@@ -257,7 +259,7 @@ const ROIContext = () => (
             more obvious as team size grows.`
           },
           {
-            icon:"?",
+            icon:"trending",
             heading:"Integration and data re-entry",
             body:`When BIM lives in one tool, RFIs in another, cost in a spreadsheet, and
             schedule in a third application, someone has to keep them all in sync. That someone
@@ -267,7 +269,7 @@ const ROIContext = () => (
             the same project data without any manual synchronisation.`
           },
           {
-            icon:"?",
+            icon:"eye",
             heading:"Decision delays from poor visibility",
             body:`Decisions that could be made in an hour when the right information is
             immediately available can take days when that information is scattered across
@@ -279,7 +281,7 @@ const ROIContext = () => (
           }
         ].map((item,i)=>(
           <div key={i} className="value-card gsap-fade-up">
-            <div style={{fontSize:28,marginBottom:14}}>{item.icon}</div>
+            <div style={{fontSize:28,marginBottom:14}}><span style={{display:"inline-flex",alignItems:"center",justifyContent:"center",width:44,height:44,background:"rgba(232,148,46,.1)",borderRadius:10}} dangerouslySetInnerHTML={{__html:ROI_ICONS[item.icon]||""}}/></div>
             <p style={{fontWeight:700,fontSize:15,margin:"0 0 10px"}}>{item.heading}</p>
             <p style={{fontSize:13.5,color:"var(--text-muted)",lineHeight:1.65,margin:0}}>{item.body}</p>
           </div>

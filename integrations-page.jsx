@@ -1,5 +1,7 @@
 // integrations-page.jsx
 
+var INT_ICON="<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6L6 18"/><path d="M7 6h1m8 0h1M6 7v1m0 8v1m11-1v1m-5-9v9m-4-4h9"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/></svg>";
+
 const IntHero = () => (
   <section className="page-hero">
     <div className="grid-bg" aria-hidden="true" /><div className="page-hero__glow" aria-hidden="true" />
@@ -26,50 +28,50 @@ const IntGrid = () => {
     {
       heading:"BIM and Design",
       items:[
-        {logo:"?",name:"Autodesk Platform Services",desc:"Import models, sheets, and RFIs from Autodesk Construction Cloud. Two-way sync on RFI status. Model versions update automatically when a new revision is published.",badge:"live"},
-        {logo:"?",name:"Revit direct export",desc:"Export IFC models from Revit with MASON metadata tags pre-configured. Discipline filters, level filters, and element categories map automatically to MASON's BIM module.",badge:"live"},
-        {logo:"?",name:"Navisworks clash sets",desc:"Import Navisworks clash detection results directly into the MASON issue register. Each clash becomes a trackable issue with model reference, coordinates, and assigned discipline.",badge:"live"},
-        {logo:"?",name:"ArchiCAD IFC export",desc:"Fully supported IFC 2x3 and IFC4 export from ArchiCAD. All element properties and classification codes transfer into the MASON BIM viewer with full attribute access.",badge:"live"}
+        {logo:"plug",name:"Autodesk Platform Services",desc:"Import models, sheets, and RFIs from Autodesk Construction Cloud. Two-way sync on RFI status. Model versions update automatically when a new revision is published.",badge:"live"},
+        {logo:"plug",name:"Revit direct export",desc:"Export IFC models from Revit with MASON metadata tags pre-configured. Discipline filters, level filters, and element categories map automatically to MASON's BIM module.",badge:"live"},
+        {logo:"plug",name:"Navisworks clash sets",desc:"Import Navisworks clash detection results directly into the MASON issue register. Each clash becomes a trackable issue with model reference, coordinates, and assigned discipline.",badge:"live"},
+        {logo:"plug",name:"ArchiCAD IFC export",desc:"Fully supported IFC 2x3 and IFC4 export from ArchiCAD. All element properties and classification codes transfer into the MASON BIM viewer with full attribute access.",badge:"live"}
       ]
     },
     {
       heading:"Scheduling",
       items:[
-        {logo:"?",name:"Microsoft Project",desc:"Import and export schedule data via MS Project XML format. Task names, durations, predecessor logic, and resource assignments all transfer. Two-way sync keeps both systems current.",badge:"live"},
-        {logo:"?",name:"Primavera P6",desc:"Import P6 schedules via XER format. Activity codes, WBS structure, and baseline comparisons transfer into the MASON schedule module. Read-only import currently, full two-way sync in development.",badge:"beta"},
-        {logo:"?",name:"Asta Powerproject",desc:"Export from Asta via XML and import into MASON's schedule module. Bar chart and Gantt views both supported. Resource histograms coming in the next release.",badge:"beta"}
+        {logo:"plug",name:"Microsoft Project",desc:"Import and export schedule data via MS Project XML format. Task names, durations, predecessor logic, and resource assignments all transfer. Two-way sync keeps both systems current.",badge:"live"},
+        {logo:"plug",name:"Primavera P6",desc:"Import P6 schedules via XER format. Activity codes, WBS structure, and baseline comparisons transfer into the MASON schedule module. Read-only import currently, full two-way sync in development.",badge:"beta"},
+        {logo:"plug",name:"Asta Powerproject",desc:"Export from Asta via XML and import into MASON's schedule module. Bar chart and Gantt views both supported. Resource histograms coming in the next release.",badge:"beta"}
       ]
     },
     {
       heading:"Project Management Platforms",
       items:[
-        {logo:"?",name:"Procore",desc:"Migrate issues, RFIs, submittals, and document registers from Procore into MASON with a one-time migration tool. For teams running both platforms during a transition, there is a read sync that keeps RFI status aligned.",badge:"live"},
-        {logo:"?",name:"Aconex",desc:"Migrate document registers, RFI history, and correspondence from Aconex. One-way migration tool, full document history preserved including all revision records and response chains.",badge:"live"},
-        {logo:"?",name:"Fieldwire",desc:"Import task lists, issues, and photo records from Fieldwire. Document annotations do not transfer but all structured data including location references do.",badge:"live"}
+        {logo:"plug",name:"Procore",desc:"Migrate issues, RFIs, submittals, and document registers from Procore into MASON with a one-time migration tool. For teams running both platforms during a transition, there is a read sync that keeps RFI status aligned.",badge:"live"},
+        {logo:"plug",name:"Aconex",desc:"Migrate document registers, RFI history, and correspondence from Aconex. One-way migration tool, full document history preserved including all revision records and response chains.",badge:"live"},
+        {logo:"plug",name:"Fieldwire",desc:"Import task lists, issues, and photo records from Fieldwire. Document annotations do not transfer but all structured data including location references do.",badge:"live"}
       ]
     },
     {
       heading:"Finance and ERP",
       items:[
-        {logo:"?",name:"SAP",desc:"Cost code mapping between MASON's cost module and SAP project accounting. Committed cost and actuals sync via scheduled API calls. Custom field mapping available on Scale plan.",badge:"live"},
-        {logo:"?",name:"Sage 300 Construction",desc:"Two-way sync on cost codes, committed costs, and progress billings. Budget variances visible in MASON's cost module update automatically when Sage posts new entries.",badge:"live"},
-        {logo:"?",name:"QuickBooks",desc:"One-way sync of project cost data from MASON into QuickBooks. Designed for smaller teams who use QuickBooks as their accounting system but want MASON for project cost control.",badge:"beta"}
+        {logo:"plug",name:"SAP",desc:"Cost code mapping between MASON's cost module and SAP project accounting. Committed cost and actuals sync via scheduled API calls. Custom field mapping available on Scale plan.",badge:"live"},
+        {logo:"plug",name:"Sage 300 Construction",desc:"Two-way sync on cost codes, committed costs, and progress billings. Budget variances visible in MASON's cost module update automatically when Sage posts new entries.",badge:"live"},
+        {logo:"plug",name:"QuickBooks",desc:"One-way sync of project cost data from MASON into QuickBooks. Designed for smaller teams who use QuickBooks as their accounting system but want MASON for project cost control.",badge:"beta"}
       ]
     },
     {
       heading:"Communication and Documents",
       items:[
-        {logo:"?",name:"Microsoft 365",desc:"Outlook integration for RFI and issue notifications. SharePoint integration for document sync, teams get notified in their Teams channels when RFIs are assigned or overdue.",badge:"live"},
-        {logo:"?",name:"Slack",desc:"Receive MASON notifications in Slack channels. Configure which project events trigger a notification and which channels they go to. Overdue RFIs, new issues, and daily log submissions all supported.",badge:"live"},
-        {logo:"?",name:"Dropbox and Google Drive",desc:"One-way document import from Dropbox and Google Drive into the MASON document register. Files bring over with version history if structured correctly. Ongoing sync not currently supported.",badge:"beta"}
+        {logo:"plug",name:"Microsoft 365",desc:"Outlook integration for RFI and issue notifications. SharePoint integration for document sync, teams get notified in their Teams channels when RFIs are assigned or overdue.",badge:"live"},
+        {logo:"plug",name:"Slack",desc:"Receive MASON notifications in Slack channels. Configure which project events trigger a notification and which channels they go to. Overdue RFIs, new issues, and daily log submissions all supported.",badge:"live"},
+        {logo:"plug",name:"Dropbox and Google Drive",desc:"One-way document import from Dropbox and Google Drive into the MASON document register. Files bring over with version history if structured correctly. Ongoing sync not currently supported.",badge:"beta"}
       ]
     },
     {
       heading:"Coming soon",
       items:[
-        {logo:"?",name:"Oracle Primavera Cloud",desc:"Full two-way schedule sync with Primavera Cloud, including WBS, activities, milestones, and earned value data. In active development, expected Q3 2026.",badge:"soon"},
-        {logo:"?",name:"iOS native app",desc:"Full feature parity with the Android app. Offline mode, AR overlay, daily logs, issues, and photo capture. In development, no release date confirmed.",badge:"soon"},
-        {logo:"?",name:"Zapier and Make",desc:"Connect MASON to thousands of other tools via Zapier and Make triggers. Any MASON event, such as a new issue, an RFI status change, or a daily log submission, can trigger actions in connected apps.",badge:"soon"}
+        {logo:"plug",name:"Oracle Primavera Cloud",desc:"Full two-way schedule sync with Primavera Cloud, including WBS, activities, milestones, and earned value data. In active development, expected Q3 2026.",badge:"soon"},
+        {logo:"plug",name:"iOS native app",desc:"Full feature parity with the Android app. Offline mode, AR overlay, daily logs, issues, and photo capture. In development, no release date confirmed.",badge:"soon"},
+        {logo:"plug",name:"Zapier and Make",desc:"Connect MASON to thousands of other tools via Zapier and Make triggers. Any MASON event, such as a new issue, an RFI status change, or a daily log submission, can trigger actions in connected apps.",badge:"soon"}
       ]
     }
   ];
@@ -83,7 +85,7 @@ const IntGrid = () => {
             <div className="int-grid">
               {cat.items.map((item,ii)=>(
                 <div key={ii} className="int-card gsap-fade-up">
-                  <div className="int-card__logo">{item.logo}</div>
+                  <div className="int-card__logo"><span style={{display:"inline-flex",alignItems:"center",justifyContent:"center",width:40,height:40,background:"rgba(232,148,46,.08)",borderRadius:8}} dangerouslySetInnerHTML={{__html:INT_ICON}}/></div>
                   <p className="int-card__name">{item.name}</p>
                   <p className="int-card__desc">{item.desc}</p>
                   <span className={"int-card__badge int-card__badge--"+item.badge}>

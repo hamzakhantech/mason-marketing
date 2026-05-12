@@ -1,5 +1,7 @@
 // about-page.jsx -- Full About page for MASON
 
+var ABOUT_ICONS={tool:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',dollar:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',cpu:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>',link:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>',zap:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',globe:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',user:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>'};
+
 const AboutHero = () => (
   <section className="page-hero">
     <div className="grid-bg" aria-hidden="true" />
@@ -245,7 +247,7 @@ const AboutValues = () => (
       <div className="values-grid" style={{marginTop:48}}>
         {[
           {
-            icon:"?",
+            icon:"tool",
             heading:"Field first, always",
             body:`Every feature we build gets tested by someone who is not sitting at a desk.
             If the daily log form does not work with gloves on a cold morning, it does not ship.
@@ -253,7 +255,7 @@ const AboutValues = () => (
             launch it. The person in the field is not a secondary user. They are the primary user.`
           },
           {
-            icon:"?",
+            icon:"dollar",
             heading:"Transparent pricing, no traps",
             body:`We charge per active project, not per seat. Every team member on your account
             gets full access to every module on the plan you are on. There are no module add-ons.
@@ -261,7 +263,7 @@ const AboutValues = () => (
             The price you see on the pricing page is the price you pay. Period.`
           },
           {
-            icon:"?",
+            icon:"cpu",
             heading:"AI that understands context",
             body:`We think general purpose AI assistants that have no knowledge of your project
             are a gimmick. The MASON Concierge reads your project data before it responds.
@@ -270,7 +272,7 @@ const AboutValues = () => (
             Context is not optional. Context is the whole point.`
           },
           {
-            icon:"?",
+            icon:"link",
             heading:"One source of truth",
             body:`If the same piece of information exists in two places, it will eventually
             disagree with itself. MASON is designed around a single data model. Your schedule
@@ -279,7 +281,7 @@ const AboutValues = () => (
             synced between systems.`
           },
           {
-            icon:"?",
+            icon:"zap",
             heading:"Speed is a feature",
             body:`Construction teams do not have time to wait for software to load. We obsess
             over load times, render performance, and the number of taps it takes to complete
@@ -288,7 +290,7 @@ const AboutValues = () => (
             to your active project in under two taps.`
           },
           {
-            icon:"?",
+            icon:"globe",
             heading:"Built for global teams",
             body:`Construction projects run across time zones, languages, and regulatory
             environments. MASON's AI Concierge operates in eight languages. The platform
@@ -298,7 +300,7 @@ const AboutValues = () => (
           }
         ].map((v, i) => (
           <div key={i} className="value-card gsap-fade-up">
-            <div className="value-card__icon">{v.icon}</div>
+            <div className="value-card__icon"><span style={{display:"inline-flex",alignItems:"center",justifyContent:"center",width:44,height:44,background:"rgba(232,148,46,.1)",borderRadius:10}} dangerouslySetInnerHTML={{__html:ABOUT_ICONS[v.icon]||""}}/></div>
             <p className="value-card__heading">{v.heading}</p>
             <p className="value-card__body">{v.body}</p>
           </div>
@@ -322,15 +324,15 @@ const AboutTeam = () => (
       </div>
       <div className="team-grid">
         {[
-          {emoji:"?",name:"Karim Al-Nassar",role:"Co-founder and CEO",bio:"Former senior PM on infrastructure megaprojects across the Gulf. Spent 11 years managing BIM coordination before deciding to build better tools."},
-          {emoji:"?",name:"Priya Ranganathan",role:"Co-founder and CTO",bio:"Construction technologist with a background in computational design. Built the original IFC parsing engine that powers the MASON BIM viewer."},
-          {emoji:"?",name:"James Okafor",role:"Head of Product",bio:"Quantity surveyor turned product manager. Responsible for the cost control and reporting modules. If it involves numbers on a construction project, James has an opinion."},
-          {emoji:"?",name:"Nadia Petrova",role:"Head of Mobile",bio:"Lead engineer on the Android app and AR system. Previously built field data tools for civil construction in Eastern Europe. Offline first is her religion."},
-          {emoji:"?",name:"Tae-yang Kim",role:"Head of AI",bio:"Applied ML researcher who left academia to work on domain specific AI. Designed the context engine that makes the Concierge project aware rather than generally chatty."},
-          {emoji:"?",name:"Sarah Chen",role:"Head of Partnerships",bio:"Construction technology strategist. Built the integration layer connecting MASON to Autodesk, Procore, and MS Project. She speaks fluent API."}
+          {emoji:"user",name:"Karim Al-Nassar",role:"Co-founder and CEO",bio:"Former senior PM on infrastructure megaprojects across the Gulf. Spent 11 years managing BIM coordination before deciding to build better tools."},
+          {emoji:"user",name:"Priya Ranganathan",role:"Co-founder and CTO",bio:"Construction technologist with a background in computational design. Built the original IFC parsing engine that powers the MASON BIM viewer."},
+          {emoji:"user",name:"James Okafor",role:"Head of Product",bio:"Quantity surveyor turned product manager. Responsible for the cost control and reporting modules. If it involves numbers on a construction project, James has an opinion."},
+          {emoji:"user",name:"Nadia Petrova",role:"Head of Mobile",bio:"Lead engineer on the Android app and AR system. Previously built field data tools for civil construction in Eastern Europe. Offline first is her religion."},
+          {emoji:"user",name:"Tae-yang Kim",role:"Head of AI",bio:"Applied ML researcher who left academia to work on domain specific AI. Designed the context engine that makes the Concierge project aware rather than generally chatty."},
+          {emoji:"user",name:"Sarah Chen",role:"Head of Partnerships",bio:"Construction technology strategist. Built the integration layer connecting MASON to Autodesk, Procore, and MS Project. She speaks fluent API."}
         ].map((m, i) => (
           <div key={i} className="team-card gsap-fade-up">
-            <div className="team-card__avatar">{m.emoji}</div>
+            <div className="team-card__avatar" style={{display:"flex",alignItems:"center",justifyContent:"center",width:56,height:56,background:"rgba(232,148,46,.12)",borderRadius:"50%"}}><span dangerouslySetInnerHTML={{__html:ABOUT_ICONS[m.emoji]||ABOUT_ICONS.user}}/></div>
             <p className="team-card__name">{m.name}</p>
             <p className="team-card__role">{m.role}</p>
             <p className="team-card__bio">{m.bio}</p>

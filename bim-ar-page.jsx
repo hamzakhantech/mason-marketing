@@ -332,7 +332,7 @@ const BIMFAQ = () => {
             <div key={i} className={"faq-item gsap-fade-up" + (open === i ? " is-open" : "")}>
               <button className="faq-item__btn" onClick={() => setOpen(open === i ? null : i)}>
                 <span>{item.q}</span>
-                <span className="faq-item__chevron">{open === i ? "?" : "+"}</span>
+                <span className="faq-item__chevron">{open === i ? "-" : "+"}</span>
               </button>
               {open === i && <div className="faq-item__body"><p>{item.a}</p></div>}
             </div>
