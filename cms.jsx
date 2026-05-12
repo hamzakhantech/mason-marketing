@@ -566,4 +566,7 @@ async function bootCMS() {
   const el = document.createElement('div');
   el.id = 'mason-cms-root';
   document.body.appendChild(el);
-  ReactDOM.createRoot(el
+  ReactDOM.createRoot(el).render(React.createElement(CMSPanel));
+}
+
+bootCMS();

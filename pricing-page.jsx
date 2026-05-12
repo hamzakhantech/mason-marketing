@@ -532,18 +532,6 @@ const PricingCTA = ({ appUrl }) => (
   </section>
 );
 
-// ─── Edit Mode Toolbar (floats above the pricing grid) ────────────────────────
-const EditModeBar = ({ editMode, onToggle }) => {
-  if (!editMode) return null;
-  return (
-    <div style={{
-      position: 'sticky', top: 0, zIndex: 100,
-      background: 'rgba(232,148,46,.12)', borderBottom: '1px solid rgba(232,148,46,.3)',
-      padding: '8px 24px', display: 'flex', alignItems: 'center', gap: 12,
-      backdropFilter: 'blur(8px)'
-    }}>
-
-// ─── Edit Mode Toolbar (floats above the pricing grid) ────────────────────────
 const EditModeBar = ({ editMode }) => {
   if (!editMode) return null;
   return (

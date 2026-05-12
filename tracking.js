@@ -50,7 +50,7 @@
     // ── Hotjar (heatmaps + recordings) ──────────────────────────────────────
     hotjar: {
       enabled: false,
-      siteId: 0000000,                 // ← Paste your Site ID here (numbers only)
+      siteId: 0,                        // ← Paste your Site ID here (numbers only)
       version: 6,
     },
 
