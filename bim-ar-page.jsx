@@ -373,7 +373,7 @@ const BIMARPage = () => {
       document.querySelectorAll(selector).forEach((el) => {
         gsap.fromTo(el, { opacity: 0, ...vars.from }, {
           opacity: 1, ...vars.to, duration: 0.7, ease: "power2.out",
-          scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none none" }
+          scrollTrigger: { trigger: el, start: "top bottom", toggleActions: "play none none none" }
         });
       });
     };

@@ -177,7 +177,7 @@ const CaseStudiesPage = () => {
       gsap.registerPlugin(ScrollTrigger);
       gsap.utils.toArray(".gsap-fade-up").forEach(el => {
         gsap.from(el, {opacity:0,y:30,duration:0.6,ease:"power2.out",
-          scrollTrigger:{trigger:el,start:"top 88%",toggleActions:"play none none none"}});
+          scrollTrigger:{trigger:el,start:"top bottom",toggleActions:"play none none none"}});
       });
     }
   }, []);

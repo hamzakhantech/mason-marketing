@@ -600,7 +600,7 @@ const PricingPage = () => {
       return;
     }
     gsap.registerPlugin(ScrollTrigger);
-    var stOpts = { start: 'top 88%', toggleActions: 'play none none none' };
+    var stOpts = { start: 'top bottom', toggleActions: 'play none none none' };
     // Fade + slide up
     document.querySelectorAll('.gsap-fade-up').forEach(function(el) {
       gsap.fromTo(el, { opacity: 0, y: 40 }, {

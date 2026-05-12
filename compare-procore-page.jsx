@@ -221,15 +221,15 @@ const CPComparePage = () => {
       gsap.registerPlugin(ScrollTrigger);
       gsap.utils.toArray(".gsap-fade-up").forEach(el => {
         gsap.from(el, {opacity:0,y:30,duration:0.6,ease:"power2.out",
-          scrollTrigger:{trigger:el,start:"top 88%",toggleActions:"play none none none"}});
+          scrollTrigger:{trigger:el,start:"top bottom",toggleActions:"play none none none"}});
       });
       gsap.utils.toArray(".gsap-slide-left").forEach(el => {
         gsap.from(el, {opacity:0,x:-40,duration:0.7,ease:"power2.out",
-          scrollTrigger:{trigger:el,start:"top 85%",toggleActions:"play none none none"}});
+          scrollTrigger:{trigger:el,start:"top bottom",toggleActions:"play none none none"}});
       });
       gsap.utils.toArray(".gsap-slide-right").forEach(el => {
         gsap.from(el, {opacity:0,x:40,duration:0.7,ease:"power2.out",
-          scrollTrigger:{trigger:el,start:"top 85%",toggleActions:"play none none none"}});
+          scrollTrigger:{trigger:el,start:"top bottom",toggleActions:"play none none none"}});
       });
     }
   }, []);

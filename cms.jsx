@@ -6,8 +6,8 @@
 
 function deepMerge(base, override) {
   if (!override) return base;
-  var out = Object.assign({}, base);
-  for (var k of Object.keys(override)) {
+  const out = { ...base };
+  for (const k of Object.keys(override)) {
     if (Array.isArray(override[k])) {
       out[k] = override[k];
     } else if (override[k] && typeof override[k] === 'object' && !Array.isArray(base[k])) {
@@ -24,11 +24,11 @@ function deepCloneContent(obj) {
 }
 
 function setNestedValue(obj, path, value) {
-  var keys = path.split('.');
-  var cur = obj;
-  for (var i = 0; i < keys.length - 1; i++) {
-    var k = keys[i];
-    var next = keys[i + 1];
+  const keys = path.split('.');
+  let cur = obj;
+  for (let i = 0; i < keys.length - 1; i++) {
+    const k = keys[i];
+    const next = keys[i + 1];
     if (cur[k] == null) cur[k] = /^\d+$/.test(next) ? [] : {};
     cur = cur[k];
   }
@@ -36,20 +36,20 @@ function setNestedValue(obj, path, value) {
 }
 
 // Global reactive content store
-var _listeners = [];
-var _content = window.__masonContent || {};
+const _listeners = [];
+let _content = window.__masonContent || {};
 
 function getContent() { return _content; }
 
 function setContent(updater) {
   _content = updater(_content);
-  _listeners.forEach(function(fn) { fn(_content); });
+  _listeners.forEach(fn => fn(_content));
 }
 
 function subscribeContent(fn) {
   _listeners.push(fn);
-  return function() {
-    var i = _listeners.indexOf(fn);
+  return () => {
+    const i = _listeners.indexOf(fn);
     if (i > -1) _listeners.splice(i, 1);
   };
 }
@@ -57,40 +57,39 @@ function subscribeContent(fn) {
 // --- Public hook (used by page components) -----------------------------------
 
 function useSiteContent() {
-  var _ref = React.useState(_content);
-  var content = _ref[0];
-  var setLocal = _ref[1];
+  const [content, setLocal] = React.useState(_content);
 
-  React.useEffect(function() {
+  React.useEffect(() => {
     setLocal(_content);
-    return subscribeContent(function(c) { setLocal(Object.assign({}, c)); });
+    return subscribeContent(c => setLocal({ ...c }));
   }, []);
 
   function update(path, value) {
-    setContent(function(prev) {
-      var next = deepCloneContent(prev);
+    setContent(prev => {
+      const next = deepCloneContent(prev);
       setNestedValue(next, path, value);
       return next;
     });
   }
 
-  return { content: content, update: update };
+  return { content, update };
 }
 
-// --- Boot: fetch content from API / fallback to static content.json ---------
+// --- Boot: fetch content from API / fallback to static content.json ----------
 
 (async function bootContentLoader() {
   try {
-    var res = await fetch('/api/cms/public-content?v=' + Date.now(), { credentials: 'omit' });
+    let res = await fetch('/api/cms/public-content?v=' + Date.now(), { credentials: 'omit' });
     if (!res.ok) res = await fetch('/content.json?v=' + Date.now());
     if (res.ok) {
-      var data = await res.json();
+      const data = await res.json();
       window.__masonContent = data;
       _content = data;
-      _listeners.forEach(function(fn) { fn(_content); });
+      _listeners.forEach(fn => fn(_content));
       window.__masonContentReady = true;
     }
   } catch (e) {
     // Silently continue -- page components fall back to whatever __masonContent already is
   }
 })();
+
