@@ -627,4 +627,17 @@ const PricingPage = () => {
       <div className="container" style={{ textAlign: 'center', paddingTop: '2rem' }}>
         <BillingToggle billing={billing} onChange={setBilling} savingPct={pricing.annualSavingPct || DEFAULT_PRICING.annualSavingPct} />
       </div>
-      <PricingGrid billing={billing} tiers={tiers} appUrl={appUrl} onUp
+      <PricingGrid billing={billing} tiers={tiers} appUrl={appUrl} onUpdate={editMode ? onTierUpdate : null} editMode={editMode} />
+      <PricingPhilosophy />
+      <PricingIncludes />
+      <PricingCompareTable tiers={tiers} />
+      <TrialExplainer appUrl={appUrl} trialDays={trialDays} />
+      <PricingFAQ faqItems={faqItems} />
+      <PricingCTA appUrl={appUrl} />
+      <Footer />
+    </div>
+  );
+}
+
+const root = document.getElementById('pricing-root');
+if (root) ReactDOM.createRoot(root).render(React.createElement(PricingPage));
