@@ -122,25 +122,24 @@ function hexA(hex, a) {
   return `rgba(${r},${g},${b},${a})`;
 }
 
-// Wait until all Babel-compiled globals are defined before rendering.
-// requestAnimationFrame fires in ~16ms — Babel needs 3-8s to compile
-// hero.jsx, sections.jsx, new-sections.jsx, home-extra.jsx, layout.jsx.
-(function waitForGlobals() {
+// Defer render so Babel has time to compile all external JSX files.
+// hero.jsx (26KB) + sections.jsx (23KB) + layout.jsx + new-sections + home-extra
+// take 3-8s on first load. rAF is throttled in background tabs, so we use
+// a reliable setTimeout + poll approach.
+(function mountApp() {
+  var POLL_MS = 200;
+  var MAX_WAIT = 12000;
   var required = ['Header', 'Footer', 'Pillars', 'ModuleGrid', 'FinalCTA', 'ConciergeSpotlight'];
   var start = Date.now();
-  function check() {
-    if (required.every(function(g) { return typeof window[g] === 'function'; })) {
+  var timer = setInterval(function() {
+    var allReady = required.every(function(g) { return typeof window[g] === 'function'; });
+    var timedOut = Date.now() - start > MAX_WAIT;
+    if (allReady || timedOut) {
+      clearInterval(timer);
       var root = document.getElementById('root');
-      if (root) ReactDOM.createRoot(root).render(React.createElement(App));
-      return;
+      if (root && root.childElementCount === 0) {
+        ReactDOM.createRoot(root).render(React.createElement(App));
+      }
     }
-    if (Date.now() - start > 12000) {
-      // Fallback after 12s — render whatever is available
-      var root = document.getElementById('root');
-      if (root) ReactDOM.createRoot(root).render(React.createElement(App));
-      return;
-    }
-    requestAnimationFrame(check);
-  }
-  requestAnimationFrame(check);
+  }, POLL_MS);
 })();
