@@ -415,7 +415,7 @@ const PricingCompareTable = ({ tiers }) => {
 
   const renderCell = v => {
     if (v === true)  return <span className="compare-yes">✓</span>;
-    if (v === false) return <span className="compare-no">—</span>;
+    if (v === false) return <span className="compare-no">{"—"}</span>;
     return <span>{v}</span>;
   };
 
@@ -542,4 +542,103 @@ const EditModeBar = ({ editMode, onToggle }) => {
       padding: '8px 24px', display: 'flex', alignItems: 'center', gap: 12,
       backdropFilter: 'blur(8px)'
     }}>
-      <span style={{ fontSize: 12, fontWeight: 600, color: '#e8942e' }}>✏ Pricing Edit Mode — click any price, name, or feature to edit inline</
+
+// ─── Edit Mode Toolbar (floats above the pricing grid) ────────────────────────
+const EditModeBar = ({ editMode }) => {
+  if (!editMode) return null;
+  return (
+    <div style={{
+      position: 'sticky', top: 0, zIndex: 100,
+      background: 'rgba(232,148,46,.12)', borderBottom: '1px solid rgba(232,148,46,.3)',
+      padding: '8px 24px', display: 'flex', alignItems: 'center', gap: 12,
+      backdropFilter: 'blur(8px)'
+    }}>
+      <span style={{ fontSize: 12, fontWeight: 600, color: '#e8942e' }}>
+        Pricing Editor active &mdash; click any price, name, or feature to edit inline
+      </span>
+      <span style={{ marginLeft: 'auto', fontSize: 11, color: 'rgba(232,148,46,.6)' }}>
+        Use the panel on the right to add / remove tiers and features
+      </span>
+    </div>
+  );
+};
+
+// ─── Root Pricing Page ────────────────────────────────────────────────────────
+const PricingPage = () => {
+  // CMS hook — works when cms.jsx loads before this component
+  const hasCmsHook = typeof useSiteContent === 'function';
+  const cmsResult  = hasCmsHook ? useSiteContent() : null;
+
+  // Polling fallback — cms.jsx may load AFTER this component mounts
+  const [asyncContent, setAsyncContent] = React.useState(window.__masonContent || null);
+  React.useEffect(() => {
+    if (window.__masonContent) { setAsyncContent(window.__masonContent); return; }
+    const t = setInterval(() => {
+      if (window.__masonContent) { setAsyncContent(window.__masonContent); clearInterval(t); }
+    }, 150);
+    return () => clearInterval(t);
+  }, []);
+
+  const content  = (cmsResult && cmsResult.content) || asyncContent || {};
+  const update   = (cmsResult && cmsResult.update)  || function() {};
+  const editMode = typeof useEditMode === 'function' ? useEditMode() : false;
+  const [billing, setBilling] = React.useState('monthly');
+
+  const appUrl    = (content.site && content.site.appUrl)    || 'https://app.masononsite.com';
+  const trialDays = (content.site && content.site.trialDays) || 30;
+  const pricing   = content.pricing || {};
+  // Always fall back to hard-coded defaults so the page renders before cms.jsx is ready
+  const tiers     = (pricing.tiers && pricing.tiers.length)   ? pricing.tiers   : DEFAULT_PRICING.tiers;
+  const faqItems  = (pricing.faq   && pricing.faq.length)     ? pricing.faq     : DEFAULT_PRICING.faq;
+
+  // Handler for inline tier updates (edit mode only)
+  function onTierUpdate(tierIdxOrAction, field, value) {
+    if (tierIdxOrAction === '__add') {
+      update('pricing.tiers', [...tiers, {
+        id: 'tier-' + Date.now(), name: 'New Tier', tagline: 'Plan description',
+        monthly: 0, annual: 0, projectsLabel: 'X active projects',
+        highlight: false, cta: 'Start free trial', features: ['Feature 1', 'Feature 2']
+      }]);
+      return;
+    }
+    const next = tiers.map(function(t, i) { return i === tierIdxOrAction ? Object.assign({}, t, { [field]: value }) : t; });
+    update('pricing.tiers', next);
+  }
+
+  React.useEffect(function() {
+    if (typeof gsap === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger);
+    function animateEls(selector, vars) {
+      document.querySelectorAll(selector).forEach(function(el) {
+        gsap.fromTo(el, { opacity: 0, y: vars.y || 0 }, {
+          opacity: 1, y: 0, duration: 0.7, ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none none' }
+        });
+      });
+    }
+    animateEls('.gsap-fade-up', { y: 40 });
+    return function() { ScrollTrigger.getAll().forEach(function(t) { t.kill(); }); };
+  }, []);
+
+  return (
+    <div className="site">
+      <Header />
+      <EditModeBar editMode={editMode} />
+      <TrialBanner appUrl={appUrl} trialDays={trialDays} />
+      <PricingHero />
+      <div className="container" style={{ textAlign: 'center', paddingTop: '2rem' }}>
+        <BillingToggle billing={billing} onChange={setBilling} savingPct={pricing.annualSavingPct || DEFAULT_PRICING.annualSavingPct} />
+      </div>
+      <PricingGrid billing={billing} tiers={tiers} appUrl={appUrl} onUpdate={editMode ? onTierUpdate : null} editMode={editMode} />
+      <PricingPhilosophy />
+      <PricingIncludes />
+      <PricingCompareTable tiers={tiers} />
+      <TrialExplainer appUrl={appUrl} trialDays={trialDays} />
+      <PricingFAQ faqItems={faqItems} />
+      <PricingCTA appUrl={appUrl} />
+      <Footer />
+    </div>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(PricingPage));
