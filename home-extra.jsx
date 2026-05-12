@@ -340,9 +340,9 @@ const PricingTeaser = () => (
         </div>
         <div className="pricing-teaser__plans reveal">
           {[
-            {name:"Starter",price:"$49",period:"/month",desc:"Up to 3 active projects and 25 team members. Full feature access.",cta:"Start free"},
-            {name:"Professional",price:"$149",period:"/month",desc:"Up to 15 active projects and 100 team members. API access included.",cta:"Start free",featured:true},
-            {name:"Scale",price:"$399",period:"/month",desc:"Unlimited projects and 250 team members. SAML SSO and priority support.",cta:"Start free"},
+            {name:"Starter",price:"$49",period:"/project/month",desc:"Up to 3 active projects. All 12 modules, unlimited team members, 30-day free trial.",cta:"Start free"},
+            {name:"Professional",price:"$149",period:"/project/month",desc:"Up to 15 active projects. Unlimited AI Concierge, full API, advanced reports.",cta:"Start free",featured:true},
+            {name:"Scale",price:"$399",period:"/project/month",desc:"Unlimited projects. SAML SSO, 99.9% SLA, dedicated support, and DPA.",cta:"Start free"},
           ].map(p=>(
             <div className={"pricing-teaser__plan"+(p.featured?" is-featured":"")} key={p.name}>
               <div className="pricing-teaser__plan-name">{p.name}</div>
@@ -399,9 +399,9 @@ After 30 days from cancellation, data is permanently deleted from our production
   },
   {
     q:"Is MASON right for a small contractor with fewer than 10 employees?",
-    a:`Yes. The Starter plan at $49 per month covers up to 3 active projects and 25 team members. A small general contractor running 1 to 3 active projects simultaneously gets the full platform: BIM viewer, AI Concierge, Android app, RFI module, document register, daily logs, issues, and everything else. There are no reduced-functionality tiers or paywalled features.
+    a:`Yes. The Starter plan at $49 per project per month covers up to 3 active projects with unlimited team members. A small general contractor running 1 to 3 active projects simultaneously gets the full platform: BIM viewer, AI Concierge, Android app, RFI module, document register, daily logs, issues, and everything else. There are no reduced-functionality tiers or paywalled features.
 
-The flat-project pricing model is particularly well suited to smaller teams because you are not paying per person. If you have 25 people across your 3 active projects, you pay $49 per month total regardless of whether those 25 people log in every day or occasionally.`
+The flat-project pricing model is particularly well suited to smaller teams because you are not paying per person. Add every subcontractor, consultant, and site worker at no extra cost. 3 active projects, unlimited users, $49 per project per month.`
   },
   {
     q:"How does MASON compare to Procore or Autodesk Construction Cloud?",

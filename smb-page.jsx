@@ -141,26 +141,26 @@ const SmbPricing = () => (
             title:"Starter",
             price:"$49",
             unit:"/project/month",
-            desc:"For teams running 1–3 active projects. All 12 modules, unlimited users, 30-day free trial included.",
+            desc:"For small contractors and independent PMs. Up to 3 active projects, all 12 modules, unlimited users, 30-day free trial included.",
             cta:"Start free trial",
             href:"https://app.masononsite.com/register"
           },
           {
             title:"Professional",
-            price:"$89",
+            price:"$149",
             unit:"/project/month",
-            desc:"For growing teams running 4–10 projects. Priority support, advanced reports, and the full BIM and AR feature set.",
+            desc:"For growing GCs and project teams. Up to 15 active projects, unlimited AI Concierge, advanced reports, and full API access.",
             cta:"Start free trial",
             href:"https://app.masononsite.com/register",
             featured:true
           },
           {
             title:"Scale",
-            price:"Custom",
-            unit:"",
-            desc:"For programmes with 10+ active projects. Unlimited projects, SAML SSO, dedicated support manager, and custom data terms.",
-            cta:"Contact sales",
-            href:"contact.html"
+            price:"$399",
+            unit:"/project/month",
+            desc:"For principal contractors and programme managers. Unlimited projects, SAML SSO, dedicated support manager, DPA, and 99.9% SLA.",
+            cta:"Start free trial",
+            href:"https://app.masononsite.com/register"
           }
         ].map((tier,i)=>(
           <div key={i} className={"value-card gsap-fade-up"+(tier.featured?" value-card--featured":"")} style={tier.featured?{borderColor:"var(--accent)"}:{}}>
@@ -176,7 +176,7 @@ const SmbPricing = () => (
         ))}
       </div>
       <p style={{marginTop:32,fontSize:13,color:"var(--text-faint)",textAlign:"center"}}>
-        All prices are per active project per month. Annual billing available with a 15% discount.
+        All prices are per active project per month. Annual billing available with a 20% discount.
         Unlimited team members on every plan. <a href="pricing.html" style={{color:"var(--accent)"}}>See full pricing details →</a>
       </p>
     </div>
