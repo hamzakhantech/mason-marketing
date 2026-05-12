@@ -184,7 +184,7 @@ const Header = ({ onSignIn }) => {
           <a href="https://app.masononsite.com/login" className="btn btn-primary btn-sm">
             Sign in <IconArrowRight size={14} stroke={2} />
           </a>
-          <button className="nav-hamburger hide-lg" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menu">
+          <button className="nav-hamburger" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menu">
             <span /><span /><span />
           </button>
         </div>
