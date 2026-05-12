@@ -639,5 +639,5 @@ const PricingPage = () => {
   );
 }
 
-const root = document.getElementById('pricing-root');
+const root = document.getElementById('root');
 if (root) ReactDOM.createRoot(root).render(React.createElement(PricingPage));
