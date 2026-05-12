@@ -215,6 +215,7 @@ const IntCTA = () => (
 
 const IntegrationsPage = () => {
   React.useEffect(() => {
+    document.body.classList.add('gsap-ready'); // CSS fallback: elements visible even if GSAP fails
     if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
       gsap.registerPlugin(ScrollTrigger);
       gsap.utils.toArray(".gsap-fade-up").forEach(el => {

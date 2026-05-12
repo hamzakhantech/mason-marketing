@@ -701,6 +701,7 @@ const FeaturesPage = () => {
 
   // GSAP ScrollTrigger animations
   React.useEffect(() => {
+    document.body.classList.add('gsap-ready'); // CSS fallback: elements visible even if GSAP fails
     if (typeof gsap === "undefined") return;
     gsap.registerPlugin(ScrollTrigger);
 
