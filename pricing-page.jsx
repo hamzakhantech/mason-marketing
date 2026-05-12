@@ -228,7 +228,7 @@ const PricingGrid = ({ billing, tiers, appUrl, onUpdate, editMode }) => (
               <ul className="pricing-card__features">
                 {(plan.features || []).map((f, fi) => (
                   <li key={fi} style={{ display: 'flex', alignItems: 'flex-start', gap: 6 }}>
-                    <span className="pricing-feature-check" style={{ flexShrink: 0 }}>check</span>
+                    <span className="pricing-feature-check" style={{ flexShrink: 0 }}><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
                     {editMode ? (
                       <span style={{ display: 'flex', flex: 1, gap: 4, alignItems: 'center' }}>
                         <input value={f} onChange={e => updateFeature(fi, e.target.value)}
@@ -414,7 +414,7 @@ const PricingCompareTable = ({ tiers }) => {
   ];
 
   const renderCell = v => {
-    if (v === true)  return <span className="compare-yes">check</span>;
+    if (v === true)  return <span className="compare-yes"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg></span>;
     if (v === false) return <span className="compare-no">{"--"}</span>;
     return <span>{v}</span>;
   };

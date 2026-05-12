@@ -175,7 +175,7 @@ const CAWhenToChoose = () => (
             "You want all modules included without per-feature pricing"
           ].map((item,i)=>(
             <div key={i} style={{display:"flex",gap:10,padding:"8px 0",borderBottom:"1px solid var(--line)"}}>
-              <span style={{color:"#4ade80",fontWeight:700,flexShrink:0}}>check</span>
+              <span style={{color:"#4ade80",fontWeight:700,flexShrink:0}}><svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg></span>
               <span style={{fontSize:14,color:"var(--text-muted)"}}>{item}</span>
             </div>
           ))}
