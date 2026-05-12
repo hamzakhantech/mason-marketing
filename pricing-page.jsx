@@ -599,23 +599,31 @@ const PricingPage = () => {
       document.body.classList.add('gsap-ready');
       return;
     }
-    gsap.registerPlugin(ScrollTrigger);
-    var stOpts = { start: 'top bottom', toggleActions: 'play none none none' };
-    // Fade + slide up
-    document.querySelectorAll('.gsap-fade-up').forEach(function(el) {
-      gsap.fromTo(el, { opacity: 0, y: 40 }, {
-        opacity: 1, y: 0, duration: 0.7, ease: 'power2.out',
-        scrollTrigger: Object.assign({ trigger: el }, stOpts)
+    // Defer GSAP init so React has fully painted and content useEffect has settled
+    var timer = setTimeout(function() {
+      gsap.registerPlugin(ScrollTrigger);
+      var stOpts = { start: 'top bottom', toggleActions: 'play none none none' };
+      // Fade + slide up
+      document.querySelectorAll('.gsap-fade-up').forEach(function(el) {
+        gsap.fromTo(el, { opacity: 0, y: 40 }, {
+          opacity: 1, y: 0, duration: 0.7, ease: 'power2.out',
+          scrollTrigger: Object.assign({ trigger: el }, stOpts)
+        });
       });
-    });
-    // Scale in -- pricing cards + feature cards
-    document.querySelectorAll('.gsap-scale-in').forEach(function(el) {
-      gsap.fromTo(el, { opacity: 0, scale: 0.92 }, {
-        opacity: 1, scale: 1, duration: 0.55, ease: 'power2.out',
-        scrollTrigger: Object.assign({ trigger: el }, stOpts)
+      // Scale in -- pricing cards + feature cards
+      document.querySelectorAll('.gsap-scale-in').forEach(function(el) {
+        gsap.fromTo(el, { opacity: 0, scale: 0.92 }, {
+          opacity: 1, scale: 1, duration: 0.55, ease: 'power2.out',
+          scrollTrigger: Object.assign({ trigger: el }, stOpts)
+        });
       });
-    });
-    return function() { ScrollTrigger.getAll().forEach(function(t) { t.kill(); }); };
+      // Force ScrollTrigger to recalculate positions after React render
+      ScrollTrigger.refresh();
+    }, 150);
+    return function() {
+      clearTimeout(timer);
+      ScrollTrigger.getAll().forEach(function(t) { t.kill(); });
+    };
   }, []);
 
   return (
