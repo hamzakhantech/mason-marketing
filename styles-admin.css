@@ -1,0 +1,253 @@
+/* MASON — Admin CMS dashboard styles */
+:root {
+  --adm-bg:      #07070a;
+  --adm-surface: #0e0f14;
+  --adm-card:    #12141c;
+  --adm-border:  rgba(255,255,255,0.08);
+  --adm-text:    #f4efe6;
+  --adm-muted:   rgba(244,239,230,0.5);
+  --adm-accent:  #e8942e;
+  --adm-danger:  #e26d5c;
+  --adm-ok:      #4ade80;
+  --adm-font:    "Inter", system-ui, sans-serif;
+  --adm-mono:    "JetBrains Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0; min-height: 100%;
+  background: var(--adm-bg); color: var(--adm-text);
+  font-family: var(--adm-font); font-size: 14px;
+}
+
+/* ─── Login ────────────────────────────────────────────────────────── */
+
+.adm-login {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  background: radial-gradient(ellipse 80% 60% at 50% -20%, rgba(232,148,46,0.12), transparent);
+}
+.adm-login__card {
+  width: 100%; max-width: 400px; background: var(--adm-surface);
+  border: 1px solid var(--adm-border); border-radius: 14px;
+  padding: 28px 28px 24px; box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+}
+.adm-login__logo {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 18px;
+}
+.adm-login__logo img { height: 28px; display: block; }
+.adm-login__logofallback {
+  font-size: 18px; font-weight: 800; letter-spacing: -0.03em; color: var(--adm-text);
+}
+.adm-login__card h1 { margin: 0 0 6px; font-size: 22px; letter-spacing: -0.02em; }
+.adm-login__card p  { margin: 0 0 20px; color: var(--adm-muted); font-size: 13px; line-height: 1.5; }
+
+/* ─── Shell ────────────────────────────────────────────────────────── */
+
+.adm-shell { display: grid; grid-template-columns: 220px 1fr; min-height: 100vh; }
+
+/* ─── Sidebar ──────────────────────────────────────────────────────── */
+
+.adm-sidebar {
+  background: var(--adm-surface); border-right: 1px solid var(--adm-border);
+  padding: 16px 12px 20px; display: flex; flex-direction: column; gap: 2px;
+}
+.adm-sidebar__brand {
+  display: flex; align-items: baseline; gap: 6px;
+  padding: 8px 12px 16px; margin-bottom: 8px;
+  border-bottom: 1px solid var(--adm-border);
+}
+.adm-sidebar__brandname {
+  font-size: 15px; font-weight: 800; letter-spacing: -0.02em; color: var(--adm-text);
+}
+.adm-sidebar__brandtag {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--adm-accent); background: rgba(232,148,46,0.12);
+  padding: 2px 6px; border-radius: 4px;
+}
+.adm-nav-btn {
+  text-align: left; padding: 9px 12px; border-radius: 8px; border: none;
+  background: transparent; color: var(--adm-muted); font-size: 13px; font-weight: 500;
+  cursor: pointer; font-family: inherit; width: 100%; transition: color 0.15s, background 0.15s;
+}
+.adm-nav-btn:hover  { color: var(--adm-text); background: rgba(255,255,255,0.04); }
+.adm-nav-btn.is-active { color: var(--adm-accent); background: rgba(232,148,46,0.1); }
+
+/* ─── Main + topbar ────────────────────────────────────────────────── */
+
+.adm-main { display: flex; flex-direction: column; min-width: 0; }
+.adm-topbar {
+  height: 56px; border-bottom: 1px solid var(--adm-border);
+  display: flex; align-items: center; gap: 10px;
+  padding: 0 20px; background: rgba(14,15,20,0.9);
+  backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 10;
+}
+.adm-topbar__title { font-weight: 600; font-size: 15px; flex: 1; }
+.adm-topbar__hint  {
+  font-size: 12px; color: var(--adm-muted); max-width: 380px;
+  text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.adm-topbar__hint.is-ok  { color: var(--adm-ok); }
+.adm-topbar__hint.is-err { color: var(--adm-danger); }
+
+.adm-scroll { padding: 24px 28px 56px; overflow-y: auto; flex: 1; }
+
+/* ─── Cards ────────────────────────────────────────────────────────── */
+
+.adm-card {
+  background: var(--adm-card); border: 1px solid var(--adm-border);
+  border-radius: 12px; padding: 18px 20px; margin-bottom: 16px;
+}
+.adm-card h3 {
+  margin: 0 0 14px; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--adm-muted);
+}
+.adm-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* ─── Form fields ──────────────────────────────────────────────────── */
+
+.adm-field { margin-bottom: 14px; }
+.adm-field label {
+  display: block; font-size: 11px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--adm-muted); margin-bottom: 5px;
+}
+.adm-field input,
+.adm-field textarea,
+.adm-field select {
+  width: 100%; padding: 9px 12px; border-radius: 8px;
+  border: 1px solid var(--adm-border);
+  background: rgba(255,255,255,0.04); color: var(--adm-text);
+  font-size: 13px; font-family: inherit; outline: none;
+  transition: border-color 0.15s;
+}
+.adm-field select {
+  appearance: none; cursor: pointer;
+}
+.adm-field textarea { resize: vertical; min-height: 88px; font-family: var(--adm-mono); font-size: 12px; line-height: 1.6; }
+.adm-field input:focus,
+.adm-field textarea:focus,
+.adm-field select:focus { border-color: rgba(232,148,46,0.5); }
+.adm-field input::placeholder,
+.adm-field textarea::placeholder { color: rgba(244,239,230,0.25); }
+
+/* ─── Image field ──────────────────────────────────────────────────── */
+
+.adm-imagefield__row { display: flex; gap: 8px; align-items: flex-start; }
+.adm-imagefield__row input { flex: 1; }
+.adm-uploadbtn {
+  display: inline-flex; align-items: center; cursor: pointer;
+  white-space: nowrap; font-size: 12px;
+}
+.adm-imagefield__preview {
+  display: block; max-height: 60px; max-width: 100%;
+  margin-top: 8px; border-radius: 6px; border: 1px solid var(--adm-border);
+  object-fit: contain; background: rgba(255,255,255,0.04); padding: 4px;
+}
+
+/* ─── Raw JSON textarea ────────────────────────────────────────────── */
+
+.adm-rawtextarea {
+  width: 100%; min-height: 60vh; font-family: var(--adm-mono); font-size: 12px;
+  line-height: 1.65; padding: 12px; border-radius: 8px;
+  border: 1px solid var(--adm-border); background: rgba(0,0,0,0.25);
+  color: var(--adm-text); resize: vertical; outline: none;
+  transition: border-color 0.15s;
+}
+.adm-rawtextarea:focus { border-color: rgba(232,148,46,0.5); }
+
+/* ─── Buttons ──────────────────────────────────────────────────────── */
+
+.adm-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 9px 16px; border-radius: 8px; border: 1px solid var(--adm-border);
+  background: rgba(255,255,255,0.06); color: var(--adm-text);
+  font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit;
+  transition: background 0.15s, filter 0.15s;
+}
+.adm-btn:hover           { background: rgba(255,255,255,0.1); }
+.adm-btn--primary        { background: var(--adm-accent); border-color: var(--adm-accent); color: #07070a; }
+.adm-btn--primary:hover  { filter: brightness(1.08); }
+.adm-btn--ghost          { background: transparent; }
+.adm-btn--ghost:hover    { background: rgba(255,255,255,0.06); }
+.adm-btn--danger         { border-color: rgba(226,109,92,0.4); color: var(--adm-danger); background: transparent; }
+.adm-btn--danger:hover   { background: rgba(226,109,92,0.08); }
+.adm-btn--sm             { padding: 5px 10px; font-size: 12px; border-radius: 6px; }
+.adm-btn:disabled        { opacity: 0.5; cursor: not-allowed; }
+
+/* ─── Toggle ───────────────────────────────────────────────────────── */
+
+.adm-toggle {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.adm-toggle:last-child { border-bottom: none; }
+.adm-toggle > div { display: flex; flex-direction: column; gap: 2px; }
+.adm-toggle span   { font-size: 13px; color: var(--adm-text); }
+.adm-toggle__sub   { font-size: 11px; color: var(--adm-muted); }
+.adm-switch {
+  width: 40px; height: 22px; border-radius: 11px; border: none; cursor: pointer;
+  position: relative; flex-shrink: 0;
+  background: rgba(255,255,255,0.12); transition: background 0.2s;
+}
+.adm-switch.is-on { background: var(--adm-accent); }
+.adm-switch::after {
+  content: ''; position: absolute; top: 3px; left: 3px;
+  width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: left 0.2s;
+}
+.adm-switch.is-on::after { left: 21px; }
+
+/* ─── Repeatable items ─────────────────────────────────────────────── */
+
+.adm-repeatable {
+  border: 1px solid var(--adm-border); border-radius: 10px;
+  padding: 14px; margin-bottom: 12px; background: rgba(255,255,255,0.02);
+}
+.adm-repeatable__header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.adm-repeatable__header strong { font-size: 13px; }
+
+/* ─── Misc ─────────────────────────────────────────────────────────── */
+
+.adm-divider { height: 1px; background: var(--adm-border); margin: 16px 0; }
+
+.adm-overview-row { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+
+.adm-checklist { display: flex; flex-direction: column; gap: 10px; }
+.adm-checklist__row {
+  display: flex; align-items: baseline; gap: 10px; padding: 8px 10px;
+  border: 1px solid var(--adm-border); border-radius: 8px;
+  background: rgba(255,255,255,0.02);
+}
+.adm-checklist__row .adm-code { flex-shrink: 0; }
+
+.adm-pill {
+  display: inline-block; padding: 3px 8px; border-radius: 6px;
+  font-size: 11px; font-weight: 600; flex-shrink: 0;
+  background: rgba(74,222,128,0.12); color: var(--adm-ok);
+}
+.adm-muted { color: var(--adm-muted); font-size: 12px; line-height: 1.55; }
+.adm-code  {
+  font-family: var(--adm-mono); font-size: 11px;
+  background: rgba(0,0,0,0.35); padding: 2px 6px; border-radius: 4px;
+}
+.adm-error { font-size: 13px; color: var(--adm-danger); margin-top: 10px; }
+
+.adm-row-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+
+/* ─── Responsive ───────────────────────────────────────────────────── */
+
+@media (max-width: 960px) {
+  .adm-shell { grid-template-columns: 1fr; }
+  .adm-sidebar {
+    flex-direction: row; flex-wrap: wrap;
+    border-right: none; border-bottom: 1px solid var(--adm-border);
+    padding: 12px 10px;
+  }
+  .adm-sidebar__brand { padding-bottom: 10px; margin-bottom: 6px; width: 100%; }
+  .adm-nav-btn { flex: 0 0 auto; width: auto; padding: 7px 10px; font-size: 12px; }
+  .adm-grid2 { grid-template-columns: 1fr; }
+  .adm-scroll { padding: 16px 14px 40px; }
+}
