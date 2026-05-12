@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BIM &amp; AR — MASON | Browser-native IFC viewer + Android AR</title>
+  <meta name="description" content="MASON loads IFC models in the browser — no Autodesk account, no plugin. Federate structural, MEP, and architectural models. Detect clashes. Use AR on Android to overlay the model on the physical building." />
+  <link rel="canonical" href="https://masononsite.com/bim-ar" />
+  <link rel="icon" type="image/png" href="assets/mason_mark_grid.png" />
+  <meta property="og:title" content="MASON BIM & AR — IFC in the browser, AR on Android" />
+  <meta property="og:description" content="Browser-native BIM viewer. No Autodesk account. Federated models. Clash detection. AR overlay on Android. All in one platform." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://masononsite.com/bim-ar" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "MASON BIM & AR",
+    "description": "Browser-native IFC viewer and Android AR for construction project management.",
+    "url": "https://masononsite.com/bim-ar",
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": "MASON BIM Viewer",
+      "applicationCategory": "BIMApplication",
+      "operatingSystem": "Web, Android",
+      "description": "IFC 2x3 and IFC4 viewer running natively in the browser with WebAssembly. Supports federated models, clash detection, AR overlay on Android.",
+      "featureList": [
+        "IFC 2x3 and IFC4 native parsing",
+        "Federated multi-discipline models",
+        "Automatic clash detection",
+        "AR overlay on Android via ARCore",
+        "Issue pinning to model elements",
+        "Offline model viewing on Android",
+        "No Autodesk account required"
+      ]
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles-sections.css" />
+  <link rel="stylesheet" href="styles-content.css" />
+  <link rel="stylesheet" href="styles-extra.css" />
+  <link rel="stylesheet" href="styles-theme.css" />
+  <link rel="stylesheet" href="styles-pages.css" />
+
+  <style>
+    .bim-tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+    .bim-tech-cell {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      transition: border-color .2s;
+    }
+    .bim-tech-cell:hover { border-color: var(--accent-tint); }
+    .bim-tech-cell__label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .bim-tech-cell__desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+    .ar-demo-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .ar-demo-card__screen { padding: 1rem 1rem 0; }
+    .ar-demo-card__caption {
+      padding: 0.875rem 1rem;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="icons.jsx"></script>
+  <script type="text/babel" src="hero.jsx"></script>
+  <script type="text/babel" src="layout.jsx"></script>
+  <script type="text/babel" src="bim-ar-page.jsx"></script>
+
+  <script type="text/babel" src="cms.jsx"></script>
+  <script src="tracking.js"></script>
+</body>
+</html>

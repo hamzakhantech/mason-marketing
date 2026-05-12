@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MASON — Construction project management &amp; BIM</title>
+  <meta name="description" content="MASON is one command center for construction: BIM, schedule, RFIs, issues, daily logs, and an AI Concierge built for the jobsite." />
+  <link rel="canonical" href="https://masononsite.com" />
+  <link rel="icon" type="image/png" href="assets/mason_mark_grid.png" />
+
+  <meta property="og:title" content="MASON — Construction project management & BIM" />
+  <meta property="og:description" content="One command center for construction projects—BIM, RFIs, issues, daily logs, with an AI Concierge built for the field." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://masononsite.com" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles-sections.css" />
+  <link rel="stylesheet" href="styles-content.css" />
+  <link rel="stylesheet" href="styles-extra.css" />
+  <link rel="stylesheet" href="styles-theme.css" />
+  <link rel="stylesheet" href="styles-pages.css" />
+
+  <style>
+    /* CMS panel offset — shifts page content when editor is open */
+    body.cms-open { margin-right: 340px; transition: margin-right .2s; }
+    body { transition: margin-right .2s; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <!-- Page scripts -->
+  <script type="text/babel" src="icons.jsx"></script>
+  <script type="text/babel" src="hero.jsx"></script>
+  <script type="text/babel" src="layout.jsx"></script>
+  <script type="text/babel" src="sections.jsx"></script>
+  <script type="text/babel" src="new-sections.jsx"></script>
+  <script type="text/babel" src="home-extra.jsx"></script>
+  <script type="text/babel" src="app.jsx"></script>
+
+  <!-- CMS editor (last — mounts after page is rendered) -->
+  <script type="text/babel" src="cms.jsx"></script>
+
+  <!-- Tracking placeholder — add your IDs here after deployment -->
+  <script src="tracking.js"></script>
+</body>
+</html>

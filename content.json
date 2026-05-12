@@ -1,0 +1,185 @@
+{
+  "site": {
+    "name": "MASON",
+    "tagline": "Construction project control in one place.",
+    "supportEmail": "support@masononsite.com",
+    "trialDays": 30,
+    "appUrl": "https://app.masononsite.com"
+  },
+  "hero": {
+    "eyebrow": "Management · Analytics · Site",
+    "headline": "One command center for construction control.",
+    "headlineAccent": "control",
+    "subheadline": "From BIM and schedule to RFIs, issues, and field logs — MASON brings the office and the jobsite into a single, permission-aware system, with an AI Concierge that knows your project.",
+    "ctaPrimary": "Start free trial",
+    "ctaSecondary": "Book a demo",
+    "meta1": "Live on 47 active projects",
+    "meta2": "Desk · Mobile · Android"
+  },
+  "stats": [
+    { "n": "47+",  "label": "Active projects\non MASON today", "note": "Across 6 countries" },
+    { "n": "8",    "label": "Languages\nfully supported",   "note": "Including RTL Arabic and Urdu" },
+    { "n": "12",   "label": "Construction modules\nin one system", "note": "No per-module add-ons" },
+    { "n": "30s",  "label": "BIM model opens\nin any browser", "note": "No plugin or install required" }
+  ],
+  "testimonials": [
+    {
+      "quote": "The BIM viewer on a phone browser, without installing anything, is what convinced me. I have been fighting with Autodesk licences for years on projects where half the team just needs to look at the model, not author it. MASON just opens the model.",
+      "name": "Kwame O.",
+      "role": "Project Manager, High-rise Residential, UK"
+    },
+    {
+      "quote": "We switched from Procore mid-project. The migration was smoother than expected and the per-project pricing immediately saved us money because we were paying per-user on a 60-person site team. The AI Concierge was the unexpected benefit. Our RFI response time dropped from 9 days to 3 days.",
+      "name": "Fatima A.",
+      "role": "Senior Project Manager, Mixed-use Development, UAE"
+    },
+    {
+      "quote": "The offline mode on Android is what the field team needed. We work in underground structures with no signal for hours at a time. Daily logs, issue creation, and photo capture all work offline and sync the moment we come back above ground. No data lost.",
+      "name": "Marco S.",
+      "role": "Site Supervisor, Infrastructure Programme, Italy"
+    }
+  ],
+  "pricing": {
+    "annualSavingPct": 20,
+    "tiers": [
+      {
+        "id": "starter",
+        "name": "Starter",
+        "tagline": "For small contractors and independent PMs",
+        "monthly": 49,
+        "annual": 39,
+        "projectsLabel": "Up to 3 active projects",
+        "highlight": false,
+        "cta": "Start free trial",
+        "features": [
+          "All 12 modules included",
+          "Unlimited team members per project",
+          "BIM viewer (IFC 2x3 + IFC4)",
+          "Interactive Gantt + CPM",
+          "RFI, Issues, Daily Logs",
+          "Document control",
+          "Submittals register",
+          "Cost control + FAC",
+          "AI Concierge (60 queries/project/month)",
+          "Mobile + Android app",
+          "PDF + Excel report export",
+          "Email support (48h response)",
+          "REST API: read-only",
+          "30-day free trial"
+        ]
+      },
+      {
+        "id": "professional",
+        "name": "Professional",
+        "tagline": "For growing GCs and project teams",
+        "monthly": 149,
+        "annual": 119,
+        "projectsLabel": "Up to 15 active projects",
+        "highlight": true,
+        "cta": "Start free trial",
+        "features": [
+          "Everything in Starter",
+          "Up to 15 active projects",
+          "AI Concierge (unlimited queries)",
+          "Scheduled report delivery",
+          "Custom report templates",
+          "Baseline + EoT export",
+          "REST API: full read/write",
+          "Webhooks (20 endpoints)",
+          "Google Drive + OneDrive sync",
+          "Xero + QuickBooks export",
+          "Priority email support (12h)",
+          "Onboarding call included",
+          "Migration assistance",
+          "Custom role creation"
+        ]
+      },
+      {
+        "id": "scale",
+        "name": "Scale",
+        "tagline": "For principal contractors and programme managers",
+        "monthly": 399,
+        "annual": 319,
+        "projectsLabel": "Unlimited projects",
+        "highlight": false,
+        "cta": "Start free trial",
+        "features": [
+          "Everything in Professional",
+          "Unlimited projects",
+          "SAML 2.0 SSO (Okta, Azure AD, etc.)",
+          "Organisation-level portfolio dashboard",
+          "Custom branding (logo + colours)",
+          "Dedicated onboarding consultant",
+          "SLA: 99.9% uptime commitment",
+          "Dedicated Slack / Teams channel",
+          "Data Processing Agreement",
+          "Audit log export",
+          "Multi-organisation management",
+          "Custom API rate limits",
+          "Early access to new features",
+          "Annual business review"
+        ]
+      }
+    ],
+    "enterprise": {
+      "heading": "Enterprise — custom contract",
+      "body": "Managing 50+ concurrent projects, integrating with a corporate ERP, or requiring a dedicated infrastructure tenant? We build custom contracts for large programmes. Contact us to discuss volume pricing, on-premises options, and dedicated support.",
+      "cta": "Contact sales"
+    },
+    "faq": [
+      {
+        "q": "What happens at the end of the 30-day trial?",
+        "a": "You'll receive an email on day 25 and day 30 reminding you to choose a plan. If you don't enter payment details by day 30, your account moves to read-only mode for 14 days — you can still export your data but cannot create new records. After 44 days total, the account is archived and your data is retained for 90 days before deletion."
+      },
+      {
+        "q": "Can I change plans mid-subscription?",
+        "a": "Yes. Upgrading takes effect immediately — you're charged the prorated difference for the remainder of the billing period. Downgrading takes effect at the end of the current billing period."
+      },
+      {
+        "q": "Is the per-project price per month or per year?",
+        "a": "The advertised prices ($49, $149, $399) are per project per month when billed monthly. Annual billing gives you 20% off — $39, $119, $319 per project per month, billed as an annual lump sum."
+      },
+      {
+        "q": "What counts as a 'project'?",
+        "a": "A project is a distinct contract or site. Sub-phases of the same contract can be managed within one project using MASON's phase/area structure — they don't need to be separate projects."
+      },
+      {
+        "q": "Is there a discount for charities, NGOs, or developing markets?",
+        "a": "Yes. We offer 50% off for registered non-profit organisations and academic institutions, and adjusted pricing for teams based in lower-income countries. Contact us with your situation."
+      },
+      {
+        "q": "Can I use MASON for just one project with no ongoing commitment?",
+        "a": "Yes. The Starter plan is month-to-month. Start, complete your project, export your data, cancel. You'll pay $49/month for the duration of the project."
+      },
+      {
+        "q": "Do subcontractors need their own MASON subscription?",
+        "a": "No. Subcontractors are invited to your project by the main contractor. They operate as users on your subscription without a separate account."
+      },
+      {
+        "q": "What payment methods do you accept?",
+        "a": "Visa, Mastercard, and American Express via Stripe. For Scale tier and Enterprise customers, we also accept bank transfer / ACH / BACS on annual billing."
+      },
+      {
+        "q": "Can I get a refund?",
+        "a": "Monthly billing: refunds for the current month are available within 7 days of the billing date if you haven't meaningfully used the platform. Annual billing: pro-rated refund for unused months, less a 10% administration fee, if you cancel within the first 6 months."
+      },
+      {
+        "q": "Is MASON GDPR / CCPA compliant?",
+        "a": "Yes. Data is stored on infrastructure in the US with EU-region options on request. A Data Processing Agreement is available for Professional and Scale customers. We do not sell user data or use project data for AI training."
+      }
+    ]
+  },
+  "sections": {
+    "personas": true,
+    "bimProof": true,
+    "conciergeSpotlight": true,
+    "workflow": true,
+    "surfaces": true,
+    "howItWorks": true,
+    "compareOldWay": true,
+    "socialProof": true,
+    "pricingTeaser": true,
+    "homeFaq": true,
+    "trustExtended": true
+  }
+}

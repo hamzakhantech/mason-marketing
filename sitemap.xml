@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://masononsite.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://masononsite.com/features</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://masononsite.com/pricing</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://masononsite.com/bim-ar</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masononsite.com/mobile</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masononsite.com/integrations</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masononsite.com/security</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masononsite.com/changelog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://masononsite.com/compare-procore</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://masononsite.com/compare-fieldwire</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://masononsite.com/compare-asite</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://masononsite.com/case-studies</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masononsite.com/roi-calculator</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masononsite.com/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://masononsite.com/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://masononsite.com/contact</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+</urlset>

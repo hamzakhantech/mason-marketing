@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact MASON — Book a demo or ask a question</title>
+  <meta name="description" content="Book a 30-minute product demo, ask about migrating from Procore, or get in touch for any question. We respond within one business day." />
+  <link rel="canonical" href="https://masononsite.com/contact" />
+  <link rel="icon" type="image/png" href="assets/mason_mark_grid.png" />
+  <meta property="og:title" content="Contact MASON — Book a demo or start a free trial" />
+  <meta property="og:description" content="30-minute demo calls, migration consultations, and honest answers about what MASON can and can't do for your project." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://masononsite.com/contact" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact MASON",
+    "description": "Get in touch with MASON for demo bookings, migration consultations, or general inquiries.",
+    "url": "https://masononsite.com/contact",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "MASON by Certiva LLC",
+      "email": "hello@masononsite.com",
+      "url": "https://masononsite.com"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles-sections.css" />
+  <link rel="stylesheet" href="styles-content.css" />
+  <link rel="stylesheet" href="styles-extra.css" />
+  <link rel="stylesheet" href="styles-theme.css" />
+  <link rel="stylesheet" href="styles-pages.css" />
+
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .contact-layout { grid-template-columns: 1fr; }
+    }
+    .contact-form__row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    @media (max-width: 560px) {
+      .contact-form__row { grid-template-columns: 1fr; }
+    }
+    .contact-form__field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 1.25rem;
+    }
+    .contact-form__field label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .contact-form__radio-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .contact-form__radio {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .contact-form__radio input[type="radio"] {
+      accent-color: var(--accent);
+      width: 16px;
+      height: 16px;
+    }
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .contact-info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .contact-info-card h3 {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+    .contact-email {
+      display: block;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      text-decoration: none;
+    }
+    .contact-email:hover { text-decoration: underline; }
+    .contact-info-note {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .contact-expect-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .contact-expect-list li {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      padding-left: 1.25rem;
+      position: relative;
+    }
+    .contact-expect-list li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .contact-success {
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto;
+      padding: 4rem 0;
+    }
+    .contact-success__icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(232,148,46,.15);
+      color: var(--accent);
+      font-size: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+    }
+    .contact-success h2 { margin-bottom: 1rem; }
+    .contact-success p { color: var(--text-muted); font-size: 15px; }
+    .contact-success a { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="icons.jsx"></script>
+  <script type="text/babel" src="hero.jsx"></script>
+  <script type="text/babel" src="layout.jsx"></script>
+  <script type="text/babel" src="contact-page.jsx"></script>
+
+  <script type="text/babel" src="cms.jsx"></script>
+  <script src="tracking.js"></script>
+</body>
+</html>

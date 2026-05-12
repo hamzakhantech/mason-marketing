@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pricing — MASON | Flat per-project pricing, no seat fees</title>
+  <meta name="description" content="MASON starts at $49/project/month. All features, all modules, unlimited team members. 30-day free trial, no credit card required. Starter, Professional, and Scale plans." />
+  <link rel="canonical" href="https://masononsite.com/pricing" />
+  <link rel="icon" type="image/png" href="assets/mason_mark_grid.png" />
+
+  <meta property="og:title" content="MASON Pricing — $49/project/month, no seat fees, 30-day free trial" />
+  <meta property="og:description" content="Flat per-project pricing. All 12 modules on every plan. Unlimited team members. Start free for 30 days." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://masononsite.com/pricing" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "MASON",
+    "description": "Construction project management platform with BIM, schedule, RFIs, issues, daily logs, cost control, and AI Concierge.",
+    "brand": {
+      "@type": "Brand",
+      "name": "MASON by Certiva LLC"
+    },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Starter",
+        "price": "49",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "49",
+          "priceCurrency": "USD",
+          "referenceQuantity": {
+            "@type": "QuantitativeValue",
+            "value": "1",
+            "unitCode": "MON"
+          }
+        },
+        "description": "3 active projects, all modules, unlimited users",
+        "url": "https://masononsite.com/pricing"
+      },
+      {
+        "@type": "Offer",
+        "name": "Professional",
+        "price": "149",
+        "priceCurrency": "USD",
+        "description": "15 active projects, all modules, unlimited users, full API",
+        "url": "https://masononsite.com/pricing"
+      },
+      {
+        "@type": "Offer",
+        "name": "Scale",
+        "price": "399",
+        "priceCurrency": "USD",
+        "description": "Unlimited projects, SAML SSO, dedicated support",
+        "url": "https://masononsite.com/pricing"
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles-sections.css" />
+  <link rel="stylesheet" href="styles-content.css" />
+  <link rel="stylesheet" href="styles-extra.css" />
+  <link rel="stylesheet" href="styles-theme.css" />
+  <link rel="stylesheet" href="styles-pages.css" />
+
+  <style>
+    .billing-toggle {
+      display: inline-flex;
+      gap: 4px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      padding: 4px;
+      margin: 0 auto 2rem;
+    }
+    .billing-toggle__btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      border-radius: 40px;
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .billing-toggle__btn.is-active {
+      background: var(--accent);
+      color: #fff;
+    }
+    .billing-toggle__badge {
+      background: rgba(232,148,46,.18);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 20px;
+    }
+    .billing-toggle__btn.is-active .billing-toggle__badge {
+      background: rgba(255,255,255,.2);
+      color: #fff;
+    }
+    .pricing-card__annual-note {
+      font-size: 12px;
+      color: var(--accent);
+      margin-top: -8px;
+      margin-bottom: 4px;
+    }
+    .pricing-card__projects {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .pricing-card__features {
+      list-style: none;
+      padding: 0;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .pricing-card__features li {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      display: flex;
+      gap: 8px;
+    }
+    .pricing-feature-check {
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .pricing-enterprise {
+      margin-top: 2.5rem;
+    }
+    .pricing-enterprise__inner {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .pricing-enterprise__copy h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .pricing-enterprise__copy p {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 580px;
+    }
+    .pricing-philosophy-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+    }
+    .pp-card__row { margin-bottom: 1.25rem; }
+    .pp-card__label { font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; display: block; margin-bottom: 4px; }
+    .pp-card__calc { font-size: 15px; }
+    .pp-card__divider { height: 1px; background: var(--border); margin: 1.25rem 0; }
+    .pp-card__note { font-size: 12px; color: var(--text-muted); margin-top: 1rem; line-height: 1.6; }
+    .red { color: #ef4444; }
+    .compare-section-heading td {
+      background: var(--bg-card);
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--text-muted);
+      padding: 8px 16px;
+    }
+    .compare-yes { color: #4ade80; font-weight: 700; }
+    .compare-no { color: var(--text-muted); }
+    .compare-table-wrap { overflow-x: auto; }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    .compare-table th, .compare-table td { padding: 11px 14px; border: 1px solid var(--border); text-align: center; }
+    .compare-table th:first-child, .compare-table td:first-child { text-align: left; }
+    .compare-table .compare-mason { background: rgba(232,148,46,.06); }
+    .compare-table th { font-size: 13px; }
+    .compare-table th small { font-weight: 400; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="icons.jsx"></script>
+  <script type="text/babel" src="hero.jsx"></script>
+  <script type="text/babel" src="layout.jsx"></script>
+  <script type="text/babel" src="pricing-page.jsx"></script>
+  <script type="text/babel" src="cms.jsx"></script>
+
+  <script src="tracking.js"></script>
+</body>
+</html>

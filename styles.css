@@ -1,0 +1,281 @@
+/* MASON landing — design tokens + base styles */
+:root {
+  /* Brand */
+  --bg: #07070a;
+  --bg-elev: #0c0c12;
+  --bg-elev-2: #14141c;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.14);
+  --text: #f4efe6;
+  --text-muted: #d2cbbf;
+  --text-dim: #aea69a;
+  --text-faint: #7a7367;
+  --accent: #e8942e;
+  --accent-bright: #f4a847;
+  --accent-deep: #c97816;
+  --accent-tint: rgba(232, 148, 46, 0.12);
+  --accent-glow: rgba(232, 148, 46, 0.35);
+  --on-accent: #140d06;
+
+  /* Semantic (sparingly) */
+  --ok: #5fb37a;
+  --warn: #e8b34c;
+  --danger: #e26d5c;
+
+  /* Surfaces (theme-aware product chrome / sections) */
+  --surface-0: #06060a;
+  --surface-1: #0a0a10;
+  --surface-2: #0c0c12;
+  --surface-3: #0e0e15;
+  --surface-4: #14141c;
+  --surface-5: #1a1a24;
+  --tower-light: #1a1a24;
+  --tower-dark: #0e0e15;
+  --footer-bg: #06060a;
+  --bim-card-from: #0e0e15;
+  --bim-card-to: #07070a;
+  --rfi-card-bg: rgba(20,20,28,.92);
+  --shadow-soft: rgba(0,0,0,.7);
+  --shadow-soft-2: rgba(0,0,0,.6);
+  --hairline-on-elev: rgba(255,255,255,.08);
+  --hairline-on-elev-2: rgba(255,255,255,.05);
+
+  /* Shape */
+  --r-sm: 6px;
+  --r-md: 10px;
+  --r-lg: 14px;
+  --r-xl: 20px;
+
+  /* Type */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html[data-theme="light"] {
+  --bg: #f5f5f6;
+  --bg-elev: #ffffff;
+  --bg-elev-2: #fafaf9;
+  --line: rgba(7, 7, 10, 0.08);
+  --line-strong: rgba(7, 7, 10, 0.14);
+  --text: #07070a;
+  --text-muted: #2f2c25;
+  --text-dim: #5a554b;
+  --text-faint: #8a8479;
+  --accent-tint: rgba(232, 148, 46, 0.10);
+  --on-accent: #140d06;
+
+  /* Light surfaces — sections, cards stay light */
+  --surface-0: #efeeec;
+  --surface-1: #ffffff;
+  --surface-2: #fafaf9;
+  --surface-3: #f5f4f2;
+  --surface-4: #efedea;
+  --surface-5: #e7e3dd;
+  /* Product mockup screens stay dark — they represent app UI */
+  --tower-light: #1a1a24;
+  --tower-dark: #0e0e15;
+  --footer-bg: #efeeec;
+  --bim-card-from: #ffffff;
+  --bim-card-to: #f5f4f2;
+  --rfi-card-bg: rgba(255,255,255,.96);
+  --shadow-soft: rgba(7,7,10,.18);
+  --shadow-soft-2: rgba(7,7,10,.14);
+  --hairline-on-elev: rgba(7,7,10,.06);
+  --hairline-on-elev-2: rgba(7,7,10,.04);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "cv11";
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; }
+
+/* Site container */
+.site {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+@media (max-width: 720px) {
+  .container { padding: 0 20px; }
+}
+
+/* Hairlines */
+.hr { height: 1px; background: var(--line); width: 100%; }
+.hr-orange { height: 1px; background: linear-gradient(90deg, transparent, var(--accent) 30%, var(--accent) 70%, transparent); width: 100%; opacity: .55; }
+
+/* Eyebrow */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+.eyebrow::before {
+  content: ""; width: 18px; height: 1px; background: var(--accent);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  height: 46px; padding: 0 20px;
+  font-size: 14px; font-weight: 600; letter-spacing: 0.01em;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform .15s ease, background .15s ease, border-color .15s ease, box-shadow .15s ease;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(0); }
+.btn-primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 8px 24px -8px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,.25);
+}
+.btn-primary:hover { background: var(--accent-bright); box-shadow: 0 12px 30px -8px var(--accent-glow); }
+.btn-ghost {
+  background: transparent; color: var(--text);
+  border-color: var(--line-strong);
+}
+.btn-ghost:hover { border-color: rgba(232,148,46,.5); background: var(--accent-tint); }
+.btn-sm { height: 36px; padding: 0 14px; font-size: 13px; }
+.btn-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--accent);
+  font-weight: 600; font-size: 14px;
+  border: 0; background: transparent; padding: 0; cursor: pointer;
+}
+.btn-link:hover { color: var(--accent-bright); }
+
+/* Focus ring (orange — mirror in-product) */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Display type */
+.display {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.022em;
+  line-height: 1.02;
+  font-size: clamp(40px, 6.5vw, 76px);
+  color: var(--text);
+  text-wrap: balance;
+}
+.display .accent { color: var(--accent); }
+
+.h2 {
+  font-size: clamp(28px, 3.6vw, 44px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin: 0;
+  text-wrap: balance;
+}
+
+.h3 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.lede {
+  font-size: clamp(16px, 1.4vw, 19px);
+  color: var(--text-muted);
+  line-height: 1.55;
+  max-width: 60ch;
+  text-wrap: pretty;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* Card */
+.card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+}
+
+/* Section spacing */
+section { position: relative; }
+.sect { padding: 96px 0; }
+.sect-tight { padding: 64px 0; }
+@media (max-width: 720px) {
+  .sect { padding: 64px 0; }
+  .sect-tight { padding: 40px 0; }
+}
+
+/* Subtle grid background */
+.grid-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 30%, transparent 80%);
+  opacity: .55;
+}
+
+/* Status chip */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 22px; padding: 0 8px;
+  border-radius: 999px;
+  font-size: 11px; font-weight: 500; letter-spacing: 0.02em;
+  border: 1px solid var(--line-strong);
+  color: var(--text-muted);
+  background: var(--bg-elev);
+}
+.chip.ok { color: var(--ok); border-color: rgba(95,179,122,.35); background: rgba(95,179,122,.08); }
+.chip.warn { color: var(--warn); border-color: rgba(232,179,76,.35); background: rgba(232,179,76,.08); }
+.chip.danger { color: var(--danger); border-color: rgba(226,109,92,.35); background: rgba(226,109,92,.08); }
+.chip.accent { color: var(--accent); border-color: rgba(232,148,46,.4); background: var(--accent-tint); }
+.chip .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+
+/* Animations */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.fade-up { animation: fadeUp .8s cubic-bezier(.2,.7,.2,1) both; }
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232,148,46,.45), 0 0 60px 0 rgba(232,148,46,.18); }
+  50%      { box-shadow: 0 0 0 14px rgba(232,148,46,0), 0 0 80px 6px rgba(232,148,46,.25); }
+}
+
+/* Reveal-on-scroll */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }

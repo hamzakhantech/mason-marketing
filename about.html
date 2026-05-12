@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About MASON — Built by construction people, for construction teams</title>
+  <meta name="description" content="MASON was built by project managers and site engineers who were frustrated with existing construction software. Learn our story, our values, and what makes MASON different." />
+  <link rel="canonical" href="https://masononsite.com/about" />
+  <link rel="icon" type="image/png" href="assets/mason_mark_grid.png" />
+  <meta property="og:title" content="About MASON — Built by construction people" />
+  <meta property="og:description" content="We built MASON because the tools we needed didn't exist. Learn our story, our values, and what we're building." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://masononsite.com/about" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "MASON by Certiva LLC",
+    "url": "https://masononsite.com",
+    "description": "MASON is a construction project management platform built by project managers and site engineers frustrated with existing software.",
+    "foundingDate": "2023",
+    "logo": "https://masononsite.com/assets/mason_mark_grid.png",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "url": "https://masononsite.com/contact"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles-sections.css" />
+  <link rel="stylesheet" href="styles-content.css" />
+  <link rel="stylesheet" href="styles-extra.css" />
+  <link rel="stylesheet" href="styles-theme.css" />
+  <link rel="stylesheet" href="styles-pages.css" />
+
+  <style>
+    .about-mission {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 3rem 0;
+    }
+    .about-mission__quote {
+      font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--text-base);
+      margin-bottom: 1.25rem;
+      position: relative;
+      padding: 0 1.5rem;
+    }
+    .about-mission__quote::before {
+      content: "\201C";
+      position: absolute;
+      left: -0.5rem;
+      top: -0.5rem;
+      font-size: 4rem;
+      color: var(--accent);
+      line-height: 1;
+      font-style: normal;
+    }
+    .about-mission__attr {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .about-stats-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+    }
+    .about-stat { text-align: center; }
+    .about-stat__value { display: block; font-size: 2rem; font-weight: 700; }
+    .about-stat__label { display: block; font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 2.5rem;
+    }
+    .value-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      transition: border-color .2s;
+    }
+    .value-card:hover { border-color: var(--accent-tint); }
+    .value-card__heading { font-size: 16px; font-weight: 600; margin-bottom: .75rem; }
+    .value-card__body { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="icons.jsx"></script>
+  <script type="text/babel" src="hero.jsx"></script>
+  <script type="text/babel" src="layout.jsx"></script>
+  <script type="text/babel" src="about-page.jsx"></script>
+
+  <script type="text/babel" src="cms.jsx"></script>
+  <script src="tracking.js"></script>
+</body>
+</html>

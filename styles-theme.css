@@ -1,0 +1,95 @@
+/* MASON landing — theme-aware overrides
+   Loaded after styles-sections.css and styles-content.css to win cascade for theme. */
+
+/* ---- Hero ---- */
+.site-header { background: color-mix(in srgb, var(--bg) 55%, transparent); }
+.site-header.is-scrolled { background: color-mix(in srgb, var(--bg) 88%, transparent); }
+
+/* Hero background grid */
+html[data-theme="light"] .grid-bg { opacity: .35; }
+html[data-theme="light"] .hero__glow {
+  background: radial-gradient(closest-side, rgba(232,148,46,.18), transparent 70%);
+}
+
+/* ---- Pillars viz ---- */
+.pillar__viz {
+  background:
+    radial-gradient(ellipse at 50% 100%, var(--accent-tint), transparent 70%),
+    linear-gradient(180deg, var(--surface-3), var(--surface-1)) !important;
+  border-bottom-color: var(--line);
+}
+html[data-theme="light"] .pillar__viz svg text { fill: rgba(7,7,10,.55) !important; }
+html[data-theme="light"] .pillar__viz svg [stroke="rgba(255,255,255,.18)"] { stroke: rgba(7,7,10,.18); }
+html[data-theme="light"] .pillar__viz svg [stroke="rgba(255,255,255,.15)"] { stroke: rgba(7,7,10,.15); }
+html[data-theme="light"] .pillar__viz svg [fill="#14141c"] { fill: #ffffff; }
+html[data-theme="light"] .pillar__viz svg [fill="rgba(255,255,255,.04)"] { fill: rgba(7,7,10,.04); }
+html[data-theme="light"] .pillar__viz svg [fill="rgba(255,255,255,.55)"] { fill: rgba(7,7,10,.6); }
+html[data-theme="light"] .pillar__viz svg [fill="rgba(255,255,255,.7)"] { fill: rgba(7,7,10,.75); }
+
+/* ---- Modules ---- */
+.module {
+  background: color-mix(in srgb, var(--text) 2%, transparent);
+}
+.module__icon {
+  background: var(--surface-4);
+  border-color: var(--line);
+}
+html[data-theme="light"] .module__icon { background: var(--surface-3); }
+
+/* ---- BIM proof (surrounding band) ---- */
+.bim-proof {
+  background:
+    radial-gradient(ellipse 80% 60% at 80% 20%, var(--accent-tint), transparent 60%),
+    linear-gradient(180deg, var(--bg), var(--surface-1)) !important;
+}
+
+/* ---- Trust band ---- */
+.trust { background: linear-gradient(180deg, var(--bg), var(--surface-1)) !important; }
+
+/* ---- CTA band — keep dark on light theme for visual punch ---- */
+/* CTA card is intentionally dark in both themes; it reads like a finale slab. */
+
+/* ---- Footer ---- */
+.site-footer { background: var(--footer-bg); }
+html[data-theme="light"] .site-footer { border-top-color: var(--line); }
+
+/* ---- Surface frames are screens — keep dark in both themes ---- */
+/* Desktop / Mobile / Android frames stay dark; they're product UI. */
+
+/* ---- Modules grid hover bg fix on light ---- */
+html[data-theme="light"] .module:hover {
+  background: var(--accent-tint);
+  border-color: rgba(232,148,46,.4);
+}
+html[data-theme="light"] .module:hover .module__icon {
+  background: rgba(232,148,46,.10);
+}
+
+/* ---- Header links ---- */
+html[data-theme="light"] .site-nav a:hover { color: var(--accent); }
+
+/* ---- BIM card visual on light theme: keep the "viewer" dark, but card frame can lift ---- */
+html[data-theme="light"] .bim-card { box-shadow: 0 30px 80px -30px var(--shadow-soft); }
+html[data-theme="light"] .bim-card__hd { background: var(--surface-2); }
+
+/* ---- Hero expansion ribbon: a touch lighter on light ---- */
+html[data-theme="light"] .hero__expansion-text span:nth-child(odd) { color: var(--text); }
+html[data-theme="light"] .hero__expansion-text span:nth-child(even) { color: var(--text-dim); }
+
+/* ---- Pillars + Trust + Surface card hover on light ---- */
+html[data-theme="light"] .pillar:hover,
+html[data-theme="light"] .surface:hover { box-shadow: 0 12px 30px -12px var(--shadow-soft-2); }
+
+/* ---- Trust card icon on light ---- */
+html[data-theme="light"] .trust-card__icon { background: var(--accent-tint); }
+
+/* ---- Pillar / Module / Trust / Surface borders ---- */
+html[data-theme="light"] .pillar,
+html[data-theme="light"] .module-col,
+html[data-theme="light"] .trust-card,
+html[data-theme="light"] .surface { box-shadow: 0 1px 2px var(--shadow-soft-2); }
+
+/* ---- Auth pages keep their own theming ---- */
+
+/* ---- Subtle decorative tweaks ---- */
+html[data-theme="light"] .hr-orange { opacity: .45; }

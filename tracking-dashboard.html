@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MASON — Tracking Dashboard</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0e0f12;
+      --bg-card: #161820;
+      --border: rgba(255,255,255,.1);
+      --accent: #e8942e;
+      --accent-dim: rgba(232,148,46,.12);
+      --text: #f4efe6;
+      --muted: rgba(244,239,230,.55);
+      --green: #4ade80;
+      --red: #f87171;
+      --yellow: #facc15;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      min-height: 100vh;
+    }
+    .topbar {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .topbar__logo {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .05em;
+    }
+    .topbar__logo span { color: var(--accent); }
+    .topbar__sep { flex: 1; }
+    .topbar__badge {
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: calc(100vh - 56px);
+    }
+    .sidebar {
+      background: var(--bg-card);
+      border-right: 1px solid var(--border);
+      padding: 1.5rem 1rem;
+    }
+    .sidebar__label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      color: var(--muted);
+      text-transform: uppercase;
+      padding: 0 .5rem;
+      margin-bottom: .5rem;
+      margin-top: 1.25rem;
+    }
+    .sidebar__label:first-child { margin-top: 0; }
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 13.5px;
+      color: var(--muted);
+      transition: all .15s;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+    }
+    .nav-item:hover { background: rgba(255,255,255,.05); color: var(--text); }
+    .nav-item.active { background: var(--accent-dim); color: var(--accent); font-weight: 500; }
+    .nav-item__dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot-off { background: rgba(255,255,255,.18); }
+    .dot-on { background: var(--green); box-shadow: 0 0 6px rgba(74,222,128,.5); }
+
+    .main { padding: 2.5rem; overflow-y: auto; }
+    .page { display: none; }
+    .page.active { display: block; }
+
+    h1 { font-size: 22px; font-weight: 700; margin-bottom: .5rem; }
+    h2 { font-size: 16px; font-weight: 600; margin-bottom: 1rem; }
+    .subtitle { color: var(--muted); font-size: 13.5px; margin-bottom: 2rem; line-height: 1.6; }
+
+    .tracker-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      transition: border-color .2s;
+    }
+    .tracker-card.is-enabled { border-color: rgba(232,148,46,.35); }
+    .tracker-card__header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .tracker-card__name { font-size: 15px; font-weight: 600; flex: 1; }
+    .tracker-card__desc { font-size: 13px; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.6; }
+    .toggle {
+      position: relative;
+      width: 40px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle__track {
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,.12);
+      border-radius: 22px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .toggle__track::before {
+      content: "";
+      position: absolute;
+      width: 16px; height: 16px;
+      left: 3px; bottom: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform .2s;
+    }
+    .toggle input:checked ~ .toggle__track { background: var(--accent); }
+    .toggle input:checked ~ .toggle__track::before { transform: translateX(18px); }
+
+    .input-group { margin-bottom: 1rem; }
+    .input-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+    .input-group input, .input-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 9px 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--text);
+      outline: none;
+      transition: border-color .2s;
+    }
+    .input-group input:focus, .input-group textarea:focus { border-color: var(--accent); }
+    .input-group textarea { resize: vertical; min-height: 80px; }
+
+    .btn {
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all .15s;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #f0a84a; }
+    .btn-ghost {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-danger { background: rgba(248,113,113,.15); color: var(--red); border: 1px solid rgba(248,113,113,.3); }
+
+    .status-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .status-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+    .status-card__name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .status-card__state { font-size: 12px; display: flex; align-items: center; gap: 6px; }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+    .code-block {
+      background: rgba(0,0,0,.4);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--muted);
+      white-space: pre-wrap;
+      overflow-x: auto;
+      margin-top: .75rem;
+    }
+
+    .save-bar {
+      position: sticky;
+      bottom: 0;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      padding: 1rem 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem -2.5rem -2.5rem;
+    }
+    .save-bar__msg { font-size: 13px; color: var(--muted); }
+    .save-bar__msg.saved { color: var(--green); }
+
+    .alert {
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      margin-bottom: 1.5rem;
+    }
+    .alert-info { background: rgba(59,130,246,.1); border: 1px solid rgba(59,130,246,.25); color: #93c5fd; }
+    .alert-warn { background: rgba(250,204,21,.1); border: 1px solid rgba(250,204,21,.25); color: var(--yellow); }
+
+    .divider { height: 1px; background: var(--border); margin: 2rem 0; }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar__logo"><span>M</span>ASON</div>
+  <div>— Tracking Dashboard</div>
+  <div class="topbar__sep"></div>
+  <div class="topbar__badge">Internal Tool</div>
+</div>
+
+<div class="layout">
+  <!-- Sidebar nav -->
+  <aside class="sidebar">
+    <div class="sidebar__label">Overview</div>
+    <button class="nav-item active" onclick="showPage('overview', this)">
+      <span class="nav-item__dot dot-off" id="dot-overview"></span>
+      Dashboard
+    </button>
+
+    <div class="sidebar__label">Analytics</div>
+    <button class="nav-item" onclick="showPage('ga4', this)">
+      <span class="nav-item__dot dot-off" id="dot-ga4"></span>
+      Google Analytics 4
+    </button>
+    <button class="nav-item" onclick="showPage('plausible', this)">
+      <span class="nav-item__dot dot-off" id="dot-plausible"></span>
+      Plausible
+    </button>
+    <button class="nav-item" onclick="showPage('clarity', this)">
+      <span class="nav-item__dot dot-off" id="dot-clarity"></span>
+      Microsoft Clarity
+    </button>
+    <button class="nav-item" onclick="showPage('hotjar', this)">
+      <span class="nav-item__dot dot-off" id="dot-hotjar"></span>
+      Hotjar
+    </button>
+
+    <div class="sidebar__label">Ads &amp; Retargeting</div>
+    <button class="nav-item" onclick="showPage('meta', this)">
+      <span class="nav-item__dot dot-off" id="dot-meta"></span>
+      Meta Pixel
+    </button>
+    <button class="nav-item" onclick="showPage('linkedin', this)">
+      <span class="nav-item__dot dot-off" id="dot-linkedin"></span>
+      LinkedIn Insight
+    </button>
+
+    <div class="sidebar__label">Advanced</div>
+    <button class="nav-item" onclick="showPage('segment', this)">
+      <span class="nav-item__dot dot-off" id="dot-segment"></span>
+      Segment
+    </button>
+    <button class="nav-item" onclick="showPage('custom', this)">
+      <span class="nav-item__dot dot-off" id="dot-custom"></span>
+      Custom Script
+    </button>
+
+    <div class="sidebar__label">Output</div>
+    <button class="nav-item" onclick="showPage('export', this)">
+      <span>📋</span>
+      Export tracking.js
+    </button>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main">
+
+    <!-- Overview page -->
+    <div class="page active" id="page-overview">
+      <h1>Tracking Dashboard</h1>
+      <p class="subtitle">
+        Enable and configure analytics providers for masononsite.com.
+        All changes here generate an updated <code>tracking.js</code> file
+        that you copy into the mason web folder. No deployment required —
+        save the file and refresh the page to apply.
+      </p>
+
+      <div class="alert alert-info">
+        💡 Changes here don't auto-save to disk. Use the "Export tracking.js" page to copy
+        the generated code, then paste it into <code>tracking.js</code> in the mason web folder.
+      </div>
+
+      <h2>Active trackers</h2>
+      <div class="status-row" id="status-row">
+        <!-- Populated by JS -->
+      </div>
+
+      <h2>Quick start</h2>
+      <p style="color:var(--muted);margin-bottom:1rem;line-height:1.65;">
+        1. Click a tracker in the left nav<br>
+        2. Toggle it on and paste your tracking ID<br>
+        3. Click "Save to Dashboard"<br>
+        4. Go to "Export tracking.js" and copy the generated code<br>
+        5. Replace the contents of <code>tracking.js</code> in the mason web folder<br>
+        6. Reload any page on the site to verify in DevTools → Network
+      </p>
+    </div>
+
+    <!-- GA4 -->
+    <div class="page" id="page-ga4">
+      <h1>Google Analytics 4</h1>
+      <p class="subtitle">
+        GA4 tracks pageviews, events, and user behaviour across masononsite.com.
+        Your Measurement ID looks like G-XXXXXXXXXX. Find it in
+        Google Analytics → Admin → Data streams → your stream → Measurement ID.
+      </p>
+      <div class="tracker-card" id="card-ga4">
+        <div class="tracker-card__header">
+          <span class="tracker-card__name">Google Analytics 4</span>
+          <label class="toggle">
+            <input type="checkbox" id="toggle-ga4" onchange="toggleTracker('ga4')">
+            <div class="toggle__track"></div>
+          </label>
+        </div>
+        <p class="tracker-card__desc">
+          Tracks pageviews, sessions, user demographics, traffic sources, and custom events.
+          The most widely used web analytics platform. Required for Google Ads conversion tracking.
+        </p>
+        <div class="input-group">
+          <label>Measurement ID (G-XXXXXXXXXX)</label>
+          <input type="text" id="input-ga4" placeholder="G-XXXXXXXXXX" oninput="updateTracker('ga4')" />
+        </div>
+        <div>
+          <button class="btn btn-primary" onclick="saveTracker('ga4')">Save to Dashboard</button>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <h2>How to verify</h2>
+      <p style="color:var(--muted);line-height:1.65;">
+        Open DevTools (F12) → Network tab → reload the page → filter by "google-analytics.com".<br>
+        You should see a request to <code>gtag/js?id=G-XXXXXXX</code>.<br>
+        In GA4, go to Realtime → Overview. Your visit should appear within 30 seconds.
+      </p>
+    </div>
+
+    <!-- Plausible -->
+    <div class="page" id="page-plausible">
+      <h1>Plausible Analytics</h1>
+      <p class="subtitle">
+        Plausible is a privacy-first, cookie-free analytics tool. No GDPR consent banner required.
+        Simpler than GA4 but still shows pageviews, bounce rate, traffic sources, and top pages.
+        Good choice if you want clean data without the complexity of GA4.
+      </p>
+      <div class="tracker-card" id="card-plausible">
+        <div class="tracker-card__header">
+          <span class="tracker-card__name">Plausible Analytics</span>
+          <label class="toggle">
+            <input type="checkbox" id="toggle-plausible" onchange="toggleTracker('plausible')">
+            <div class="toggle__track"></div>
+          </label>
+        </div>
+        <p class="tracker-card__desc">
+          Privacy-first analytics. No cookies. No personal data. No consent banner needed.
+          Lightweight script (~1 KB). Open source. Data stored in EU.
+        </p>
+        <div class="input-group">
+          <label>Domain (as registered in Plausible — e.g. masononsite.com)</label>
+          <input type="text" id="input-plausible" placeholder="masononsite.com" oninput="updateTracker('plausible')" />
+        </div>
+        <div class="input-group">
+          <label>API Host (leave blank for plausible.io — only change if self-hosted)</label>
+          <input type="text" id="input-plausible-host" placeholder="https://plausible.io" oninput="updateTracker('plausible')" />
+        </div>
+        <div>
+          <button class="btn btn-primary" onclick="saveTracker('plausible')">Save to Dashboard</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clarity -->
+    <div class="page" id="page-clarity">
+      <h1>Microsoft Clarity</h1>
+      <p class="subtitle">
+        Clarity records heatmaps and session recordings — free, unlimited. Shows where users
+        click, how far they scroll, and what they do before leaving. Find your Project ID
+        in Clarity → Settings → Overview.
+      </p>
+      <div class="tracker-card" id="card-clarity">
+        <div class="tracker-card__header">
+          <span class="tracker-card__name">Microsoft Clarity</span>
+          <label class="toggle">
+            <input type="checkbox" id="toggle-clarity" onchange="toggleTracker('clarity')">
+            <div class="toggle__track"></div>
+          </label>
+        </div>
+        <p class="tracker-card__desc">
+          Free heatmaps and session recordings. Unlimited sessions. Integrates with GA4.
+          Useful for understanding why visitors aren't converting on the pricing page.
+        </p>
+        <div class="input-group">
+          <label>Project ID (10-character alphanumeric)</label>
+          <input type="text" id="input-clarity" placeholder="xxxxxxxxxx" oninput="updateTracker('clarity')" />
+        </div>
+        <div>
+          <button class="btn btn-primary" onclick="saveTracker('clarity')">Save to Dashboard</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hotjar -->
+    <div class="page" id="page-hotjar">
+      <h1>Hotjar</h1>
+      <p class="subtitle">
+        Hotjar provides heatmaps, session recordings, and feedback polls.
+        More polished than Clarity but paid after 35 sessions/day.
+        Your Site ID is a number — find it in Hotjar → Settings → Tracking code.
+      </p>
+      <div class="tracker-card" id="card-hotjar">
+        <div class="tracker-card__header">
+          <span class="tracker-card__name">Hotjar</span>
+          <label class="toggle">
+            <input type="checkbox" id="toggle-hotjar" onchange="toggleTracker('hotjar')">
+            <div class="toggle__track"></div>
+          </label>
+        </div>
+        <p class="tracker-card__desc">
+          Heatmaps, session recordings, feedback surveys, and funnel analysis.
+          Free tier: 35 sessions/day. Paid from $32/month.
+        </p>
+        <div class="input-group">
+          <label>Site ID (numbers only)</label>
+          <input type="number" id="input-hotjar" placeholder="1234567" oninput="updateTracker('hotjar')" />
+        </div>
+        <div>
+          <button class="btn btn-primary" onclick="saveTracker('hotjar')">Save to Dashboard</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meta Pixel -->
+    <div class="page" id="page-meta">
+      <h1>Meta Pixel</h1>
+      <p class="subtitle">
+        Required for Facebook and Instagram ads retargeting and conversion tracking.
+        Your Pixel ID is a 15–16 digit number. Find it in Meta Business Suite →
+        Events Manager → your pixel.
+      </p>
+      <div class="tracker-card" id="card-meta">
+        <div class="tracker-card__header">
+          <span class="tracker-card__name">Meta Pixel</span>
+          <label class="toggle">
+            <input type="checkbox" id="toggle-meta" onchange="toggleTracker('meta')">
+            <div class="toggle__track"></div>
+          </label>
+        </div>
+        <p class="tracker-card__desc">
+          Tracks site visitors for Facebook/Instagram ad targeting. Required for retargeting
+          campaigns, lookalike audiences, and conversion optimisation campaigns.
+        </p>
+        <div class="input-group">
+          <label>Pixel ID (15–16 digit number)</label>
+          <input type="text" id="input-meta" placeholder="123456789012345" oninput="updateTracker('meta')" />
+        </div>
+        <div>
+          <button class="btn btn-primary" onclick="saveTracker('meta')">Save to Dashboard</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- LinkedIn -->
+    <div class="page" id="page-linkedin">
+      <h1>LinkedIn Insight Tag</h1>
+      <p class="subtitle">
+        Required for LinkedIn ads retargeting and conversion tracking.
+        Your Partner ID is a 7-digit number. Find it in LinkedIn Campaign Manager →
+        Account Assets → Insight Tag.
+      </p>
+      <div class="tracker-card" id="card-linkedin">
+        <div class="tracker-card__header">
+          <span class="tracker-card__name">LinkedIn Insight Tag</span>
+          <label class="toggle">
+            <input type="checkbox" id="toggle-linkedin" onchange="toggleTracker('linkedin')">
+            <div class="toggle__track"></div>
+          </label>
+        </div>
+        <p class="tracker-card__desc">
+          LinkedIn website demographics (job titles, industries of your visitors) and
+          conversion tracking for LinkedIn ad campaigns. Highly useful for B2B targeting.
+        </p>
+        <div class="input-group">
+          <label>Partner ID (7-digit number)</label>
+          <input type="text" id="input-linkedin" placeholder="1234567" oninput="updateTracker('linkedin')" />
+        </div>
+        <div>
+          <button class="btn btn-primary" onclick="saveTracker('linkedin')">Save to Dashboard</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Segment -->
+    <div class="page" id="page-segment">
+      <h1>Segment</h1>
+      <p class="subtitle">
+        Segment is a customer data platform — it collects events once and routes them
+        to any destination (GA4, Mixpanel, Amplitude, Intercom, etc.) without adding
+        more tracking scripts. Find your Write Key in Segment → Sources → your source → API Keys.
+      </p>
+      <div class="tracker-card" id="card-segment">
+        <div class="tracker-card__header">
+          <span class="tracker-card__name">Segment</span>
+          <label class="toggle">
+            <input type="checkbox" id="toggle-segment" onchange="toggleTracker('segment')">
+            <div class="toggle__track"></div>
+          </label>
+        </div>
+        <p class="tracker-card__desc">
+          Unified customer data platform. Track once, send everywhere.
+          Useful when you want to run multiple analytics tools without performance impact.
+        </p>
+        <div class="input-group">
+          <label>Write Key (32-character string)</label>
+          <input type="text" id="input-segment" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" oninput="updateTracker('segment')" />
+        </div>
+        <div>
+          <button class="btn btn-primary" onclick="saveTracker('segment')">Save to Dashboard</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Custom script -->
+    <div class="page" id="page-custom">
+      <h1>Custom Script</h1>
+      <p class="subtitle">
+        Paste any custom JavaScript here and it will be injected into every page's &lt;head&gt;.
+        Use this for any tracking provider not listed above.
+      </p>
+      <div class="tracker-card" id="card-custom">
+        <div class="tracker-card__header">
+          <span class="tracker-card__name">Custom Script</span>
+          <label class="toggle">
+            <input type="checkbox" id="toggle-custom" onchange="toggleTracker('custom')">
+            <div class="toggle__track"></div>
+          </label>
+        </div>
+        <p class="tracker-card__desc">
+          Paste the inner contents of a &lt;script&gt; tag here — do NOT include the opening/closing
+          &lt;script&gt; tags, just the JavaScript code.
+        </p>
+        <div class="input-group">
+          <label>JavaScript code</label>
+          <textarea id="input-custom" rows="8" placeholder="// Paste your tracking code here..." oninput="updateTracker('custom')"></textarea>
+        </div>
+        <div>
+          <button class="btn btn-primary" onclick="saveTracker('custom')">Save to Dashboard</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Export -->
+    <div class="page" id="page-export">
+      <h1>Export tracking.js</h1>
+      <p class="subtitle">
+        This is the generated tracking.js file based on your current dashboard settings.
+        Copy the entire block below and replace the contents of
+        <code>tracking.js</code> in your mason web folder.
+      </p>
+      <div class="alert alert-warn">
+        ⚠️ This dashboard stores settings in browser localStorage only — settings are lost
+        if you clear browser data. Back up your tracking IDs somewhere safe.
+      </div>
+      <button class="btn btn-primary" onclick="copyOutput()" style="margin-bottom:1rem;">
+        📋 Copy to clipboard
+      </button>
+      <button class="btn btn-ghost" onclick="generateOutput()" style="margin-bottom:1rem;">
+        🔄 Refresh output
+      </button>
+      <div class="code-block" id="output-code">
+        // Click "Refresh output" to generate the tracking.js content
+      </div>
+      <p style="color:var(--muted);margin-top:1rem;font-size:13px;">
+        After saving tracking.js, reload any MASON page and open DevTools → Network.
+        Filter by the provider domain (e.g. "google-analytics.com") to verify the tracker is firing.
+      </p>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// ─── State ────────────────────────────────────────────────────────────────────
+const STATE_KEY = 'mason_tracking_dashboard';
+
+const TRACKERS = {
+  ga4:       { name: 'GA4', enabled: false, id: '', label: 'Measurement ID' },
+  plausible: { name: 'Plausible', enabled: false, id: '', host: '', label: 'Domain' },
+  clarity:   { name: 'Clarity', enabled: false, id: '', label: 'Project ID' },
+  hotjar:    { name: 'Hotjar', enabled: false, id: '', label: 'Site ID' },
+  meta:      { name: 'Meta Pixel', enabled: false, id: '', label: 'Pixel ID' },
+  linkedin:  { name: 'LinkedIn', enabled: false, id: '', label: 'Partner ID' },
+  segment:   { name: 'Segment', enabled: false, id: '', label: 'Write Key' },
+  custom:    { name: 'Custom', enabled: false, id: '', label: 'Script' },
+};
+
+function loadState() {
+  try {
+    const s = localStorage.getItem(STATE_KEY);
+    if (s) {
+      const saved = JSON.parse(s);
+      Object.keys(saved).forEach(k => {
+        if (TRACKERS[k]) Object.assign(TRACKERS[k], saved[k]);
+      });
+    }
+  } catch(e) {}
+}
+
+function saveState() {
+  localStorage.setItem(STATE_KEY, JSON.stringify(TRACKERS));
+}
+
+// ─── Navigation ───────────────────────────────────────────────────────────────
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  btn.classList.add('active');
+  if (id === 'export') generateOutput();
+  if (id === 'overview') renderStatusRow();
+}
+
+// ─── Tracker controls ─────────────────────────────────────────────────────────
+function toggleTracker(key) {
+  const cb = document.getElementById('toggle-' + key);
+  TRACKERS[key].enabled = cb.checked;
+  document.getElementById('card-' + key).classList.toggle('is-enabled', cb.checked);
+  updateDot(key);
+  saveState();
+}
+
+function updateTracker(key) {
+  const inp = document.getElementById('input-' + key);
+  if (inp) TRACKERS[key].id = inp.value.trim();
+  if (key === 'plausible') {
+    const host = document.getElementById('input-plausible-host');
+    if (host) TRACKERS.plausible.host = host.value.trim();
+  }
+}
+
+function saveTracker(key) {
+  updateTracker(key);
+  saveState();
+  const btn = event.target;
+  const orig = btn.textContent;
+  btn.textContent = '✓ Saved';
+  btn.style.background = '#4ade80';
+  setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 1500);
+  updateDot(key);
+  renderStatusRow();
+}
+
+function updateDot(key) {
+  const dot = document.getElementById('dot-' + key);
+  if (!dot) return;
+  const on = TRACKERS[key].enabled && TRACKERS[key].id;
+  dot.className = 'nav-item__dot ' + (on ? 'dot-on' : 'dot-off');
+}
+
+// ─── Restore saved state to inputs ───────────────────────────────────────────
+function restoreInputs() {
+  Object.keys(TRACKERS).forEach(key => {
+    const t = TRACKERS[key];
+    const cb = document.getElementById('toggle-' + key);
+    const inp = document.getElementById('input-' + key);
+    if (cb) { cb.checked = t.enabled; document.getElementById('card-' + key)?.classList.toggle('is-enabled', t.enabled); }
+    if (inp) inp.value = t.id || '';
+    if (key === 'plausible') {
+      const host = document.getElementById('input-plausible-host');
+      if (host) host.value = t.host || '';
+    }
+    updateDot(key);
+  });
+}
+
+// ─── Status row ───────────────────────────────────────────────────────────────
+function renderStatusRow() {
+  const row = document.getElementById('status-row');
+  if (!row) return;
+  row.innerHTML = Object.keys(TRACKERS).map(k => {
+    const t = TRACKERS[k];
+    const on = t.enabled && t.id;
+    return `<div class="status-card">
+      <div class="status-card__name">${t.name}</div>
+      <div class="status-card__state">
+        <span class="status-dot" style="background:${on ? '#4ade80' : 'rgba(255,255,255,.2)'}"></span>
+        ${on ? 'Enabled · ' + t.id.substring(0,12) + (t.id.length>12?'…':'') : 'Not configured'}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ─── Output generator ────────────────────────────────────────────────────────
+function generateOutput() {
+  const t = TRACKERS;
+  let code = `/**\n * MASON — Analytics & Tracking Configuration\n * Generated by Tracking Dashboard · ${new Date().toISOString().split('T')[0]}\n */\n\n(function () {\n  'use strict';\n\n  var TRACKING_CONFIG = {\n    enabled: true,\n\n`;
+
+  code += `    ga4: {\n      enabled: ${t.ga4.enabled},\n      measurementId: '${t.ga4.id || 'G-XXXXXXXXXX'}',\n    },\n\n`;
+  code += `    plausible: {\n      enabled: ${t.plausible.enabled},\n      domain: '${t.plausible.id || 'masononsite.com'}',\n${t.plausible.host ? "      apiHost: '" + t.plausible.host + "',\n" : ''}    },\n\n`;
+  code += `    metaPixel: {\n      enabled: ${t.meta.enabled},\n      pixelId: '${t.meta.id || 'XXXXXXXXXXXXXXXXXX'}',\n    },\n\n`;
+  code += `    linkedin: {\n      enabled: ${t.linkedin.enabled},\n      partnerId: '${t.linkedin.id || 'XXXXXXX'}',\n    },\n\n`;
+  code += `    hotjar: {\n      enabled: ${t.hotjar.enabled},\n      siteId: ${t.hotjar.id ? parseInt(t.hotjar.id) : 0},\n      version: 6,\n    },\n\n`;
+  code += `    clarity: {\n      enabled: ${t.clarity.enabled},\n      projectId: '${t.clarity.id || 'XXXXXXXXXX'}',\n    },\n\n`;
+  code += `    segment: {\n      enabled: ${t.segment.enabled},\n      writeKey: '${t.segment.id || 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'}',\n    },\n\n`;
+  code += `    custom: {\n      enabled: ${t.custom.enabled},\n      script: ${JSON.stringify(t.custom.id || '')},\n    },\n  };\n\n`;
+
+  code += `  // ─── DO NOT EDIT BELOW THIS LINE ──────────────────────────────────────\n\n`;
+  code += `  if (!TRACKING_CONFIG.enabled) return;\n\n`;
+  code += `  function loadScript(src, attrs) {\n    var s = document.createElement('script');\n    s.src = src; s.async = true;\n    if (attrs) Object.keys(attrs).forEach(function(k) { s.setAttribute(k, attrs[k]); });\n    document.head.appendChild(s);\n  }\n\n`;
+  code += `  function injectInlineScript(code) {\n    var s = document.createElement('script');\n    s.textContent = code;\n    document.head.appendChild(s);\n  }\n\n`;
+
+  code += `  if (TRACKING_CONFIG.ga4.enabled && TRACKING_CONFIG.ga4.measurementId) {\n    var gId = TRACKING_CONFIG.ga4.measurementId;\n    loadScript('https://www.googletagmanager.com/gtag/js?id=' + gId);\n    injectInlineScript('window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","' + gId + '");');\n  }\n\n`;
+  code += `  if (TRACKING_CONFIG.plausible.enabled) {\n    var pc = TRACKING_CONFIG.plausible;\n    loadScript((pc.apiHost || 'https://plausible.io') + '/js/script.js', { 'data-domain': pc.domain, defer: '' });\n  }\n\n`;
+  code += `  if (TRACKING_CONFIG.metaPixel.enabled && TRACKING_CONFIG.metaPixel.pixelId) {\n    var px = TRACKING_CONFIG.metaPixel.pixelId;\n    injectInlineScript('!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");fbq("init","' + px + '");fbq("track","PageView");');\n  }\n\n`;
+  code += `  if (TRACKING_CONFIG.linkedin.enabled && TRACKING_CONFIG.linkedin.partnerId) {\n    var li = TRACKING_CONFIG.linkedin.partnerId;\n    injectInlineScript('_linkedin_partner_id="' + li + '";window._linkedin_data_partner_ids=window._linkedin_data_partner_ids||[];window._linkedin_data_partner_ids.push(_linkedin_partner_id);');\n    loadScript('https://snap.licdn.com/li.lms-analytics/insight.min.js');\n  }\n\n`;
+  code += `  if (TRACKING_CONFIG.hotjar.enabled && TRACKING_CONFIG.hotjar.siteId) {\n    var hj = TRACKING_CONFIG.hotjar;\n    injectInlineScript('(function(h,o,t,j,a,r){h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};h._hjSettings={hjid:' + hj.siteId + ',hjsv:' + hj.version + '};a=o.getElementsByTagName("head")[0];r=o.createElement("script");r.async=1;r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;a.appendChild(r)})(window,document,"https://static.hotjar.com/c/hotjar-",".js?sv=");');\n  }\n\n`;
+  code += `  if (TRACKING_CONFIG.clarity.enabled && TRACKING_CONFIG.clarity.projectId) {\n    var cl = TRACKING_CONFIG.clarity.projectId;\n    injectInlineScript('(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","' + cl + '");');\n  }\n\n`;
+  code += `  if (TRACKING_CONFIG.custom.enabled && TRACKING_CONFIG.custom.script) {\n    injectInlineScript(TRACKING_CONFIG.custom.script);\n  }\n\n`;
+  code += `  window.__MASON_TRACKING = TRACKING_CONFIG;\n\n})();`;
+
+  document.getElementById('output-code').textContent = code;
+}
+
+function copyOutput() {
+  const text = document.getElementById('output-code').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target;
+    btn.textContent = '✓ Copied!';
+    btn.style.background = '#4ade80';
+    setTimeout(() => { btn.textContent = '📋 Copy to clipboard'; btn.style.background = ''; }, 2000);
+  });
+}
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+loadState();
+restoreInputs();
+renderStatusRow();
+</script>
+</body>
+</html>
