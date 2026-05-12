@@ -13,7 +13,7 @@ const PERSONAS = [
     id: "super",
     tag: "Supers . owners' reps",
     title: "Mobile that doesn't apologize for being mobile.",
-    body: "Issues, RFIs, documents, and the BIM model -- full workflows on a phone browser. No locked-out screens, no "open this on desktop" walls in the way of your day.",
+    body: 'Issues, RFIs, documents, and the BIM model -- full workflows on a phone browser. No locked-out screens, no "open this on desktop" walls in the way of your day.',
     bullets: ["BIM + AR on phone browser", "Issues & RFIs unblocked", "Documents in one tap", "Full read/write parity"],
     surface: "mob",
   },
