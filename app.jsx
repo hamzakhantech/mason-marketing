@@ -122,8 +122,25 @@ function hexA(hex, a) {
   return `rgba(${r},${g},${b},${a})`;
 }
 
-// Defer render until after all Babel external scripts have executed.
-requestAnimationFrame(function() {
-  var root = document.getElementById('root');
-  if (root) ReactDOM.createRoot(root).render(React.createElement(App));
-});
+// Wait until all Babel-compiled globals are defined before rendering.
+// requestAnimationFrame fires in ~16ms — Babel needs 3-8s to compile
+// hero.jsx, sections.jsx, new-sections.jsx, home-extra.jsx, layout.jsx.
+(function waitForGlobals() {
+  var required = ['Header', 'Footer', 'Pillars', 'ModuleGrid', 'FinalCTA', 'ConciergeSpotlight'];
+  var start = Date.now();
+  function check() {
+    if (required.every(function(g) { return typeof window[g] === 'function'; })) {
+      var root = document.getElementById('root');
+      if (root) ReactDOM.createRoot(root).render(React.createElement(App));
+      return;
+    }
+    if (Date.now() - start > 12000) {
+      // Fallback after 12s — render whatever is available
+      var root = document.getElementById('root');
+      if (root) ReactDOM.createRoot(root).render(React.createElement(App));
+      return;
+    }
+    requestAnimationFrame(check);
+  }
+  requestAnimationFrame(check);
+})();
