@@ -39,8 +39,8 @@ const Footer = () => (
           <span className="mono">Company</span>
           <a href="about.html">About</a>
           <a href="contact.html">Contact</a>
-          <a href="#">Privacy</a>
-          <a href="#">Terms</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
         </div>
         <div>
           <span className="mono">Account</span>
