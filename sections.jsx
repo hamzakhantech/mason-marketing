@@ -512,7 +512,7 @@ const CTABand = () => (
           <a href="https://app.masononsite.com/login" className="btn btn-primary mason-border-sweep">
             Sign in <IconArrowRight size={16} stroke={2} />
           </a>
-          <a href="mailto:hello@masononsite.com" className="btn btn-ghost">
+          <a href="mailto:connect@masononsite.com" className="btn btn-ghost">
             Request a demo
           </a>
         </div>

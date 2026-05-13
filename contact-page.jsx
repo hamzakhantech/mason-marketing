@@ -68,7 +68,7 @@ const ContactOptions = () => (
             body:`If you represent a software company that wants to build an integration with
             MASON, a consultancy that wants to recommend it to clients, or a company that
             operates in adjacent spaces and wants to explore a partnership, we want to hear
-            from you. Email us at partners@masononsite.com or use the form.`,
+            from you. Email us at connect@masononsite.com or use the form.`,
             cta:"Explore partnership",
             href:"#contact-form"
           }
@@ -86,14 +86,64 @@ const ContactOptions = () => (
   </section>
 );
 
+var CONTACT_CHECK_SVG = '<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+
 const ContactForm = () => {
   const [submitted, setSubmitted] = React.useState(false);
+  const [sending, setSending] = React.useState(false);
+  const [sendError, setSendError] = React.useState(null);
   const [form, setForm] = React.useState({name:"",email:"",company:"",role:"",reason:"demo",projects:"",message:""});
   const set = (k) => (e) => setForm({...form,[k]:e.target.value});
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setSendError(null);
+
+    // Capture metadata
+    var ts = new Date().toISOString();
+    var ua = navigator.userAgent || "";
+    var device = /Mobi|Android|iPhone|iPad/i.test(ua) ? "Mobile" : "Desktop";
+    var os = /Windows/i.test(ua) ? "Windows"
+           : /Mac OS X/i.test(ua) && !/iPhone|iPad/i.test(ua) ? "macOS"
+           : /iPhone|iPad/i.test(ua) ? "iOS"
+           : /Android/i.test(ua) ? "Android"
+           : /Linux/i.test(ua) ? "Linux"
+           : "Unknown";
+
+    var geoData = {};
+    try {
+      var geoRes = await fetch("https://ipapi.co/json/", {signal: AbortSignal.timeout ? AbortSignal.timeout(4000) : undefined});
+      if (geoRes.ok) geoData = await geoRes.json();
+    } catch(_) {}
+
+    var payload = Object.assign({}, form, {
+      timestamp: ts,
+      device: device,
+      os: os,
+      ip: geoData.ip || "",
+      city: geoData.city || "",
+      region: geoData.region || "",
+      country: geoData.country_name || ""
+    });
+
+    try {
+      var res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        var errData = await res.json().catch(() => ({}));
+        setSendError(errData.error || "Something went wrong. Please email us at connect@masononsite.com.");
+      }
+    } catch(_) {
+      setSendError("Network error. Please email us directly at connect@masononsite.com.");
+    } finally {
+      setSending(false);
+    }
   };
 
   if (submitted) {
@@ -101,7 +151,7 @@ const ContactForm = () => {
       <section className="section bg-subtle" id="contact-form">
         <div className="container" style={{maxWidth:600,textAlign:"center"}}>
           <div className="gsap-fade-up" style={{background:"var(--bg-elev)",border:"1px solid var(--line)",borderRadius:16,padding:48}}>
-            <div style={{width:64,height:64,borderRadius:"50%",background:"rgba(74,222,128,.12)",border:"1px solid rgba(74,222,128,.3)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:28,margin:"0 auto 24px"}}>check</div>
+            <div style={{width:64,height:64,borderRadius:"50%",background:"rgba(74,222,128,.12)",border:"1px solid rgba(74,222,128,.3)",display:"flex",alignItems:"center",justifyContent:"center",margin:"0 auto 24px"}} dangerouslySetInnerHTML={{__html:CONTACT_CHECK_SVG}}></div>
             <h2 style={{fontSize:24,fontWeight:700,marginBottom:12}}>Message sent</h2>
             <p style={{fontSize:15,color:"var(--text-muted)",lineHeight:1.7,marginBottom:24}}>
               Thank you. We will get back to you at {form.email} within one business day.
@@ -181,8 +231,15 @@ const ContactForm = () => {
               placeholder="Tell us what you are working on, what questions you have, or what you would like to cover in the demo. The more detail you give us, the more useful the conversation will be."
               style={{minHeight:140}} required />
           </div>
+          {sendError && (
+            <div style={{background:"rgba(192,57,43,.1)",border:"1px solid rgba(192,57,43,.3)",borderRadius:8,padding:"12px 16px",fontSize:14,color:"#c0392b"}}>
+              {sendError}
+            </div>
+          )}
           <div className="form-submit-row">
-            <button type="submit" className="btn btn-primary btn-lg">Send message</button>
+            <button type="submit" className="btn btn-primary btn-lg" disabled={sending} style={{opacity:sending?0.7:1,cursor:sending?"wait":"pointer"}}>
+              {sending ? "Sending…" : "Send message"}
+            </button>
             <p className="form-note">We respond within one business day. Usually faster.</p>
           </div>
         </form>
@@ -268,22 +325,22 @@ const ContactInfoCards = () => (
         {[
           {
             heading:"General enquiries",
-            email:"hello@masononsite.com",
+            email:"connect@masononsite.com",
             note:"For anything not covered by the categories above. We read every email."
           },
           {
             heading:"Technical support",
-            email:"support@masononsite.com",
+            email:"connect@masononsite.com",
             note:"For customers with active accounts needing help with a specific issue. Response within 4 hours on Professional and Scale plans."
           },
           {
             heading:"Partnership and integrations",
-            email:"partners@masononsite.com",
+            email:"connect@masononsite.com",
             note:"For API integration requests, reseller conversations, and technology partnerships."
           },
           {
             heading:"Press and media",
-            email:"press@masononsite.com",
+            email:"connect@masononsite.com",
             note:"For interview requests, product coverage, or data on MASON usage. We respond to press enquiries within 24 hours."
           }
         ].map((card,i)=>(
@@ -388,7 +445,7 @@ const ContactForCustomers = () => (
           },
           {
             heading:"Email support",
-            desc:"Send an email to support@masononsite.com. Include your project ID if the question is project specific. All plans get a one business day response. Professional plans get a four hour response during business hours.",
+            desc:"Send an email to connect@masononsite.com. Include your project ID if the question is project specific. All plans get a one business day response. Professional plans get a four hour response during business hours.",
             badge:"All plans"
           },
           {
@@ -418,10 +475,10 @@ const ContactFAQ = () => {
   const items = [
     {q:"How quickly do you respond to demo requests?",a:`We confirm demo bookings within a few hours and typically schedule them within two to three business days depending on availability. If you have an urgent timeline, mention it in the message and we will try to accommodate same or next day.`},
     {q:"Do you offer demos outside of standard business hours?",a:`Yes. We have team members across multiple time zones and can schedule demos to cover most of the working day from UTC-8 to UTC+8. If you are based outside those hours, mention your time zone in the form and we will find a time that works.`},
-    {q:"I already started a trial but I am stuck. What do I do?",a:`Go to the in-app help chat first, that is the fastest route. Alternatively email support@masononsite.com with your project name and a description of what you are trying to do. We can also schedule a 15 minute screen share to walk you through whatever is blocking you.`},
+    {q:"I already started a trial but I am stuck. What do I do?",a:`Go to the in-app help chat first, that is the fastest route. Alternatively email connect@masononsite.com with your project name and a description of what you are trying to do. We can also schedule a 15 minute screen share to walk you through whatever is blocking you.`},
     {q:"Can I talk to an actual customer before deciding?",a:`Yes. We have a small group of customers who have agreed to speak with prospective teams about their experience with MASON. They are independent and will give you an honest account. Ask us to arrange this in the contact form.`},
     {q:"Do you have a self-service trial without booking a demo?",a:`Yes. You can start a free trial directly at app.masononsite.com/register without talking to anyone. You get 30 days on the Professional plan with all 12 modules. The demo is optional, not required. A lot of teams prefer to explore the platform on their own first.`},
-    {q:"I want to use MASON for a large programme. Is there an enterprise option?",a:`Yes. The Scale plan covers unlimited active projects and includes SAML SSO, a dedicated support manager, and custom onboarding. For very large programmes or organisations with specific data residency, custom integration, or audit requirements, we handle those on a custom contract. Use the contact form and select "partnership" or email us directly at enterprise@masononsite.com.`}
+    {q:"I want to use MASON for a large programme. Is there an enterprise option?",a:`Yes. The Scale plan covers unlimited active projects and includes SAML SSO, a dedicated support manager, and custom onboarding. For very large programmes or organisations with specific data residency, custom integration, or audit requirements, we handle those on a custom contract. Use the contact form and select "partnership" or email us directly at connect@masononsite.com.`}
   ];
   return (
     <section className="section">

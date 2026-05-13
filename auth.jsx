@@ -82,7 +82,7 @@ const ForgotVisual = () => (
       <span className="av" style={{ background: "linear-gradient(135deg,#5fb37a,#3a8454)" }} />
       <div>
         <b style={{ color: "var(--text)", display: "block" }}>Need help?</b>
-        <span>support@masononsite.com . usually under 4h</span>
+        <span>connect@masononsite.com . usually under 4h</span>
       </div>
     </div>
   </div>

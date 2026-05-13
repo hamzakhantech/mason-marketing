@@ -127,7 +127,7 @@ const IntAPI = () => (
           </p>
           <h3>Want to build a custom integration?</h3>
           <p>
-            Email us at <a href="mailto:api@masononsite.com" style={{color:"var(--accent)",textDecoration:"none",fontWeight:600}}>api@masononsite.com</a>.
+            Email us at <a href="mailto:connect@masononsite.com" style={{color:"var(--accent)",textDecoration:"none",fontWeight:600}}>connect@masononsite.com</a>.
             Our engineering team reviews every request and responds within one business day.
             Scale plan customers receive dedicated integration support.
           </p>
@@ -156,7 +156,7 @@ const IntAPI = () => (
             <div style={{marginTop:20,paddingTop:16,borderTop:"1px solid var(--line)"}}>
               <p style={{color:"var(--text-faint)",fontSize:12,fontFamily:"var(--font-sans)",margin:0}}>
                 API documentation available to Professional and Scale plan customers.
-                Contact <a href="mailto:api@masononsite.com" style={{color:"var(--accent)",textDecoration:"none"}}>api@masononsite.com</a> to get access.
+                Contact <a href="mailto:connect@masononsite.com" style={{color:"var(--accent)",textDecoration:"none"}}>connect@masononsite.com</a> to get access.
               </p>
             </div>
           </div>
@@ -172,7 +172,7 @@ const IntFAQ = () => {
     {q:"Do I need a developer to set up integrations?",a:`Most pre-built integrations — Autodesk, MS Project, Procore migration, Slack and Teams notifications — are configured through the MASON settings interface with no code required. The REST API and webhooks require a developer or someone comfortable with REST and JSON.`},
     {q:"Are integrations included in all plans?",a:`Pre-built integrations with Autodesk, MS Project, Slack, and Teams are included on all paid plans. The full REST API is available on Professional and Scale plans. Custom integration support and dedicated setup assistance is available on Scale.`},
     {q:"Can I migrate my Procore project history into MASON?",a:`Yes. The Procore migration tool transfers issues, RFIs, submittals, and document registers with full history. Photos and attachments transfer. Drawing annotations do not transfer due to format differences, but the underlying documents do. The process typically takes a few hours for a large project.`},
-    {q:"Do you support custom ERP integrations?",a:`Scale plan customers can request custom ERP integration work. We have done this for SAP, Oracle, Sage, and several regional ERP systems. Scope and timeline depend on the ERP's API capability and the data model required. Email enterprise@masononsite.com to discuss.`},
+    {q:"Do you support custom ERP integrations?",a:`Scale plan customers can request custom ERP integration work. We have done this for SAP, Oracle, Sage, and several regional ERP systems. Scope and timeline depend on the ERP's API capability and the data model required. Email connect@masononsite.com to discuss.`},
     {q:"What happens to integrations when you update the API?",a:`We version the API. Changes within a major version are backwards compatible. When a new major version ships, we give a minimum six-month notice period and maintain the previous version in parallel. We have not had a breaking change yet, but this is the commitment if we do.`}
   ];
   return (
@@ -208,13 +208,13 @@ const IntCTA = () => (
           If there is a tool you rely on that is not here, let us know.
         </p>
         <p style={{fontSize:15,margin:"0 0 32px"}}>
-          <a href="mailto:integrations@masononsite.com" style={{color:"var(--accent)",fontWeight:600,textDecoration:"none"}}>
-            integrations@masononsite.com
+          <a href="mailto:connect@masononsite.com" style={{color:"var(--accent)",fontWeight:600,textDecoration:"none"}}>
+            connect@masononsite.com
           </a>
         </p>
         <p style={{fontSize:13,color:"var(--text-faint)",lineHeight:1.6}}>
           Enterprise customers with bespoke ERP or data residency requirements should
-          email <a href="mailto:enterprise@masononsite.com" style={{color:"var(--accent)",textDecoration:"none"}}>enterprise@masononsite.com</a>.
+          email <a href="mailto:connect@masononsite.com" style={{color:"var(--accent)",textDecoration:"none"}}>connect@masononsite.com</a>.
         </p>
       </div>
     </div>

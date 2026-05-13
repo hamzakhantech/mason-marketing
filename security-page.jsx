@@ -89,7 +89,7 @@ const SecFAQ = () => {
     {q:"What happens if there is a data breach?",a:`We maintain an incident response plan and are contractually required to notify affected customers within 72 hours of discovering a breach that may affect their data, in line with GDPR requirements. We would also notify the relevant supervisory authority. We have not had a breach to date but the process is documented and tested annually.`},
     {q:"Can I host MASON on my own infrastructure?",a:`Not currently. MASON is a cloud-hosted platform and self-hosted deployment is not offered. If you have specific infrastructure requirements, the Scale plan with regional deployment is the closest option. Enterprise customers with genuine on-premise requirements can discuss this with our team but it is not on the standard roadmap.`},
     {q:"How do you handle subprocessors?",a:`MASON uses a small number of subprocessors including AWS for infrastructure, Stripe for payment processing, and an email delivery service for notifications. A complete list of subprocessors is available in our Privacy Policy and we notify customers of any material changes to that list.`},
-    {q:"Do you have a bug bounty programme?",a:`Not yet, but we accept responsible disclosure reports at security@masononsite.com. We acknowledge all reports within two business days and keep the reporter informed of the investigation progress. We do not threaten legal action for good faith disclosures.`}
+    {q:"Do you have a bug bounty programme?",a:`Not yet, but we accept responsible disclosure reports at connect@masononsite.com. We acknowledge all reports within two business days and keep the reporter informed of the investigation progress. We do not threaten legal action for good faith disclosures.`}
   ];
   return (
     <section className="section">
@@ -112,10 +112,10 @@ const SecFAQ = () => {
           <p style={{fontSize:14,color:"var(--text-muted)",lineHeight:1.7,marginBottom:16}}>
             If you need security documentation for procurement, legal, or compliance purposes,
             including vendor questionnaire responses, DPA templates, or penetration test summaries,
-            email security@masononsite.com. We respond within two business days.
+            email connect@masononsite.com. We respond within two business days.
           </p>
-          <a href="mailto:security@masononsite.com" style={{color:"var(--accent)",fontWeight:600,textDecoration:"none",fontSize:14}}>
-            security@masononsite.com ->
+          <a href="mailto:connect@masononsite.com" style={{color:"var(--accent)",fontWeight:600,textDecoration:"none",fontSize:14}}>
+            connect@masononsite.com ->
           </a>
         </div>
       </div>

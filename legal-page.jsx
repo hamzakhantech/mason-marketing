@@ -3,7 +3,7 @@
 
 const LAST_UPDATED = "12 May 2026";
 const COMPANY = "Certiva LLC";
-const EMAIL = "legal@masononsite.com";
+const EMAIL = "connect@masononsite.com";
 
 // ── Privacy Policy ──────────────────────────────────────────────────────────
 
@@ -65,7 +65,7 @@ const PrivacyContent = () => (
     <p>Depending on your location, you may have the right to: access the personal data we hold about you; correct inaccurate data; request deletion of your data; restrict or object to processing; data portability; and withdraw consent. To exercise any of these rights, contact us at {EMAIL}. We will respond within 30 days. EU/UK users have the right to lodge a complaint with their local supervisory authority.</p>
 
     <h2>8. Security</h2>
-    <p>We implement technical and organisational measures to protect your data including TLS encryption in transit, AES-256 encryption at rest, access controls, and audit logging. No system is perfectly secure. If you discover a potential security issue, report it to security@masononsite.com.</p>
+    <p>We implement technical and organisational measures to protect your data including TLS encryption in transit, AES-256 encryption at rest, access controls, and audit logging. No system is perfectly secure. If you discover a potential security issue, report it to connect@masononsite.com.</p>
 
     <h2>9. Cookies</h2>
     <p>MASON uses cookies for authentication (session tokens), preference storage (theme, UI state), and basic analytics (page view counting without cross-site tracking). We do not use advertising cookies. You may disable cookies in your browser settings, but this will prevent you from signing in to the Service.</p>
@@ -130,7 +130,7 @@ const TermsContent = () => (
     <p>The Service is provided "as is" and "as available" without warranties of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the Service will be error-free, uninterrupted, or free of harmful components.</p>
 
     <h2>12. Termination</h2>
-    <p>You may cancel your subscription at any time through the account settings or by contacting support@masononsite.com. Cancellation takes effect at the end of the current billing period. We may suspend or terminate your access if you breach these Terms, with notice where reasonably practicable. Upon termination, your right to use the Service ceases. We will retain your data for 90 days post-termination to allow for reactivation or data export, after which it will be permanently deleted.</p>
+    <p>You may cancel your subscription at any time through the account settings or by contacting connect@masononsite.com. Cancellation takes effect at the end of the current billing period. We may suspend or terminate your access if you breach these Terms, with notice where reasonably practicable. Upon termination, your right to use the Service ceases. We will retain your data for 90 days post-termination to allow for reactivation or data export, after which it will be permanently deleted.</p>
 
     <h2>13. Governing law and disputes</h2>
     <p>These Terms are governed by the laws of the State of Delaware, United States, without regard to its conflict of law provisions. Any dispute arising from these Terms or the Service shall be resolved through binding arbitration under the rules of the American Arbitration Association, except that either party may seek injunctive relief in a court of competent jurisdiction to prevent irreparable harm. You waive any right to participate in a class action lawsuit or class-wide arbitration.</p>
