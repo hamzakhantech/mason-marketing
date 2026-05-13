@@ -13,65 +13,67 @@ const IntHero = () => (
           <span style={{color:"var(--accent)"}}>your team already uses.</span>
         </h1>
         <p className="page-hero__sub gsap-fade-up">
-          You do not have to throw out your existing tools to use MASON. We connect with the
-          platforms that construction teams already depend on, from design authoring tools to
-          scheduling software to ERP systems. Here is every integration we have today, what
-          each one does, and what is coming next.
+          You do not have to replace your existing toolchain to use MASON. We connect
+          with the platforms construction teams depend on — from BIM authoring and
+          scheduling software to ERP and communication tools. Every integration below
+          is production-ready unless marked otherwise.
         </p>
       </div>
     </div>
   </section>
 );
 
+const BADGE_LABELS = {live:"Live",beta:"Beta",soon:"Coming soon"};
+
 const IntGrid = () => {
   const cats = [
     {
       heading:"BIM and Design",
       items:[
-        {logo:"plug",name:"Autodesk Platform Services",desc:"Import models, sheets, and RFIs from Autodesk Construction Cloud. Two-way sync on RFI status. Model versions update automatically when a new revision is published.",badge:"live"},
-        {logo:"plug",name:"Revit direct export",desc:"Export IFC models from Revit with MASON metadata tags pre-configured. Discipline filters, level filters, and element categories map automatically to MASON's BIM module.",badge:"live"},
-        {logo:"plug",name:"Navisworks clash sets",desc:"Import Navisworks clash detection results directly into the MASON issue register. Each clash becomes a trackable issue with model reference, coordinates, and assigned discipline.",badge:"live"},
-        {logo:"plug",name:"ArchiCAD IFC export",desc:"Fully supported IFC 2x3 and IFC4 export from ArchiCAD. All element properties and classification codes transfer into the MASON BIM viewer with full attribute access.",badge:"live"}
+        {name:"Autodesk Platform Services",desc:"Import models, sheets, and RFIs from Autodesk Construction Cloud. Two-way RFI status sync. Model versions update automatically when a new revision is published.",badge:"live"},
+        {name:"Revit direct export",desc:"Export IFC from Revit with MASON metadata pre-configured. Discipline filters, level filters, and element categories map automatically to MASON's BIM module.",badge:"live"},
+        {name:"Navisworks clash sets",desc:"Import Navisworks clash detection results directly into the MASON issue register. Each clash becomes a trackable issue with model reference, coordinates, and assigned discipline.",badge:"live"},
+        {name:"ArchiCAD IFC export",desc:"Full IFC 2x3 and IFC4 support. All element properties and classification codes transfer into the BIM viewer with complete attribute access.",badge:"live"}
       ]
     },
     {
       heading:"Scheduling",
       items:[
-        {logo:"plug",name:"Microsoft Project",desc:"Import and export schedule data via MS Project XML format. Task names, durations, predecessor logic, and resource assignments all transfer. Two-way sync keeps both systems current.",badge:"live"},
-        {logo:"plug",name:"Primavera P6",desc:"Import P6 schedules via XER format. Activity codes, WBS structure, and baseline comparisons transfer into the MASON schedule module. Read-only import currently, full two-way sync in development.",badge:"beta"},
-        {logo:"plug",name:"Asta Powerproject",desc:"Export from Asta via XML and import into MASON's schedule module. Bar chart and Gantt views both supported. Resource histograms coming in the next release.",badge:"beta"}
+        {name:"Microsoft Project",desc:"Import and export via MS Project XML. Task names, durations, predecessor logic, and resource assignments all transfer. Two-way sync keeps both systems current.",badge:"live"},
+        {name:"Primavera P6",desc:"Import P6 schedules via XER format. Activity codes, WBS structure, and baseline comparisons transfer into the MASON schedule module. Full two-way sync in development.",badge:"beta"},
+        {name:"Asta Powerproject",desc:"Export from Asta via XML and import into MASON's schedule module. Bar chart and Gantt views both supported.",badge:"beta"}
       ]
     },
     {
       heading:"Project Management Platforms",
       items:[
-        {logo:"plug",name:"Procore",desc:"Migrate issues, RFIs, submittals, and document registers from Procore into MASON with a one-time migration tool. For teams running both platforms during a transition, there is a read sync that keeps RFI status aligned.",badge:"live"},
-        {logo:"plug",name:"Aconex",desc:"Migrate document registers, RFI history, and correspondence from Aconex. One-way migration tool, full document history preserved including all revision records and response chains.",badge:"live"},
-        {logo:"plug",name:"Fieldwire",desc:"Import task lists, issues, and photo records from Fieldwire. Document annotations do not transfer but all structured data including location references do.",badge:"live"}
+        {name:"Procore",desc:"One-time migration tool for issues, RFIs, submittals, and document registers. Live read-sync keeps RFI status aligned for teams running both platforms during a transition.",badge:"live"},
+        {name:"Aconex",desc:"Migrate document registers, RFI history, and correspondence from Aconex. Full document history preserved including all revision records and response chains.",badge:"live"},
+        {name:"Fieldwire",desc:"Import task lists, issues, and photo records. All structured data including location references transfer; drawing annotations do not.",badge:"live"}
       ]
     },
     {
       heading:"Finance and ERP",
       items:[
-        {logo:"plug",name:"SAP",desc:"Cost code mapping between MASON's cost module and SAP project accounting. Committed cost and actuals sync via scheduled API calls. Custom field mapping available on Scale plan.",badge:"live"},
-        {logo:"plug",name:"Sage 300 Construction",desc:"Two-way sync on cost codes, committed costs, and progress billings. Budget variances visible in MASON's cost module update automatically when Sage posts new entries.",badge:"live"},
-        {logo:"plug",name:"QuickBooks",desc:"One-way sync of project cost data from MASON into QuickBooks. Designed for smaller teams who use QuickBooks as their accounting system but want MASON for project cost control.",badge:"beta"}
+        {name:"SAP",desc:"Cost code mapping between MASON's cost module and SAP project accounting. Committed cost and actuals sync via scheduled API calls. Custom field mapping on Scale plan.",badge:"live"},
+        {name:"Sage 300 Construction",desc:"Two-way sync on cost codes, committed costs, and progress billings. Budget variances in MASON update automatically when Sage posts new entries.",badge:"live"},
+        {name:"QuickBooks",desc:"One-way sync of project cost data from MASON into QuickBooks. Designed for smaller teams who use QuickBooks for accounting but want MASON for project cost control.",badge:"beta"}
       ]
     },
     {
       heading:"Communication and Documents",
       items:[
-        {logo:"plug",name:"Microsoft 365",desc:"Outlook integration for RFI and issue notifications. SharePoint integration for document sync, teams get notified in their Teams channels when RFIs are assigned or overdue.",badge:"live"},
-        {logo:"plug",name:"Slack",desc:"Receive MASON notifications in Slack channels. Configure which project events trigger a notification and which channels they go to. Overdue RFIs, new issues, and daily log submissions all supported.",badge:"live"},
-        {logo:"plug",name:"Dropbox and Google Drive",desc:"One-way document import from Dropbox and Google Drive into the MASON document register. Files bring over with version history if structured correctly. Ongoing sync not currently supported.",badge:"beta"}
+        {name:"Microsoft 365",desc:"Outlook notifications for RFIs and issues. SharePoint document sync. Teams channel alerts when RFIs are assigned or overdue.",badge:"live"},
+        {name:"Slack",desc:"MASON notifications in Slack channels. Configure which project events trigger a notification and which channel receives it. Overdue RFIs, new issues, and daily log submissions all supported.",badge:"live"},
+        {name:"Dropbox and Google Drive",desc:"One-way document import into the MASON document register. Files transfer with version history when structured correctly. Ongoing sync not currently supported.",badge:"beta"}
       ]
     },
     {
       heading:"Coming soon",
       items:[
-        {logo:"plug",name:"Oracle Primavera Cloud",desc:"Full two-way schedule sync with Primavera Cloud, including WBS, activities, milestones, and earned value data. In active development, expected Q3 2026.",badge:"soon"},
-        {logo:"plug",name:"iOS native app",desc:"Full feature parity with the Android app. Offline mode, AR overlay, daily logs, issues, and photo capture. In development, no release date confirmed.",badge:"soon"},
-        {logo:"plug",name:"Zapier and Make",desc:"Connect MASON to thousands of other tools via Zapier and Make triggers. Any MASON event, such as a new issue, an RFI status change, or a daily log submission, can trigger actions in connected apps.",badge:"soon"}
+        {name:"Oracle Primavera Cloud",desc:"Full two-way schedule sync including WBS, activities, milestones, and earned value data. In active development, expected Q3 2026.",badge:"soon"},
+        {name:"iOS native app",desc:"Full feature parity with the Android app. Offline mode, AR overlay, daily logs, issues, and photo capture. In development.",badge:"soon"},
+        {name:"Zapier and Make",desc:"Connect MASON events — new issue, RFI status change, daily log submission — to thousands of other tools via Zapier and Make triggers.",badge:"soon"}
       ]
     }
   ];
@@ -85,12 +87,12 @@ const IntGrid = () => {
             <div className="int-grid">
               {cat.items.map((item,ii)=>(
                 <div key={ii} className="int-card gsap-fade-up">
-                  <div className="int-card__logo"><span style={{display:"inline-flex",alignItems:"center",justifyContent:"center",width:40,height:40,background:"rgba(232,148,46,.08)",borderRadius:8}} dangerouslySetInnerHTML={{__html:INT_ICON}}/></div>
+                  <div className="int-card__logo">
+                    <span style={{display:"inline-flex",alignItems:"center",justifyContent:"center",width:40,height:40,background:"rgba(232,148,46,.08)",borderRadius:8}} dangerouslySetInnerHTML={{__html:INT_ICON}}/>
+                  </div>
                   <p className="int-card__name">{item.name}</p>
                   <p className="int-card__desc">{item.desc}</p>
-                  <span className={"int-card__badge int-card__badge--"+item.badge}>
-                    {item.badge==="live"?"Live now":item.badge==="beta"?"Beta":"Coming soon"}
-                  </span>
+                  <span className={"int-card__badge int-card__badge--"+item.badge}>{BADGE_LABELS[item.badge]}</span>
                 </div>
               ))}
             </div>
@@ -104,35 +106,30 @@ const IntGrid = () => {
 const IntAPI = () => (
   <section className="section bg-subtle">
     <div className="container">
-      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:72,alignItems:"start"}} className="about-story-grid">
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:64,alignItems:"start"}} className="about-story-grid">
         <div className="prose-section gsap-slide-left">
-          <h2>Build your own integration with the MASON API</h2>
+          <h2>REST API and webhooks</h2>
           <p>
-            Every piece of data in MASON is accessible via the REST API. Projects, issues, RFIs,
-            documents, schedule tasks, cost items, daily logs, submittals, and user records all
-            have full CRUD endpoints. The API is available on Professional and Scale plans.
+            Every piece of data in MASON — projects, issues, RFIs, documents, schedule tasks,
+            cost items, daily logs, submittals, and user records — is accessible via a versioned
+            REST API. The API is available on Professional and Scale plans.
           </p>
           <p>
-            Authentication uses OAuth 2.0 with scoped access tokens. You can create tokens with
-            read-only access for reporting integrations or full read and write access for two-way
-            syncs. Rate limits are generous and documented in the API reference.
+            Authentication uses OAuth 2.0 with scoped access tokens. Create read-only tokens
+            for reporting integrations or full read-write tokens for two-way syncs. Rate limits
+            are generous and fully documented.
           </p>
           <h3>Webhooks for real-time triggers</h3>
           <p>
-            Rather than polling for changes, you can register webhook endpoints that receive a
-            POST request whenever a state change happens in your project. New issue created,
-            RFI assigned, daily log submitted, document revision uploaded. Your system receives
-            the event payload within seconds and can act on it immediately.
+            Register webhook endpoints that receive a POST request the moment a state change
+            occurs in your project — new issue created, RFI assigned, document revision uploaded.
+            No polling required. Your system receives the event payload within seconds.
           </p>
-          <h3>Full OpenAPI documentation</h3>
+          <h3>Want to build a custom integration?</h3>
           <p>
-            The MASON API is fully documented in OpenAPI 3.0 format. You can browse the
-            interactive docs at developers.masononsite.com, generate client libraries in
-            any language, and test endpoints directly in the browser without writing code.
-          </p>
-          <p>
-            If you are building a custom integration and run into questions, our engineering
-            team monitors the developer forum and typically responds within a business day.
+            Email us at <a href="mailto:api@masononsite.com" style={{color:"var(--accent)",textDecoration:"none",fontWeight:600}}>api@masononsite.com</a>.
+            Our engineering team reviews every request and responds within one business day.
+            Scale plan customers receive dedicated integration support.
           </p>
         </div>
         <div className="gsap-slide-right">
@@ -142,7 +139,7 @@ const IntAPI = () => (
             <p style={{color:"var(--text-muted)",marginTop:8}}>Authorization: Bearer &lt;token&gt;</p>
             <br/>
             <p style={{color:"var(--text-faint)"}}>// Response</p>
-            <pre style={{color:"var(--text-muted)",fontSize:12,lineHeight:1.6,margin:0}}>{`{
+            <pre style={{color:"var(--text-muted)",fontSize:12,lineHeight:1.6,margin:0,whiteSpace:"pre-wrap"}}>{`{
   "data": [
     {
       "id": "rfi-204",
@@ -157,9 +154,10 @@ const IntAPI = () => (
   "meta": { "total": 47, "open": 12 }
 }`}</pre>
             <div style={{marginTop:20,paddingTop:16,borderTop:"1px solid var(--line)"}}>
-              <a href="https://developers.masononsite.com" style={{color:"var(--accent)",fontSize:13,textDecoration:"none",fontFamily:"var(--font-sans)"}}>
-                View full API docs ->
-              </a>
+              <p style={{color:"var(--text-faint)",fontSize:12,fontFamily:"var(--font-sans)",margin:0}}>
+                API documentation available to Professional and Scale plan customers.
+                Contact <a href="mailto:api@masononsite.com" style={{color:"var(--accent)",textDecoration:"none"}}>api@masononsite.com</a> to get access.
+              </p>
             </div>
           </div>
         </div>
@@ -171,11 +169,11 @@ const IntAPI = () => (
 const IntFAQ = () => {
   const [open, setOpen] = React.useState(null);
   const items = [
-    {q:"Do I need a developer to set up integrations?",a:`Most of the pre-built integrations, Autodesk, MS Project, Procore migration, Slack notifications, are configured through the MASON settings interface with no code required. The API and webhooks do require a developer or someone comfortable with REST APIs and JSON.`},
-    {q:"Are integrations included in all plans?",a:`Pre-built integrations with Autodesk, MS Project, and communication tools like Slack and Teams are included on all plans. The full REST API is available on Professional and Scale plans. Custom integration support and dedicated integration setup assistance is available on the Scale plan.`},
-    {q:"Can I migrate my Procore project history into MASON?",a:`Yes. The Procore migration tool transfers issues, RFIs, submittals, and document registers with their full history. Photos and attachments transfer. Drawing annotations do not transfer due to format differences, but the underlying documents do. The migration process typically takes a few hours for a large project and we walk you through it.`},
-    {q:"Do you support custom ERP integrations?",a:`Scale plan customers can request custom ERP integration work. We have done this for SAP, Oracle, Sage, and a few regional ERP systems. The scope and timeline depend on the ERP's API capability and the data model you want to sync. Contact us at enterprise@masononsite.com to discuss.`},
-    {q:"What happens to the integration if you change the API?",a:`We version the API. Changes to existing endpoints are backwards compatible within the same major version. When we release a new major version, we give a minimum six month notice period and maintain the previous version in parallel. We have not had to do a breaking change yet but this is the commitment if we do.`}
+    {q:"Do I need a developer to set up integrations?",a:`Most pre-built integrations — Autodesk, MS Project, Procore migration, Slack and Teams notifications — are configured through the MASON settings interface with no code required. The REST API and webhooks require a developer or someone comfortable with REST and JSON.`},
+    {q:"Are integrations included in all plans?",a:`Pre-built integrations with Autodesk, MS Project, Slack, and Teams are included on all paid plans. The full REST API is available on Professional and Scale plans. Custom integration support and dedicated setup assistance is available on Scale.`},
+    {q:"Can I migrate my Procore project history into MASON?",a:`Yes. The Procore migration tool transfers issues, RFIs, submittals, and document registers with full history. Photos and attachments transfer. Drawing annotations do not transfer due to format differences, but the underlying documents do. The process typically takes a few hours for a large project.`},
+    {q:"Do you support custom ERP integrations?",a:`Scale plan customers can request custom ERP integration work. We have done this for SAP, Oracle, Sage, and several regional ERP systems. Scope and timeline depend on the ERP's API capability and the data model required. Email enterprise@masononsite.com to discuss.`},
+    {q:"What happens to integrations when you update the API?",a:`We version the API. Changes within a major version are backwards compatible. When a new major version ships, we give a minimum six-month notice period and maintain the previous version in parallel. We have not had a breaking change yet, but this is the commitment if we do.`}
   ];
   return (
     <section className="section">
@@ -202,14 +200,22 @@ const IntFAQ = () => {
 
 const IntCTA = () => (
   <section className="section bg-subtle">
-    <div className="container" style={{textAlign:"center",maxWidth:580}}>
-      <div className="gsap-fade-up">
+    <div className="container" style={{maxWidth:600}}>
+      <div style={{textAlign:"center"}} className="gsap-fade-up">
         <h2 className="h2">Need an integration that is not listed?</h2>
-        <p style={{fontSize:16,color:"var(--text-muted)",lineHeight:1.7,margin:"20px 0 36px"}}>
-          Tell us what you need. Some of our best integrations were built because a customer
-          asked. Contact us at integrations@masononsite.com or use the form.
+        <p style={{fontSize:16,color:"var(--text-muted)",lineHeight:1.7,margin:"20px 0 12px"}}>
+          Some of our best integrations were built because a customer asked.
+          If there is a tool you rely on that is not here, let us know.
         </p>
-        <a href="contact.html" className="btn btn-primary btn-lg">Request an integration</a>
+        <p style={{fontSize:15,margin:"0 0 32px"}}>
+          <a href="mailto:integrations@masononsite.com" style={{color:"var(--accent)",fontWeight:600,textDecoration:"none"}}>
+            integrations@masononsite.com
+          </a>
+        </p>
+        <p style={{fontSize:13,color:"var(--text-faint)",lineHeight:1.6}}>
+          Enterprise customers with bespoke ERP or data residency requirements should
+          email <a href="mailto:enterprise@masononsite.com" style={{color:"var(--accent)",textDecoration:"none"}}>enterprise@masononsite.com</a>.
+        </p>
       </div>
     </div>
   </section>
@@ -217,7 +223,7 @@ const IntCTA = () => (
 
 const IntegrationsPage = () => {
   React.useEffect(() => {
-    document.body.classList.add('gsap-ready'); // CSS fallback: elements visible even if GSAP fails
+    document.body.classList.add('gsap-ready');
     if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
       gsap.registerPlugin(ScrollTrigger);
       gsap.utils.toArray(".gsap-fade-up").forEach(el => {
