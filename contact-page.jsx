@@ -92,7 +92,7 @@ const ContactForm = () => {
   const [submitted, setSubmitted] = React.useState(false);
   const [sending, setSending] = React.useState(false);
   const [sendError, setSendError] = React.useState(null);
-  const [form, setForm] = React.useState({name:"",email:"",company:"",role:"",reason:"demo",projects:"",message:""});
+  const [form, setForm] = React.useState({name:"",email:"",phone:"",company:"",role:"",reason:"demo",projects:"",message:""});
   const set = (k) => (e) => setForm({...form,[k]:e.target.value});
 
   const handleSubmit = async (e) => {
@@ -100,7 +100,7 @@ const ContactForm = () => {
     setSending(true);
     setSendError(null);
 
-    // Capture metadata
+    // Device / OS — client-side only. IP + location are captured server-side from Vercel headers.
     var ts = new Date().toISOString();
     var ua = navigator.userAgent || "";
     var device = /Mobi|Android|iPhone|iPad/i.test(ua) ? "Mobile" : "Desktop";
@@ -111,21 +111,7 @@ const ContactForm = () => {
            : /Linux/i.test(ua) ? "Linux"
            : "Unknown";
 
-    var geoData = {};
-    try {
-      var geoRes = await fetch("https://ipapi.co/json/", {signal: AbortSignal.timeout ? AbortSignal.timeout(4000) : undefined});
-      if (geoRes.ok) geoData = await geoRes.json();
-    } catch(_) {}
-
-    var payload = Object.assign({}, form, {
-      timestamp: ts,
-      device: device,
-      os: os,
-      ip: geoData.ip || "",
-      city: geoData.city || "",
-      region: geoData.region || "",
-      country: geoData.country_name || ""
-    });
+    var payload = Object.assign({}, form, { timestamp: ts, device: device, os: os });
 
     try {
       var res = await fetch("/api/contact", {
@@ -194,13 +180,17 @@ const ContactForm = () => {
           </div>
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:20}}>
             <div>
-              <label className="form-label">Company or project name <span>*</span></label>
-              <input className="form-input" value={form.company} onChange={set("company")} placeholder="Construct Co." required />
+              <label className="form-label">Phone number</label>
+              <input className="form-input" type="tel" value={form.phone} onChange={set("phone")} placeholder="+1 (555) 000-0000" />
             </div>
             <div>
               <label className="form-label">Your role</label>
               <input className="form-input" value={form.role} onChange={set("role")} placeholder="Project Manager, BIM Coordinator..." />
             </div>
+          </div>
+          <div>
+            <label className="form-label">Company or project name <span>*</span></label>
+            <input className="form-input" value={form.company} onChange={set("company")} placeholder="Construct Co." required />
           </div>
           <div>
             <label className="form-label">What is this about? <span>*</span></label>
