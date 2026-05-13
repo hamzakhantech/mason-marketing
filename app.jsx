@@ -81,7 +81,7 @@ function App() {
             duration: 0.78,
             stagger: 0.11,
             ease: 'power3.out',
-            scrollTrigger: { trigger: pillarsWrap, start: 'top 84%', toggleActions: 'play none none none' },
+            scrollTrigger: { trigger: pillarsWrap, start: 'top 84%', once: true },
           }
         );
       }
@@ -95,7 +95,7 @@ function App() {
             y: 0,
             duration: 0.8,
             ease: 'power3.out',
-            scrollTrigger: { trigger: el, start: 'top 90%', toggleActions: 'play none none none' },
+            scrollTrigger: { trigger: el, start: 'top 90%', once: true },
           }
         );
       });
