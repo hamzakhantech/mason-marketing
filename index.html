@@ -368,6 +368,7 @@ const Header = ({ dark, toggleDark }) => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   return (
+    <React.Fragment>
     <header className={"header-wrap" + (scrolled ? " is-scrolled" : "")}>
       <div className="ticker">
         <div className="badge"><span className="pulse"></span>JOBSITE · LIVE</div>
@@ -439,6 +440,7 @@ const Header = ({ dark, toggleDark }) => {
         </div>
       </React.Fragment>
     )}
+    </React.Fragment>
   );
 };
 window.Header = Header;
