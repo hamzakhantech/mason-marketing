@@ -1,6 +1,9 @@
 // security-page.jsx
 
 var SEC_ICONS={"shield":`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,"cloud":`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>`,"users":`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,"activity":`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,"key":`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg>`,"phone":`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>`,"download":`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>`,"eye-off":`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`,"info":`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`};
+var SEC_CHECK=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+var SEC_PROGRESS=`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF5B14" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`;
+
 
 const SecHero = () => (
   <section className="page-hero">
@@ -58,7 +61,7 @@ const SecCompliance = () => (
           Here is the honest picture of where we are on certifications and what is in progress.
         </p>
       </div>
-      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:20,marginTop:48}}>
+      <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:20,marginTop:48}}>
         {[
           {status:"check",color:"#4ade80",heading:"GDPR compliant",body:"MASON's data processing practices comply with EU GDPR requirements. A Data Processing Agreement is available on request for customers who need it for their own compliance documentation."},
           {status:"check",color:"#4ade80",heading:"ISO 27001 aligned",body:"Our security management practices are aligned with ISO 27001. We are currently preparing for formal certification, which we expect to complete in 2026."},
@@ -68,7 +71,7 @@ const SecCompliance = () => (
           {status:"check",color:"#4ade80",heading:"Penetration tested annually",body:"MASON undergoes annual penetration testing by an independent third party security firm. The most recent test was completed in Q1 2026. Executive summary available to Scale plan customers under NDA."}
         ].map((c,i)=>(
           <div key={i} className="value-card gsap-fade-up">
-            <p style={{fontSize:20,marginBottom:8,color:c.color}}>{c.status}</p>
+            <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:10}}><span dangerouslySetInnerHTML={{__html:c.status==="check"?SEC_CHECK:SEC_PROGRESS}}/><span style={{fontSize:12,fontWeight:600,letterSpacing:"0.04em",textTransform:"uppercase",color:c.color}}>{c.status==="check"?"Certified":"In progress"}</span></div>
             <p style={{fontWeight:700,fontSize:15,margin:"0 0 10px"}}>{c.heading}</p>
             <p style={{fontSize:13.5,color:"var(--text-muted)",lineHeight:1.65,margin:0}}>{c.body}</p>
           </div>
