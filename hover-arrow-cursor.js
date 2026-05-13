@@ -44,9 +44,10 @@
     bubble.setAttribute('aria-hidden', 'true');
     bubble.innerHTML =
       '<div class="mason-hover-arrow-bubble__disk">' +
+      '<span class="mason-hover-arrow-bubble__arrow">' +
       '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
       '<path d="M7 17L17 7M17 7H10M17 7V14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>' +
-      '</svg></div>';
+      '</svg></span></div>';
     return bubble;
   }
 
@@ -66,21 +67,48 @@
     var ty = 0;
     var raf = null;
     var active = false;
+    var lastTs = 0;
 
-    function tick() {
+    /** Frame-rate aware smoothing: higher dt → catch up without overshoot jitter */
+    function smoothAlpha(dtMs) {
+      var t = Math.min(56, Math.max(8, dtMs));
+      return 1 - Math.pow(0.78, t / 16.67);
+    }
+
+    function tick(ts) {
       if (!active) {
         raf = null;
+        lastTs = 0;
         return;
       }
-      lx += (tx - lx) * 0.2;
-      ly += (ty - ly) * 0.2;
+      var dt = lastTs ? Math.min(56, Math.max(8, ts - lastTs)) : 16.67;
+      lastTs = ts;
+      var a = smoothAlpha(dt);
+      lx += (tx - lx) * a;
+      ly += (ty - ly) * a;
       bubble.style.transform =
         'translate3d(' + lx.toFixed(2) + 'px,' + ly.toFixed(2) + 'px,0) translate(-50%, -50%)';
       raf = requestAnimationFrame(tick);
     }
 
     function startRaf() {
-      if (!raf) raf = requestAnimationFrame(tick);
+      if (!raf) {
+        lastTs = 0;
+        raf = requestAnimationFrame(tick);
+      }
+    }
+
+    function setCardTiltVars(e) {
+      var r = el.getBoundingClientRect();
+      var nx = (e.clientX - r.left) / Math.max(1, r.width);
+      var ny = (e.clientY - r.top) / Math.max(1, r.height);
+      el.style.setProperty('--mason-cursor-mx', (nx * 2 - 1).toFixed(4));
+      el.style.setProperty('--mason-cursor-my', (ny * 2 - 1).toFixed(4));
+    }
+
+    function clearCardTiltVars() {
+      el.style.removeProperty('--mason-cursor-mx');
+      el.style.removeProperty('--mason-cursor-my');
     }
 
     el.addEventListener(
@@ -92,10 +120,11 @@
         var r = el.getBoundingClientRect();
         tx = e.clientX - r.left;
         ty = e.clientY - r.top;
-        lx = tx;
-        ly = ty;
+        lx = tx - (tx - r.width * 0.5) * 0.35;
+        ly = ty - (ty - r.height * 0.5) * 0.35;
         bubble.style.transform =
           'translate3d(' + lx.toFixed(2) + 'px,' + ly.toFixed(2) + 'px,0) translate(-50%, -50%)';
+        setCardTiltVars(e);
         bubble.classList.add('is-visible');
         startRaf();
       },
@@ -109,6 +138,7 @@
         var r = el.getBoundingClientRect();
         tx = e.clientX - r.left;
         ty = e.clientY - r.top;
+        setCardTiltVars(e);
         startRaf();
       },
       { passive: true }
@@ -118,6 +148,7 @@
       'mouseleave',
       function () {
         active = false;
+        clearCardTiltVars();
         setBodyCardHovering(-1);
         bubble.classList.remove('is-visible');
         if (raf) cancelAnimationFrame(raf);
