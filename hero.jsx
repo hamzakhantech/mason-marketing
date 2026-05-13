@@ -292,8 +292,7 @@ const Hero = () => {
             Management . Analytics . Site
           </span>
           <h1 className="display fade-up" style={{ animationDelay: "80ms" }}>
-            One command center<br />
-            for construction <span className="accent">control</span>.
+            hello
           </h1>
           <p className="lede fade-up" style={{ animationDelay: "160ms" }}>
             From BIM and schedule to RFIs, issues, and field logs, MASON brings the

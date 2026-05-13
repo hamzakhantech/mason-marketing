@@ -11,7 +11,7 @@ function App() {
   const sections = content.sections || {};
 
   // Build the headline with the accent word highlighted
-  const headline = hero.headline || 'One command center for construction control.';
+  const headline = hero.headline || 'hello';
   const accentWord = hero.headlineAccent || 'control';
   const headlineEl = React.useMemo(() => {
     if (!accentWord || !headline.includes(accentWord)) {
