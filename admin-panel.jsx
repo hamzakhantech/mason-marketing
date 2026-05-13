@@ -38,6 +38,8 @@ function ensureShape(c) {
   d.analytics    = d.analytics    || {};
   d.payments     = d.payments     || {};
   d.integrations = d.integrations || {};
+  d.social       = d.social       || {};
+  d.livechat     = d.livechat     || {};
   return d;
 }
 
@@ -307,6 +309,8 @@ function Dashboard({ onLogout }) {
     ['home',         'Homepage'],
     ['pricing',      'Pricing'],
     ['branding',     'Brand & Media'],
+    ['social',       'Social & Contact'],
+    ['livechat',     'Live Chat'],
     ['seo',          'SEO'],
     ['analytics',    'Analytics'],
     ['payments',     'Payments'],
@@ -810,13 +814,81 @@ function Dashboard({ onLogout }) {
             </div>
           )}
 
+          {tab === 'social' && (
+            <React.Fragment>
+              <div className="adm-card">
+                <h3>Social media URLs</h3>
+                <p className="adm-muted" style={{ marginBottom: 16 }}>These populate the footer social links and any social share metadata.</p>
+                <div className="adm-grid2">
+                  <Field label="LinkedIn URL" value={content.social.linkedin} onChange={function(v) { patch('social.linkedin', v); }} placeholder="https://linkedin.com/company/masononsite" />
+                  <Field label="X / Twitter URL" value={content.social.twitter} onChange={function(v) { patch('social.twitter', v); }} placeholder="https://x.com/masononsite" />
+                  <Field label="YouTube URL" value={content.social.youtube} onChange={function(v) { patch('social.youtube', v); }} placeholder="https://youtube.com/@masononsite" />
+                  <Field label="GitHub URL" value={content.social.github} onChange={function(v) { patch('social.github', v); }} placeholder="https://github.com/masononsite" />
+                  <Field label="Instagram URL" value={content.social.instagram} onChange={function(v) { patch('social.instagram', v); }} placeholder="https://instagram.com/masononsite" />
+                  <Field label="Facebook URL" value={content.social.facebook} onChange={function(v) { patch('social.facebook', v); }} placeholder="https://facebook.com/masononsite" />
+                </div>
+              </div>
+              <div className="adm-card">
+                <h3>Contact &amp; support</h3>
+                <div className="adm-grid2">
+                  <Field label="General contact email" value={content.site.supportEmail} onChange={function(v) { patch('site.supportEmail', v); }} placeholder="connect@masononsite.com" />
+                  <Field label="Sales email" value={content.social.salesEmail} onChange={function(v) { patch('social.salesEmail', v); }} placeholder="connect@masononsite.com" />
+                  <Field label="Press / media email" value={content.social.pressEmail} onChange={function(v) { patch('social.pressEmail', v); }} placeholder="connect@masononsite.com" />
+                  <Field label="Phone number (public)" value={content.social.phone} onChange={function(v) { patch('social.phone', v); }} placeholder="+1 (555) 000-0000" />
+                  <Field label="Company address line 1" value={content.social.address1} onChange={function(v) { patch('social.address1', v); }} placeholder="123 Main St, Suite 400" />
+                  <Field label="Company address line 2" value={content.social.address2} onChange={function(v) { patch('social.address2', v); }} placeholder="San Francisco, CA 94103" />
+                </div>
+              </div>
+              <div className="adm-card">
+                <h3>Open Graph / share defaults</h3>
+                <div className="adm-grid2">
+                  <Field label="Twitter / X handle (@)" value={content.social.twitterHandle} onChange={function(v) { patch('social.twitterHandle', v); }} placeholder="@masononsite" />
+                  <Field label="Facebook App ID" value={content.social.facebookAppId} onChange={function(v) { patch('social.facebookAppId', v); }} placeholder="1234567890" />
+                </div>
+              </div>
+            </React.Fragment>
+          )}
+
+          {tab === 'livechat' && (
+            <React.Fragment>
+              <div className="adm-card">
+                <h3>Live chat widget</h3>
+                <p className="adm-muted" style={{ marginBottom: 16 }}>
+                  Paste the widget snippet or ID for your chat provider. Only one provider should be active at a time.
+                </p>
+                <div className="adm-grid2">
+                  <Field label="Provider" value={content.livechat.provider} onChange={function(v) { patch('livechat.provider', v); }} placeholder="crisp / intercom / tawk / tidio / hubspot" />
+                  <Field label="Widget ID / App ID" value={content.livechat.widgetId} onChange={function(v) { patch('livechat.widgetId', v); }} placeholder="e.g. Crisp website ID or Intercom App ID" />
+                </div>
+                <Field label="Full embed snippet (optional — paste the full <script> tag)" value={content.livechat.snippet} onChange={function(v) { patch('livechat.snippet', v); }} rows={6} />
+                <div className="adm-grid2" style={{ marginTop: 12 }}>
+                  <Field label="Intercom App ID" value={content.livechat.intercomAppId} onChange={function(v) { patch('livechat.intercomAppId', v); }} placeholder="abc12345" />
+                  <Field label="Crisp Website ID" value={content.livechat.crispWebsiteId} onChange={function(v) { patch('livechat.crispWebsiteId', v); }} placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" />
+                  <Field label="Tawk.to Property ID" value={content.livechat.tawkPropertyId} onChange={function(v) { patch('livechat.tawkPropertyId', v); }} placeholder="5f1234.../1/..." />
+                  <Field label="Tidio Public Key" value={content.livechat.tidioKey} onChange={function(v) { patch('livechat.tidioKey', v); }} placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" />
+                </div>
+              </div>
+              <div className="adm-card">
+                <h3>How it works</h3>
+                <p className="adm-muted">
+                  After saving, the live chat widget ID/snippet is stored in content.json. To activate it on the site, the page templates need to read <span className="adm-code">content.livechat</span> and inject the appropriate script tag in the <span className="adm-code">&lt;head&gt;</span> or before <span className="adm-code">&lt;/body&gt;</span>. Alternatively paste the full snippet into the "Full embed snippet" field and the site will inject it directly.
+                </p>
+              </div>
+            </React.Fragment>
+          )}
+
           {tab === 'integrations' && (
             <div className="adm-card">
               <h3>Integrations and webhooks</h3>
-              <Field label="API docs URL" value={content.integrations.apiDocsUrl} onChange={function(v) { patch('integrations.apiDocsUrl', v); }} placeholder="https://docs.masononsite.com" />
-              <Field label="Webhook endpoint URL (marketing)" value={content.integrations.webhookEndpointUrl} onChange={function(v) { patch('integrations.webhookEndpointUrl', v); }} />
-              <Field label="CRM webhook URL" value={content.integrations.crmWebhookUrl} onChange={function(v) { patch('integrations.crmWebhookUrl', v); }} />
-              <Field label="GTM / analytics notes" value={content.integrations.googleTagManagerNotes} onChange={function(v) { patch('integrations.googleTagManagerNotes', v); }} rows={2} />
+              <div className="adm-grid2">
+                <Field label="API docs URL" value={content.integrations.apiDocsUrl} onChange={function(v) { patch('integrations.apiDocsUrl', v); }} placeholder="https://docs.masononsite.com" />
+                <Field label="Zapier webhook URL" value={content.integrations.zapierWebhookUrl} onChange={function(v) { patch('integrations.zapierWebhookUrl', v); }} placeholder="https://hooks.zapier.com/..." />
+                <Field label="CRM webhook URL (HubSpot/Salesforce)" value={content.integrations.crmWebhookUrl} onChange={function(v) { patch('integrations.crmWebhookUrl', v); }} />
+                <Field label="Contact form submission webhook" value={content.integrations.webhookEndpointUrl} onChange={function(v) { patch('integrations.webhookEndpointUrl', v); }} placeholder="POST payload on every contact form submit" />
+                <Field label="Resend API key (for contact form)" value={content.integrations.resendApiKey} onChange={function(v) { patch('integrations.resendApiKey', v); }} placeholder="re_xxxxxxxxxxxx (also set in Vercel env)" />
+                <Field label="Slack incoming webhook URL" value={content.integrations.slackWebhookUrl} onChange={function(v) { patch('integrations.slackWebhookUrl', v); }} placeholder="https://hooks.slack.com/..." />
+              </div>
+              <Field label="GTM Container ID" value={content.integrations.gtmId} onChange={function(v) { patch('integrations.gtmId', v); }} placeholder="GTM-XXXXXXX" />
               <Field label="Extra notes / JSON" value={content.integrations.extra} onChange={function(v) { patch('integrations.extra', v); }} rows={4} />
             </div>
           )}
