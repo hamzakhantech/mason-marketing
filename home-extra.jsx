@@ -126,7 +126,7 @@ const HowItWorks = () => (
       </div>
 
       <div className="how-cta-row">
-        <a href="https://app.masononsite.com/register" className="btn btn-primary">
+        <a href="https://app.masononsite.com/register" className="btn btn-primary mason-border-sweep">
           Start free 30-day trial <IconArrowRight size={16} stroke={2} />
         </a>
         <span className="how-cta-note">No credit card required. Full access from day one.</span>
@@ -332,7 +332,7 @@ const PricingTeaser = () => (
             ))}
           </ul>
           <div style={{marginTop:40,display:"flex",gap:16,flexWrap:"wrap",alignItems:"center"}}>
-            <a href="https://app.masononsite.com/register" className="btn btn-primary">
+            <a href="https://app.masononsite.com/register" className="btn btn-primary mason-border-sweep">
               Start free trial <IconArrowRight size={16} stroke={2} />
             </a>
             <a href="pricing.html" className="btn btn-ghost">See full pricing</a>
@@ -605,7 +605,7 @@ const FinalCTA = () => (
         is inside the same system by end of day.
       </p>
       <div className="cta-band__actions">
-        <a href="https://app.masononsite.com/register" className="btn btn-primary btn-lg">
+        <a href="https://app.masononsite.com/register" className="btn btn-primary mason-border-sweep btn-lg">
           Start free trial <IconArrowRight size={18} stroke={2} />
         </a>
         <a href="contact.html" className="btn btn-ghost btn-lg">Request a demo</a>

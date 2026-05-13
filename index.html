@@ -280,6 +280,7 @@ img { max-width:100%; display:block; }
 @media (max-width:720px) { .hide-mobile { display:none; } }
 ::selection { background:var(--accent); color:#0B0B0B; }
 </style>
+<link rel="stylesheet" href="styles-premium-motion.css?v=1" />
 <link rel="stylesheet" href="index-motion.css?v=1" />
 </head>
 <body data-motion-home="true">
@@ -391,7 +392,7 @@ const Header = ({ dark, toggleDark }) => {
               {dark ? "Dark" : "Light"}
             </button>
             <a className="btn ghost hide-md" href="contact.html">Sign in</a>
-            <a className="btn primary" href="contact.html">Book a demo <Icon name="arrow" size={12}/></a>
+            <a className="btn primary mason-border-sweep" href="contact.html">Book a demo <Icon name="arrow" size={12}/></a>
           </div>
         </nav>
       </div>
@@ -404,7 +405,7 @@ window.Header = Header;
 <script type="text/babel" data-presets="env,react">
 /* global React, Icon */
 const Hero = () => (
-  <section className="hero">
+  <section className="hero mason-glow-zone mason-line-reveal mason-parallax-slow">
     <div className="container">
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 36 }}>
         <span className="section-tag">SECTION · 01 — INTRO</span>
@@ -430,7 +431,7 @@ const Hero = () => (
         </div>
       </div>
       <div className="hero-cta fade-up">
-        <a className="btn primary" href="contact.html">Book a demo <Icon name="arrow" size={12}/></a>
+        <a className="btn primary mason-border-sweep" href="contact.html">Book a demo <Icon name="arrow" size={12}/></a>
         <a className="btn ghost" href="features.html">
           <Icon name="play" size={10}/> See the platform
         </a>
@@ -496,7 +497,7 @@ const Modules = () => (
           </div>
           <div className="stamp">NEW · 2026</div>
           <div style={{ display: "flex", alignItems: "center", gap: 14, marginTop: 16, flexWrap: "wrap" }}>
-            <a className="btn primary" href="features.html">Try it live <Icon name="arrow" size={12}/></a>
+            <a className="btn primary mason-border-sweep" href="features.html">Try it live <Icon name="arrow" size={12}/></a>
             <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: "rgba(242,238,229,.6)", letterSpacing: ".08em", textTransform: "uppercase" }}>
               Field-tested · 100k+ queries answered
             </span>
@@ -981,7 +982,7 @@ const Footer = () => (
             14-day pilot on your live project. We bring the model. No credit card, no procurement call.
           </p>
           <div style={{ display: "flex", gap: 10, marginTop: 22, flexWrap: "wrap" }}>
-            <a className="btn primary" href="contact.html">Book a demo <Icon name="arrow" size={12}/></a>
+            <a className="btn primary mason-border-sweep" href="contact.html">Book a demo <Icon name="arrow" size={12}/></a>
             <a className="btn" style={{ borderColor: "rgba(242,238,229,.3)", color: "var(--paper)" }} href="contact.html">Talk to sales</a>
           </div>
         </div>
@@ -1082,7 +1083,9 @@ waitAndRender();
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.17/dist/lenis.min.js"></script>
-<script src="motion-init.js?v=1"></script>
+<script src="motion-init.js?v=2"></script>
+<script src="cursor-effects.js?v=1"></script>
+<script src="magnetic-effects.js?v=1"></script>
 <script src="index-motion.js?v=1"></script>
 </body>
 </html>

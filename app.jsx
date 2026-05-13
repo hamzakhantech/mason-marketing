@@ -122,8 +122,8 @@ function App() {
     <div className="site">
       <Header />
 
-      <section className="hero" id="top">
-        <div className="grid-bg" aria-hidden="true" />
+      <section className="hero mason-glow-zone mason-line-reveal mason-parallax-slow" id="top">
+        <div className="grid-bg mason-parallax-bg" aria-hidden="true" />
         <div className="hero__glow" aria-hidden="true" />
         <div className="container hero__inner">
           <div className="hero__copy">
@@ -133,7 +133,7 @@ function App() {
               {hero.subheadline || 'From BIM and schedule to RFIs, issues, and field logs -- MASON brings the office and the jobsite into a single, permission-aware system, with an AI Concierge that knows your project.'}
             </p>
             <div className="hero__cta fade-up" style={{ animationDelay: '300ms' }}>
-              <a href={`${appUrl}/register`} className="btn btn-primary">
+              <a href={`${appUrl}/register`} className="btn btn-primary mason-border-sweep">
                 {hero.ctaPrimary || 'Start free trial'} <IconArrowRight size={16} stroke={2} />
               </a>
               <a href="contact.html" className="btn btn-ghost">

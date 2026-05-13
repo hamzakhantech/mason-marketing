@@ -5,9 +5,9 @@
 const Pillars = () => (
   <section className="sect" id="product">
     <div className="container">
-      <div className="sect-head">
+      <div className="sect-head reveal">
         <span className="eyebrow">Why MASON</span>
-        <h2 className="h2">Built for the way construction actually runs.</h2>
+        <h2 className="h2 h2-reveal">Built for the way construction actually runs.</h2>
         <p className="lede">
           Three principles guide every module: portfolio truth, project context, and
           decisions that hold up on site. Most construction platforms optimize for
@@ -43,8 +43,8 @@ const Pillars = () => (
 );
 
 const PillarCard = ({ n, title, body, accent }) => (
-  <article className="pillar reveal">
-    <div className="pillar__viz">{accent}</div>
+  <article className="pillar reveal mason-card-hover">
+    <div className="pillar__viz mason-media-zoom">{accent}</div>
     <div className="pillar__body">
       <span className="mono pillar__n">{n}</span>
       <h3 className="h3">{title}</h3>
@@ -164,9 +164,9 @@ const MODULES = {
 const ModuleGrid = () => (
   <section className="sect" id="modules">
     <div className="container">
-      <div className="sect-head">
+      <div className="sect-head reveal">
         <span className="eyebrow">What's inside</span>
-        <h2 className="h2">Every module your team already lives in -- in one place.</h2>
+        <h2 className="h2 h2-reveal">Every module your team already lives in -- in one place.</h2>
         <p className="lede">
           Grouped the way work actually flows: <strong>Plan</strong> the job,
           <strong> Execute</strong> on it, draw <strong>Insight</strong> from the data it generates.
@@ -187,7 +187,7 @@ const ModuleGrid = () => (
             </header>
             <div className="module-col__grid">
               {items.map(({ n, Icon, accent }) => (
-                <div className={"module" + (accent ? " is-accent" : "")} key={n}>
+                <div className={"module mason-card-hover" + (accent ? " is-accent" : "")} key={n}>
                   <span className="module__icon"><Icon size={18} stroke={1.5} /></span>
                   <span className="module__name">{n}</span>
                 </div>
@@ -207,8 +207,8 @@ const ModuleGrid = () => (
 // --- BIM + Field proof ----------------------------------------------------
 
 const BIMProof = () => (
-  <section className="sect bim-proof" id="bim">
-    <div className="grid-bg" aria-hidden="true" style={{ opacity: .35 }} />
+  <section className="sect bim-proof mason-line-reveal" id="bim">
+    <div className="grid-bg mason-parallax-bg" aria-hidden="true" style={{ opacity: .35 }} />
     <div className="container bim-proof__inner">
       <div className="bim-proof__copy">
         <span className="eyebrow">BIM &amp; field</span>
@@ -330,9 +330,9 @@ const BIMHeroVisual = () => (
 const Surfaces = () => (
   <section className="sect" id="surfaces">
     <div className="container">
-      <div className="sect-head">
+      <div className="sect-head reveal">
         <span className="eyebrow">Works everywhere your team works</span>
-        <h2 className="h2">Desk. Mobile. Site.</h2>
+        <h2 className="h2 h2-reveal">Desk. Mobile. Site.</h2>
         <p className="lede">
           The same data. The same permissions. Three surfaces tuned to where your
           people are when they touch the project. The project manager at a desk gets
@@ -369,8 +369,8 @@ const Surfaces = () => (
 );
 
 const SurfaceCard = ({ tag, title, bullets, frame, spotlight }) => (
-  <div className={"surface" + (spotlight ? " is-spotlight" : "")}>
-    <div className="surface__frame">{frame}</div>
+  <div className={"surface mason-card-hover" + (spotlight ? " is-spotlight" : "")}>
+    <div className="surface__frame mason-media-zoom">{frame}</div>
     <div className="surface__body">
       <span className="mono">{tag}</span>
       <h3 className="h3">{title}</h3>
@@ -467,12 +467,12 @@ const AndroidFrame = () => (
 // --- Trust ----------------------------------------------------------------
 
 const Trust = () => (
-  <section className="sect trust" id="trust">
+  <section className="sect trust mason-line-reveal" id="trust">
     <div className="container">
       <div className="trust__inner">
-        <div>
+        <div className="reveal">
           <span className="eyebrow">Trust &amp; control</span>
-          <h2 className="h2">Built to pass the audit, not just the demo.</h2>
+          <h2 className="h2 h2-reveal">Built to pass the audit, not just the demo.</h2>
         </div>
         <div className="trust__grid">
           <TrustCard Icon={IconKey} title="Role-based access"
@@ -488,7 +488,7 @@ const Trust = () => (
 );
 
 const TrustCard = ({ Icon, title, body }) => (
-  <div className="trust-card">
+  <div className="trust-card mason-card-hover">
     <span className="trust-card__icon"><Icon size={20} stroke={1.6} /></span>
     <h3 className="h3">{title}</h3>
     <p>{body}</p>
@@ -500,7 +500,7 @@ const TrustCard = ({ Icon, title, body }) => (
 const CTABand = () => (
   <section className="sect cta-band" id="contact">
     <div className="container">
-      <div className="cta-band__card">
+      <div className="cta-band__card mason-glow-zone mason-card-hover">
         <div>
           <span className="eyebrow">Get started</span>
           <h2 className="h2">Bring your jobsite into MASON.</h2>
@@ -509,7 +509,7 @@ const CTABand = () => (
           </p>
         </div>
         <div className="cta-band__actions">
-          <a href="https://app.masononsite.com/login" className="btn btn-primary">
+          <a href="https://app.masononsite.com/login" className="btn btn-primary mason-border-sweep">
             Sign in <IconArrowRight size={16} stroke={2} />
           </a>
           <a href="mailto:hello@masononsite.com" className="btn btn-ghost">
@@ -532,23 +532,23 @@ const Footer = () => (
       <div className="site-footer__cols">
         <div>
           <span className="mono">Product</span>
-          <a href="#product">Why MASON</a>
-          <a href="#modules">Modules</a>
-          <a href="#bim">BIM &amp; field</a>
-          <a href="#surfaces">Surfaces</a>
+          <a className="mason-footer-link" href="#product">Why MASON</a>
+          <a className="mason-footer-link" href="#modules">Modules</a>
+          <a className="mason-footer-link" href="#bim">BIM &amp; field</a>
+          <a className="mason-footer-link" href="#surfaces">Surfaces</a>
         </div>
         <div>
           <span className="mono">Company</span>
-          <a href="#contact">Contact</a>
-          <a href="#trust">Trust</a>
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
+          <a className="mason-footer-link" href="#contact">Contact</a>
+          <a className="mason-footer-link" href="#trust">Trust</a>
+          <a className="mason-footer-link" href="privacy.html">Privacy</a>
+          <a className="mason-footer-link" href="terms.html">Terms</a>
         </div>
         <div>
           <span className="mono">Account</span>
-          <a href="https://app.masononsite.com/login">Sign in</a>
-          <a href="https://app.masononsite.com/register">Register</a>
-          <a href="https://app.masononsite.com/forgot-password">Forgot password</a>
+          <a className="mason-footer-link" href="https://app.masononsite.com/login">Sign in</a>
+          <a className="mason-footer-link" href="https://app.masononsite.com/register">Register</a>
+          <a className="mason-footer-link" href="https://app.masononsite.com/forgot-password">Forgot password</a>
         </div>
       </div>
     </div>

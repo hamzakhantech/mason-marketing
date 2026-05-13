@@ -31,7 +31,7 @@ const Personas = () => {
   const [active, setActive] = React.useState("pm");
   const p = PERSONAS.find((x) => x.id === active);
   return (
-    <section className="sect personas" id="personas">
+    <section className="sect personas mason-line-reveal" id="personas">
       <div className="container">
         <div className="sect-head">
           <span className="eyebrow">Built for three audiences</span>
@@ -57,7 +57,7 @@ const Personas = () => {
           ))}
         </div>
 
-        <div className="personas__panel">
+        <div className="personas__panel mason-glow-zone mason-card-hover">
           <div className="personas__copy">
             <h3 className="h2" style={{ fontSize: "clamp(24px, 2.6vw, 34px)" }}>{p.title}</h3>
             <p className="lede" style={{ fontSize: 16 }}>{p.body}</p>
@@ -79,7 +79,7 @@ const Personas = () => {
 // --- Concierge spotlight ----------------------------------------------------
 
 const ConciergeSpotlight = () => (
-  <section className="sect concierge" id="concierge">
+  <section className="sect concierge mason-glow-zone mason-line-reveal" id="concierge">
     <div className="grid-bg" aria-hidden="true" style={{ opacity: .4 }} />
     <div className="container concierge__inner">
       <div className="concierge__copy">
@@ -114,7 +114,7 @@ const ConciergeSpotlight = () => (
 );
 
 const ConciergeChat = () => (
-  <div className="cnc">
+  <div className="cnc mason-glow-zone mason-card-hover">
     <div className="cnc__hd">
       <div className="cnc__orb">
         <IconConcierge size={16} stroke={1.7} />

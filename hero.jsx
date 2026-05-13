@@ -298,7 +298,7 @@ const Header = ({ onSignIn }) => {
         <div className="site-header__cta">
           <ThemeToggleBtn className="hide-sm" />
           <a href="contact.html" className="hide-sm header-link">Request demo</a>
-          <a href="https://app.masononsite.com/login" className="btn btn-primary btn-sm">
+          <a href="https://app.masononsite.com/login" className="btn btn-primary btn-sm mason-border-sweep">
             Sign in <IconArrowRight size={14} stroke={2} />
           </a>
           <button className="nav-hamburger" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Menu">

@@ -68,12 +68,18 @@
       intro.classList.add('is-exiting');
       document.documentElement.classList.remove('mason-intro-lock');
       showMotionChrome();
-    }, 1950);
+      try {
+        window.dispatchEvent(new CustomEvent('mason-motion-shell-ready'));
+      } catch (e3) {}
+    }, 1450);
 
     window.setTimeout(function () {
       if (intro.parentNode) intro.parentNode.removeChild(intro);
-    }, 2800);
+    }, 2150);
   } else {
     showMotionChrome();
+    try {
+      window.dispatchEvent(new CustomEvent('mason-motion-shell-ready'));
+    } catch (e4) {}
   }
 })();
