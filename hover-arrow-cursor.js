@@ -30,6 +30,14 @@
 
   var SEL = '.cursor-card-hover, .hover-arrow-cursor, .magnetic-click-card';
 
+  /** Hide global .mason-cursor (orange ring/dot) while in-card arrow bubble is active */
+  var bodyCardHoverDepth = 0;
+  function setBodyCardHovering(delta) {
+    bodyCardHoverDepth += delta;
+    if (bodyCardHoverDepth < 0) bodyCardHoverDepth = 0;
+    document.body.classList.toggle('is-card-hovering', bodyCardHoverDepth > 0);
+  }
+
   function buildBubble() {
     var bubble = document.createElement('div');
     bubble.className = 'mason-hover-arrow-bubble';
@@ -79,6 +87,7 @@
       'mouseenter',
       function (e) {
         if (!shouldRun()) return;
+        setBodyCardHovering(1);
         active = true;
         var r = el.getBoundingClientRect();
         tx = e.clientX - r.left;
@@ -109,6 +118,7 @@
       'mouseleave',
       function () {
         active = false;
+        setBodyCardHovering(-1);
         bubble.classList.remove('is-visible');
         if (raf) cancelAnimationFrame(raf);
         raf = null;

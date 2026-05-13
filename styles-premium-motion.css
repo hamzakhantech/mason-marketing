@@ -48,6 +48,12 @@
   z-index: 99999;
   pointer-events: none;
   mix-blend-mode: normal;
+  transition: opacity 0.22s cubic-bezier(0.16, 0.84, 0.2, 1);
+}
+
+/* Alef-style card bubble active: hide orange ring/dot so only in-card arrow shows */
+body.is-card-hovering .mason-cursor {
+  opacity: 0 !important;
 }
 .mason-cursor__ring {
   position: absolute;
