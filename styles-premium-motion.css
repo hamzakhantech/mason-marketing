@@ -23,10 +23,31 @@
   .mason-hover-arrow-bubble {
     display: none !important;
   }
-  .mason-section-premium.reveal.in .case-grid > a,
+  .mason-section-proof.reveal.in .case-grid > a,
   .mason-section-premium.reveal.in .blog-grid > a {
     animation: none !important;
     opacity: 1 !important;
+    transform: none !important;
+  }
+  .mason-section-proof.reveal.in .section-head > div:first-child .section-tag,
+  .mason-section-proof.reveal.in .section-head .h2-side,
+  .mason-section-proof .mason-proof-line__text {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+  .mason-section-proof.reveal.in .container::before {
+    transform: scaleX(1) !important;
+    transition: none !important;
+  }
+  .mason-section-proof.reveal.in .container::after {
+    transform: scaleY(1) !important;
+    transition: none !important;
+  }
+  .mason-section-proof::before {
+    animation: none !important;
+    opacity: 0.2 !important;
     transform: none !important;
   }
   .mason-section-premium.reveal.in .section-head > div:first-child .section-tag,
@@ -740,7 +761,275 @@ a.blog-card.cursor-card-hover:hover .blog-card__body > p:first-of-type {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Proof + Field Notes — section head + stagger (index)                         */
+/* SECTION · 05 — PROOF (index) — cinematic entry + borders + cards              */
+/* -------------------------------------------------------------------------- */
+
+.mason-section-proof {
+  position: relative;
+  --mason-proof-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mason-section-proof::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.42;
+  background: radial-gradient(ellipse 85% 60% at 18% 8%, rgba(240, 168, 74, 0.11), transparent 58%),
+    radial-gradient(ellipse 75% 55% at 92% 92%, rgba(240, 168, 74, 0.08), transparent 52%);
+  transform: translate3d(0, 0, 0);
+  animation: mason-proof-bg-drift 24s ease-in-out infinite alternate;
+}
+
+html[data-theme="dark"] .mason-section-proof::before {
+  opacity: 0.38;
+  background: radial-gradient(ellipse 85% 60% at 22% 0%, rgba(240, 168, 74, 0.14), transparent 55%),
+    radial-gradient(ellipse 78% 50% at 88% 95%, rgba(240, 168, 74, 0.09), transparent 50%);
+}
+
+@keyframes mason-proof-bg-drift {
+  from {
+    transform: translate3d(-2%, 0, 0) scale(1);
+    opacity: 0.32;
+  }
+  to {
+    transform: translate3d(2%, 1.2%, 0) scale(1.04);
+    opacity: 0.48;
+  }
+}
+
+.mason-section-proof .container {
+  position: relative;
+  z-index: 1;
+}
+
+.mason-section-proof .container::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent, #f0a84a), transparent 88%);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.9;
+  transition: transform 0.95s var(--mason-proof-ease);
+}
+
+.mason-section-proof.reveal.in .container::before {
+  transform: scaleX(1);
+  transition-delay: 0.12s;
+}
+
+.mason-section-proof .container::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  min-height: 220px;
+  background: linear-gradient(180deg, var(--accent, #f0a84a), transparent 90%);
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.85;
+  transition: transform 0.95s var(--mason-proof-ease);
+}
+
+.mason-section-proof.reveal.in .container::after {
+  transform: scaleY(1);
+  transition-delay: 0.28s;
+}
+
+.mason-section-proof .section-head > div:first-child .section-tag {
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+}
+
+@keyframes mason-proof-label-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.mason-section-proof.reveal.in .section-head > div:first-child .section-tag {
+  animation: mason-proof-label-in 0.82s var(--mason-proof-ease) 0.06s both;
+}
+
+.mason-proof-display {
+  position: relative;
+}
+
+.mason-section-proof .mason-proof-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.mason-section-proof .mason-proof-line__text {
+  display: inline-block;
+  opacity: 0;
+  transform: translate3d(0, 108%, 0);
+  will-change: transform, opacity;
+}
+
+@keyframes mason-proof-line-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 108%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.mason-section-proof.reveal.in .mason-proof-line:nth-of-type(1) .mason-proof-line__text {
+  animation: mason-proof-line-rise 0.92s var(--mason-proof-ease) 0.28s both;
+}
+
+.mason-section-proof.reveal.in .mason-proof-line:nth-of-type(2) .mason-proof-line__text {
+  animation: mason-proof-line-rise 0.92s var(--mason-proof-ease) 0.44s both;
+}
+
+.mason-section-proof .section-head .h2-side {
+  opacity: 0;
+  transform: translate3d(0, 18px, 0);
+}
+
+@keyframes mason-proof-lede-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.mason-section-proof.reveal.in .section-head .h2-side {
+  animation: mason-proof-lede-in 0.88s var(--mason-proof-ease) 0.62s both;
+}
+
+@keyframes mason-proof-card-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+.mason-section-proof.reveal.in .case-grid > a.case-card {
+  animation: mason-proof-card-in 0.98s var(--mason-proof-ease) both;
+}
+
+.mason-section-proof.reveal.in .case-grid > a.case-card:nth-child(1) {
+  animation-delay: 0.72s;
+}
+
+.mason-section-proof.reveal.in .case-grid > a.case-card:nth-child(2) {
+  animation-delay: 0.87s;
+}
+
+.mason-section-proof.reveal.in .case-grid > a.case-card:nth-child(3) {
+  animation-delay: 1.02s;
+}
+
+/* Proof cards — Alef-weighted hover (scoped; transform + opacity on text layers) */
+.mason-section-proof a.case-card.cursor-card-hover {
+  transition: transform 0.65s var(--mason-proof-ease), box-shadow 0.7s var(--mason-proof-ease),
+    border-color 0.55s ease, background 0.55s ease, filter 0.55s ease;
+}
+
+.mason-section-proof a.case-card.cursor-card-hover:hover {
+  transform: translate3d(0, -9px, 0);
+  box-shadow: 0 32px 78px -32px rgba(0, 0, 0, 0.26), 0 0 0 1px rgba(240, 168, 74, 0.28),
+    0 0 48px rgba(240, 168, 74, 0.09);
+  filter: brightness(1.025);
+}
+
+html[data-theme="dark"] .mason-section-proof a.case-card.cursor-card-hover:hover {
+  box-shadow: 0 34px 88px -28px rgba(0, 0, 0, 0.62), 0 0 0 1px rgba(240, 168, 74, 0.34),
+    0 0 52px rgba(240, 168, 74, 0.11);
+  filter: brightness(1.05);
+}
+
+.mason-section-proof a.case-card.cursor-card-hover:hover > .ph {
+  transform: translate3d(calc(var(--mason-cursor-mx, 0) * 10px), calc(var(--mason-cursor-my, 0) * 7px), 0)
+    scale(1.03);
+}
+
+.mason-section-proof a.case-card.cursor-card-hover .body .meta,
+.mason-section-proof a.case-card.cursor-card-hover .body h3,
+.mason-section-proof a.case-card.cursor-card-hover .body p,
+.mason-section-proof a.case-card.cursor-card-hover .body .nums {
+  transition: transform 0.62s var(--mason-proof-ease), opacity 0.5s ease;
+}
+
+.mason-section-proof a.case-card.cursor-card-hover:hover .body .meta {
+  transform: translate3d(0, -4px, 0);
+}
+
+.mason-section-proof a.case-card.cursor-card-hover:hover .body h3 {
+  transform: translate3d(0, -4px, 0);
+  transition-delay: 0.05s;
+}
+
+.mason-section-proof a.case-card.cursor-card-hover:hover .body p {
+  transform: translate3d(0, -4px, 0);
+  opacity: 0.94;
+  transition-delay: 0.09s;
+}
+
+.mason-section-proof a.case-card.cursor-card-hover:hover .body .nums {
+  transform: translate3d(0, -4px, 0);
+  transition-delay: 0.12s;
+}
+
+@media (pointer: coarse), (max-width: 900px) {
+  .mason-section-proof::before {
+    animation: none !important;
+    opacity: 0.22 !important;
+    transform: none !important;
+  }
+
+  .mason-section-proof .section-head > div:first-child .section-tag,
+  .mason-section-proof .mason-proof-line__text,
+  .mason-section-proof .section-head .h2-side {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .mason-section-proof.reveal.in .case-grid > a.case-card {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .mason-section-proof .container::before,
+  .mason-section-proof .container::after {
+    transition-duration: 0.35s !important;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Field Notes — section head + stagger (index)                                 */
 /* -------------------------------------------------------------------------- */
 
 @keyframes mason-stagger-up {
@@ -819,22 +1108,6 @@ a.blog-card.cursor-card-hover:hover .blog-card__body > p:first-of-type {
 .mason-section-premium.reveal.in .section-head .display::after {
   transform: scaleX(1);
   transition-delay: 0.35s;
-}
-
-.mason-section-premium.reveal.in .case-grid > a.case-card {
-  animation: mason-stagger-up 0.78s var(--mason-cursor-premium-ease) both;
-}
-
-.mason-section-premium.reveal.in .case-grid > a.case-card:nth-child(1) {
-  animation-delay: 0.08s;
-}
-
-.mason-section-premium.reveal.in .case-grid > a.case-card:nth-child(2) {
-  animation-delay: 0.16s;
-}
-
-.mason-section-premium.reveal.in .case-grid > a.case-card:nth-child(3) {
-  animation-delay: 0.24s;
 }
 
 .mason-section-premium.reveal.in .blog-grid > a.post.cursor-card-hover {

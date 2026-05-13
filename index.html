@@ -281,7 +281,7 @@ img { max-width:100%; display:block; }
 ::selection { background:var(--accent); color:#0B0B0B; }
 </style>
 <link rel="stylesheet" href="index-motion.css?v=1" />
-<link rel="stylesheet" href="styles-premium-motion.css?v=2" />
+<link rel="stylesheet" href="styles-premium-motion.css?v=3" />
 </head>
 <body data-motion-home="true">
 <div id="root"></div>
@@ -765,12 +765,16 @@ const CasePh = ({ color, idx }) => (
 );
 
 const Cases = () => (
-  <section className="cases reveal mason-line-reveal mason-section-premium" id="cases">
+  <section className="cases reveal mason-line-reveal mason-section-proof" id="cases">
     <div className="container">
       <div className="section-head">
         <div>
           <span className="section-tag">SECTION · 05 — PROOF</span>
-          <h2 className="display">Built by the<br/>people building.</h2>
+          <h2 className="display mason-proof-display">
+            <span className="mason-proof-line"><span className="mason-proof-line__text">Built by the</span></span>
+            <br/>
+            <span className="mason-proof-line"><span className="mason-proof-line__text">people building.</span></span>
+          </h2>
         </div>
         <p className="h2-side">
           Three projects, three problems, one platform. Every number is signed off by the GC. Read the full deconstructs in our case study archive.
