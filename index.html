@@ -1,60 +1,2561 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MASON — Construction project management &amp; BIM</title>
-  <meta name="description" content="MASON is one command center for construction: BIM, schedule, RFIs, issues, daily logs, and an AI Concierge built for the jobsite." />
-  <link rel="canonical" href="https://masononsite.com" />
-  <link rel="icon" type="image/png" href="assets/mason_mark_grid.png" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="canonical" href="https://masononsite.com" />
+<link rel="icon" type="image/png" href="assets/mason_mark_grid.png" />
+<meta property="og:title" content="MASON — Construction Management Built to Win" />
+<meta property="og:description" content="147 construction firms worldwide. 430 active projects. BIM, schedule, RFIs, issues, daily logs, cost and AI all in one platform. No upsells. No per-seat fees." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://masononsite.com" />
 
-  <meta property="og:title" content="MASON — Construction project management & BIM" />
-  <meta property="og:description" content="One command center for construction projects—BIM, RFIs, issues, daily logs, with an AI Concierge built for the field." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://masononsite.com" />
+<title>MASON — Construction Management Built to Win</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="styles-sections.css" />
-  <link rel="stylesheet" href="styles-content.css" />
-  <link rel="stylesheet" href="styles-extra.css" />
-  <link rel="stylesheet" href="styles-theme.css" />
-  <link rel="stylesheet" href="styles-pages.css" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
 
-  <style>
-    /* CMS panel offset — shifts page content when editor is open */
-    body.cms-open { margin-right: 340px; transition: margin-right .2s; }
-    body { transition: margin-right .2s; }
-  </style>
+<style>/* ============================================================
+   MASON — Blueprint Industrial
+   ============================================================ */
+
+:root {
+  --paper:        #F2EEE5;
+  --paper-2:      #EAE4D6;
+  --ink:          #0E0E0E;
+  --ink-2:        #1A1A1A;
+  --rule:         #1A1A1A;
+  --rule-soft:    rgba(14,14,14,.18);
+  --rule-faint:   rgba(14,14,14,.08);
+  --muted:        #5A574E;
+  --accent:       #FF5B14;     /* construction orange — overridden by tweak */
+  --accent-ink:   #0E0E0E;
+  --safety:       #FFD400;
+  --good:         #1F7A4D;
+  --bad:          #C0392B;
+
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-body:    "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-serif:   "Instrument Serif", ui-serif, Georgia, serif;
+
+  --max:          1440px;
+  --gutter:       40px;
+}
+
+@media (max-width: 720px) { :root { --gutter: 20px; } }
+
+/* dark mode override via .dark class */
+.dark {
+  --paper:        #0B0B0B;
+  --paper-2:      #131313;
+  --ink:          #F2EEE5;
+  --ink-2:        #E8E2D2;
+  --rule:         #F2EEE5;
+  --rule-soft:    rgba(242,238,229,.22);
+  --rule-faint:   rgba(242,238,229,.10);
+  --muted:        #9A9588;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  /* faint blueprint grid baseline */
+  background-image:
+    linear-gradient(to right, var(--rule-faint) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--rule-faint) 1px, transparent 1px);
+  background-size: 80px 80px;
+  background-position: -1px -1px;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+img { max-width: 100%; display: block; }
+
+/* ─── Typography ─────────────────────────────────────────── */
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+}
+
+.mono, .label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.label-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.serif-it { font-family: var(--font-serif); font-style: italic; font-weight: 400; }
+
+/* ─── Layout primitives ──────────────────────────────────── */
+
+.container {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  position: relative;
+}
+
+.rule { height: 1px; background: var(--rule); border: 0; }
+.rule-soft { height: 1px; background: var(--rule-soft); border: 0; }
+
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.section-tag::before {
+  content: "";
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* corner ticks — those tiny technical marks at frame corners */
+.ticks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.ticks::before, .ticks::after,
+.ticks > i::before, .ticks > i::after {
+  content: "";
+  position: absolute;
+  width: 14px; height: 14px;
+  border: 1px solid var(--ink);
+}
+.ticks::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.ticks::after { top: -1px; right: -1px; border-left: 0; border-bottom: 0; }
+.ticks > i::before { bottom: -1px; left: -1px; border-right: 0; border-top: 0; position:absolute; }
+.ticks > i::after { bottom: -1px; right: -1px; border-left: 0; border-top: 0; position:absolute; }
+.ticks > i { display:block; position: absolute; inset:0; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: transform .12s ease, background .12s ease, color .12s ease;
+}
+.btn:hover { background: var(--ink); color: var(--paper); }
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0B0B0B;
+}
+.btn.primary:hover { background: #0B0B0B; color: var(--paper); border-color: #0B0B0B; }
+.btn.ghost { border-color: var(--rule-soft); }
+.btn .dot {
+  width: 6px; height: 6px; background: currentColor; border-radius: 50%;
+}
+
+/* arrow ↗ */
+.arr {
+  display: inline-block;
+  width: 1em; height: 1em;
+  position: relative;
+  vertical-align: -0.05em;
+}
+.arr::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(45deg, transparent 45%, currentColor 45%, currentColor 55%, transparent 55%) center/100% 100% no-repeat;
+  mask: linear-gradient(45deg, transparent 45%, #000 45%, #000 55%, transparent 55%) center/100% 100% no-repeat;
+}
+
+/* ─── HEADER ─────────────────────────────────────────────── */
+
+.header-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid var(--ink);
+}
+
+/* status ticker */
+.ticker {
+  height: 30px;
+  border-bottom: 1px solid var(--ink);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: stretch;
+  background: var(--ink);
+  color: var(--paper);
+}
+.ticker .badge {
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 14px;
+  background: var(--accent);
+  color: #0B0B0B;
+  border-right: 1px solid var(--ink);
+  font-weight: 600;
+}
+.ticker .badge .pulse {
+  width: 7px; height: 7px; border-radius: 50%; background: #0B0B0B;
+  animation: pulse 1.4s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.2} }
+.ticker .scroll {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  mask: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.ticker .scroll-track {
+  display: flex;
+  gap: 48px;
+  white-space: nowrap;
+  animation: scroll 50s linear infinite;
+  padding-left: 24px;
+}
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.ticker .scroll-track span { display:inline-flex; align-items:center; gap: 10px; }
+.ticker .scroll-track i {
+  display: inline-block; width: 6px; height: 6px; background: var(--accent); border-radius: 50%;
+  font-style: normal;
+}
+
+/* main nav row */
+.nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 72px;
+  gap: 24px;
+}
+.nav-left { display: flex; align-items: center; gap: 28px; }
+.nav-right { display: flex; align-items: center; gap: 14px; justify-content: flex-end; }
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+.brand-mark {
+  width: 28px; height: 28px;
+  background: var(--ink);
+  color: var(--paper);
+  display: grid; place-items: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  position: relative;
+}
+.brand-mark::after {
+  content:""; position: absolute;
+  inset: 3px;
+  border: 1px solid var(--paper);
+  pointer-events: none;
+}
+
+.nav-link {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 6px 0;
+  position: relative;
+  display: inline-flex; align-items: center; gap: 6px;
+  white-space: nowrap;
+}
+.btn { white-space: nowrap; }
+.nav-left, .nav-right { flex-wrap: nowrap; }
+.hide-lg { display: initial; }
+@media (max-width: 1200px) { .hide-lg { display: none !important; } }
+.hide-md { display: initial; }
+@media (max-width: 1040px) { .hide-md { display: none !important; } }
+.nav-link .caret { font-size: 8px; opacity: .5; }
+.nav-link:hover { color: var(--accent); }
+
+/* mega menu */
+.mega {
+  position: absolute;
+  left: 0; right: 0;
+  top: 100%;
+  background: var(--paper);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 32px 0 28px;
+  display: none;
+}
+.mega.open { display: block; }
+.mega-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 2fr 1.4fr;
+  gap: 56px;
+  align-items: start;
+}
+.mega-title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1;
+  margin: 0 0 12px;
+}
+.mega-sub { color: var(--muted); font-size: 14px; max-width: 32ch; }
+.mega-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 24px;
+}
+.mega-item {
+  display: grid;
+  grid-template-columns: 38px 1fr auto;
+  align-items: start;
+  gap: 12px;
+  padding: 14px 12px 14px 0;
+  border-bottom: 1px solid var(--rule-faint);
+  transition: background .12s ease;
+}
+.mega-item:hover { background: var(--paper-2); padding-left: 8px; }
+.mega-item .num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  padding-top: 2px;
+}
+.mega-item .label {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: var(--ink);
+  line-height: 1.2;
+  display: block;
+}
+.mega-item .desc {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 2px;
+  display: block;
+}
+.mega-item .go {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  align-self: center;
+}
+
+.mega-feature {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 22px 22px 18px;
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.mega-feature h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.mega-feature .vis {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .55;
+}
+
+/* ─── HERO ───────────────────────────────────────────────── */
+
+.hero {
+  padding: 80px 0 60px;
+  position: relative;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(56px, 11vw, 184px);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  margin: 0;
+}
+.hero h1 em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+.hero h1 .marked {
+  position: relative;
+  display: inline-block;
+  padding: 0 .1em;
+}
+.hero h1 .marked::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 18%; bottom: 14%;
+  background: var(--accent);
+  z-index: -1;
+}
+
+.hero-meta {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 32px;
+  align-items: end;
+  margin-top: 14px;
+}
+@media (max-width: 920px) {
+  .hero-meta { grid-template-columns: 1fr; gap: 22px; }
+}
+
+.hero-lede {
+  font-size: 19px;
+  line-height: 1.45;
+  color: var(--ink);
+  max-width: 44ch;
+}
+.hero-stat {
+  border-left: 1px solid var(--rule-soft);
+  padding-left: 16px;
+}
+.hero-stat .v {
+  font-family: var(--font-display);
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+}
+.hero-stat .k {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 8px;
+  display: block;
+}
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+
+/* technical annotation row */
+.tech-rail {
+  display: flex;
+  gap: 0;
+  margin-top: 56px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.tech-rail .cell {
+  flex: 1;
+  padding: 14px 18px;
+  border-right: 1px solid var(--rule-soft);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  display: flex; align-items: center; gap: 10px;
+  color: var(--muted);
+}
+.tech-rail .cell:last-child { border-right: 0; }
+.tech-rail .cell b { color: var(--ink); font-weight: 600; }
+.tech-rail .cell .swatch { width: 10px; height: 10px; background: var(--accent); }
+
+/* ─── MODULES grid ───────────────────────────────────────── */
+
+.section {
+  padding: 100px 0;
+  position: relative;
+}
+.section-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: end;
+  margin-bottom: 56px;
+}
+.section-head h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(40px, 6vw, 84px);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  margin: 16px 0 0;
+  max-width: 14ch;
+}
+.section-head .h2-side {
+  font-size: 16px;
+  color: var(--ink);
+  max-width: 38ch;
+  justify-self: end;
+}
+@media (max-width: 820px) {
+  .section-head { grid-template-columns: 1fr; }
+  .section-head .h2-side { justify-self: start; }
+}
+
+.modules {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--ink);
+}
+.module {
+  grid-column: span 4;
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 28px 26px 26px;
+  background: var(--paper);
+  position: relative;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background .15s ease;
+  overflow: hidden;
+}
+.module:hover { background: var(--paper-2); }
+.module.big { grid-column: span 8; min-height: 360px; background: var(--ink); color: var(--paper); }
+.module.big .num, .module.big .desc { color: var(--paper); opacity: .9; }
+.module.big .name { color: var(--paper); }
+
+.module .num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.module .name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+  margin: 14px 0 10px;
+}
+.module .desc {
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 30ch;
+  line-height: 1.45;
+}
+.module .glyph {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  width: 64px;
+  height: 64px;
+  opacity: .9;
+}
+.module .stamp {
+  position: absolute;
+  top: 18px; right: 18px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--rule-soft);
+  padding: 4px 8px;
+  color: var(--muted);
+}
+.module.big .stamp { border-color: rgba(242,238,229,.3); color: var(--paper); }
+
+@media (max-width: 980px) {
+  .module { grid-column: span 6; }
+  .module.big { grid-column: span 12; }
+}
+@media (max-width: 640px) {
+  .module { grid-column: span 12; }
+}
+
+/* ─── SHOWCASE (product mockup) ───────────────────────────── */
+
+.showcase {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+.showcase .section-head h2 { color: var(--paper); }
+.showcase .section-head .h2-side { color: rgba(242,238,229,.7); }
+
+.shot {
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid #2a2a2a;
+  border-radius: 14px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 260px 1fr 320px;
+  min-height: 560px;
+  box-shadow: 0 40px 80px -30px rgba(0,0,0,.6), 0 2px 0 0 var(--accent);
+}
+@media (max-width: 1100px) {
+  .shot { grid-template-columns: 220px 1fr; }
+  .shot .panel-right { display: none; }
+}
+@media (max-width: 720px) {
+  .shot { grid-template-columns: 1fr; }
+  .shot .panel-left { display: none; }
+}
+
+.shot-bar {
+  grid-column: 1 / -1;
+  height: 40px;
+  background: var(--paper-2);
+  border-bottom: 1px solid var(--rule-soft);
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+}
+.shot-bar .dots { display: flex; gap: 6px; margin-right: 8px; }
+.shot-bar .dot { width: 10px; height: 10px; border-radius: 50%; background: #d6d0c0; }
+
+.panel-left {
+  border-right: 1px solid var(--rule-soft);
+  padding: 18px 14px;
+  background: var(--paper);
+}
+.panel-left .proj {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.panel-left .proj-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.panel-left .menu { margin-top: 22px; display: flex; flex-direction: column; gap: 2px; }
+.panel-left .item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px;
+  font-size: 13px;
+  border-radius: 6px;
+  color: var(--ink);
+}
+.panel-left .item.active { background: var(--ink); color: var(--paper); }
+.panel-left .item .icn { width: 16px; height: 16px; opacity: .9; }
+.panel-left .item .count {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--muted);
+}
+.panel-left .item.active .count { color: var(--paper); }
+
+.panel-main {
+  padding: 22px 24px;
+  position: relative;
+  background:
+    radial-gradient(1200px 600px at 50% 80%, rgba(255,91,20,.07), transparent 60%),
+    var(--paper);
+}
+.panel-main .h {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 18px;
+}
+.panel-main .h .t {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+.panel-main .h .meta { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+
+.gantt {
+  border: 1px solid var(--rule-soft);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.gantt-row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  border-bottom: 1px solid var(--rule-faint);
+  font-size: 13px;
+}
+.gantt-row:last-child { border-bottom: 0; }
+.gantt-label {
+  padding: 12px 14px;
+  display: flex; align-items: center; gap: 8px;
+  border-right: 1px solid var(--rule-faint);
+}
+.gantt-label .pill {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border: 1px solid var(--rule-soft);
+  border-radius: 999px;
+  color: var(--muted);
+}
+.gantt-track {
+  position: relative;
+  height: 44px;
+  background: repeating-linear-gradient(90deg, transparent 0 80px, var(--rule-faint) 80px 81px);
+}
+.gantt-bar {
+  position: absolute;
+  top: 12px;
+  height: 20px;
+  background: var(--ink);
+  border-radius: 4px;
+  display: flex; align-items: center; padding: 0 8px;
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+}
+.gantt-bar.accent { background: var(--accent); color: #0B0B0B; }
+.gantt-bar.late { background: repeating-linear-gradient(45deg, var(--bad) 0 6px, #d04839 6px 12px); color: white; }
+
+.panel-right {
+  border-left: 1px solid var(--rule-soft);
+  padding: 22px 18px;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.rfi-card {
+  border: 1px solid var(--rule-soft);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.rfi-card .head {
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.rfi-card .head .st {
+  padding: 2px 6px;
+  border-radius: 999px;
+  border: 1px solid var(--rule-soft);
+}
+.rfi-card .head .st.open { background: var(--accent); color: #0B0B0B; border-color: var(--accent); }
+.rfi-card .head .st.resolved { background: var(--good); color: white; border-color: var(--good); }
+.rfi-card .t { font-size: 14px; font-weight: 500; line-height: 1.3; }
+.rfi-card .meta { font-family: var(--font-mono); font-size: 10px; color: var(--muted); margin-top: 6px; }
+
+.ai-card {
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 8px;
+  padding: 14px;
+  position: relative;
+}
+.ai-card .label { color: var(--accent); margin-bottom: 8px; }
+.ai-card .msg { font-size: 13px; line-height: 1.4; }
+.ai-card .input {
+  margin-top: 12px;
+  border: 1px solid #2a2a2a;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(242,238,229,.5);
+  display: flex; align-items: center; gap: 8px;
+}
+.ai-card .input::before { content:"›"; color: var(--accent); }
+
+/* ─── BIM/AR section ─────────────────────────────────────── */
+
+.bim {
+  padding: 100px 0;
+  background: var(--paper);
+  position: relative;
+}
+.bim-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+@media (max-width: 900px) { .bim-grid { grid-template-columns: 1fr; } }
+
+.bim-vis {
+  aspect-ratio: 4/3;
+  background: var(--ink);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  color: var(--paper);
+}
+.bim-vis svg { width: 100%; height: 100%; display: block; }
+
+.bim-list { display: flex; flex-direction: column; gap: 0; }
+.bim-feat {
+  padding: 22px 0;
+  border-top: 1px solid var(--rule-soft);
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 16px;
+  align-items: start;
+  cursor: pointer;
+}
+.bim-feat:last-child { border-bottom: 1px solid var(--rule-soft); }
+.bim-feat .n {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.bim-feat .body h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 4px;
+}
+.bim-feat .body p { font-size: 14px; color: var(--muted); margin: 0; max-width: 50ch; }
+.bim-feat .go {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  align-self: center;
+}
+.bim-feat:hover { background: var(--paper-2); padding-left: 16px; }
+.bim-feat { transition: padding .15s ease, background .15s ease; }
+
+/* ─── CASES ──────────────────────────────────────────────── */
+
+.cases {
+  padding: 100px 0;
+  background: var(--paper-2);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 980px) { .case-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px)  { .case-grid { grid-template-columns: 1fr; } }
+
+.case-card {
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+}
+.case-card .ph {
+  aspect-ratio: 4/3;
+  background:
+    repeating-linear-gradient(45deg, var(--paper-2) 0 8px, var(--paper) 8px 16px);
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+.case-card .ph .tag {
+  position: absolute;
+  top: 12px; left: 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: #0B0B0B;
+  padding: 4px 8px;
+}
+.case-card .ph svg { width: 100%; height: 100%; }
+.case-card .body { padding: 20px 22px 24px; }
+.case-card .meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.case-card h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 10px 0 6px;
+}
+.case-card p { font-size: 14px; color: var(--muted); margin: 0 0 14px; }
+.case-card .nums {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--rule-soft);
+  padding-top: 14px;
+}
+.case-card .nums .n {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+.case-card .nums .k {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* ─── PRICING ────────────────────────────────────────────── */
+
+.pricing { padding: 100px 0; }
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--ink);
+}
+@media (max-width: 900px) { .price-grid { grid-template-columns: 1fr; } }
+
+.tier {
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 32px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  background: var(--paper);
+  position: relative;
+}
+.tier.feat { background: var(--ink); color: var(--paper); }
+.tier.feat .price { color: var(--paper); }
+.tier.feat .feature-list li { border-color: rgba(242,238,229,.15); }
+.tier.feat .feature-list li::before { background: var(--accent); }
+
+.tier .nm {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.tier .nm .name {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 28px;
+  letter-spacing: -0.02em;
+}
+.tier .nm .badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: #0B0B0B;
+  padding: 4px 8px;
+}
+.tier .blurb { font-size: 14px; color: var(--muted); }
+.tier.feat .blurb { color: rgba(242,238,229,.7); }
+.tier .price {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 58px;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  display: flex; align-items: baseline; gap: 6px;
+}
+.tier .price .unit {
+  font-size: 13px;
+  font-family: var(--font-mono);
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.tier.feat .price .unit { color: rgba(242,238,229,.6); }
+.feature-list { list-style: none; padding: 0; margin: 0; }
+.feature-list li {
+  font-size: 14px;
+  padding: 10px 0 10px 22px;
+  border-top: 1px solid var(--rule-soft);
+  position: relative;
+}
+.feature-list li::before {
+  content: "";
+  width: 8px; height: 8px;
+  background: var(--ink);
+  position: absolute;
+  left: 0; top: 16px;
+}
+.feature-list li:first-child { border-top: 0; }
+
+/* ─── BLOG ───────────────────────────────────────────────── */
+
+.blog { padding: 100px 0; background: var(--paper-2); border-top: 1px solid var(--ink); }
+.blog-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--ink);
+}
+@media (max-width: 900px) { .blog-grid { grid-template-columns: 1fr; } }
+
+.post {
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 28px 26px;
+  background: var(--paper);
+  display: flex; flex-direction: column; gap: 14px;
+  min-height: 360px;
+  transition: background .15s ease;
+}
+.post:hover { background: var(--paper-2); }
+.post.feat { grid-row: span 2; background: var(--paper); }
+.post .cat {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex; gap: 10px; align-items: center;
+}
+.post .cat::before { content:""; width: 6px; height: 6px; background: var(--accent); }
+.post h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 0;
+  text-wrap: balance;
+}
+.post.feat h3 { font-size: 44px; line-height: 0.98; }
+.post .ex { font-size: 14px; color: var(--muted); margin: 0; }
+.post .ph {
+  flex: 1;
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  min-height: 140px;
+}
+.post .meta {
+  margin-top: auto;
+  display: flex; justify-content: space-between; align-items: end;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+
+.footer {
+  background: var(--ink);
+  color: var(--paper);
+  position: relative;
+  overflow: hidden;
+}
+.footer .container { position: relative; z-index: 2; }
+
+.footer-top {
+  border-bottom: 1px solid rgba(242,238,229,.15);
+  padding: 80px 0 60px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+@media (max-width: 900px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .footer-top { grid-template-columns: 1fr; } }
+
+.footer-cta h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  margin: 0 0 18px;
+  max-width: 14ch;
+}
+.footer-cta h2 em { font-family: var(--font-serif); font-style: italic; font-weight: 400; }
+
+.footer-col h5 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 18px;
+  font-weight: 500;
+}
+.footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.footer-col a { font-size: 15px; opacity: .85; transition: opacity .12s ease; }
+.footer-col a:hover { opacity: 1; color: var(--accent); }
+
+.footer-mid {
+  padding: 30px 0 22px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid rgba(242,238,229,.15);
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.footer-mid .ml {
+  display: flex; align-items: center; gap: 10px;
+  border: 1px solid rgba(242,238,229,.2);
+  border-radius: 999px;
+  padding: 6px 6px 6px 16px;
+  min-width: 320px;
+  max-width: 100%;
+}
+.footer-mid .ml input {
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  flex: 1;
+  padding: 8px 0;
+}
+.footer-mid .ml input::placeholder { color: rgba(242,238,229,.5); }
+.footer-mid .ml button {
+  background: var(--accent);
+  color: #0B0B0B;
+  border: 0;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.footer-mid .socials { display: flex; gap: 8px; }
+.footer-mid .socials a {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(242,238,229,.2);
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  transition: background .12s ease, color .12s ease;
+}
+.footer-mid .socials a:hover { background: var(--accent); color: #0B0B0B; border-color: var(--accent); }
+
+/* huge wordmark */
+.footer-mark {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  font-size: clamp(120px, 26vw, 420px);
+  line-height: 0.82;
+  text-align: center;
+  padding: 40px 0 0;
+  position: relative;
+  user-select: none;
+  color: var(--paper);
+}
+.footer-mark .o-dot {
+  display: inline-block;
+  width: 0.6em;
+  height: 0.6em;
+  background: var(--accent);
+  border-radius: 50%;
+  vertical-align: -0.04em;
+  margin: 0 0.02em;
+}
+
+.footer-base {
+  border-top: 1px solid rgba(242,238,229,.15);
+  padding: 22px 0 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(242,238,229,.6);
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.footer-base .links { display: flex; gap: 22px; }
+.footer-base .links a:hover { color: var(--accent); }
+
+/* footer giant grid behind */
+.footer-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(242,238,229,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(242,238,229,.05) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+}
+
+/* ─── small ─── */
+
+.dark-toggle {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 40;
+}
+
+/* misc */
+.hide-mobile { display: initial; }
+@media (max-width: 720px) {
+  .hide-mobile { display: none; }
+}
+
+.spacer-1 { height: 8px; }
+.spacer-2 { height: 16px; }
+.spacer-3 { height: 24px; }
+
+/* selection */
+::selection { background: var(--accent); color: #0B0B0B; }
+
+/* ── Extra classes for v2 homepage ───────────────────────── */
+.sidebar-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 10px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--muted);
+  border-radius: 3px;
+  cursor: pointer;
+  margin-bottom: 2px;
+  transition: background .15s;
+}
+.sidebar-item:hover,
+.sidebar-item.active {
+  background: var(--paper-2);
+  color: var(--ink);
+}
+
+.panel-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  margin-bottom: 8px;
+}
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 900px) {
+  .cases-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ── Module grid ─────────────────────────────────────────── */
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+.module-grid .module { grid-column: span 4; }
+.module-grid .module.big { grid-column: span 8; }
+@media (max-width: 1024px) {
+  .module-grid .module { grid-column: span 6; }
+  .module-grid .module.big { grid-column: span 12; }
+}
+@media (max-width: 640px) {
+  .module-grid .module,
+  .module-grid .module.big { grid-column: span 12; }
+}
+
+.module-name {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 0 0 6px 0;
+}
+.module-desc {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+}
+.module-go {
+  margin-top: auto;
+  color: var(--muted);
+  transition: color .15s, transform .15s;
+}
+.module:hover .module-go { color: var(--accent); transform: translate(2px, -2px); }
+
+/* ── BIM layout ──────────────────────────────────────────── */
+.bim-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .bim-layout { grid-template-columns: 1fr; }
+}
+.bim-content { padding: 20px 0; }
+
+/* ── Hero overrides ──────────────────────────────────────── */
+.hero-h1 { margin: 16px 0; }
+.hero-sub {
+  font-size: clamp(15px, 1.8vw, 18px);
+  color: var(--muted);
+  max-width: 58ch;
+  line-height: 1.7;
+  margin: 0 0 28px;
+}
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin: 28px 0;
+  flex-wrap: wrap;
+}
+
+/* ── Pricing extras ──────────────────────────────────────── */
+.pricing-extras {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+@media (max-width: 900px) {
+  .pricing-extras { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .pricing-extras { grid-template-columns: 1fr; }
+}
+
+</style>
 </head>
 <body>
-  <div id="root"></div>
+<div id="root"></div>
 
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" crossorigin="anonymous"></script>
 
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" data-presets="env,react">
+/* global React */
+const { useState, useEffect, useRef } = React;
 
-  <!-- Page scripts -->
-  <script type="text/babel" src="icons.jsx?v=2"></script>
-  <script type="text/babel" src="hero.jsx?v=4"></script>
-  <script type="text/babel" src="layout.jsx?v=2"></script>
-  <script type="text/babel" src="sections.jsx?v=3"></script>
-  <script type="text/babel" src="new-sections.jsx?v=4"></script>
-  <script type="text/babel" src="home-extra.jsx?v=2"></script>
-  <script type="text/babel" src="app.jsx?v=4"></script>
+const Icon = ({ name, size = 18, stroke = 1.5 }) => {
+  const p = { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: stroke, strokeLinecap: "round", strokeLinejoin: "round" };
+  switch (name) {
+    case "cube":      return (<svg {...p}><path d="M12 2 3 7v10l9 5 9-5V7z"/><path d="M3 7l9 5 9-5"/><path d="M12 22V12"/></svg>);
+    case "calendar":  return (<svg {...p}><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>);
+    case "chat":      return (<svg {...p}><path d="M21 12a8 8 0 0 1-11.5 7.2L3 21l1.8-6.5A8 8 0 1 1 21 12Z"/></svg>);
+    case "alert":     return (<svg {...p}><path d="M10.3 3.8 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.8a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/></svg>);
+    case "clipboard": return (<svg {...p}><rect x="6" y="4" width="12" height="18" rx="1"/><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M9 10h6M9 14h6M9 18h3"/></svg>);
+    case "sparkle":   return (<svg {...p}><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/><path d="m7 7 3 3M14 14l3 3M17 7l-3 3M10 14l-3 3"/></svg>);
+    case "search":    return (<svg {...p}><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>);
+    case "menu":      return (<svg {...p}><path d="M3 6h18M3 12h18M3 18h18"/></svg>);
+    case "x":         return (<svg {...p}><path d="M18 6 6 18M6 6l12 12"/></svg>);
+    case "arrow":     return (<svg {...p}><path d="M7 17 17 7M9 7h8v8"/></svg>);
+    case "play":      return (<svg {...p}><path d="M6 4v16l14-8z" fill="currentColor"/></svg>);
+    case "doc":       return (<svg {...p}><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>);
+    case "shield":    return (<svg {...p}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>);
+    case "check":     return (<svg {...p}><path d="M20 6 9 17l-5-5"/></svg>);
+    case "layers":    return (<svg {...p}><path d="m2 7 10-5 10 5-10 5-10-5Z"/><path d="m2 12 10 5 10-5"/><path d="m2 17 10 5 10-5"/></svg>);
+    case "zap":       return (<svg {...p}><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z"/></svg>);
+    case "globe":     return (<svg {...p}><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>);
+    case "dollar":    return (<svg {...p}><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>);
+    case "phone":     return (<svg {...p}><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1A19.5 19.5 0 0 1 5.8 13a19.8 19.8 0 0 1-3-8.5A2 2 0 0 1 5 2.2h3a2 2 0 0 1 2 1.7c.1 1.3.4 2.5.9 3.7a2 2 0 0 1-.5 2.1L9.1 10.7a16 16 0 0 0 6.1 6.1l1.3-1.3a2 2 0 0 1 2.1-.5c1.2.5 2.4.8 3.7.9a2 2 0 0 1 1.7 2Z"/></svg>);
+    case "compass":   return (<svg {...p}><circle cx="12" cy="12" r="10"/><path d="m16 8-3 6-6 3 3-6 6-3Z"/></svg>);
+    default: return null;
+  }
+};
+window.Icon = Icon;
+</script>
 
-  <!-- CMS editor (last — mounts after page is rendered) -->
-  <script type="text/babel" src="cms.jsx?v=2"></script>
+<script type="text/babel" data-presets="env,react">
+/* global React, Icon */
+const { useState: useStateH } = React;
 
-  <!-- Tracking placeholder — add your IDs here after deployment -->
-  <script src="tracking.js"></script>
+const TICKER_ITEMS = [
+  "The Conlan Company · Chicago IL · Level 28 poured · 6 days ahead of schedule",
+  "Al Shirawi · Dubai UAE · 47 RFIs resolved this week",
+  "Depenbrock · Hamburg DE · 340MB IFC model loaded in 28 seconds",
+  "YMCO · Riyadh KSA · 14 submittals approved today",
+  "Aboitiz InfraCapital · Manila PH · 3 new projects onboarded this month",
+  "CSV Construction · Johannesburg ZA · Daily log filed from site at 5:48 AM",
+  "Dascon · Karachi PK · 22 punch items cleared before handover",
+  "430 active projects across 7 countries · Live right now",
+  "Mastoura · Riyadh KSA · Clash report generated in 4 minutes",
+  "MMP · Lahore PK · Field team submitted 19 daily logs without internet",
+];
+
+const NAV_ITEMS = [
+  { key: "platform", label: "Platform", mega: true },
+  { key: "solutions", label: "Solutions", mega: false, href: "solutions/general-contractors.html" },
+  { key: "pricing", label: "Pricing", mega: false, href: "pricing.html" },
+  { key: "blog", label: "Field Notes", mega: false, href: "blog.html" },
+  { key: "cases", label: "Case Studies", mega: false, href: "case-studies.html" },
+];
+
+const PLATFORM_MODULES = [
+  { n: "01", name: "BIM Viewer", desc: "Stream any IFC model in the browser. Mark up in 3D.", icon: "cube", href: "features.html#bim" },
+  { n: "02", name: "Schedule", desc: "Gantt plus lookahead linked to your model and crew.", icon: "calendar", href: "features.html#schedule" },
+  { n: "03", name: "RFIs", desc: "Threaded and time-stamped. Pinned to the drawing.", icon: "chat", href: "features.html#rfis" },
+  { n: "04", name: "Issues", desc: "Punch list with photos, locations, and trade routing.", icon: "alert", href: "features.html#issues" },
+  { n: "05", name: "Daily Logs", desc: "Mobile first daily reports with voice, weather, and photos.", icon: "clipboard", href: "features.html#daily-logs" },
+  { n: "06", name: "AI Concierge", desc: "Ask your project. It reads specs, submittals and RFIs.", icon: "sparkle", href: "features.html#ai-concierge" },
+];
+
+const Header = () => {
+  const [megaOpen, setMegaOpen] = useStateH(false);
+
+  return (
+    <header className="header-wrap">
+      <div className="ticker">
+        <div className="badge"><span className="pulse"></span>LIVE · GLOBAL</div>
+        <div className="scroll">
+          <div className="scroll-track">
+            {[...TICKER_ITEMS, ...TICKER_ITEMS].map((t, i) => (
+              <span key={i}><i></i>{t}</span>
+            ))}
+          </div>
+        </div>
+        <div className="badge" style={{ background: "var(--paper)", color: "var(--ink)", borderLeft: "1px solid var(--ink)", borderRight: 0 }}>
+          430 PROJECTS · LIVE
+        </div>
+      </div>
+
+      <div className="container">
+        <nav className="nav">
+          <div className="nav-left">
+            <a className="brand" href="index.html" aria-label="MASON home">
+              <span className="brand-mark">M</span>
+              <span>MASON</span>
+            </a>
+            <div className="hide-mobile" style={{ display: "flex", gap: 22, alignItems: "center" }}>
+              {NAV_ITEMS.map(n => (
+                <a key={n.key} href={n.href || "#"} className="nav-link"
+                   onMouseEnter={() => n.mega && setMegaOpen(true)}
+                   onClick={(e) => { if (n.mega) { e.preventDefault(); setMegaOpen(o => !o); } }}>
+                  {n.label}{n.mega && <span className="caret">&#9660;</span>}
+                </a>
+              ))}
+            </div>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 8 }} className="hide-lg">
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--muted)", letterSpacing: ".08em", textTransform: "uppercase" }}>
+              v 4.2 · build 0921
+            </span>
+          </div>
+          <div className="nav-right">
+            <a className="btn ghost hide-md" href="contact.html">Sign in</a>
+            <a className="btn primary" href="contact.html">Book a demo <Icon name="arrow" size={12}/></a>
+          </div>
+        </nav>
+
+        <div className={`mega ${megaOpen ? "open" : ""}`} onMouseLeave={() => setMegaOpen(false)}>
+          <div className="container" style={{ padding: 0 }}>
+            <div className="mega-grid">
+              <div>
+                <div className="label-num">SECTION 01</div>
+                <h3 className="mega-title">The platform</h3>
+                <p className="mega-sub">18 modules. One database. Built so your superintendent and your VDC lead are looking at the same numbers.</p>
+                <a className="btn" style={{ marginTop: 20 }} href="features.html">All modules <Icon name="arrow" size={12}/></a>
+              </div>
+              <div className="mega-items">
+                {PLATFORM_MODULES.map(m => (
+                  <a key={m.n} className="mega-item" href={m.href}>
+                    <span className="num">{m.n}</span>
+                    <span><span className="label">{m.name}</span><span className="desc">{m.desc}</span></span>
+                    <span className="go"><Icon name="arrow" size={14}/></span>
+                  </a>
+                ))}
+              </div>
+              <div className="mega-feature">
+                <div>
+                  <div className="label-num" style={{ color: "rgba(242,238,229,.6)" }}>FEATURE</div>
+                  <h4 style={{ marginTop: 10 }}>AI Concierge now reads your full spec book.</h4>
+                </div>
+                <a className="btn primary" href="features.html#ai-concierge" style={{ alignSelf: "flex-start" }}>
+                  See it work <Icon name="arrow" size={12}/>
+                </a>
+                <svg className="vis" viewBox="0 0 400 300" preserveAspectRatio="none">
+                  <defs><pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="rgba(242,238,229,.3)"/></pattern></defs>
+                  <rect width="400" height="300" fill="url(#dots)"/>
+                  <circle cx="320" cy="80" r="80" fill="var(--accent)" opacity="0.35"/>
+                  <circle cx="320" cy="80" r="40" fill="var(--accent)" opacity="0.6"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+};
+window.Header = Header;
+</script>
+
+<script type="text/babel" data-presets="env,react">
+/* global React, Icon */
+
+const Hero = () => (
+  <section className="hero" id="hero" data-screen-label="01 Hero">
+    <div className="container">
+      <div className="hero-inner">
+
+        <div className="corner-tl"></div>
+        <div className="corner-tr"></div>
+
+        <div className="hero-eyebrow">
+          <span className="section-tag">SECTION 01 — THE PLATFORM</span>
+        </div>
+
+        <h1 className="display hero-h1">
+          The platform your<br/>
+          competitors hope<br/>
+          you never <em className="serif-it">find.</em>
+        </h1>
+
+        <p className="hero-sub">
+          Procore costs too much. Fieldwire does too little. Asite requires three different logins.
+          Buildertrend was built for homebuilders. Mason was built for firms that want to grow.
+          BIM viewer, schedule, RFIs, issues, daily logs, cost, safety, quality, submittals and AI built in.
+          One price. Unlimited team members. No upsells.
+        </p>
+
+        <div className="hero-stats">
+          <div className="hero-stat">
+            <div className="stat-num">147</div>
+            <div className="stat-label">clients worldwide<br/><span style={{ fontSize: 11, fontFamily: "var(--font-mono)", letterSpacing: ".06em", color: "var(--muted)" }}>USA · UAE · DE · KSA · ZA · PK · PH</span></div>
+          </div>
+          <div className="hero-stat">
+            <div className="stat-num">430</div>
+            <div className="stat-label">active projects<br/><span style={{ fontSize: 11, fontFamily: "var(--font-mono)", letterSpacing: ".06em", color: "var(--muted)" }}>running right now · live</span></div>
+          </div>
+        </div>
+
+        <div className="hero-cta">
+          <a className="btn primary" href="contact.html">
+            Start 14 day pilot <Icon name="arrow" size={14}/>
+          </a>
+          <a className="btn" href="contact.html">
+            <Icon name="play" size={14}/> Watch 6 minute demo
+          </a>
+        </div>
+
+        <div className="tech-rail">
+          <span>SOC 2 TYPE II</span>
+          <span>IFC 4.3</span>
+          <span>iOS</span>
+          <span>ANDROID</span>
+          <span>8 LANGUAGES</span>
+          <span>OFFLINE MODE</span>
+          <span>v 4.2</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+);
+window.Hero = Hero;
+</script>
+
+<script type="text/babel" data-presets="env,react">
+/* global React, Icon */
+
+const ALL_MODULES = [
+  {
+    n: "02", name: "BIM Viewer", tag: "PLAN",
+    desc: "Open any IFC 2x3 or IFC4 model in the browser in 30 seconds. No Autodesk account. No per-seat viewer license. Mark up, measure, isolate disciplines and share views with your team.",
+    icon: "cube", href: "features.html#bim"
+  },
+  {
+    n: "03", name: "Schedule", tag: "PLAN",
+    desc: "Gantt with critical path and baseline compare. Link tasks to BIM elements and crew assignments. Lookahead views automatically flag slipping activities before they hit your program.",
+    icon: "calendar", href: "features.html#schedule"
+  },
+  {
+    n: "04", name: "Documents", tag: "PLAN",
+    desc: "Every drawing, spec, and submittal in one place with full version history. Approval workflows route automatically. Field teams always see the current revision. No more emailing PDFs.",
+    icon: "doc", href: "features.html#documents"
+  },
+  {
+    n: "05", name: "RFIs", tag: "EXECUTE",
+    desc: "Create, assign, track and close RFIs with full thread history. Every RFI is timestamped, referenced to the drawing, and linked to the schedule impact it carries.",
+    icon: "chat", href: "features.html#rfis"
+  },
+  {
+    n: "06", name: "Issues", tag: "EXECUTE",
+    desc: "Punch lists that actually get closed. Four issue types: defects, observations, safety, and commissioning. Each item carries a photo pair, location, trade assignment, and due date.",
+    icon: "alert", href: "features.html#issues"
+  },
+  {
+    n: "07", name: "Daily Logs", tag: "EXECUTE",
+    desc: "Field teams file daily logs in under 90 seconds on any phone. Voice to text. Automatic weather. Photo capture. Full offline mode with sync on reconnect. No excuses for missing logs.",
+    icon: "clipboard", href: "features.html#daily-logs"
+  },
+  {
+    n: "08", name: "Submittals", tag: "EXECUTE",
+    desc: "Automated routing through your approval chain. Every submittal tracked against the schedule. Late reviews are flagged before they become program problems.",
+    icon: "layers", href: "features.html#submittals"
+  },
+  {
+    n: "09", name: "Meetings", tag: "EXECUTE",
+    desc: "Meeting minutes that write themselves. Action items assigned in the room. Progress tracked in the platform. Every decision documented with the people who made it.",
+    icon: "calendar", href: "features.html#meetings"
+  },
+  {
+    n: "10", name: "Cost Management", tag: "INSIGHTS",
+    desc: "Budget versus actual in real time. Commitment tracking across all subcontractors and suppliers. Variation log tied directly to the RFI that created it. Know where every dollar went.",
+    icon: "dollar", href: "features.html#cost"
+  },
+  {
+    n: "11", name: "Quality", tag: "EXECUTE",
+    desc: "NCR workflow with hold points, inspection checklists, and sign-off chains. Quality records that stand up in arbitration. Nonconformance reports in one tap from the field.",
+    icon: "check", href: "features.html#quality"
+  },
+  {
+    n: "12", name: "Safety", tag: "EXECUTE",
+    desc: "Incident reports, toolbox talks, near-miss logs and safety observations. Automatic distribution to the right people. Full audit trail for every safety event on your project.",
+    icon: "shield", href: "features.html#safety"
+  },
+  {
+    n: "13", name: "Reports", tag: "INSIGHTS",
+    desc: "Custom reports scheduled to land in inboxes every Monday morning. Board-ready summaries. Owner progress reports. Subcontractor scorecards. All generated without touching a spreadsheet.",
+    icon: "doc", href: "features.html#reports"
+  },
+  {
+    n: "14", name: "Messages", tag: "EXECUTE",
+    desc: "In-context project messaging. Every conversation is attached to the RFI, issue, or document it belongs to. No more digging through WhatsApp to find who said what.",
+    icon: "chat", href: "features.html#messages"
+  },
+  {
+    n: "15", name: "Search", tag: "INSIGHTS",
+    desc: "Global search across every project in your portfolio. Find any RFI, document, issue, daily log, or meeting minute in under three seconds. No filters needed.",
+    icon: "search", href: "features.html#search"
+  },
+];
+
+const Modules = () => (
+  <section className="modules" id="modules" data-screen-label="02 Platform">
+    <div className="container">
+      <div className="section-head">
+        <div>
+          <span className="section-tag">SECTION 02 — PLATFORM</span>
+          <h2 className="display">Every tool<br/>your team needs.</h2>
+        </div>
+        <p className="h2-side">
+          18 modules. One login. From preconstruction to final handover, every workflow your team runs is already here.
+          The platform your superintendent and your VDC lead look at is the same platform.
+          <em className="serif-it"> That is the point.</em>
+        </p>
+      </div>
+
+      <div className="module-grid">
+
+        {/* FEATURED: AI CONCIERGE */}
+        <div className="module big" style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+            <div className="module-icon">
+              <Icon name="sparkle" size={22} stroke={1.4}/>
+            </div>
+            <div>
+              <div className="label-num" style={{ color: "rgba(242,238,229,.5)", fontSize: 10, marginBottom: 4 }}>01 · AI CONCIERGE</div>
+              <h3 style={{ color: "var(--paper)", fontSize: "clamp(22px, 3vw, 32px)", fontFamily: "var(--font-display)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+                Your smartest site manager.<br/>Ask it anything.
+              </h3>
+            </div>
+          </div>
+
+          <p style={{ color: "rgba(242,238,229,.7)", fontSize: 15, lineHeight: 1.65, maxWidth: "52ch" }}>
+            The AI Concierge reads every RFI, daily log, submittal, specification, schedule activity, and cost line on your project.
+            Ask it what is blocking Level 4. Ask it which subcontractor has the most open issues.
+            Ask it to draft a variation claim. It answers in plain English within seconds.
+            Memory persists for 24 hours so it remembers the conversation you had this morning.
+          </p>
+
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 4 }}>
+            {["Project-aware Q&A", "24h conversation memory", "Cross-project portfolio mode", "Reads specs and submittals", "Variation claim drafting", "Powered by DeepSeek V4"].map(f => (
+              <span key={f} style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: ".08em", color: "rgba(242,238,229,.6)", border: "1px solid rgba(242,238,229,.2)", padding: "3px 8px", borderRadius: 2 }}>{f}</span>
+            ))}
+          </div>
+
+          <div style={{ marginTop: "auto", display: "flex", gap: 10 }}>
+            <a className="btn primary" href="features.html#ai-concierge">See AI Concierge <Icon name="arrow" size={12}/></a>
+            <a className="btn" style={{ borderColor: "rgba(242,238,229,.3)", color: "var(--paper)" }} href="contact.html">Book a live demo</a>
+          </div>
+
+          {/* Background decoration */}
+          <svg style={{ position: "absolute", right: 24, bottom: 24, opacity: 0.07, pointerEvents: "none" }} width="180" height="180" viewBox="0 0 180 180" fill="none">
+            <circle cx="90" cy="90" r="80" stroke="white" strokeWidth="1"/>
+            <circle cx="90" cy="90" r="55" stroke="white" strokeWidth="1"/>
+            <circle cx="90" cy="90" r="30" stroke="white" strokeWidth="1"/>
+            <line x1="10" y1="90" x2="170" y2="90" stroke="white" strokeWidth="0.5"/>
+            <line x1="90" y1="10" x2="90" y2="170" stroke="white" strokeWidth="0.5"/>
+          </svg>
+        </div>
+
+        {/* SMALL MODULES */}
+        {ALL_MODULES.map(m => (
+          <a key={m.n} className="module" href={m.href}>
+            <div className="module-icon"><Icon name={m.icon} size={18} stroke={1.4}/></div>
+            <div>
+              <div className="label-num" style={{ fontSize: 10, marginBottom: 4, color: "var(--muted)" }}>{m.n} · {m.tag}</div>
+              <h3 className="module-name">{m.name}</h3>
+              <p className="module-desc">{m.desc}</p>
+            </div>
+            <div className="module-go"><Icon name="arrow" size={14}/></div>
+          </a>
+        ))}
+
+      </div>
+    </div>
+  </section>
+);
+window.Modules = Modules;
+</script>
+
+<script type="text/babel" data-presets="env,react">
+/* global React, Icon */
+
+const Showcase = () => (
+  <section className="showcase" id="showcase" data-screen-label="03 Product">
+    <div className="container">
+      <div className="section-head" style={{ marginBottom: 40 }}>
+        <div>
+          <span className="section-tag">SECTION 03 — PRODUCT</span>
+          <h2 className="display">Open a project.<br/>See everything.</h2>
+        </div>
+        <p className="h2-side">
+          From the bid you won to the day you hand over the keys, every workflow lives in one place.
+          Your PM in Chicago and your site manager in Dubai are looking at the same screen.
+          <em className="serif-it"> That is how you stay in front.</em>
+        </p>
+      </div>
+
+      <div className="showcase-wrap">
+        <div className="corner-tl"></div>
+        <div className="corner-tr"></div>
+        <div className="corner-bl"></div>
+        <div className="corner-br"></div>
+
+        {/* Left panel: project sidebar */}
+        <div className="panel-left">
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: ".1em", color: "var(--muted)", marginBottom: 14 }}>PROJECTS</div>
+          {[
+            { name: "Convention Center Phase 2", status: "ON TRACK", color: "#22c55e" },
+            { name: "Harbor Bridge Rehabilitation", status: "AT RISK", color: "#f59e0b" },
+            { name: "Riyadh Office Tower", status: "ON TRACK", color: "#22c55e" },
+            { name: "Manila Logistics Hub", status: "ON TRACK", color: "#22c55e" },
+            { name: "Hamburg Residential Block", status: "ON TRACK", color: "#22c55e" },
+          ].map((p, i) => (
+            <div key={i} className={`sidebar-item ${i === 0 ? "active" : ""}`}>
+              <span>{p.name}</span>
+              <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, color: p.color, letterSpacing: ".08em" }}>{p.status}</span>
+            </div>
+          ))}
+
+          <div style={{ marginTop: 20, fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: ".1em", color: "var(--muted)" }}>MODULES</div>
+          {["Schedule", "RFIs · 3 open", "Issues · 14 open", "Daily Logs", "Documents", "BIM Viewer", "AI Concierge"].map((m, i) => (
+            <div key={i} className={`sidebar-item ${i === 0 ? "active" : ""}`}>{m}</div>
+          ))}
+        </div>
+
+        {/* Main panel: Gantt schedule */}
+        <div className="panel-main">
+          <div className="panel-bar">
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--muted)", letterSpacing: ".08em" }}>SCHEDULE · GANTT VIEW · WEEK 23</span>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "#22c55e", letterSpacing: ".08em" }}>6 DAYS AHEAD</span>
+          </div>
+
+          <div style={{ padding: "16px 0" }}>
+            {[
+              { name: "Foundation complete", pct: 100, color: "var(--accent)", start: 0, width: 60 },
+              { name: "Level 1 to 5 structure", pct: 100, color: "var(--accent)", start: 10, width: 75 },
+              { name: "Level 6 to 12 structure", pct: 68, color: "var(--accent)", start: 25, width: 55 },
+              { name: "MEP rough-in L1 to L5", pct: 45, color: "#3b82f6", start: 30, width: 50 },
+              { name: "Curtain wall installation", pct: 20, color: "#a855f7", start: 45, width: 45 },
+              { name: "Interior fit-out", pct: 0, color: "#6b7280", start: 55, width: 40 },
+            ].map((task, i) => (
+              <div key={i} style={{ display: "grid", gridTemplateColumns: "180px 1fr 40px", gap: 10, alignItems: "center", marginBottom: 10 }}>
+                <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "var(--ink)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{task.name}</span>
+                <div style={{ background: "var(--paper-2)", borderRadius: 2, height: 20, position: "relative", overflow: "hidden" }}>
+                  <div style={{ position: "absolute", left: `${task.start}%`, width: `${task.width}%`, height: "100%", background: task.color, opacity: task.pct === 0 ? 0.3 : 0.85, borderRadius: 2 }}></div>
+                  {task.pct > 0 && <div style={{ position: "absolute", left: `${task.start}%`, width: `${task.width * task.pct / 100}%`, height: "100%", background: task.color, borderRadius: 2 }}></div>}
+                </div>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--muted)", textAlign: "right" }}>{task.pct}%</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="panel-bar" style={{ marginTop: 8 }}>
+            <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, color: "var(--muted)" }}>BASELINE IMPORTED FROM PRIMAVERA P6 · LAST SYNC 08:42 AM</span>
+          </div>
+        </div>
+
+        {/* Right panel: RFI list + AI */}
+        <div className="panel-right">
+          <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: ".1em", color: "var(--muted)", marginBottom: 12 }}>OPEN RFIs · 3</div>
+
+          {[
+            { id: "RFI-0847", title: "Curtain wall anchor detail at Level 9 parapet", age: "2h ago", priority: "HIGH" },
+            { id: "RFI-0846", title: "MEP coordination clash at Column Grid C8", age: "Yesterday", priority: "MED" },
+            { id: "RFI-0845", title: "Specification clause 08-41-00 interpretation", age: "2d ago", priority: "LOW" },
+          ].map((r, i) => (
+            <div key={i} className="rfi-card">
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 4 }}>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, color: "var(--muted)" }}>{r.id}</span>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, color: r.priority === "HIGH" ? "#ef4444" : r.priority === "MED" ? "#f59e0b" : "var(--muted)" }}>{r.priority}</span>
+              </div>
+              <div style={{ fontFamily: "var(--font-body)", fontSize: 12, lineHeight: 1.4, color: "var(--ink)" }}>{r.title}</div>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, color: "var(--muted)", marginTop: 4 }}>{r.age}</div>
+            </div>
+          ))}
+
+          {/* AI Concierge card */}
+          <div className="ai-card">
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, color: "rgba(242,238,229,.5)", marginBottom: 8, letterSpacing: ".1em" }}>AI CONCIERGE</div>
+            <div style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "rgba(242,238,229,.9)", lineHeight: 1.5 }}>
+              "RFI-0847 references the curtain wall spec from drawing A-901. The anchor detail was updated in Rev C last Tuesday. I drafted a response to the subcontractor."
+            </div>
+            <div style={{ display: "flex", gap: 6, marginTop: 10, flexWrap: "wrap" }}>
+              {["View draft", "Send response", "Link to schedule"].map(a => (
+                <button key={a} style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: ".06em", padding: "4px 8px", background: "rgba(242,238,229,.1)", border: "1px solid rgba(242,238,229,.2)", color: "rgba(242,238,229,.8)", borderRadius: 2, cursor: "pointer" }}>{a}</button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+window.Showcase = Showcase;
+</script>
+
+<script type="text/babel" data-presets="env,react">
+/* global React, Icon */
+
+const BIM = () => (
+  <section className="bim" id="bim" data-screen-label="04 BIM">
+    <div className="container">
+      <div className="bim-layout">
+        <div className="bim-content">
+          <span className="section-tag">SECTION 04 — BIM AND AI</span>
+          <h2 className="display">Your BIM viewer<br/>is already<br/><em className="serif-it">built in.</em></h2>
+          <p style={{ color: "var(--muted)", marginTop: 16, fontSize: 16, lineHeight: 1.7, maxWidth: "42ch" }}>
+            Browser native IFC 2x3 and IFC4. Open a 300MB model in 30 seconds.
+            No Autodesk account required. No per-seat viewer license.
+            Then run 10 different AI analyses on it without leaving the platform.
+          </p>
+
+          <div style={{ marginTop: 28, display: "flex", flexDirection: "column", gap: 10 }}>
+            {[
+              { icon: "sparkle", title: "Natural Language BIM Query", desc: "Type "show me MEP on Level 3" and it isolates exactly that." },
+              { icon: "search", title: "Screenshot Analysis", desc: "Drop a coordination screenshot in and get discipline-tagged observations back." },
+              { icon: "chat", title: "RFI Auto-Draft from Clash", desc: "Clash data goes in. A complete professional RFI comes out." },
+              { icon: "shield", title: "IFC Health Checker", desc: "20-plus validation rules. A health score from 0 to 100. Data quality, completeness, naming, performance." },
+              { icon: "zap", title: "Clash Oracle", desc: "Groups clashes by discipline pair. Prioritizes critical versus low. Gives resolution guidance for each one." },
+              { icon: "calendar", title: "4D Schedule Sequencing", desc: "Maps your schedule tasks to BIM element types. Generates the full construction sequence with critical path." },
+              { icon: "globe", title: "AR Field Overlay", desc: "Point your phone at the jobsite. See the BIM model overlaid in augmented reality through WebXR." },
+              { icon: "layers", title: "Generative Design Alternatives", desc: "Three buildable clash resolutions with cost delta, time delta, and feasibility score for each." },
+              { icon: "compass", title: "Autonomous Project Agent", desc: "Runs every night. Flags risks, anomalies, and schedule threats before your morning standup." },
+              { icon: "doc", title: "Document Q&A", desc: "250,000 characters of spec book loaded directly. Ask any question. Get a cited answer." },
+            ].map((f, i) => (
+              <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+                <div style={{ flexShrink: 0, width: 28, height: 28, background: "var(--paper-2)", border: "1px solid var(--rule-soft)", display: "flex", alignItems: "center", justifyContent: "center", borderRadius: 3 }}>
+                  <Icon name={f.icon} size={14} stroke={1.4}/>
+                </div>
+                <div>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: 14, fontWeight: 500, letterSpacing: "-0.01em" }}>{f.title}</div>
+                  <div style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "var(--muted)", marginTop: 2, lineHeight: 1.5 }}>{f.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ marginTop: 28, display: "flex", gap: 10 }}>
+            <a className="btn primary" href="bim-ar.html">See BIM in action <Icon name="arrow" size={12}/></a>
+            <a className="btn" href="contact.html">Book a BIM demo</a>
+          </div>
+        </div>
+
+        <div className="bim-vis">
+          <svg viewBox="0 0 480 520" fill="none" style={{ width: "100%", maxWidth: 480 }}>
+            <rect width="480" height="520" fill="var(--paper-2)" rx="4"/>
+
+            {/* Blueprint grid */}
+            <g stroke="var(--ink)" strokeOpacity="0.06" strokeWidth="0.5">
+              {Array.from({length: 25}).map((_, i) => (
+                <line key={"h"+i} x1="0" y1={i*22} x2="480" y2={i*22}/>
+              ))}
+              {Array.from({length: 23}).map((_, i) => (
+                <line key={"v"+i} x1={i*22} y1="0" x2={i*22} y2="520"/>
+              ))}
+            </g>
+
+            {/* Isometric building wireframe */}
+            <g transform="translate(80, 60)">
+              {/* Building base */}
+              <polygon points="160,320 20,240 20,180 160,260" stroke="var(--ink)" strokeWidth="1.2" fill="rgba(242,238,229,0.08)" strokeOpacity="0.5"/>
+              <polygon points="160,320 300,240 300,180 160,260" stroke="var(--ink)" strokeWidth="1.2" fill="rgba(242,238,229,0.04)" strokeOpacity="0.4"/>
+              <polygon points="20,180 160,100 300,180 160,260" stroke="var(--ink)" strokeWidth="1.2" fill="rgba(242,238,229,0.12)" strokeOpacity="0.6"/>
+
+              {/* Second floor */}
+              <polygon points="160,240 20,160 20,100 160,180" stroke="var(--accent)" strokeWidth="1" fill="rgba(255,91,20,0.06)" strokeOpacity="0.6"/>
+              <polygon points="160,240 300,160 300,100 160,180" stroke="var(--accent)" strokeWidth="1" fill="rgba(255,91,20,0.04)" strokeOpacity="0.5"/>
+              <polygon points="20,100 160,20 300,100 160,180" stroke="var(--accent)" strokeWidth="1" fill="rgba(255,91,20,0.1)" strokeOpacity="0.7"/>
+
+              {/* MEP elements */}
+              <line x1="80" y1="140" x2="240" y2="140" stroke="#3b82f6" strokeWidth="2" strokeOpacity="0.7" strokeDasharray="4 2"/>
+              <line x1="80" y1="155" x2="240" y2="155" stroke="#a855f7" strokeWidth="2" strokeOpacity="0.6" strokeDasharray="4 2"/>
+              <line x1="80" y1="170" x2="240" y2="170" stroke="#22c55e" strokeWidth="1.5" strokeOpacity="0.6" strokeDasharray="4 2"/>
+
+              {/* Clash indicator */}
+              <circle cx="200" cy="148" r="10" stroke="#ef4444" strokeWidth="1.5" fill="rgba(239,68,68,0.15)"/>
+              <path d="M196 144 L204 152 M204 144 L196 152" stroke="#ef4444" strokeWidth="1.5"/>
+            </g>
+
+            {/* Stats overlay */}
+            <rect x="16" y="16" width="120" height="72" rx="3" fill="var(--ink)" fillOpacity="0.06" stroke="var(--rule-soft)" strokeWidth="0.8"/>
+            <text x="26" y="36" fontFamily="var(--font-mono)" fontSize="9" fill="var(--muted)" letterSpacing="0.1em">IFC HEALTH SCORE</text>
+            <text x="26" y="58" fontFamily="var(--font-display)" fontSize="28" fontWeight="500" fill="var(--ink)" letterSpacing="-0.03em">94</text>
+            <text x="60" y="58" fontFamily="var(--font-mono)" fontSize="10" fill="var(--muted)">/ 100</text>
+            <text x="26" y="76" fontFamily="var(--font-mono)" fontSize="9" fill="#22c55e" letterSpacing="0.06em">EXCELLENT</text>
+
+            <rect x="16" y="104" width="120" height="50" rx="3" fill="var(--ink)" fillOpacity="0.06" stroke="var(--rule-soft)" strokeWidth="0.8"/>
+            <text x="26" y="122" fontFamily="var(--font-mono)" fontSize="9" fill="var(--muted)" letterSpacing="0.1em">MODEL SIZE</text>
+            <text x="26" y="142" fontFamily="var(--font-display)" fontSize="22" fontWeight="500" fill="var(--ink)" letterSpacing="-0.02em">340 MB</text>
+
+            <rect x="16" y="170" width="120" height="50" rx="3" fill="var(--ink)" fillOpacity="0.06" stroke="var(--rule-soft)" strokeWidth="0.8"/>
+            <text x="26" y="188" fontFamily="var(--font-mono)" fontSize="9" fill="var(--muted)" letterSpacing="0.1em">LOAD TIME</text>
+            <text x="26" y="208" fontFamily="var(--font-display)" fontSize="22" fontWeight="500" fill="var(--accent)" letterSpacing="-0.02em">28s</text>
+
+            <rect x="344" y="16" width="120" height="52" rx="3" fill="rgba(239,68,68,0.08)" stroke="#ef4444" strokeWidth="0.8" strokeOpacity="0.5"/>
+            <text x="354" y="34" fontFamily="var(--font-mono)" fontSize="9" fill="#ef4444" letterSpacing="0.1em">CLASHES DETECTED</text>
+            <text x="354" y="56" fontFamily="var(--font-display)" fontSize="24" fontWeight="500" fill="var(--ink)" letterSpacing="-0.02em">47</text>
+
+            <rect x="344" y="84" width="120" height="52" rx="3" fill="var(--ink)" fillOpacity="0.06" stroke="var(--rule-soft)" strokeWidth="0.8"/>
+            <text x="354" y="102" fontFamily="var(--font-mono)" fontSize="9" fill="var(--muted)" letterSpacing="0.1em">ELEMENTS</text>
+            <text x="354" y="124" fontFamily="var(--font-display)" fontSize="24" fontWeight="500" fill="var(--ink)" letterSpacing="-0.02em">24,881</text>
+
+            <text x="240" y="500" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="10" fill="var(--muted)" letterSpacing="0.12em">MASON BIM VIEWER · IFC 4.3 · NO AUTODESK REQUIRED</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+window.BIM = BIM;
+</script>
+
+<script type="text/babel" data-presets="env,react">
+/* global React, Icon */
+
+const CASES = [
+  {
+    country: "USA",
+    flag: "🇺🇸",
+    company: "The Conlan Company",
+    location: "Chicago, Illinois",
+    type: "Commercial and industrial general contractor",
+    size: "1,400+ employees · $900M annual volume",
+    quote: "We stopped chasing paper and started winning work. Mason gave us the platform to run 34 projects at once without adding headcount.",
+    person: "VP of Operations",
+    stats: [
+      { num: "23%", label: "more bids won in 12 months" },
+      { num: "14h", label: "saved per project manager per week" },
+      { num: "$4.2M", label: "in rework avoided across active projects" },
+    ],
+    color: "#FF5B14",
+  },
+  {
+    country: "UAE",
+    flag: "🇦🇪",
+    company: "Naresco Contracting",
+    location: "Dubai, United Arab Emirates",
+    type: "Infrastructure and MEP contractor",
+    size: "800+ employees · Projects across GCC region",
+    quote: "Every variation claim we submitted had full documentation behind it. Mason gave us the evidence to win disputes we would have lost before.",
+    person: "Project Director",
+    stats: [
+      { num: "47", label: "RFIs resolved in one week (previously three weeks)" },
+      { num: "$2.1M", label: "in variation claims recovered" },
+      { num: "96%", label: "subcontractor submittal compliance in 90 days" },
+    ],
+    color: "#F59E0B",
+  },
+  {
+    country: "GERMANY",
+    flag: "🇩🇪",
+    company: "Depenbrock Gruppe",
+    location: "Hamburg, Germany",
+    type: "Civil and structural engineering contractor",
+    size: "1,200+ employees · Infrastructure and building construction",
+    quote: "Every site manager has the full BIM model in their pocket. That changed how we build. Fewer mistakes, faster decisions, better handovers.",
+    person: "Head of Digital Construction",
+    stats: [
+      { num: "28s", label: "average IFC model load time on a 340MB file" },
+      { num: "100%", label: "field team adoption within 30 days" },
+      { num: "31%", label: "fewer nonconformance reports year over year" },
+    ],
+    color: "#22C55E",
+  },
+];
+
+const Cases = () => (
+  <section className="cases" id="cases" data-screen-label="05 Case Studies">
+    <div className="container">
+      <div className="section-head">
+        <div>
+          <span className="section-tag">SECTION 05 — RESULTS</span>
+          <h2 className="display">What 12 months<br/>on Mason<br/><em className="serif-it">looks like.</em></h2>
+        </div>
+        <p className="h2-side">
+          147 firms across 7 countries. Every one of them switched from a competitor.
+          These are three of their stories. The numbers are real.
+          The growth is real. The platform is the same one you can start today.
+        </p>
+      </div>
+
+      <div className="cases-grid">
+        {CASES.map((c, i) => (
+          <div key={i} className="case-card">
+            <div className="corner-tl"></div>
+            <div className="corner-tr"></div>
+
+            {/* Header */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
+              <div>
+                <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: ".12em", color: "var(--muted)", marginBottom: 6 }}>
+                  {c.flag} {c.country} · {c.location}
+                </div>
+                <h3 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(18px, 2.5vw, 24px)", fontWeight: 500, letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+                  {c.company}
+                </h3>
+                <div style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "var(--muted)", marginTop: 4 }}>{c.type}</div>
+              </div>
+              <div style={{ fontFamily: "var(--font-mono)", fontSize: 9, color: c.color, border: `1px solid ${c.color}`, padding: "3px 8px", borderRadius: 2, letterSpacing: ".08em", flexShrink: 0 }}>
+                CASE STUDY
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginBottom: 20 }}>
+              {c.stats.map((s, j) => (
+                <div key={j} style={{ borderTop: `2px solid ${c.color}`, paddingTop: 10 }}>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(20px, 2.5vw, 28px)", fontWeight: 500, letterSpacing: "-0.03em", color: "var(--ink)", lineHeight: 1 }}>
+                    {s.num}
+                  </div>
+                  <div style={{ fontFamily: "var(--font-body)", fontSize: 11, color: "var(--muted)", marginTop: 4, lineHeight: 1.4 }}>
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Quote */}
+            <blockquote style={{ borderLeft: `3px solid ${c.color}`, paddingLeft: 14, margin: "0 0 16px 0" }}>
+              <p style={{ fontFamily: "var(--font-body)", fontSize: 14, lineHeight: 1.65, color: "var(--ink)", fontStyle: "italic" }}>
+                "{c.quote}"
+              </p>
+              <cite style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--muted)", letterSpacing: ".08em", fontStyle: "normal", marginTop: 6, display: "block" }}>
+                {c.person} · {c.company}
+              </cite>
+            </blockquote>
+
+            {/* Company details */}
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--muted)", letterSpacing: ".06em", borderTop: "1px solid var(--rule-soft)", paddingTop: 12, display: "flex", justifyContent: "space-between" }}>
+              <span>{c.size}</span>
+              <a href="case-studies.html" style={{ color: c.color, textDecoration: "none" }}>Full story <Icon name="arrow" size={10}/></a>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ textAlign: "center", marginTop: 40 }}>
+        <p style={{ fontFamily: "var(--font-body)", fontSize: 14, color: "var(--muted)", marginBottom: 16 }}>
+          Also on Mason: Al Shirawi (UAE), YMCO and Mastoura (KSA), CSV Construction and Motheo (South Africa), Dascon and MMP (Pakistan), Aboitiz and DCI (Philippines).
+        </p>
+        <a className="btn" href="case-studies.html">Read all 14 case studies <Icon name="arrow" size={12}/></a>
+      </div>
+    </div>
+  </section>
+);
+window.Cases = Cases;
+</script>
+
+<script type="text/babel" data-presets="env,react">
+/* global React, Icon */
+
+const TIERS = [
+  {
+    name: "Starter",
+    badge: null,
+    blurb: "For firms just getting started with structured project management. Run your first three projects on Mason and see what it does to your margins.",
+    price: "$49",
+    unit: " / project / mo",
+    sub: "Up to 3 active projects",
+    feat: false,
+    features: [
+      "Unlimited team members",
+      "BIM Viewer (IFC 2x3 and IFC4)",
+      "Schedule with Gantt view",
+      "RFIs and Issues",
+      "Daily Logs with offline mode",
+      "Documents with version control",
+      "iOS and Android apps",
+      "Email support",
+    ],
+  },
+  {
+    name: "Professional",
+    badge: "MOST POPULAR",
+    blurb: "For growing firms managing multiple projects at once. The full platform with AI Concierge, cost management, and everything your team needs to stop losing money on small decisions.",
+    price: "$149",
+    unit: " / project / mo",
+    sub: "Up to 15 active projects",
+    feat: true,
+    features: [
+      "Everything in Starter",
+      "AI Concierge with 24h memory",
+      "BIM AI suite (all 10 features)",
+      "Cost Management",
+      "Quality and Safety modules",
+      "Submittals with automated routing",
+      "Meetings and action tracking",
+      "Advanced Reports",
+      "8 languages including RTL Arabic",
+      "Priority support",
+      "Annual 20% off",
+    ],
+  },
+  {
+    name: "Scale",
+    badge: null,
+    blurb: "For firms running portfolios. Unlimited projects, dedicated success team, custom onboarding, and the same platform your competitors are wishing they had.",
+    price: "$399",
+    unit: " / project / mo",
+    sub: "Unlimited active projects",
+    feat: false,
+    features: [
+      "Everything in Professional",
+      "Unlimited projects",
+      "Autonomous Project Agent (AI.BIM.9)",
+      "Custom integrations",
+      "Dedicated success manager",
+      "Custom onboarding program",
+      "SLA-backed uptime",
+      "Quarterly business reviews",
+      "Early access to new modules",
+    ],
+  },
+];
+
+const Pricing = () => (
+  <section className="pricing" id="pricing" data-screen-label="06 Pricing">
+    <div className="container">
+      <div className="section-head">
+        <div>
+          <span className="section-tag">SECTION 06 — PRICING</span>
+          <h2 className="display">Priced per project.<br/>Not per person.</h2>
+        </div>
+        <p className="h2-side">
+          Add every person on your team to every project. No seat licenses.
+          No module upsells. No procurement call for the features you already paid for.
+          <em className="serif-it"> Just the platform.</em>
+        </p>
+      </div>
+
+      <div className="price-grid">
+        {TIERS.map((t, i) => (
+          <div key={t.name} className={`tier ${t.feat ? "feat" : ""}`}>
+            <div className="nm">
+              <div className="name">{t.name}</div>
+              {t.badge && <div className="badge">{t.badge}</div>}
+            </div>
+            <p className="blurb">{t.blurb}</p>
+            <div className="price">
+              {t.price}<span className="unit">{t.unit}</span>
+            </div>
+            <div style={{ fontFamily: "var(--font-mono)", fontSize: 11, color: t.feat ? "rgba(242,238,229,.6)" : "var(--muted)", letterSpacing: ".06em", marginBottom: 16 }}>
+              {t.sub} · Unlimited team members
+            </div>
+            <ul className="feature-list">
+              {t.features.map(f => <li key={f}>{f}</li>)}
+            </ul>
+            <a className={`btn ${t.feat ? "primary" : ""}`} href="contact.html" style={{ marginTop: "auto", alignSelf: "flex-start" }}>
+              {i === 2 ? "Talk to sales" : "Start 14 day pilot"} <Icon name="arrow" size={12}/>
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <div style={{ marginTop: 40, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24, borderTop: "1px solid var(--rule-soft)", paddingTop: 28 }} className="pricing-extras">
+        {[
+          ["No setup fees", "Zero onboarding charge. Start building on day one."],
+          ["Annual billing saves 20%", "Switch to yearly billing and get two months free."],
+          ["14 day pilot included", "Run a live project. No credit card required to start."],
+          ["Cancel any month", "Export everything. IFC files and CSV data. Nothing locked in."],
+        ].map(([title, desc]) => (
+          <div key={title}>
+            <div style={{ fontFamily: "var(--font-display)", fontSize: 16, letterSpacing: "-0.02em", fontWeight: 500 }}>{title}</div>
+            <div style={{ fontSize: 13, color: "var(--muted)", marginTop: 4 }}>{desc}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+window.Pricing = Pricing;
+</script>
+
+<script type="text/babel" data-presets="env,react">
+/* global React, Icon */
+
+const POSTS = [
+  {
+    cat: "FIELD NOTES",
+    title: "Why we rebuilt the daily log from scratch and gave the foreman a thumbprint instead.",
+    ex: "A 6-month rewrite of the most hated workflow on the jobsite. The new flow takes 90 seconds.",
+    when: "MAY 06",
+    read: "8 MIN READ",
+    feat: true,
+    bgType: "orange",
+  },
+  {
+    cat: "PRODUCT",
+    title: "AI Concierge now reads your full spec book and answers in plain English.",
+    when: "APR 28",
+    read: "5 MIN",
+    bgType: "dark",
+  },
+  {
+    cat: "INDUSTRY",
+    title: "The IFC 4.3 transition: what general contractors actually need to know.",
+    when: "APR 22",
+    read: "11 MIN",
+    bgType: "blue",
+  },
+  {
+    cat: "ENGINEERING",
+    title: "How we stream a 340MB Revit model in under 30 seconds.",
+    when: "APR 14",
+    read: "14 MIN",
+    bgType: "dark",
+  },
+  {
+    cat: "CULTURE",
+    title: "Notes from a 4 AM concrete pour with our product team in Dubai.",
+    when: "APR 02",
+    read: "6 MIN",
+    bgType: "green",
+  },
+];
+
+const PostBg = ({ type }) => {
+  if (type === "orange") return (
+    <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" style={{ position: "absolute", inset: 0 }}>
+      <defs><linearGradient id="g-feat" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#FF5B14"/><stop offset="100%" stopColor="#FFD400"/></linearGradient></defs>
+      <rect width="400" height="300" fill="url(#g-feat)"/>
+      <g stroke="rgba(11,11,11,.85)" strokeWidth="2" fill="none">
+        {[0,1,2,3,4,5,6,7].map(i => {
+          const x = 40 + (i%4)*90; const y = 50 + Math.floor(i/4)*110;
+          const checked = [0,1,2,4,6].includes(i);
+          return (<g key={i}><rect x={x} y={y} width="50" height="50" rx="3"/>{checked && <path d={`M${x+10} ${y+27} L${x+22} ${y+38} L${x+42} ${y+15}`} strokeWidth="3"/>}</g>);
+        })}
+      </g>
+      <text x="40" y="280" fontFamily="var(--font-mono)" fontSize="10" letterSpacing="0.1em" fill="rgba(11,11,11,.7)">DAILY LOG v2.0 · 2026</text>
+    </svg>
+  );
+  if (type === "blue") return (
+    <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" style={{ position: "absolute", inset: 0 }}>
+      <rect width="400" height="300" fill="#1B3A8A"/>
+      <g stroke="rgba(242,238,229,.4)" strokeWidth="0.8" fill="none">
+        {Array.from({length:10}).map((_,i)=> <line key={i} x1="0" y1={30*i} x2="400" y2={30*i}/>)}
+        {Array.from({length:14}).map((_,i)=> <line key={i} x1={30*i} y1="0" x2={30*i} y2="300"/>)}
+      </g>
+      <text x="200" y="160" textAnchor="middle" fontFamily="var(--font-display)" fontSize="80" fontWeight="500" fill="rgba(242,238,229,.95)" letterSpacing="-0.04em">IFC</text>
+      <text x="200" y="200" textAnchor="middle" fontFamily="var(--font-mono)" fontSize="14" fill="rgba(242,238,229,.7)" letterSpacing="0.2em">4.3</text>
+    </svg>
+  );
+  if (type === "green") return (
+    <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" style={{ position: "absolute", inset: 0 }}>
+      <defs><linearGradient id="g-cult" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#1F7A4D"/><stop offset="100%" stopColor="#0E0E0E"/></linearGradient></defs>
+      <rect width="400" height="300" fill="url(#g-cult)"/>
+      <text x="200" y="180" textAnchor="middle" fontFamily="var(--font-serif)" fontStyle="italic" fontSize="60" fill="rgba(242,238,229,.95)">4 a.m.</text>
+    </svg>
+  );
+  return (
+    <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" style={{ position: "absolute", inset: 0 }}>
+      <rect width="400" height="300" fill="#0E0E0E"/>
+      <g stroke="rgba(242,238,229,.2)" strokeWidth="1" fill="none">
+        {Array.from({length:8}).map((_,i)=> <circle key={i} cx="200" cy="150" r={20+i*18}/>)}
+      </g>
+      <circle cx="200" cy="150" r="12" fill="var(--accent)"/>
+    </svg>
+  );
+};
+
+const Blog = () => (
+  <section className="blog" id="blog" data-screen-label="07 Field Notes">
+    <div className="container">
+      <div className="section-head">
+        <div>
+          <span className="section-tag">SECTION 07 — FIELD NOTES</span>
+          <h2 className="display">Notes from<br/>the field.</h2>
+        </div>
+        <p className="h2-side">
+          We write what we learn. Less product marketing, more <em className="serif-it">"here is what broke and how we fixed it."</em>
+          Everything we publish comes from real projects and real problems.
+        </p>
+      </div>
+
+      <div className="blog-grid">
+        {POSTS.map((p, i) => (
+          <a key={i} className={`post ${p.feat ? "feat" : ""}`} href="blog.html">
+            <div className="cat">{p.cat}</div>
+            <h3>{p.title}</h3>
+            {p.ex && <p className="ex">{p.ex}</p>}
+            <div className="ph"><PostBg type={p.bgType}/></div>
+            <div className="meta">
+              <span>{p.when}</span>
+              <span>{p.read}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+window.Blog = Blog;
+</script>
+
+<script type="text/babel" data-presets="env,react">
+/* global React, Icon */
+
+const FCOLS = [
+  {
+    h: "Platform",
+    items: [
+      ["BIM Viewer", "features.html#bim"],
+      ["Schedule", "features.html#schedule"],
+      ["RFIs", "features.html#rfis"],
+      ["Issues and Punch", "features.html#issues"],
+      ["Daily Logs", "features.html#daily-logs"],
+      ["AI Concierge", "features.html#ai-concierge"],
+      ["Mobile Apps", "mobile.html"],
+      ["All Features", "features.html"],
+    ],
+  },
+  {
+    h: "Solutions",
+    items: [
+      ["General Contractors", "solutions/general-contractors.html"],
+      ["Owners and Developers", "solutions/owners.html"],
+      ["Subcontractors", "solutions/subcontractors.html"],
+      ["Enterprise", "enterprise.html"],
+      ["SMB Teams", "smb.html"],
+      ["Compare Procore", "compare-procore.html"],
+      ["Compare Fieldwire", "compare-fieldwire.html"],
+    ],
+  },
+  {
+    h: "Company",
+    items: [
+      ["About", "about.html"],
+      ["Case Studies", "case-studies.html"],
+      ["Field Notes Blog", "blog.html"],
+      ["Pricing", "pricing.html"],
+      ["Security and SOC 2", "security.html"],
+      ["Contact", "contact.html"],
+      ["Changelog", "changelog.html"],
+    ],
+  },
+];
+
+const Footer = () => (
+  <footer className="footer">
+    <div className="footer-bg"></div>
+    <div className="container">
+
+      <div className="footer-top">
+        <div className="footer-cta">
+          <div className="label-num" style={{ color: "rgba(242,238,229,.5)" }}>SECTION 08 — START TODAY</div>
+          <h2 className="display" style={{ marginTop: 8 }}>
+            Pour the<br/>foundation<br/><em className="serif-it">today.</em>
+          </h2>
+          <p style={{ color: "rgba(242,238,229,.7)", maxWidth: "34ch", marginTop: 14, lineHeight: 1.7 }}>
+            14 day pilot on your live project. Your data. Your team.
+            No credit card required to start. No procurement call.
+          </p>
+          <div style={{ display: "flex", gap: 10, marginTop: 22, flexWrap: "wrap" }}>
+            <a className="btn primary" href="contact.html">Start 14 day pilot <Icon name="arrow" size={12}/></a>
+            <a className="btn" style={{ borderColor: "rgba(242,238,229,.3)", color: "var(--paper)" }} href="contact.html">Talk to sales</a>
+          </div>
+        </div>
+
+        {FCOLS.map(col => (
+          <div className="footer-col" key={col.h}>
+            <h5>{col.h}</h5>
+            <ul>
+              {col.items.map(([label, href]) => <li key={label}><a href={href}>{label}</a></li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <div className="footer-mid">
+        <div className="ml">
+          <Icon name="sparkle" size={14}/>
+          <input type="email" placeholder="your@email.com · get the monthly field notes"/>
+          <button>Subscribe</button>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
+          <span className="label-num" style={{ color: "rgba(242,238,229,.5)" }}>FOLLOW</span>
+          <div className="socials">
+            <a href="#" aria-label="LinkedIn">In</a>
+            <a href="#" aria-label="X">X</a>
+            <a href="#" aria-label="YouTube">Yt</a>
+            <a href="#" aria-label="GitHub">Gh</a>
+          </div>
+        </div>
+      </div>
+
+      <div className="footer-mark" aria-hidden="true">
+        MAS<span className="o-dot"></span>N
+      </div>
+
+      <div className="footer-base">
+        <div>© 2026 MASON LABS INC. · BUILT FOR CONSTRUCTION TEAMS WORLDWIDE</div>
+        <div className="links">
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="security.html">Security</a>
+          <a href="sitemap.xml">Sitemap</a>
+        </div>
+        <div>v 4.2 · 2026-05-12</div>
+      </div>
+
+    </div>
+  </footer>
+);
+window.Footer = Footer;
+</script>
+
+<script type="text/babel" data-presets="env,react">
+/* global React, ReactDOM, Header, Hero, Modules, Showcase, BIM, Cases, Pricing, Blog, Footer */
+const { useEffect: useEffectApp } = React;
+
+const REQUIRED = ['Header', 'Hero', 'Modules', 'Showcase', 'BIM', 'Cases', 'Pricing', 'Blog', 'Footer'];
+
+const App = () => (
+  <>
+    <Header/>
+    <main>
+      <Hero/>
+      <hr className="rule"/>
+      <Modules/>
+      <Showcase/>
+      <BIM/>
+      <Cases/>
+      <Pricing/>
+      <Blog/>
+    </main>
+    <Footer/>
+  </>
+);
+
+(function mount() {
+  var POLL = 200, MAX = 14000, start = Date.now();
+  var timer = setInterval(function() {
+    var ready = REQUIRED.every(function(g) { return typeof window[g] === 'function'; });
+    var out = Date.now() - start > MAX;
+    if (ready || out) {
+      clearInterval(timer);
+      var root = document.getElementById('root');
+      if (root && root.childElementCount === 0) {
+        ReactDOM.createRoot(root).render(React.createElement(App));
+      }
+    }
+  }, POLL);
+})();
+</script>
+
 </body>
 </html>
