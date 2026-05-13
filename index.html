@@ -692,7 +692,7 @@ const BIM = () => (
         <div className="bim-vis"><BimVis /></div>
         <div className="bim-list">
           {BIM_FEATS.map((f) => (
-            <a key={f.n} className="bim-feat" href="features.html">
+            <a key={f.n} className="bim-feat cursor-card-hover hover-arrow-cursor magnetic-click-card" href="features.html">
               <span className="n">{f.n}</span>
               <div className="body"><h3>{f.t}</h3><p>{f.p}</p></div>
               <span className="go"><Icon name="arrow" size={14}/></span>
@@ -778,7 +778,7 @@ const Cases = () => (
       </div>
       <div className="case-grid">
         {CASES.map((c, i) => (
-          <a key={i} className="case-card" href="case-studies.html">
+          <a key={i} className="case-card cursor-card-hover hover-arrow-cursor magnetic-click-card" href="case-studies.html">
             <div className="ph">
               <span className="tag">CASE · 0{i + 1}</span>
               <CasePh color={c.color} idx={i}/>
@@ -939,7 +939,7 @@ const Blog = () => (
       </div>
       <div className="blog-grid">
         {POSTS.map((p, i) => (
-          <a key={i} className={`post ${p.feat ? "feat" : ""}`} href="blog.html">
+          <a key={i} className={"post cursor-card-hover hover-arrow-cursor magnetic-click-card" + (p.feat ? " feat" : "")} href="blog.html">
             <div className="cat">{p.cat}</div>
             <h3>{p.title}</h3>
             {p.ex && <p className="ex">{p.ex}</p>}
@@ -1086,6 +1086,7 @@ waitAndRender();
 <script src="motion-init.js?v=2"></script>
 <script src="cursor-effects.js?v=1"></script>
 <script src="magnetic-effects.js?v=1"></script>
+<script src="hover-arrow-cursor.js?v=1"></script>
 <script src="index-motion.js?v=1"></script>
 </body>
 </html>

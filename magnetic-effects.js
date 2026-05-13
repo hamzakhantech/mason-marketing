@@ -26,7 +26,7 @@
   }
 
   var magneticSelector =
-    '.btn-primary, .btn-ghost, .btn.primary, .btn.ghost, .theme-toggle, .site-nav--desktop a, .nav-drop__btn, .personas__panel, .cnc, .case-card, .surface, .post';
+    '.btn-primary, .btn-ghost, .btn.primary, .btn.ghost, .theme-toggle, .site-nav--desktop a, .nav-drop__btn, .personas__panel, .cnc, .surface';
 
   function bindMagnetic(el) {
     if (el.dataset.masonMagneticBound) return;
