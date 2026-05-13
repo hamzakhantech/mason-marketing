@@ -361,12 +361,45 @@ const NAV_LINKS = [
 const Header = ({ dark, toggleDark }) => {
   const [scrolled, setScrolled] = useStateH(false);
   const [mobileOpen, setMobileOpen] = useStateH(false);
+  const [liveTime, setLiveTime]       = useStateH('');
+  const [liveWeather, setLiveWeather] = useStateH('');
   useEffectH(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+  // ── Live clock ──
+  useEffectH(() => {
+    function tick() {
+      var now = new Date();
+      var tzAbbr = now.toLocaleTimeString('en', { timeZoneName: 'short' }).split(' ').pop();
+      var hm = now.toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit', hour12: false });
+      setLiveTime(tzAbbr + ' ' + hm);
+    }
+    tick();
+    var t = setInterval(tick, 30000);
+    return function() { clearInterval(t); };
+  }, []);
+
+  // ── Live weather via wttr.in (auto IP-geolocation, no API key) ──
+  useEffectH(() => {
+    fetch('https://wttr.in/?format=j1')
+      .then(function(r) { return r.ok ? r.json() : null; })
+      .then(function(d) {
+        if (!d) return;
+        var c = d.current_condition[0];
+        var country = (d.nearest_area[0].country[0].value || '');
+        // Countries that use Fahrenheit
+        var fCountries = ['United States','Bahamas','Cayman Islands','Palau','Belize','Myanmar','Marshall Islands','Federated States of Micronesia'];
+        var usesF = fCountries.some(function(n) { return country.indexOf(n) !== -1; });
+        var temp = usesF ? c.temp_F + '°F' : c.temp_C + '°C';
+        var desc = c.weatherDesc[0].value;
+        setLiveWeather(temp + ' · ' + desc);
+      })
+      .catch(function() {});
+  }, []);
+
   return (
     <React.Fragment>
     <header className={"header-wrap" + (scrolled ? " is-scrolled" : "")}>
@@ -379,9 +412,11 @@ const Header = ({ dark, toggleDark }) => {
             ))}
           </div>
         </div>
-        <div className="badge" style={{ background: "var(--paper)", color: "var(--ink)", borderLeft: "1px solid var(--ink)", borderRight: 0 }}>
-          PDT 14:22 · 71°F
-        </div>
+        {(liveTime || liveWeather) && (
+          <div className="badge" style={{ background: "var(--paper)", color: "var(--ink)", borderLeft: "1px solid var(--ink)", borderRight: 0, maxWidth: 260, overflow: "hidden", whiteSpace: "nowrap" }}>
+            {liveTime}{liveTime && liveWeather ? ' · ' : ''}{liveWeather}
+          </div>
+        )}
       </div>
       <div className="container">
         <nav className="nav">
