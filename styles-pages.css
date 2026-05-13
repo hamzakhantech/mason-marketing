@@ -1257,7 +1257,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--bg-base, #07070a);
+  background: var(--bg);
   border-top: 1px solid var(--line, rgba(255,255,255,.08));
   padding: 24px;
   overflow-y: auto;
@@ -1275,7 +1275,7 @@
   position: fixed;
   inset: 64px 0 0 0;
   z-index: 179;
-  background: rgba(0, 0, 0, 0.52);
+  background: var(--nav-backdrop, rgba(0, 0, 0, 0.52));
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   animation: navBackdropIn 0.35s ease both;

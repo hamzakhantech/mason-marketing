@@ -1,10 +1,41 @@
 // hero.jsx -- Header with full dropdown navigation + Hero
 
+const MASON_THEME_KEY = 'mason-theme';
+
+function readDomTheme() {
+  var t = document.documentElement.getAttribute('data-theme');
+  return t === 'light' ? 'light' : 'dark';
+}
+
+function applyMasonTheme(theme) {
+  var root = document.documentElement;
+  root.setAttribute('data-theme', theme);
+  if (theme === 'dark') root.classList.add('dark');
+  else root.classList.remove('dark');
+  try {
+    localStorage.setItem(MASON_THEME_KEY, theme);
+  } catch (e) {}
+}
+
 const Header = ({ onSignIn }) => {
   const [scrolled, setScrolled] = React.useState(false);
   const [openMenu, setOpenMenu] = React.useState(null);
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [theme, setTheme] = React.useState(readDomTheme);
   const closeTimer = React.useRef(null);
+
+  React.useEffect(() => {
+    var onStorage = function (e) {
+      if (e.key !== MASON_THEME_KEY) return;
+      if (e.newValue !== 'light' && e.newValue !== 'dark') return;
+      applyMasonTheme(e.newValue);
+      setTheme(e.newValue);
+    };
+    window.addEventListener('storage', onStorage);
+    return function () {
+      window.removeEventListener('storage', onStorage);
+    };
+  }, []);
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -29,6 +60,31 @@ const Header = ({ onSignIn }) => {
   };
   const stayOpen = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
+  };
+
+  var toggleTheme = function () {
+    var next = theme === 'dark' ? 'light' : 'dark';
+    applyMasonTheme(next);
+    setTheme(next);
+  };
+
+  var ThemeToggleBtn = function (props) {
+    var cls = props.className || '';
+    var st = props.style;
+    return (
+      <button
+        type="button"
+        className={'theme-toggle ' + cls}
+        style={st}
+        onClick={toggleTheme}
+        aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+      >
+        <span className="theme-toggle__icon" aria-hidden="true">
+          {theme === 'dark' ? <IconMoon size={16} stroke={1.75} /> : <IconSun size={16} stroke={1.75} />}
+        </span>
+        <span>{theme === 'dark' ? 'Dark' : 'Light'}</span>
+      </button>
+    );
   };
 
   const chevron = (
@@ -240,6 +296,7 @@ const Header = ({ onSignIn }) => {
         </nav>
 
         <div className="site-header__cta">
+          <ThemeToggleBtn className="hide-sm" />
           <a href="contact.html" className="hide-sm header-link">Request demo</a>
           <a href="https://app.masononsite.com/login" className="btn btn-primary btn-sm">
             Sign in <IconArrowRight size={14} stroke={2} />
@@ -285,6 +342,7 @@ const Header = ({ onSignIn }) => {
             <a href="contact.html">Contact</a>
           </div>
           <div className="nav-mobile__cta">
+            <ThemeToggleBtn style={{ width: '100%', justifyContent: 'center' }} />
             <a href="contact.html" className="btn btn-ghost" style={{width:"100%",justifyContent:"center"}}>Request demo</a>
             <a href="https://app.masononsite.com/login" className="btn btn-primary" style={{width:"100%",justifyContent:"center"}}>Sign in</a>
           </div>

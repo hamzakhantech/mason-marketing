@@ -1,6 +1,7 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
+<script src="theme-init.js?v=1"></script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="canonical" href="https://masononsite.com" />
@@ -384,10 +385,10 @@ const Header = ({ dark, toggleDark }) => {
             <button
               onClick={toggleDark}
               style={{ background: "none", border: "1px solid var(--rule-soft)", borderRadius: "999px", padding: "8px 14px", display: "flex", alignItems: "center", gap: 6, fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: ".06em", textTransform: "uppercase", color: "var(--muted)", cursor: "pointer" }}
-              aria-label="Toggle Paper / Ink mode"
+              aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
             >
-              <Icon name={dark ? "sun" : "moon"} size={13}/>
-              {dark ? "Paper" : "Ink"}
+              <Icon name={dark ? "moon" : "sun"} size={13}/>
+              {dark ? "Dark" : "Light"}
             </button>
             <a className="btn ghost hide-md" href="contact.html">Sign in</a>
             <a className="btn primary" href="contact.html">Book a demo <Icon name="arrow" size={12}/></a>
@@ -1031,12 +1032,27 @@ const { useState, useEffect } = React;
 const GLOBALS = ["Header","Hero","Modules","Showcase","BIM","Cases","Pricing","Blog","Footer"];
 
 const App = () => {
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(() => document.documentElement.getAttribute("data-theme") !== "light");
 
   useEffect(() => {
+    const theme = dark ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
     if (dark) document.documentElement.classList.add("dark");
     else document.documentElement.classList.remove("dark");
+    try {
+      localStorage.setItem("mason-theme", theme);
+    } catch (e) {}
   }, [dark]);
+
+  useEffect(() => {
+    const onStorage = (e) => {
+      if (e.key !== "mason-theme") return;
+      if (e.newValue === "light") setDark(false);
+      else if (e.newValue === "dark") setDark(true);
+    };
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
+  }, []);
 
   return (
     <>

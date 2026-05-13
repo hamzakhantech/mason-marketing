@@ -34,6 +34,38 @@ html[data-theme="light"] .brand__wordmark--light { display: block; }
 .site-nav a:hover { color: var(--text); }
 
 .site-header__cta { display: flex; align-items: center; gap: 16px; }
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px 0 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: color-mix(in srgb, var(--bg) 55%, transparent);
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+.theme-toggle:hover {
+  border-color: rgba(240, 168, 74, 0.5);
+  color: var(--accent-bright);
+  background: var(--accent-tint);
+}
+.theme-toggle__icon {
+  display: flex;
+  align-items: center;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
 .header-link {
   font-size: 14px; color: var(--text-muted);
   transition: color .15s ease;

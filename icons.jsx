@@ -46,11 +46,22 @@ const IconShield = (p) => (<Icon {...p}><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1
 const IconLock = (p) => (<Icon {...p}><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 1 1 8 0v3"/></Icon>);
 const IconKey = (p) => (<Icon {...p}><circle cx="8" cy="14" r="4"/><path d="M11 12l9-9M16 5l3 3M14 7l3 3"/></Icon>);
 const IconAudit = (p) => (<Icon {...p}><path d="M5 4h11l3 3v13H5z"/><path d="M9 11l2 2 4-4"/><path d="M9 16h6"/></Icon>);
+const IconSun = (p) => (
+  <Icon {...p}>
+    <circle cx="12" cy="12" r="4" />
+    <path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5" />
+  </Icon>
+);
+const IconMoon = (p) => (
+  <Icon {...p}>
+    <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" />
+  </Icon>
+);
 
 Object.assign(window, {
   Icon, IconDashboard, IconProjects, IconSchedule, IconBIM, IconIssues, IconRFI,
   IconSubmittals, IconDocuments, IconLogs, IconConcierge, IconCost, IconReports,
   IconTeam, IconBell, IconMobile, IconSearch, IconHelp, IconMessages, IconMeetings,
   IconQuality, IconSafety, IconAR, IconArrowRight, IconCheck, IconShield, IconLock,
-  IconKey, IconAudit,
+  IconKey, IconAudit, IconSun, IconMoon,
 });

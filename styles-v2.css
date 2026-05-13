@@ -11,7 +11,7 @@
   --rule-soft:    rgba(14,14,14,.18) !important;
   --rule-faint:   rgba(14,14,14,.08) !important;
   --muted:        #5A574E !important;
-  --accent:       #FF5B14 !important;
+  --accent:       #f0a84a !important;
   --good:         #1F7A4D !important;
   --bad:          #C0392B !important;
   --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif !important;
@@ -30,6 +30,7 @@
 }
 @media (max-width: 720px) { :root { --gutter: 20px !important; } }
 
+html[data-theme="dark"],
 .dark {
   --paper:        #0B0B0B !important;
   --paper-2:      #131313 !important;
