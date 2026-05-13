@@ -59,7 +59,13 @@
 
     el.dataset.masonHoverArrowBound = '1';
     var bubble = buildBubble();
+    if (el.classList.contains('mason-proof-case') || el.closest('.mason-section-proof')) {
+      bubble.classList.add('mason-hover-arrow-bubble--proof');
+    }
     el.appendChild(bubble);
+
+    var looserFollow =
+      el.classList.contains('mason-proof-case') || !!el.closest('.mason-section-proof');
 
     var lx = 0;
     var ly = 0;
@@ -69,10 +75,11 @@
     var active = false;
     var lastTs = 0;
 
-    /** Frame-rate aware smoothing: higher dt → catch up without overshoot jitter */
+    /** Frame-rate aware smoothing; proof cards use gentler follow (higher base = smaller steps). */
     function smoothAlpha(dtMs) {
       var t = Math.min(56, Math.max(8, dtMs));
-      return 1 - Math.pow(0.78, t / 16.67);
+      var base = looserFollow ? 0.86 : 0.78;
+      return 1 - Math.pow(base, t / 16.67);
     }
 
     function tick(ts) {

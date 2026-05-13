@@ -281,7 +281,7 @@ img { max-width:100%; display:block; }
 ::selection { background:var(--accent); color:#0B0B0B; }
 </style>
 <link rel="stylesheet" href="index-motion.css?v=1" />
-<link rel="stylesheet" href="styles-premium-motion.css?v=3" />
+<link rel="stylesheet" href="styles-premium-motion.css?v=4" />
 </head>
 <body data-motion-home="true">
 <div id="root"></div>
@@ -739,7 +739,7 @@ const CASES = [
 ];
 
 const CasePh = ({ color, idx }) => (
-  <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+  <svg className="ph-svg" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
     <defs>
       <pattern id={"ph-" + idx} width="20" height="20" patternUnits="userSpaceOnUse">
         <path d="M0 20L20 0M-5 5L5 -5M15 25L25 15" stroke="rgba(14,14,14,.08)" strokeWidth="1"/>
@@ -756,7 +756,7 @@ const CasePh = ({ color, idx }) => (
       <line x1="200" y1="80" x2="200" y2="240"/>
       <line x1="260" y1="80" x2="260" y2="240"/>
     </g>
-    <rect x="200" y="120" width="60" height="40" fill={color} opacity="0.85"/>
+    <rect className="ph-spot" x="200" y="120" width="60" height="40" fill={color} opacity="0.85"/>
     <g stroke="var(--ink)" strokeWidth="0.8" fontFamily="var(--font-mono)" fontSize="9">
       <path d="M80 60L320 60M80 56L80 64M320 56L320 64"/>
       <text x="200" y="54" textAnchor="middle" fill="var(--ink)">240 FT TYPICAL BAY</text>
@@ -782,7 +782,7 @@ const Cases = () => (
       </div>
       <div className="case-grid">
         {CASES.map((c, i) => (
-          <a key={i} className="case-card cursor-card-hover hover-arrow-cursor magnetic-click-card" href="case-studies.html">
+          <a key={i} className="case-card mason-proof-case cursor-card-hover hover-arrow-cursor magnetic-click-card" href="case-studies.html">
             <div className="ph">
               <span className="tag">CASE · 0{i + 1}</span>
               <CasePh color={c.color} idx={i}/>
@@ -1090,7 +1090,7 @@ waitAndRender();
 <script src="motion-init.js?v=2"></script>
 <script src="cursor-effects.js?v=1"></script>
 <script src="magnetic-effects.js?v=1"></script>
-<script src="hover-arrow-cursor.js?v=3"></script>
+<script src="hover-arrow-cursor.js?v=4"></script>
 <script src="index-motion.js?v=1"></script>
 </body>
 </html>
