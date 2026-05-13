@@ -12,6 +12,13 @@ const Header = ({ onSignIn }) => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  React.useEffect(() => {
+    if (!mobileOpen) return undefined;
+    const onKey = (e) => e.key === "Escape" && setMobileOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [mobileOpen]);
+
   // Use a debounced close so mouse can cross the gap between button and panel
   const open = (name) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
@@ -34,6 +41,14 @@ const Header = ({ onSignIn }) => {
   const panelStyle = { paddingTop: 8 };
 
   return (
+    <>
+    {mobileOpen && (
+      <div
+        className="nav-mobile-backdrop"
+        onClick={() => setMobileOpen(false)}
+        aria-hidden="true"
+      />
+    )}
     <header className={"site-header" + (scrolled ? " is-scrolled" : "")}>
       <div className="container site-header__row">
         <a href="index.html" className="brand" aria-label="MASON home">
@@ -276,12 +291,28 @@ const Header = ({ onSignIn }) => {
         </div>
       )}
     </header>
+    </>
   );
 };
 
 // --- Hero -------------------------------------------------------------------
 
 const Hero = () => {
+  const heroVisRef = React.useRef(null);
+  React.useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const el = heroVisRef.current;
+    if (reduce || !el) return undefined;
+    const onScroll = () => {
+      const y = window.scrollY || 0;
+      const shift = Math.min(y * 0.06, 36);
+      el.style.transform = `translate3d(0,${shift.toFixed(2)}px,0)`;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <section className="hero" id="top">
       <div className="grid-bg" aria-hidden="true" />
@@ -291,9 +322,15 @@ const Hero = () => {
           <span className="eyebrow fade-up" style={{ animationDelay: "0ms" }}>
             Management . Analytics . Site
           </span>
-          <h1 className="display fade-up" style={{ animationDelay: "80ms" }}>
-            One command center<br />
-            for construction <span className="accent">control</span>.
+          <h1 className="display">
+            <span className="hero-line">
+              <span className="hero-line-inner">One command center</span>
+            </span>
+            <span className="hero-line">
+              <span className="hero-line-inner">
+                for construction <span className="accent">control</span>.
+              </span>
+            </span>
           </h1>
           <p className="lede fade-up" style={{ animationDelay: "160ms" }}>
             From BIM and schedule to RFIs, issues, and field logs, MASON brings the
@@ -315,8 +352,10 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="hero__visual fade-up" style={{ animationDelay: "200ms" }}>
-          <ProductPreview />
+        <div className="hero__visual fade-up hero__visual-parallax" style={{ animationDelay: "200ms" }}>
+          <div className="hero__visual-scale" ref={heroVisRef}>
+            <ProductPreview />
+          </div>
         </div>
       </div>
 

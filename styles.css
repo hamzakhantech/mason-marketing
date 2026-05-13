@@ -10,11 +10,11 @@
   --text-muted: #d2cbbf;
   --text-dim: #aea69a;
   --text-faint: #7a7367;
-  --accent: #e8942e;
-  --accent-bright: #f4a847;
-  --accent-deep: #c97816;
-  --accent-tint: rgba(232, 148, 46, 0.12);
-  --accent-glow: rgba(232, 148, 46, 0.35);
+  --accent: #f0a84a;
+  --accent-bright: #ffc56d;
+  --accent-deep: #c9852a;
+  --accent-tint: rgba(240, 168, 74, 0.14);
+  --accent-glow: rgba(240, 168, 74, 0.38);
   --on-accent: #140d06;
 
   /* Semantic (sparingly) */
@@ -61,7 +61,7 @@ html[data-theme="light"] {
   --text-muted: #2f2c25;
   --text-dim: #5a554b;
   --text-faint: #8a8479;
-  --accent-tint: rgba(232, 148, 46, 0.10);
+  --accent-tint: rgba(240, 168, 74, 0.12);
   --on-accent: #140d06;
 
   /* Light surfaces — sections, cards stay light */
@@ -147,16 +147,31 @@ button { font-family: inherit; }
 .btn:hover { transform: translateY(-1px); }
 .btn:active { transform: translateY(0); }
 .btn-primary {
+  isolation: isolate;
   background: var(--accent);
   color: var(--on-accent);
-  box-shadow: 0 8px 24px -8px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,.25);
+  box-shadow: 0 8px 24px -8px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,.28);
+  position: relative;
+  overflow: hidden;
 }
-.btn-primary:hover { background: var(--accent-bright); box-shadow: 0 12px 30px -8px var(--accent-glow); }
+.btn-primary > * { position: relative; z-index: 1; }
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.22) 50%, transparent 60%);
+  transform: translateX(-120%);
+  transition: transform 0.55s cubic-bezier(.2,.8,.2,1);
+  pointer-events: none;
+}
+.btn-primary:hover::after { transform: translateX(120%); }
+.btn-primary:hover { background: var(--accent-bright); box-shadow: 0 14px 36px -10px var(--accent-glow); }
 .btn-ghost {
   background: transparent; color: var(--text);
   border-color: var(--line-strong);
 }
-.btn-ghost:hover { border-color: rgba(232,148,46,.5); background: var(--accent-tint); }
+.btn-ghost:hover { border-color: rgba(240,168,74,.55); color: var(--accent-bright); background: var(--accent-tint); }
 .btn-sm { height: 36px; padding: 0 14px; font-size: 13px; }
 .btn-link {
   display: inline-flex; align-items: center; gap: 6px;
@@ -262,14 +277,25 @@ section { position: relative; }
 .chip.accent { color: var(--accent); border-color: rgba(232,148,46,.4); background: var(--accent-tint); }
 .chip .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
 
-/* Reduced motion */
+/* Reduced motion — scope so Lenis / scroll still behave */
 @media (prefers-reduced-motion: reduce) {
-  * { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+  html { scroll-behavior: auto; }
+  .fade-up,
+  .mason-page-intro,
+  .hero-line-inner,
+  .hero__visual-scale,
+  .nav-mobile,
+  .nav-drop__panel {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .btn-primary::after { display: none; }
 }
 
 /* Animations */
-@keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-.fade-up { animation: fadeUp .8s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes fadeUp { from { opacity: 0; transform: translate3d(0, 14px, 0); } to { opacity: 1; transform: translate3d(0, 0, 0); } }
+.fade-up { animation: fadeUp 0.95s cubic-bezier(.16,.84,.2,1) both; will-change: transform, opacity; }
 
 @keyframes pulseGlow {
   0%, 100% { box-shadow: 0 0 0 0 rgba(232,148,46,.45), 0 0 60px 0 rgba(232,148,46,.18); }
@@ -277,5 +303,10 @@ section { position: relative; }
 }
 
 /* Reveal-on-scroll */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
-.reveal.in { opacity: 1; transform: none; }
+.reveal {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+  transition: opacity 0.85s cubic-bezier(.16,.84,.2,1), transform 0.85s cubic-bezier(.16,.84,.2,1);
+  will-change: transform, opacity;
+}
+.reveal.in { opacity: 1; transform: translate3d(0, 0, 0); }

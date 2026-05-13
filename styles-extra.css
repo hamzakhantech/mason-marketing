@@ -409,3 +409,134 @@ html[data-theme="dark"] .auth-vis-side {
   font-family: var(--font-mono);
   letter-spacing: 0;
 }
+
+/* ======================================================================== */
+/* Motion shell — Lenis, intro, hero lines, parallax (MASON marketing)       */
+/* ======================================================================== */
+
+html.mason-intro-lock,
+html.mason-intro-lock body {
+  overflow: hidden;
+  height: 100%;
+}
+
+.mason-page-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+.mason-page-intro__backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 55% at 50% 42%, #12121a 0%, #050508 72%);
+  opacity: 1;
+  transition: opacity 0.75s cubic-bezier(.16,.84,.2,1);
+}
+.mason-page-intro__stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 48px 32px;
+  transform: translate3d(0, 10px, 0);
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(.16,.84,.2,1), transform 0.75s cubic-bezier(.16,.84,.2,1);
+}
+.mason-page-intro.is-visible .mason-page-intro__stage {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+.mason-page-intro__mark-wrap {
+  filter: drop-shadow(0 12px 40px rgba(0, 0, 0, 0.55));
+}
+.mason-page-intro__mark {
+  display: block;
+  height: auto;
+  max-width: min(240px, 52vw);
+  opacity: 0.96;
+}
+.mason-page-intro__line {
+  width: min(200px, 40vw);
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent) 20%, var(--accent) 80%, transparent);
+  transform: scaleX(0);
+  transform-origin: 50% 50%;
+  transition: transform 1.05s cubic-bezier(.16,.84,.2,1) 0.15s;
+}
+.mason-page-intro.is-visible .mason-page-intro__line {
+  transform: scaleX(1);
+}
+.mason-page-intro.is-exiting .mason-page-intro__backdrop {
+  opacity: 0;
+}
+.mason-page-intro.is-exiting .mason-page-intro__stage {
+  opacity: 0;
+  transform: translate3d(0, -12px, 0) scale(0.98);
+  transition-duration: 0.65s;
+}
+
+/* Hero headline — masked line reveal */
+.hero-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.04em;
+}
+.hero-line-inner {
+  display: block;
+  transform: translate3d(0, 108%, 0);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+html.mason-motion-reveal .hero-line-inner {
+  animation: masonHeroLine 0.95s cubic-bezier(.16,.84,.2,1) forwards;
+}
+html.mason-motion-reveal .hero-line:nth-child(1) .hero-line-inner { animation-delay: 0.08s; }
+html.mason-motion-reveal .hero-line:nth-child(2) .hero-line-inner { animation-delay: 0.18s; }
+html.mason-motion-reveal .hero-line:nth-child(3) .hero-line-inner { animation-delay: 0.26s; }
+@keyframes masonHeroLine {
+  from { transform: translate3d(0, 108%, 0); opacity: 0; }
+  to { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+
+/* Hero product — slow drift + inner scale (parallax offset applied via JS) */
+.hero__visual-parallax {
+  position: relative;
+  perspective: 1400px;
+  will-change: transform;
+}
+.hero__visual-scale {
+  transform-origin: 50% 50%;
+  will-change: transform;
+  transition: transform 0.2s ease-out;
+}
+@media (min-width: 1041px) {
+  html.mason-motion-reveal .hero__visual-scale {
+    animation: masonHeroFloat 16s ease-in-out infinite alternate;
+  }
+}
+@keyframes masonHeroFloat {
+  from { transform: scale(1) translate3d(0, 0, 0); }
+  to { transform: scale(1.035) translate3d(0, -8px, 0); }
+}
+
+/* Subtle image lift for marketing photography */
+.img-parallax {
+  overflow: hidden;
+  border-radius: var(--r-lg);
+}
+.img-parallax img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transform: scale(1.04);
+  transition: transform 0.8s cubic-bezier(.16,.84,.2,1);
+  will-change: transform;
+}
+.img-parallax:hover img {
+  transform: scale(1.07) translate3d(0, -4px, 0);
+}
