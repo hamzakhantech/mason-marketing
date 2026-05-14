@@ -68,6 +68,8 @@
     '.nav-drop__btn',
     '.header-link',
     '.site-nav a',
+    '.nav-link',
+    '.mode-toggle',
     'label',
     'summary',
   ].join(',');
