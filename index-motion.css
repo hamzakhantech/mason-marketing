@@ -166,6 +166,14 @@ html.mason-motion-reveal .hero-line:nth-child(5) .hero-line-inner {
   opacity: 1;
 }
 
+.nav-link.is-active {
+  color: var(--accent);
+}
+.nav-link.is-active::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
 /* Section reveal */
 .reveal {
   opacity: 0;

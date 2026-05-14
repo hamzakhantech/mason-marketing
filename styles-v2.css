@@ -142,20 +142,15 @@ body {
 }
 .nav-link:hover { color: var(--accent) !important; }
 
-/* Home chrome: strip legacy global .nav-link rules from styles-pages.css (underline pill, etc.) */
-.header-wrap .nav-link::before,
-.header-wrap .nav-link::after {
-  content: none !important;
-  display: none !important;
-  background: none !important;
-  transform: none !important;
-  opacity: 0 !important;
-  height: 0 !important;
-  width: 0 !important;
-  pointer-events: none !important;
+/* Home chrome: styles-pages.css adds pill padding, radius, and hover wash on global .nav-link */
+.header-wrap .nav-link {
+  border-radius: 0 !important;
 }
 .header-wrap .nav-link:hover {
   background: transparent !important;
+}
+.header-wrap .nav-link.is-active {
+  color: var(--accent) !important;
 }
 
 /* Buttons */
@@ -435,6 +430,7 @@ body {
   color: var(--ink);
 }
 .mob-drawer a.mob-link:hover { color: var(--accent); }
+.mob-drawer a.mob-link.is-active { color: var(--accent); }
 .mob-drawer__cta {
   display: flex;
   flex-direction: column;

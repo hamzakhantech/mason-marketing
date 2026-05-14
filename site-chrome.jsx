@@ -196,6 +196,27 @@ const NAV_LINKS = [
   { key: "blog", label: "Blog", href: "blog.html" },
 ];
 
+/** Current marketing page → NAV_LINKS key (for gold underline active state, index-motion.css) */
+function marketingNavActiveKey() {
+  try {
+    var p = (window.location.pathname || "").replace(/\\/g, "/");
+    var file = p.split("/").pop() || "";
+    if (!file || file === "index.html") return null;
+    var map = {
+      "features.html": "platform",
+      "pricing.html": "pricing",
+      "case-studies.html": "cases",
+      "compare-procore.html": "compare",
+      "compare-fieldwire.html": "compare",
+      "compare-asite.html": "compare",
+      "blog.html": "blog",
+    };
+    return map[file] || null;
+  } catch (e) {
+    return null;
+  }
+}
+
 const FCOLS = [
   {
     h: "Platform",
@@ -239,6 +260,11 @@ const HeaderShell = ({ dark, toggleDark }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [liveTime, setLiveTime] = useState("");
   const [liveWeather, setLiveWeather] = useState("");
+  const [navActive, setNavActive] = useState(null);
+
+  useEffect(() => {
+    setNavActive(marketingNavActiveKey());
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -335,7 +361,11 @@ const HeaderShell = ({ dark, toggleDark }) => {
               </a>
               <div className="hide-md" style={{ display: "flex", gap: 22, alignItems: "center" }}>
                 {NAV_LINKS.map((n) => (
-                  <a key={n.key} href={n.href} className="nav-link">
+                  <a
+                    key={n.key}
+                    href={n.href}
+                    className={"nav-link" + (navActive === n.key ? " is-active" : "")}
+                  >
                     {n.label}
                   </a>
                 ))}
@@ -406,7 +436,7 @@ const HeaderShell = ({ dark, toggleDark }) => {
               </button>
             </div>
             {NAV_LINKS.map((n) => (
-              <a key={n.key} href={n.href} className="mob-link">
+              <a key={n.key} href={n.href} className={"mob-link" + (navActive === n.key ? " is-active" : "")}>
                 {n.label}
               </a>
             ))}
