@@ -1295,13 +1295,3 @@ html[data-theme="dark"] .mason-section-proof a.case-card.cursor-card-hover:hover
 .mason-section-premium.reveal.in .blog-grid > a.post.cursor-card-hover:nth-child(4) {
   animation-delay: 0.26s;
 }
-
-/* Home chrome nav — current page (site-chrome.jsx) */
-.nav-link.is-active {
-  color: var(--accent) !important;
-}
-.nav-link.is-active::after {
-  transform: scaleX(1) !important;
-  opacity: 1 !important;
-}
-
