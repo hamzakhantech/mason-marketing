@@ -1,4 +1,5 @@
-// sections.jsx -- Why MASON, Module grid, BIM, Surfaces, Trust, CTA, Footer
+// sections.jsx -- Why MASON, Module grid, BIM, Surfaces, Trust, CTA.
+// Marketing footer: site-chrome.jsx only (never register Footer on window here).
 
 // --- Why MASON: 3 pillars ---------------------------------------------------
 
@@ -495,7 +496,7 @@ const TrustCard = ({ Icon, title, body }) => (
   </div>
 );
 
-// --- CTA + Footer ---------------------------------------------------------
+// --- CTA band (legacy; app.jsx uses FinalCTA from home-extra.jsx) -----------
 
 const CTABand = () => (
   <section className="sect cta-band" id="contact">
@@ -521,44 +522,6 @@ const CTABand = () => (
   </section>
 );
 
-const Footer = () => (
-  <footer className="site-footer">
-    <div className="container site-footer__row">
-      <div className="site-footer__brand">
-        <img src="assets/mason_horizontal_dark.png" alt="MASON" className="site-footer__wm site-footer__wm--dark" />
-        <img src="assets/mason_horizontal_light.png" alt="MASON" className="site-footer__wm site-footer__wm--light" />
-        <p className="site-footer__expand">Management &amp; Analytics System for On-site Navigation</p>
-      </div>
-      <div className="site-footer__cols">
-        <div>
-          <span className="mono">Product</span>
-          <a className="mason-footer-link" href="#product">Why MASON</a>
-          <a className="mason-footer-link" href="#modules">Modules</a>
-          <a className="mason-footer-link" href="#bim">BIM &amp; field</a>
-          <a className="mason-footer-link" href="#surfaces">Surfaces</a>
-        </div>
-        <div>
-          <span className="mono">Company</span>
-          <a className="mason-footer-link" href="#contact">Contact</a>
-          <a className="mason-footer-link" href="#trust">Trust</a>
-          <a className="mason-footer-link" href="privacy.html">Privacy</a>
-          <a className="mason-footer-link" href="terms.html">Terms</a>
-        </div>
-        <div>
-          <span className="mono">Account</span>
-          <a className="mason-footer-link" href="https://app.masononsite.com">Sign in</a>
-          <a className="mason-footer-link" href="https://app.masononsite.com/register">Register</a>
-          <a className="mason-footer-link" href="https://app.masononsite.com/forgot-password">Forgot password</a>
-        </div>
-      </div>
-    </div>
-    <div className="container site-footer__legal">
-      <span>(c) 2026 MASON . masononsite.com</span>
-      <span>Built for the jobsite.</span>
-    </div>
-  </footer>
-);
-
 Object.assign(window, {
-  Pillars, ModuleGrid, BIMProof, Surfaces, Trust, CTABand, Footer,
+  Pillars, ModuleGrid, BIMProof, Surfaces, Trust, CTABand,
 });
