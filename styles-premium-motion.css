@@ -2,6 +2,23 @@
    Load after site styles. Respects prefers-reduced-motion + coarse pointer. */
 
 /* -------------------------------------------------------------------------- */
+/* Horizontal overflow — proof glow + hover disks must not widen the document   */
+/* -------------------------------------------------------------------------- */
+html,
+body {
+  max-width: 100%;
+}
+
+body {
+  overflow-x: clip;
+}
+
+main,
+.site {
+  overflow-x: clip;
+}
+
+/* -------------------------------------------------------------------------- */
 /* Reduced motion + touch: strip decorative motion                             */
 /* -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
@@ -783,13 +800,15 @@ a.blog-card.cursor-card-hover:hover .blog-card__body > p:first-of-type {
 
 .mason-section-proof {
   position: relative;
+  /* Contain animated ::before (translate + scale) so it cannot widen the page */
+  overflow-x: clip;
   --mason-proof-ease: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mason-section-proof::before {
   content: "";
   position: absolute;
-  inset: -2px;
+  inset: 0;
   pointer-events: none;
   z-index: 0;
   opacity: 0.42;
@@ -807,11 +826,11 @@ html[data-theme="dark"] .mason-section-proof::before {
 
 @keyframes mason-proof-bg-drift {
   from {
-    transform: translate3d(-2%, 0, 0) scale(1);
+    transform: translate3d(-0.6%, 0, 0) scale(1);
     opacity: 0.32;
   }
   to {
-    transform: translate3d(2%, 1.2%, 0) scale(1.04);
+    transform: translate3d(0.6%, 0.8%, 0) scale(1.015);
     opacity: 0.48;
   }
 }
