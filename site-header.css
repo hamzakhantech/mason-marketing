@@ -1,0 +1,375 @@
+/**
+ * Marketing site header — pixel source from index.html home inline CSS + scroll/hover motion.
+ * Load LAST after index-motion.css (and after styles-premium-motion on index.html).
+ * Uses page :root tokens: --paper, --ink, --muted, --accent, --rule-soft, --rule-faint, --max, --gutter, --font-*.
+ */
+
+/* --- Header row buttons (home .btn), scoped so inner body .btn stays unchanged --- */
+.header-wrap .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: transform 0.12s ease, background 0.12s ease, color 0.12s ease;
+  white-space: nowrap;
+}
+.header-wrap .btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+.header-wrap .btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0b0b0b;
+}
+.header-wrap .btn.primary:hover {
+  background: #0b0b0b;
+  color: var(--paper);
+  border-color: #0b0b0b;
+}
+.header-wrap .btn.ghost {
+  border-color: var(--rule-soft);
+}
+
+/* Neutralize legacy global .btn height / translateY inside chrome + drawer */
+.header-wrap .nav .btn,
+.mob-drawer .btn {
+  height: auto;
+  min-height: 0;
+  line-height: inherit;
+  transform: none;
+  box-shadow: none;
+}
+.header-wrap .nav .btn:hover,
+.header-wrap .nav .btn:active,
+.mob-drawer .btn:hover,
+.mob-drawer .btn:active {
+  transform: none;
+}
+
+/* --- Shell --- */
+.header-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--paper);
+  border-bottom: 1px solid var(--ink);
+  transition: background 0.35s ease, box-shadow 0.35s ease, backdrop-filter 0.35s ease;
+}
+.header-wrap.is-scrolled {
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 12px 40px -24px rgba(0, 0, 0, 0.28);
+}
+.dark .header-wrap.is-scrolled {
+  background: color-mix(in srgb, var(--paper) 85%, transparent);
+  box-shadow: 0 18px 50px -28px rgba(0, 0, 0, 0.65);
+}
+
+.header-wrap .container {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  position: relative;
+}
+
+/* --- Ticker --- */
+.header-wrap .ticker {
+  height: 30px;
+  border-bottom: 1px solid var(--ink);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: stretch;
+  background: var(--ink);
+  color: var(--paper);
+}
+.header-wrap .ticker .badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  background: var(--accent);
+  color: #0b0b0b;
+  border-right: 1px solid var(--ink);
+  font-weight: 600;
+}
+.header-wrap .ticker .badge .pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #0b0b0b;
+  animation: mason-site-header-pulse 1.4s infinite;
+}
+@keyframes mason-site-header-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
+.header-wrap .ticker .scroll {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  mask: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.header-wrap .ticker .scroll-track {
+  display: flex;
+  gap: 48px;
+  white-space: nowrap;
+  animation: mason-site-header-ticker 50s linear infinite;
+  padding-left: 24px;
+}
+@keyframes mason-site-header-ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.header-wrap .ticker .scroll-track span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.header-wrap .ticker .scroll-track i {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  font-style: normal;
+}
+
+/* --- Nav row --- */
+.header-wrap .nav {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: 72px;
+  gap: 24px;
+}
+.header-wrap .nav-left {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: nowrap;
+}
+.header-wrap .nav-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+}
+
+.header-wrap .brand,
+.mob-drawer .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+}
+.header-wrap .brand-mark,
+.mob-drawer .brand-mark {
+  width: 28px;
+  height: 28px;
+  background: var(--ink);
+  color: var(--paper);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  position: relative;
+}
+.header-wrap .brand-mark::after,
+.mob-drawer .brand-mark::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid var(--paper);
+  pointer-events: none;
+}
+
+.header-wrap .nav-link {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 6px 0;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  border-radius: 0;
+  background: transparent;
+  transition: color 0.2s ease;
+}
+.header-wrap .nav-link:hover {
+  color: var(--accent);
+  background: transparent;
+}
+.header-wrap .nav-link .caret {
+  font-size: 8px;
+  opacity: 0.5;
+}
+.header-wrap .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent) 12%, var(--accent) 88%, transparent);
+  transform: scaleX(0);
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.16, 0.84, 0.2, 1), opacity 0.25s ease;
+  pointer-events: none;
+}
+.header-wrap .nav-link:hover::after {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+/* --- Responsive helpers (header only) --- */
+.header-wrap .hide-lg {
+  display: initial;
+}
+@media (max-width: 1200px) {
+  .header-wrap .hide-lg {
+    display: none !important;
+  }
+}
+.header-wrap .hide-md {
+  display: initial;
+}
+@media (max-width: 1040px) {
+  .header-wrap .hide-md {
+    display: none !important;
+  }
+}
+
+.header-wrap .nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px 6px;
+  background: none;
+  border: none;
+  margin-left: auto;
+}
+.header-wrap .nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 1px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+@media (max-width: 900px) {
+  .header-wrap .hide-md {
+    display: none !important;
+  }
+  .header-wrap .hide-lg {
+    display: none !important;
+  }
+  .header-wrap .nav-hamburger {
+    display: flex !important;
+  }
+  .header-wrap .nav {
+    height: 60px !important;
+    grid-template-columns: 1fr auto !important;
+  }
+}
+
+/* --- Mobile drawer (portal sibling of header; global class names) --- */
+.mob-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 190;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+}
+.mob-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 280px;
+  z-index: 195;
+  background: var(--paper);
+  border-right: 1px solid var(--ink);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 32px;
+  overflow-y: auto;
+}
+.mob-drawer__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.mob-drawer__close {
+  background: none;
+  border: 1px solid var(--rule-soft);
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--ink);
+}
+.mob-drawer a.mob-link {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--rule-faint);
+  color: var(--ink);
+}
+.mob-drawer a.mob-link:hover {
+  color: var(--accent);
+}
+.mob-drawer__cta {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 28px;
+}
