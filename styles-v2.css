@@ -142,6 +142,22 @@ body {
 }
 .nav-link:hover { color: var(--accent) !important; }
 
+/* Home chrome: strip legacy global .nav-link rules from styles-pages.css (underline pill, etc.) */
+.header-wrap .nav-link::before,
+.header-wrap .nav-link::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  transform: none !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  pointer-events: none !important;
+}
+.header-wrap .nav-link:hover {
+  background: transparent !important;
+}
+
 /* Buttons */
 .btn {
   display: inline-flex !important; align-items: center !important; gap: 10px !important;
@@ -157,6 +173,22 @@ body {
 .btn.primary, .btn-primary { background: var(--accent) !important; border-color: var(--accent) !important; color: #0B0B0B !important; }
 .btn.primary:hover, .btn-primary:hover { background: #0B0B0B !important; color: var(--paper) !important; border-color: #0B0B0B !important; }
 .btn.ghost, .btn-ghost { border-color: var(--rule-soft) !important; }
+
+/* Home chrome: styles.css .btn uses fixed height + translateY hover — match index.html behavior */
+.header-wrap .nav .btn,
+.header-wrap .mob-drawer .btn {
+  height: auto !important;
+  min-height: 0 !important;
+  line-height: inherit !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+.header-wrap .nav .btn:hover,
+.header-wrap .nav .btn:active,
+.header-wrap .mob-drawer .btn:hover,
+.header-wrap .mob-drawer .btn:active {
+  transform: none !important;
+}
 
 /* Mode toggle button */
 .mode-toggle {
@@ -568,11 +600,6 @@ body {
     justify-content: center !important;
     gap: 14px !important;
   }
-}
-
-/* ── Ticker hide on xs ──────────────────────────────────────── */
-@media (max-width: 480px) {
-  .ticker { display: none !important; }
 }
 
 /* ── prod shell (homepage AI mockup) ───────────────────────── */
