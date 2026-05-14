@@ -377,7 +377,7 @@ const HeaderShell = ({ dark, toggleDark }) => {
                 <ChromeIcon name={dark ? "moon" : "sun"} size={13} />
                 {dark ? "Dark" : "Light"}
               </button>
-              <a className="btn ghost hide-md" href="contact.html">
+              <a className="btn ghost hide-md" href="https://app.masononsite.com">
                 Sign in
               </a>
               <a className="btn primary mason-border-sweep" href="contact.html">
@@ -411,7 +411,7 @@ const HeaderShell = ({ dark, toggleDark }) => {
               </a>
             ))}
             <div className="mob-drawer__cta">
-              <a href="contact.html" className="btn ghost" style={{ textAlign: "center" }}>
+              <a href="https://app.masononsite.com" className="btn ghost" style={{ textAlign: "center" }}>
                 Sign in
               </a>
               <a href="contact.html" className="btn primary" style={{ textAlign: "center" }}>

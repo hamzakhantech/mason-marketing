@@ -19,7 +19,7 @@ const EntHero = () => (
         </p>
         <div className="page-hero__cta gsap-fade-up" style={{display:"flex",gap:14,flexWrap:"wrap",marginTop:32}}>
           <a href="contact.html" className="btn btn-primary btn-lg">Contact sales</a>
-          <a href="https://app.masononsite.com/login" className="btn btn-ghost btn-lg">Sign in</a>
+          <a href="https://app.masononsite.com" className="btn btn-ghost btn-lg">Sign in</a>
         </div>
       </div>
     </div>

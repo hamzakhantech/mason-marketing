@@ -509,7 +509,7 @@ const CTABand = () => (
           </p>
         </div>
         <div className="cta-band__actions">
-          <a href="https://app.masononsite.com/login" className="btn btn-primary mason-border-sweep">
+          <a href="https://app.masononsite.com" className="btn btn-primary mason-border-sweep">
             Sign in <IconArrowRight size={16} stroke={2} />
           </a>
           <a href="mailto:connect@masononsite.com" className="btn btn-ghost">
@@ -546,7 +546,7 @@ const Footer = () => (
         </div>
         <div>
           <span className="mono">Account</span>
-          <a className="mason-footer-link" href="https://app.masononsite.com/login">Sign in</a>
+          <a className="mason-footer-link" href="https://app.masononsite.com">Sign in</a>
           <a className="mason-footer-link" href="https://app.masononsite.com/register">Register</a>
           <a className="mason-footer-link" href="https://app.masononsite.com/forgot-password">Forgot password</a>
         </div>
