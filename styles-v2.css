@@ -149,9 +149,6 @@ body {
 .header-wrap .nav-link:hover {
   background: transparent !important;
 }
-.header-wrap .nav-link.is-active {
-  color: var(--accent) !important;
-}
 
 /* Buttons */
 .btn {
@@ -430,7 +427,6 @@ body {
   color: var(--ink);
 }
 .mob-drawer a.mob-link:hover { color: var(--accent); }
-.mob-drawer a.mob-link.is-active { color: var(--accent); }
 .mob-drawer__cta {
   display: flex;
   flex-direction: column;
