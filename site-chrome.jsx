@@ -483,9 +483,6 @@ const Footer = () => (
             <a className="btn primary mason-border-sweep" href="contact.html">
               Book a demo <ChromeIcon name="arrow" size={12} />
             </a>
-            <a className="btn" style={{ borderColor: "rgba(242,238,229,.3)", color: "var(--paper)" }} href="contact.html">
-              Talk to sales
-            </a>
           </div>
         </div>
         {FCOLS.map((col) => (
@@ -538,7 +535,7 @@ const Footer = () => (
           <a href="security.html">Security</a>
           <a href="contact.html">Contact</a>
         </div>
-        <div>v 4.2 · 2026-05-12</div>
+        <div>V 4.2 · 2026-05-12</div>
       </div>
     </div>
   </footer>
