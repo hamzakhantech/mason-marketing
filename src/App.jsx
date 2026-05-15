@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { MarketingLayout } from "./components/MarketingLayout.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 import About from "./pages/About.jsx";
 import Blog from "./pages/Blog.jsx";
 import CaseStudies from "./pages/CaseStudies.jsx";
@@ -14,7 +15,9 @@ import VsProcore from "./pages/VsProcore.jsx";
 
 export default function App() {
   return (
-    <Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
       <Route element={<MarketingLayout />}>
         <Route index element={<Home />} />
         <Route path="about" element={<About />} />
@@ -28,5 +31,6 @@ export default function App() {
         <Route path="privacy" element={<Privacy />} />
       </Route>
     </Routes>
+    </>
   );
 }
