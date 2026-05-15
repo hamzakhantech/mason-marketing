@@ -144,6 +144,7 @@ const HeaderShell = ({ dark, toggleDark }) => {
             <div className="nav-right">
               <button
                 type="button"
+                className="header-theme-toggle"
                 onClick={toggleDark}
                 style={{
                   background: "none",

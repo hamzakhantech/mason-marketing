@@ -1,0 +1,121 @@
+/* =============================================================================
+   Dark mode — readable button hovers
+   In dark theme, --paper is near-black; never use it as text on #0b0b0b hovers.
+   Load after site-header.css / site-footer.css (see main.jsx).
+   ============================================================================= */
+
+html[data-theme="dark"] .btn.primary:hover,
+html[data-theme="dark"] .btn-primary:hover,
+.dark .btn.primary:hover,
+.dark .btn-primary:hover {
+  background: #0b0b0b !important;
+  color: #ffffff !important;
+  border-color: #f0a84a !important;
+}
+
+html[data-theme="dark"] .btn.ghost:hover,
+html[data-theme="dark"] .btn-ghost:hover,
+.dark .btn.ghost:hover,
+.dark .btn-ghost:hover {
+  background: rgba(0, 0, 0, 0.92) !important;
+  color: #ffffff !important;
+  border-color: #f0a84a !important;
+}
+
+/* Header + drawer (higher specificity than site-header base hovers) */
+html[data-theme="dark"] .header-wrap .btn.primary:hover,
+html[data-theme="dark"] .header-wrap .btn-primary:hover,
+.dark .header-wrap .btn.primary:hover,
+.dark .header-wrap .btn-primary:hover,
+html[data-theme="dark"] .header-wrap .btn.ghost:hover,
+html[data-theme="dark"] .header-wrap .btn-ghost:hover,
+.dark .header-wrap .btn.ghost:hover,
+.dark .header-wrap .btn-ghost:hover,
+html[data-theme="dark"] .mob-drawer .btn.primary:hover,
+html[data-theme="dark"] .mob-drawer .btn-primary:hover,
+html[data-theme="dark"] .mob-drawer .btn.ghost:hover,
+html[data-theme="dark"] .mob-drawer .btn-ghost:hover,
+.dark .mob-drawer .btn.primary:hover,
+.dark .mob-drawer .btn-primary:hover,
+.dark .mob-drawer .btn.ghost:hover,
+.dark .mob-drawer .btn-ghost:hover {
+  background: #0b0b0b !important;
+  color: #ffffff !important;
+  border-color: #f0a84a !important;
+}
+
+/* Home hero (home-inline.css uses var(--paper) on primary hover) */
+html[data-theme="dark"] main.mason-home .btn.primary:hover,
+html[data-theme="dark"] main.mason-home .btn-primary:hover,
+.dark main.mason-home .btn.primary:hover,
+.dark main.mason-home .btn-primary:hover {
+  background: #0b0b0b !important;
+  color: #ffffff !important;
+  border-color: #f0a84a !important;
+}
+
+html[data-theme="dark"] main.mason-home .btn.ghost:hover,
+html[data-theme="dark"] main.mason-home .btn-ghost:hover,
+.dark main.mason-home .btn.ghost:hover,
+.dark main.mason-home .btn-ghost:hover {
+  background: rgba(0, 0, 0, 0.92) !important;
+  color: #ffffff !important;
+  border-color: #f0a84a !important;
+}
+
+/* Icons: stroke/fill follow visible foreground */
+html[data-theme="dark"] .btn.primary:hover svg,
+html[data-theme="dark"] .btn-primary:hover svg,
+html[data-theme="dark"] .btn.ghost:hover svg,
+html[data-theme="dark"] .btn-ghost:hover svg,
+.dark .btn.primary:hover svg,
+.dark .btn-primary:hover svg,
+.dark .btn.ghost:hover svg,
+.dark .btn-ghost:hover svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+html[data-theme="dark"] .btn.primary:hover svg path,
+html[data-theme="dark"] .btn-primary:hover svg path,
+html[data-theme="dark"] .btn.ghost:hover svg path,
+html[data-theme="dark"] .btn-ghost:hover svg path,
+html[data-theme="dark"] .btn.primary:hover svg circle,
+html[data-theme="dark"] .btn-primary:hover svg circle,
+html[data-theme="dark"] .btn.ghost:hover svg circle,
+html[data-theme="dark"] .btn-ghost:hover svg circle,
+.dark .btn.primary:hover svg path,
+.dark .btn-primary:hover svg path,
+.dark .btn.ghost:hover svg path,
+.dark .btn-ghost:hover svg path,
+.dark .btn.primary:hover svg circle,
+.dark .btn-primary:hover svg circle,
+.dark .btn.ghost:hover svg circle,
+.dark .btn-ghost:hover svg circle {
+  stroke: #ffffff !important;
+}
+
+html[data-theme="dark"] .btn.primary:hover svg circle[fill="currentColor"],
+html[data-theme="dark"] .btn-primary:hover svg circle[fill="currentColor"],
+html[data-theme="dark"] .btn.ghost:hover svg circle[fill="currentColor"],
+html[data-theme="dark"] .btn-ghost:hover svg circle[fill="currentColor"],
+.dark .btn.primary:hover svg circle[fill="currentColor"],
+.dark .btn-primary:hover svg circle[fill="currentColor"],
+.dark .btn.ghost:hover svg circle[fill="currentColor"],
+.dark .btn-ghost:hover svg circle[fill="currentColor"] {
+  fill: #ffffff !important;
+}
+
+/* Header theme toggle (inline-styled <button> in Header.jsx) */
+html[data-theme="dark"] .header-theme-toggle:hover,
+.dark .header-theme-toggle:hover {
+  background: rgba(0, 0, 0, 0.88) !important;
+  color: #ffffff !important;
+  border-color: #f0a84a !important;
+}
+
+html[data-theme="dark"] .header-theme-toggle:hover svg,
+.dark .header-theme-toggle:hover svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}

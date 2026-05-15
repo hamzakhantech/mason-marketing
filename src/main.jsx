@@ -16,6 +16,7 @@ import "./components/inner-hero.css";
 import "../index-motion.css";
 import "../site-header.css";
 import "../site-footer.css";
+import "../styles-dark-buttons.css";
 
 function loadScript(src) {
   return new Promise((resolve, reject) => {
