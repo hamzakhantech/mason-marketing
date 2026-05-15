@@ -4,7 +4,7 @@ import "./home/home-inline.css";
 
 export default function Home() {
   return (
-    <main>
+    <main className="mason-home">
       <HomeMain />
     </main>
   );

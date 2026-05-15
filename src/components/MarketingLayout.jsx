@@ -13,7 +13,7 @@ export function MarketingLayout() {
 
   useEffect(() => {
     const isHome = pathname === "/";
-    document.body.classList.toggle("mason-inner-route", !isHome);
+    document.body.classList.toggle("mason-home", isHome);
     if (isHome) {
       document.documentElement.setAttribute("data-motion-home", "true");
       document.body.setAttribute("data-motion-home", "true");
@@ -22,7 +22,7 @@ export function MarketingLayout() {
       document.body.removeAttribute("data-motion-home");
     }
     return () => {
-      document.body.classList.remove("mason-inner-route");
+      document.body.classList.remove("mason-home");
       document.documentElement.removeAttribute("data-motion-home");
       document.body.removeAttribute("data-motion-home");
     };
