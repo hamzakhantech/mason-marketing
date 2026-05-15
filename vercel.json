@@ -50,9 +50,12 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!api/|assets/|favicon.ico|robots.txt|sitemap.xml|app/).*)",
-      "destination": "/index.html"
+      "source": "/app/(.*)",
+      "destination": "https://app.masononsite.com/$1"
     },
-    { "source": "/app/(.*)", "destination": "https://app.masononsite.com/$1" }
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
