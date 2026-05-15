@@ -28,7 +28,7 @@ class MarketingErrorBoundary extends React.Component {
           </h1>
           <p className="lede" style={{ marginTop: 16 }}>
             Try a refresh. If it keeps happening, email{" "}
-            <a href="mailto:hello@masononsite.com" style={{ color: "var(--accent)" }}>
+            <a className="link" href="mailto:hello@masononsite.com">
               hello@masononsite.com
             </a>
             .
