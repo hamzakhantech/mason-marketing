@@ -52,7 +52,7 @@ export function MarketingLayout() {
   return (
     <>
       <Header dark={dark} toggleDark={() => setDark((d) => !d)} />
-      <Outlet />
+      <Outlet key={pathname} />
       <Footer />
     </>
   );

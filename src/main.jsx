@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { SiteContentProvider } from "./cms/SiteContentContext.jsx";
 import App from "./App.jsx";
-
+import ScrollToTop from "./components/ScrollToTop.jsx";
 import "../styles.css";
 import "../styles-sections.css";
 import "../styles-content.css";
@@ -18,6 +18,10 @@ import "../site-header.css";
 import "../site-footer.css";
 import "../styles-dark-buttons.css";
 
+if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
+  window.history.scrollRestoration = "manual";
+}
+
 function loadScript(src) {
   return new Promise((resolve, reject) => {
     const s = document.createElement("script");
@@ -31,7 +35,7 @@ function loadScript(src) {
 
 (async () => {
   try {
-    await loadScript("/motion-init.js?v=2");
+    await loadScript("/motion-init.js?v=3");
     await loadScript("/cursor-effects.js?v=1");
     await loadScript("/magnetic-effects.js?v=1");
     await loadScript("/hover-arrow-cursor.js?v=4");
@@ -44,6 +48,7 @@ function loadScript(src) {
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
+      <ScrollToTop />
       <SiteContentProvider>
         <App />
       </SiteContentProvider>

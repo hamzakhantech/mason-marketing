@@ -37,6 +37,10 @@
     });
 
     window.__MASON_LENIS = lenis;
+    window.__MASON_LENIS__ = lenis;
+    window.lenis = lenis;
+    window.__lenis = lenis;
+    window.masonLenis = lenis;
     document.documentElement.classList.add('lenis', 'lenis-smooth');
   }
 
