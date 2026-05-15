@@ -45,7 +45,20 @@
     { "source": "/blog.html", "destination": "/blog", "permanent": true },
     { "source": "/contact.html", "destination": "/contact", "permanent": true },
     { "source": "/terms.html", "destination": "/terms", "permanent": true },
-    { "source": "/privacy.html", "destination": "/privacy", "permanent": true }
+    { "source": "/privacy.html", "destination": "/privacy", "permanent": true },
+    { "source": "/compare-procore.html", "destination": "/vs-procore", "permanent": true },
+    { "source": "/vs-procore.html", "destination": "/vs-procore", "permanent": true },
+    { "source": "/compare-fieldwire.html", "destination": "/vs-procore", "permanent": true },
+    { "source": "/compare-asite.html", "destination": "/vs-procore", "permanent": true },
+    { "source": "/mobile.html", "destination": "/platform", "permanent": true },
+    { "source": "/integrations.html", "destination": "/platform", "permanent": true },
+    { "source": "/enterprise.html", "destination": "/platform", "permanent": true },
+    { "source": "/smb.html", "destination": "/platform", "permanent": true },
+    { "source": "/security.html", "destination": "/contact", "permanent": true },
+    { "source": "/roi-calculator.html", "destination": "/pricing", "permanent": true },
+    { "source": "/changelog.html", "destination": "/blog", "permanent": true },
+    { "source": "/bim-ar.html", "destination": "/platform", "permanent": true },
+    { "source": "/tracking-dashboard.html", "destination": "/contact", "permanent": true }
   ],
   "rewrites": [
     {
