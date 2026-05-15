@@ -98,7 +98,7 @@ const ProductPreview = () => {
       <div className="prod__shell">
         <aside className="prod__sidebar">
           <div className="prod__sb-brand">
-            <img src="assets/mason_mark_grid.png" alt="" />
+            <img src="/assets/mason_mark_grid.png" alt="" />
             <span>MASON</span>
           </div>
           <div className="prod__sb-section">Portfolio</div>
