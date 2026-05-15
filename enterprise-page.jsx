@@ -1,7 +1,5 @@
 // enterprise-page.jsx -- Enterprise audience page for MASON
 
-import React from "react";
-
 const EntHero = () => (
   <section className="page-hero">
     <div className="grid-bg" aria-hidden="true" />
@@ -20,7 +18,7 @@ const EntHero = () => (
           procurement and IT will actually accept.
         </p>
         <div className="page-hero__cta gsap-fade-up" style={{display:"flex",gap:14,flexWrap:"wrap",marginTop:32}}>
-          <a href="/contact" className="btn btn-primary btn-lg">Contact sales</a>
+          <a href="contact.html" className="btn btn-primary btn-lg">Contact sales</a>
           <a href="https://app.masononsite.com" className="btn btn-ghost btn-lg">Sign in</a>
         </div>
       </div>
@@ -94,8 +92,8 @@ const EntModules = () => (
             native Android app.
           </p>
           <div style={{marginTop:32,display:"flex",gap:12,flexWrap:"wrap"}}>
-            <a href="/platform" className="btn btn-ghost">See all 12 modules</a>
-            <a href="/contact" className="btn btn-primary">Talk to enterprise sales</a>
+            <a href="features.html" className="btn btn-ghost">See all 12 modules</a>
+            <a href="contact.html" className="btn btn-primary">Talk to enterprise sales</a>
           </div>
         </div>
         <div className="gsap-slide-right">
@@ -201,7 +199,7 @@ const EntSecurity = () => (
             user identity, and change description. Audit logs can be exported at any time.
             Your data can be exported in full on request — we do not hold it hostage.
           </p>
-          <a href="/security" style={{color:"var(--accent)",display:"inline-flex",alignItems:"center",gap:6,fontWeight:600,marginTop:8,textDecoration:"none"}}>Read the full security documentation →</a>
+          <a href="security.html" style={{color:"var(--accent)",display:"inline-flex",alignItems:"center",gap:6,fontWeight:600,marginTop:8,textDecoration:"none"}}>Read the full security documentation →</a>
         </div>
         <div className="gsap-slide-right">
           <div style={{display:"flex",flexDirection:"column",gap:16}}>
@@ -317,7 +315,7 @@ const EntCTA = () => (
           demo scenario. Contact sales or start a free trial on your first project today.
         </p>
         <div style={{display:"flex",gap:14,justifyContent:"center",flexWrap:"wrap"}}>
-          <a href="/contact" className="btn btn-primary btn-lg">Contact sales</a>
+          <a href="contact.html" className="btn btn-primary btn-lg">Contact sales</a>
           <a href="https://app.masononsite.com/register" className="btn btn-ghost btn-lg">Start free trial</a>
         </div>
         <p style={{fontSize:13,color:"var(--text-faint)",marginTop:20}}>
@@ -348,7 +346,9 @@ const EnterprisePage = () => {
     }
   },[]);
   return (
-    <main>
+    <React.Fragment>
+      <Header />
+      <main>
         <EntHero />
         <EntWhy />
         <EntModules />
@@ -358,7 +358,10 @@ const EnterprisePage = () => {
         <EntFAQ />
         <EntCTA />
       </main>
+      <Footer />
+    </React.Fragment>
   );
 };
 
-export default EnterprisePage;
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<EnterprisePage />);

@@ -1,7 +1,5 @@
 // case-studies-page.jsx
 
-import React from "react";
-
 const CSHero = () => (
   <section className="page-hero">
     <div className="grid-bg" aria-hidden="true" /><div className="page-hero__glow" aria-hidden="true" />
@@ -136,18 +134,7 @@ const CaseStudies = () => {
                   </div>
                 ))}
               </div>
-              <h3
-                style={{
-                  fontSize: 11,
-                  fontWeight: 700,
-                  marginBottom: 10,
-                  color: "var(--text-muted)",
-                  textTransform: "uppercase",
-                  letterSpacing: ".06em",
-                }}
-              >
-                The challenge
-              </h3>
+              <h3 style={{fontSize:15,fontWeight:700,marginBottom:10,color:"var(--text-muted)",textTransform:"uppercase",letterSpacing:".06em",fontSize:11}}>The challenge</h3>
               <p style={{fontSize:14.5,color:"var(--text-muted)",lineHeight:1.75,marginBottom:20}}>{c.challenge}</p>
               <h3 style={{fontSize:11,fontWeight:700,marginBottom:10,color:"var(--text-muted)",textTransform:"uppercase",letterSpacing:".06em"}}>What they used</h3>
               <p style={{fontSize:14.5,color:"var(--text-muted)",lineHeight:1.75,marginBottom:20}}>{c.solution}</p>
@@ -176,7 +163,7 @@ const CSCTA = () => (
         </p>
         <div style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
           <a href="https://app.masononsite.com/register" className="btn btn-primary btn-lg">Start free trial</a>
-          <a href="/contact" className="btn btn-ghost btn-lg">Book a demo</a>
+          <a href="contact.html" className="btn btn-ghost btn-lg">Book a demo</a>
         </div>
       </div>
     </div>
@@ -195,13 +182,17 @@ const CaseStudiesPage = () => {
     }
   }, []);
   return (
-    <main>
+    <React.Fragment>
+      <Header />
+      <main>
         <CSHero />
         <CSSummaryStats />
         <CaseStudies />
         <CSCTA />
       </main>
+      <Footer />
+    </React.Fragment>
   );
 };
-
-export default CaseStudiesPage;
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<CaseStudiesPage />);

@@ -1,7 +1,5 @@
 // contact-page.jsx -- Full Contact page for MASON
 
-import React from "react";
-
 var CON_ICONS={"calendar":`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>`,"mail":`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`,"refresh":`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>`,"handshake":`<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 7.65l.77.77L12 21.23l7.65-7.65.77-.77a5.4 5.4 0 0 0 0-7.23z"/></svg>`};
 
 const ContactHero = () => (
@@ -147,8 +145,8 @@ const ContactForm = () => {
             </p>
             <p style={{fontSize:13,color:"var(--text-faint)"}}>
               While you wait, you might want to read about{" "}
-              <a href="/platform" style={{color:"var(--accent)"}}>all 12 MASON modules</a> or
-              check out <a href="/pricing" style={{color:"var(--accent)"}}>the pricing page</a>.
+              <a href="features.html" style={{color:"var(--accent)"}}>all 12 MASON modules</a> or
+              check out <a href="pricing.html" style={{color:"var(--accent)"}}>the pricing page</a>.
             </p>
           </div>
         </div>
@@ -404,7 +402,7 @@ const ContactBeforeDemo = () => (
               "How to start your 30 day trial on the same call"
             ].map((item,i)=>(
               <div key={i} style={{display:"flex",gap:12,padding:"10px 0",borderBottom:"1px solid var(--line)"}}>
-                <span style={{color:"var(--accent)",fontWeight:700,flexShrink:0}}>→</span>
+                <span style={{color:"var(--accent)",fontWeight:700,flexShrink:0}}>-></span>
                 <span style={{fontSize:14,color:"var(--text-muted)"}}>{item}</span>
               </div>
             ))}
@@ -515,7 +513,9 @@ const ContactPage = () => {
     }
   }, []);
   return (
-    <main>
+    <React.Fragment>
+      <Header />
+      <main>
         <ContactHero />
         <ContactOptions />
         <ContactForm />
@@ -525,7 +525,10 @@ const ContactPage = () => {
         <ContactForCustomers />
         <ContactFAQ />
       </main>
+      <Footer />
+    </React.Fragment>
   );
 };
 
-export default ContactPage;
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<ContactPage />);

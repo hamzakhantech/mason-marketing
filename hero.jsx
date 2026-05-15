@@ -1,23 +1,5 @@
 // hero.jsx -- Inner-page hero visual. Header/footer: site-chrome.jsx (matches index.html).
 
-import React from "react";
-import {
-  IconArrowRight,
-  IconLock,
-  IconDashboard,
-  IconProjects,
-  IconSchedule,
-  IconBIM,
-  IconIssues,
-  IconRFI,
-  IconDocuments,
-  IconLogs,
-  IconReports,
-  IconConcierge,
-  IconAR,
-  IconCheck,
-} from "./icons.jsx";
-
 // --- Hero -------------------------------------------------------------------
 
 const Hero = () => {
@@ -243,5 +225,3 @@ const BIMViewerStage = () => (
 );
 
 Object.assign(window, { Hero, ProductPreview, BIMViewerStage });
-
-export { Hero, ProductPreview, BIMViewerStage };

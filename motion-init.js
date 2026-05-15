@@ -53,7 +53,7 @@
       '<div class="mason-page-intro__backdrop"></div>' +
       '<div class="mason-page-intro__stage">' +
       '<div class="mason-page-intro__mark-wrap">' +
-      '<img class="mason-page-intro__mark" src="/assets/mason_horizontal_dark.png" alt="" width="200" height="36" decoding="async" />' +
+      '<img class="mason-page-intro__mark" src="assets/mason_horizontal_dark.png" alt="" width="200" height="36" decoding="async" />' +
       '</div>' +
       '<div class="mason-page-intro__line" aria-hidden="true"></div>' +
       '</div>';

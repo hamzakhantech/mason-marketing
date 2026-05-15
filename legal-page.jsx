@@ -1,8 +1,6 @@
 // legal-page.jsx -- Shared component for Privacy and Terms pages.
 // Which page to render is determined by window.location.pathname.
 
-import React from "react";
-
 const LAST_UPDATED = "12 May 2026";
 const COMPANY = "Certiva LLC";
 const EMAIL = "connect@masononsite.com";
@@ -82,9 +80,9 @@ const PrivacyContent = () => (
     <p>Questions about this Privacy Policy or our data practices should be directed to:</p>
     <p><strong>{COMPANY}</strong><br />Email: <a href={"mailto:"+EMAIL} style={{color:"var(--accent)"}}>{EMAIL}</a></p>
     <div style={{marginTop:48,display:"flex",gap:14,flexWrap:"wrap"}}>
-      <a href="/terms" className="btn btn-ghost">Read Terms of Service</a>
-      <a href="/security" className="btn btn-ghost">Security documentation</a>
-      <a href="/contact" className="btn btn-ghost">Contact us</a>
+      <a href="terms.html" className="btn btn-ghost">Read Terms of Service</a>
+      <a href="security.html" className="btn btn-ghost">Security documentation</a>
+      <a href="contact.html" className="btn btn-ghost">Contact us</a>
     </div>
   </div>
 );
@@ -144,26 +142,31 @@ const TermsContent = () => (
     <p>Questions about these Terms should be directed to:</p>
     <p><strong>{COMPANY}</strong><br />Email: <a href={"mailto:"+EMAIL} style={{color:"var(--accent)"}}>{EMAIL}</a></p>
     <div style={{marginTop:48,display:"flex",gap:14,flexWrap:"wrap"}}>
-      <a href="/privacy" className="btn btn-ghost">Read Privacy Policy</a>
-      <a href="/security" className="btn btn-ghost">Security documentation</a>
-      <a href="/contact" className="btn btn-ghost">Contact us</a>
+      <a href="privacy.html" className="btn btn-ghost">Read Privacy Policy</a>
+      <a href="security.html" className="btn btn-ghost">Security documentation</a>
+      <a href="contact.html" className="btn btn-ghost">Contact us</a>
     </div>
   </div>
 );
 
 // ── Shell ────────────────────────────────────────────────────────────────────
 
-const LegalPage = ({ mode }) => {
-  const isTerms = mode === "terms";
+const LegalPage = () => {
+  const isTerms = window.location.pathname.includes("terms");
   return (
-    <main>
+    <React.Fragment>
+      <Header />
+      <main>
         <section className="section" style={{paddingTop:96}}>
           <div className="container">
             {isTerms ? <TermsContent /> : <PrivacyContent />}
           </div>
         </section>
       </main>
+      <Footer />
+    </React.Fragment>
   );
 };
 
-export default LegalPage;
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<LegalPage />);

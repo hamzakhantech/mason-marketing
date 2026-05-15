@@ -1,7 +1,5 @@
 // blog-page.jsx
 
-import React from "react";
-
 var BLOG_CARD_SVG='<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="rgba(232,148,46,0.6)" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>';
 var BLOG_ICON='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>';
 
@@ -30,20 +28,8 @@ const BlogFeatured = () => (
     <div className="container">
       <h2 className="h2 gsap-fade-up" style={{marginBottom:32}}>Featured</h2>
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:32,alignItems:"start"}} className="about-story-grid">
-        <a href="/blog" className="blog-card blog-card--featured gsap-slide-left cursor-card-hover hover-arrow-cursor magnetic-click-card" style={{textDecoration:"none",display:"block"}}>
-          <div
-            className="blog-card__img"
-            style={{
-              height: 220,
-              background: "linear-gradient(135deg,rgba(232,148,46,.15),rgba(232,148,46,.05))",
-              borderRadius: "12px 12px 0 0",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <span dangerouslySetInnerHTML={{ __html: BLOG_CARD_SVG }} />
-          </div>
+        <a href="blog.html" className="blog-card blog-card--featured gsap-slide-left cursor-card-hover hover-arrow-cursor magnetic-click-card" style={{textDecoration:"none",display:"block"}}>
+          <div className="blog-card__img" style={{height:220,background:"linear-gradient(135deg,rgba(232,148,46,.15),rgba(232,148,46,.05))",borderRadius:"12px 12px 0 0",display:"flex",alignItems:"center",justifyContent:"center",display:"flex",alignItems:"center",justifyContent:"center"}><span dangerouslySetInnerHTML={{__html:BLOG_CARD_SVG}} /></div>
           <div className="blog-card__body">
             <div style={{display:"flex",gap:8,marginBottom:12}}>
               <span className="blog-tag">BIM</span>
@@ -60,7 +46,7 @@ const BlogFeatured = () => (
             </p>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
               <span style={{fontSize:12,color:"var(--text-muted)"}}>12 min read . May 2026</span>
-              <span style={{fontSize:13,color:"var(--accent)",fontWeight:600}}>Read article →</span>
+              <span style={{fontSize:13,color:"var(--accent)",fontWeight:600}}>Read article -></span>
             </div>
           </div>
         </a>
@@ -89,7 +75,7 @@ const BlogFeatured = () => (
               time:"6 min read . April 2026"
             }
           ].map((article,i)=>(
-            <a key={i} href="/blog" style={{textDecoration:"none",display:"flex",gap:16,padding:16,background:"var(--bg-elev)",border:"1px solid var(--line)",borderRadius:12,transition:"border-color .2s"}}
+            <a key={i} href="blog.html" style={{textDecoration:"none",display:"flex",gap:16,padding:16,background:"var(--bg-elev)",border:"1px solid var(--line)",borderRadius:12,transition:"border-color .2s"}}
               onMouseEnter={e=>e.currentTarget.style.borderColor="rgba(232,148,46,.4)"}
               onMouseLeave={e=>e.currentTarget.style.borderColor="var(--line)"}>
               <div style={{fontSize:28,flexShrink:0,width:48,height:48,display:"flex",alignItems:"center",justifyContent:"center",background:"rgba(232,148,46,.08)",borderRadius:10}}>
@@ -184,7 +170,7 @@ const BlogGrid = () => {
         <h2 className="h2 gsap-fade-up" style={{marginBottom:32}}>All articles</h2>
         <div className="blog-grid">
           {articles.map((article,i)=>(
-            <a key={i} href="/blog" className="blog-card gsap-fade-up cursor-card-hover hover-arrow-cursor magnetic-click-card" style={{textDecoration:"none",display:"flex",flexDirection:"column"}}>
+            <a key={i} href="blog.html" className="blog-card gsap-fade-up cursor-card-hover hover-arrow-cursor magnetic-click-card" style={{textDecoration:"none",display:"flex",flexDirection:"column"}}>
               <div style={{height:120,background:"linear-gradient(135deg,rgba(232,148,46,.1),rgba(232,148,46,.03))",borderRadius:"10px 10px 0 0",display:"flex",alignItems:"center",justifyContent:"center",fontSize:40}}>
                 <span dangerouslySetInnerHTML={{__html:BLOG_ICON}}/>
               </div>
@@ -196,7 +182,7 @@ const BlogGrid = () => {
                 <p style={{fontSize:12.5,color:"var(--text-muted)",lineHeight:1.6,margin:"0 0 12px"}}>{article.excerpt}</p>
                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginTop:"auto"}}>
                   <span style={{fontSize:11,color:"var(--text-muted)"}}>{article.time}</span>
-                  <span style={{fontSize:12,color:"var(--accent)",fontWeight:600}}>Read →</span>
+                  <span style={{fontSize:12,color:"var(--accent)",fontWeight:600}}>Read -></span>
                 </div>
               </div>
             </a>
@@ -264,7 +250,7 @@ const BlogGuides = () => (
             <p style={{fontSize:13,color:"var(--text-muted)",lineHeight:1.6,margin:"0 0 12px"}}>{guide.desc}</p>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
               <span style={{fontSize:11,color:"var(--text-muted)",fontFamily:"var(--font-mono)"}}>{guide.pages}</span>
-              <span style={{fontSize:12,color:"var(--accent)",fontWeight:600}}>Download →</span>
+              <span style={{fontSize:12,color:"var(--accent)",fontWeight:600}}>Download -></span>
             </div>
           </div>
         ))}
@@ -318,14 +304,18 @@ const BlogPage = () => {
     }
   }, []);
   return (
-    <main>
+    <React.Fragment>
+      <Header />
+      <main>
         <BlogHero />
         <BlogFeatured />
         <BlogGrid />
         <BlogGuides />
         <BlogNewsletter />
       </main>
+      <Footer />
+    </React.Fragment>
   );
 };
-
-export default BlogPage;
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<BlogPage />);

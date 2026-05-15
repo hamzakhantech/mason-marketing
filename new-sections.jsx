@@ -1,16 +1,5 @@
 // new-sections.jsx -- Personas, Concierge spotlight, Workflow
 
-import React from "react";
-import {
-  IconCheck,
-  IconConcierge,
-  IconRFI,
-  IconIssues,
-  IconLogs,
-  IconBIM,
-  IconArrowRight,
-} from "./icons.jsx";
-
 const PERSONAS = [
   {
     id: "pm",
@@ -222,5 +211,3 @@ const Connector = () => (
 );
 
 Object.assign(window, { Personas, ConciergeSpotlight, Workflow, ConciergeChat });
-
-export { Personas, ConciergeSpotlight, Workflow, ConciergeChat };

@@ -2,8 +2,6 @@
 // Provides: useSiteContent() hook + content store
 // Does NOT include any editor UI -- editor lives at /admin/user-dashboard/adminpanel
 
-import React from "react";
-
 // --- Content store -----------------------------------------------------------
 
 function deepMerge(base, override) {
@@ -95,4 +93,3 @@ function useSiteContent() {
   }
 })();
 
-export { useSiteContent, getContent, setContent };
