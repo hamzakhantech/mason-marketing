@@ -1,4 +1,5 @@
 import React from "react";
+import { InnerPageHero } from "../components/InnerPageHero.jsx";
 import { useSiteContent } from "../cms/SiteContentContext.jsx";
 import {
   IconArrowRight,
@@ -107,21 +108,23 @@ const TrialBanner = ({ appUrl, trialDays }) => (
 
 // --- Pricing Hero --------------------------------------------------------------
 const PricingHero = () => (
-  <section className="page-hero">
-    <div className="page-hero__glow" aria-hidden="true" />
-    <div className="container page-hero__inner">
-      <span className="eyebrow gsap-fade-up">Pricing</span>
-      <h1 className="display gsap-fade-up">
+  <InnerPageHero
+    showGridBg={false}
+    eyebrow="Pricing"
+    title={
+      <>
         Flat pricing. No surprises.<br />
-        <span className="accent">No seat fees.</span>
-      </h1>
-      <p className="lede gsap-fade-up">
+        <span className="inner-hero__accent">No seat fees.</span>
+      </>
+    }
+    lead={
+      <>
         MASON is priced per project -- not per user. Add your entire team, every subcontractor,
         every reviewer. The price doesn't change. Every plan includes every module. No feature gates.
         No add-ons required to make the product useful.
-      </p>
-    </div>
-  </section>
+      </>
+    }
+  />
 );
 
 // --- Billing Toggle -----------------------------------------------------------

@@ -1,27 +1,26 @@
 import React from "react";
+import { InnerPageHero } from "../components/InnerPageHero.jsx";
 
 var ABOUT_ICONS={tool:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>',dollar:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>',cpu:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>',link:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>',zap:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>',globe:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',user:'<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8942e" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>'};
 
 const AboutHero = () => (
-  <section className="page-hero">
-    <div className="grid-bg" aria-hidden="true" />
-    <div className="page-hero__glow" aria-hidden="true" />
-    <div className="container" style={{position:"relative",zIndex:1}}>
-      <div className="page-hero__inner">
-        <span className="page-hero__eyebrow gsap-fade-up">Our story</span>
-        <h1 className="page-hero__title gsap-fade-up">
-          We built MASON because<br />
-          construction teams <span style={{color:"var(--accent)"}}>deserved better.</span>
-        </h1>
-        <p className="page-hero__sub gsap-fade-up">
-          MASON started on a jobsite, not in a boardroom. The people who designed it had spent years
-          managing real construction projects, running coordination meetings, chasing RFIs, and watching
-          good teams struggle with software that never quite fit how field work actually happens.
-          That frustration became a product. This is that story.
-        </p>
-      </div>
-    </div>
-  </section>
+  <InnerPageHero
+    eyebrow="Our story"
+    title={
+      <>
+        We built MASON because<br />
+        construction teams <span className="inner-hero__accent">deserved better.</span>
+      </>
+    }
+    lead={
+      <>
+        MASON started on a jobsite, not in a boardroom. The people who designed it had spent years
+        managing real construction projects, running coordination meetings, chasing RFIs, and watching
+        good teams struggle with software that never quite fit how field work actually happens.
+        That frustration became a product. This is that story.
+      </>
+    }
+  />
 );
 
 const AboutMission = () => (

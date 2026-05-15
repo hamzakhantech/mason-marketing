@@ -1,5 +1,5 @@
 import React from "react";
-// Which page to render is determined by window.location.pathname.
+import { InnerPageHero } from "../components/InnerPageHero.jsx";
 
 const LAST_UPDATED = "12 May 2026";
 const COMPANY = "Certiva LLC";
@@ -9,9 +9,6 @@ const EMAIL = "connect@masononsite.com";
 
 const PrivacyContent = () => (
   <div className="prose-section" style={{maxWidth:720,margin:"0 auto"}}>
-    <h1 style={{fontSize:36,fontWeight:800,marginBottom:8}}>Privacy Policy</h1>
-    <p style={{fontSize:13,color:"var(--text-muted)",marginBottom:48}}>Last updated: {LAST_UPDATED} &nbsp;·&nbsp; Effective date: 1 January 2025</p>
-
     <p>This Privacy Policy describes how {COMPANY} ("MASON", "we", "us", or "our") collects, uses, and shares information about you when you use the MASON platform at masononsite.com and app.masononsite.com (collectively, the "Service"). By using the Service you agree to the collection and use of information as described in this policy.</p>
 
     <h2>1. Information we collect</h2>
@@ -91,9 +88,6 @@ const PrivacyContent = () => (
 
 const TermsContent = () => (
   <div className="prose-section" style={{maxWidth:720,margin:"0 auto"}}>
-    <h1 style={{fontSize:36,fontWeight:800,marginBottom:8}}>Terms of Service</h1>
-    <p style={{fontSize:13,color:"var(--text-muted)",marginBottom:48}}>Last updated: {LAST_UPDATED} &nbsp;·&nbsp; Effective date: 1 January 2025</p>
-
     <p>These Terms of Service ("Terms") form a legal agreement between you and {COMPANY} ("MASON", "we", "us", "our") governing your use of the MASON construction management platform at masononsite.com and app.masononsite.com (the "Service"). By accessing or using the Service, you agree to be bound by these Terms.</p>
 
     <h2>1. Eligibility and accounts</h2>
@@ -153,14 +147,24 @@ const TermsContent = () => (
 
 export function LegalArticle({ variant }) {
   const isTerms = variant === "terms";
+  const legalDatesMeta = (
+    <p>
+      Last updated: {LAST_UPDATED} &nbsp;·&nbsp; Effective date: 1 January 2025
+    </p>
+  );
   return (
     <main>
-        <section className="section" style={{paddingTop:96}}>
-          <div className="container">
-            {isTerms ? <TermsContent /> : <PrivacyContent />}
-          </div>
-        </section>
+      <InnerPageHero
+        eyebrow="Legal"
+        title={isTerms ? "Terms of Service" : "Privacy Policy"}
+        meta={legalDatesMeta}
+      />
+      <section className="section" style={{ paddingTop: 48 }}>
+        <div className="container">
+          {isTerms ? <TermsContent /> : <PrivacyContent />}
+        </div>
+      </section>
     </main>
   );
 }
-
+

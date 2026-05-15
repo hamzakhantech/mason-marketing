@@ -1,24 +1,24 @@
 import React from "react";
+import { InnerPageHero } from "../components/InnerPageHero.jsx";
 
 const CPHero = () => (
-  <section className="page-hero">
-    <div className="grid-bg" aria-hidden="true" /><div className="page-hero__glow" aria-hidden="true" />
-    <div className="container" style={{position:"relative",zIndex:1}}>
-      <div className="page-hero__inner">
-        <span className="page-hero__eyebrow gsap-fade-up">Honest comparison</span>
-        <h1 className="page-hero__title gsap-fade-up">
-          MASON vs Procore.<br />
-          <span style={{color:"var(--accent)"}}>The facts, not the sales pitch.</span>
-        </h1>
-        <p className="page-hero__sub gsap-fade-up">
-          Procore is the largest construction platform in the world. MASON is a newer platform
-          that makes different choices about pricing, BIM capability, and AI. This page is a
-          direct comparison. We try to be fair about what Procore does well and clear about
-          where we think MASON is the better choice.
-        </p>
-      </div>
-    </div>
-  </section>
+  <InnerPageHero
+    eyebrow="Honest comparison"
+    title={
+      <>
+        MASON vs Procore.<br />
+        <span className="inner-hero__accent">The facts, not the sales pitch.</span>
+      </>
+    }
+    lead={
+      <>
+        Procore is the largest construction platform in the world. MASON is a newer platform
+        that makes different choices about pricing, BIM capability, and AI. This page is a
+        direct comparison. We try to be fair about what Procore does well and clear about
+        where we think MASON is the better choice.
+      </>
+    }
+  />
 );
 
 const CPPriceBlock = () => (

@@ -1,29 +1,36 @@
 import React from "react";
+import { InnerPageHero } from "../components/InnerPageHero.jsx";
 import { IconArrowRight, IconBIM, IconSchedule, IconAR } from "./icons.jsx";
 
 // --- Page hero ----------------------------------------------------------------
 const FeaturesHero = () => (
-  <section className="page-hero">
-    <div className="page-hero__glow" aria-hidden="true" />
-    <div className="container page-hero__inner">
-      <span className="eyebrow gsap-fade-up">Platform Features</span>
-      <h1 className="display gsap-fade-up">
-        Every tool a construction<br />team <span className="accent">actually needs</span>.
-      </h1>
-      <p className="lede gsap-fade-up">
+  <InnerPageHero
+    showGridBg={false}
+    eyebrow="Platform Features"
+    title={
+      <>
+        Every tool a construction<br />team <span className="inner-hero__accent">actually needs</span>.
+      </>
+    }
+    lead={
+      <>
         MASON is twelve tightly integrated modules -- not twelve loosely coupled apps.
         BIM viewer, schedule, RFIs, issues, daily logs, cost tracking, documents, and an
         AI Concierge that ties them all together. One login. One permission model.
         One source of truth for the office and the field.
-      </p>
-      <div className="hero__cta gsap-fade-up">
+      </>
+    }
+    actions={
+      <>
         <a href="https://app.masononsite.com/register" className="btn btn-primary">
           Start 30-day free trial <IconArrowRight size={16} stroke={2} />
         </a>
-        <a href="/pricing" className="btn btn-ghost">See pricing</a>
-      </div>
-    </div>
-  </section>
+        <a href="/pricing" className="btn btn-ghost">
+          See pricing
+        </a>
+      </>
+    }
+  />
 );
 
 // --- Module nav tabs ----------------------------------------------------------

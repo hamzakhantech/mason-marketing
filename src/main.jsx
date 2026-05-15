@@ -12,6 +12,7 @@ import "../styles-theme.css";
 import "../styles-pages.css";
 import "../styles-premium-motion.css";
 import "../styles-v2.css";
+import "./components/inner-hero.css";
 import "../index-motion.css";
 import "../site-header.css";
 import "../site-footer.css";

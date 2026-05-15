@@ -1,24 +1,24 @@
 import React from "react";
+import { InnerPageHero } from "../components/InnerPageHero.jsx";
 
 const CSHero = () => (
-  <section className="page-hero">
-    <div className="grid-bg" aria-hidden="true" /><div className="page-hero__glow" aria-hidden="true" />
-    <div className="container" style={{position:"relative",zIndex:1}}>
-      <div className="page-hero__inner">
-        <span className="page-hero__eyebrow gsap-fade-up">Real projects. Real results.</span>
-        <h1 className="page-hero__title gsap-fade-up">
-          Construction teams using MASON<br />
-          <span style={{color:"var(--accent)"}}>and the numbers they got.</span>
-        </h1>
-        <p className="page-hero__sub gsap-fade-up">
-          These are not hypothetical efficiency gains. They are documented outcomes from
-          real project teams who moved their coordination, BIM review, RFI management, and
-          field logging into MASON. Names and project locations have been anonymised at the
-          clients' request, but the data is accurate.
-        </p>
-      </div>
-    </div>
-  </section>
+  <InnerPageHero
+    eyebrow="Real projects. Real results."
+    title={
+      <>
+        Construction teams using MASON<br />
+        <span className="inner-hero__accent">and the numbers they got.</span>
+      </>
+    }
+    lead={
+      <>
+        These are not hypothetical efficiency gains. They are documented outcomes from
+        real project teams who moved their coordination, BIM review, RFI management, and
+        field logging into MASON. Names and project locations have been anonymised at the
+        clients' request, but the data is accurate.
+      </>
+    }
+  />
 );
 
 const CSSummaryStats = () => (

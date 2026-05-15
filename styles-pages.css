@@ -796,10 +796,13 @@
 
 /* ─── Mobile / responsive overrides ────────────────────────── */
 @media (max-width: 640px) {
+  .inner-hero,
   .page-hero {
     padding: 100px 0 64px;
   }
-  .page-hero__h1 {
+  .inner-hero__title,
+  .page-hero__h1,
+  .page-hero__title {
     font-size: 32px;
   }
   .pricing-card {
