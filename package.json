@@ -3,12 +3,24 @@
   "private": true,
   "version": "1.0.0",
   "description": "MASON marketing site + Vercel admin CMS APIs",
+  "type": "module",
   "scripts": {
-    "build": "node scripts/build-static.mjs"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "generate:home": "node scripts/generate-home-sections.mjs"
   },
   "dependencies": {
     "@vercel/blob": "^0.27.1",
-    "jose": "^5.9.6"
+    "jose": "^5.9.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^6.0.3",
+    "vite-plugin-static-copy": "^2.2.0"
   },
   "engines": {
     "node": ">=18"

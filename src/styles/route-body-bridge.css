@@ -1,0 +1,6 @@
+/* After home-inline.css is loaded, inner routes reset body chrome to the inner token stack. */
+body.mason-inner-route {
+  background-color: var(--bg) !important;
+  background-image: none !important;
+  color: var(--text) !important;
+}
