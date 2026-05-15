@@ -53,6 +53,9 @@
   ],
   "rewrites": [
     { "source": "/app/(.*)", "destination": "https://app.masononsite.com/$1" },
-    { "source": "/((?!api/).*)", "destination": "/index.html" }
+    {
+      "source": "/((?!api/)(?!assets/).*)",
+      "destination": "/index.html"
+    }
   ]
 }

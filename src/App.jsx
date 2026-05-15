@@ -1,15 +1,15 @@
 import React, { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import MarketingLayout from "./components/MarketingLayout.jsx";
+import Home from "./pages/Home.jsx";
+import About from "./pages/About.jsx";
+import Pricing from "./pages/Pricing.jsx";
+import Blog from "./pages/Blog.jsx";
+import Contact from "./pages/Contact.jsx";
 
-const Home = lazy(() => import("./pages/Home.jsx"));
-const About = lazy(() => import("./pages/About.jsx"));
 const Platform = lazy(() => import("./pages/Platform.jsx"));
-const Pricing = lazy(() => import("./pages/Pricing.jsx"));
 const CaseStudies = lazy(() => import("./pages/CaseStudies.jsx"));
 const VsProcore = lazy(() => import("./pages/VsProcore.jsx"));
-const Blog = lazy(() => import("./pages/Blog.jsx"));
-const Contact = lazy(() => import("./pages/Contact.jsx"));
 const Terms = lazy(() => import("./pages/Terms.jsx"));
 const Privacy = lazy(() => import("./pages/Privacy.jsx"));
 const Integrations = lazy(() => import("./pages/Integrations.jsx"));
