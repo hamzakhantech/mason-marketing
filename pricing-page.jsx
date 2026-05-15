@@ -1,5 +1,8 @@
 // pricing-page.jsx -- Full Pricing page, CMS-driven with inline editing
 
+import React from "react";
+import { useSiteContent } from "./cms.jsx";
+
 // --- Default content (rendered immediately; CMS overrides when loaded) ---------
 const DEFAULT_PRICING = {
   annualSavingPct: 20,
@@ -285,7 +288,7 @@ const PricingGrid = ({ billing, tiers, appUrl, onUpdate, editMode }) => (
 );
 
 const EnterpriseBlock = ({ appUrl, onUpdate, editMode }) => {
-  const { content, update } = typeof useSiteContent === 'function' ? useSiteContent() : { content: {}, update: () => {} };
+  const { content, update } = useSiteContent();
   const ent = content.pricing?.enterprise || {};
   return (
     <div className="pricing-enterprise gsap-fade-up">
@@ -300,7 +303,7 @@ const EnterpriseBlock = ({ appUrl, onUpdate, editMode }) => {
               style={{ background: 'rgba(232,148,46,.07)', border: '1px dashed rgba(232,148,46,.4)', borderRadius: 4, color: 'inherit', fontSize: 'inherit', fontFamily: 'inherit', width: '100%', resize: 'vertical', padding: '4px 8px' }} />
           ) : <p>{ent.body || ''}</p>}
         </div>
-        <a href="contact.html" className="btn btn-ghost">{ent.cta || 'Contact sales'} <IconArrowRight size={16} stroke={2} /></a>
+        <a href="/contact" className="btn btn-ghost">{ent.cta || 'Contact sales'} <IconArrowRight size={16} stroke={2} /></a>
       </div>
     </div>
   );
@@ -533,7 +536,7 @@ const PricingCTA = ({ appUrl }) => (
         <a href={`${appUrl}/register`} className="btn btn-primary btn-lg">
           Create free account <IconArrowRight size={18} stroke={2} />
         </a>
-        <a href="contact.html" className="btn btn-ghost btn-lg">Talk to us first</a>
+        <a href="/contact" className="btn btn-ghost btn-lg">Talk to us first</a>
       </div>
     </div>
   </section>
@@ -561,8 +564,7 @@ const EditModeBar = ({ editMode }) => {
 // --- Root Pricing Page --------------------------------------------------------
 const PricingPage = () => {
   // CMS hook -- works when cms.jsx loads before this component
-  const hasCmsHook = typeof useSiteContent === 'function';
-  const cmsResult  = hasCmsHook ? useSiteContent() : null;
+  const cmsResult = useSiteContent();
 
   // Polling fallback -- cms.jsx may load AFTER this component mounts
   const [asyncContent, setAsyncContent] = React.useState(window.__masonContent || null);
@@ -634,8 +636,7 @@ const PricingPage = () => {
   }, []);
 
   return (
-    <div className="site">
-      <Header />
+    <>
       <EditModeBar editMode={editMode} />
       <TrialBanner appUrl={appUrl} trialDays={trialDays} />
       <PricingHero />
@@ -649,10 +650,8 @@ const PricingPage = () => {
       <TrialExplainer appUrl={appUrl} trialDays={trialDays} />
       <PricingFAQ faqItems={faqItems} />
       <PricingCTA appUrl={appUrl} />
-      <Footer />
-    </div>
+    </>
   );
 }
 
-const root = document.getElementById('root');
-if (root) ReactDOM.createRoot(root).render(React.createElement(PricingPage));
+export default PricingPage;

@@ -1,6 +1,8 @@
 // icons.jsx -- minimal stroke icons used across the page
 // All 24?24 viewBox, currentColor stroke.
 
+import React from "react";
+
 const Icon = ({ children, size = 22, stroke = 1.6, ...rest }) => (
   <svg
     width={size}
@@ -65,3 +67,37 @@ Object.assign(window, {
   IconQuality, IconSafety, IconAR, IconArrowRight, IconCheck, IconShield, IconLock,
   IconKey, IconAudit, IconSun, IconMoon,
 });
+
+export {
+  Icon,
+  IconDashboard,
+  IconProjects,
+  IconSchedule,
+  IconBIM,
+  IconIssues,
+  IconRFI,
+  IconSubmittals,
+  IconDocuments,
+  IconLogs,
+  IconConcierge,
+  IconCost,
+  IconReports,
+  IconTeam,
+  IconBell,
+  IconMobile,
+  IconSearch,
+  IconHelp,
+  IconMessages,
+  IconMeetings,
+  IconQuality,
+  IconSafety,
+  IconAR,
+  IconArrowRight,
+  IconCheck,
+  IconShield,
+  IconLock,
+  IconKey,
+  IconAudit,
+  IconSun,
+  IconMoon,
+};

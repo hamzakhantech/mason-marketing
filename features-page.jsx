@@ -1,5 +1,7 @@
 // features-page.jsx -- Full Features deep-dive
 
+import React from "react";
+
 // --- Page hero ----------------------------------------------------------------
 const FeaturesHero = () => (
   <section className="page-hero">
@@ -19,7 +21,7 @@ const FeaturesHero = () => (
         <a href="https://app.masononsite.com/register" className="btn btn-primary">
           Start 30-day free trial <IconArrowRight size={16} stroke={2} />
         </a>
-        <a href="pricing.html" className="btn btn-ghost">See pricing</a>
+        <a href="/pricing" className="btn btn-ghost">See pricing</a>
       </div>
     </div>
   </section>
@@ -689,7 +691,7 @@ const FeaturesCTA = () => (
         <a href="https://app.masononsite.com/register" className="btn btn-primary btn-lg">
           Start free trial <IconArrowRight size={18} stroke={2} />
         </a>
-        <a href="contact.html" className="btn btn-ghost btn-lg">Request a demo</a>
+        <a href="/contact" className="btn btn-ghost btn-lg">Request a demo</a>
       </div>
     </div>
   </section>
@@ -729,8 +731,7 @@ const FeaturesPage = () => {
   }, [activeModule]);
 
   return (
-    <div className="site">
-      <Header />
+    <>
       <FeaturesHero />
       <ModuleTabs active={activeModule} onChange={setActiveModule} />
       <section className="section">
@@ -741,9 +742,8 @@ const FeaturesPage = () => {
       <IntegrationsSection />
       <FeaturesFAQ />
       <FeaturesCTA />
-      <Footer />
-    </div>
+    </>
   );
 };
 
-ReactDOM.createRoot(document.getElementById("root")).render(<FeaturesPage />);
+export default FeaturesPage;

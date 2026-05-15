@@ -1,6 +1,9 @@
 // home-extra.jsx -- Homepage sections: HowItWorks, CompareOldWay, SocialProof,
 // PricingTeaser, HomeFAQ, TrustExtended, FinalCTA
 
+import React from "react";
+import { IconArrowRight, IconCheck, IconShield } from "./icons.jsx";
+
 // --- How It Works -------------------------------------------------------------
 
 const HowItWorks = () => (
@@ -335,7 +338,7 @@ const PricingTeaser = () => (
             <a href="https://app.masononsite.com/register" className="btn btn-primary mason-border-sweep">
               Start free trial <IconArrowRight size={16} stroke={2} />
             </a>
-            <a href="pricing.html" className="btn btn-ghost">See full pricing</a>
+            <a href="/pricing" className="btn btn-ghost">See full pricing</a>
           </div>
         </div>
         <div className="pricing-teaser__plans reveal">
@@ -352,7 +355,9 @@ const PricingTeaser = () => (
           ))}
           <p className="pricing-teaser__note">
             <IconShield size={13} /> Every plan includes all 12 modules. No upsells. No add-ons.{" "}
-            <a href="pricing.html" style={{color:"var(--accent)"}}>Full pricing details -></a>
+            <a href="/pricing" style={{ color: "var(--accent)" }}>
+              Full pricing details →
+            </a>
           </p>
           <div style={{marginTop:16,padding:"16px 20px",background:"rgba(232,148,46,.06)",border:"1px solid rgba(232,148,46,.2)",borderRadius:10}}>
             <p style={{fontSize:13,fontWeight:700,margin:"0 0 4px",color:"var(--text)"}}>Annual plans save 20%</p>
@@ -439,7 +444,7 @@ const HomeFAQ = () => {
           <h2 className="h2">Questions your team will ask before signing up.</h2>
           <p className="lede">
             We have answered the most common ones below. If yours is not covered,{" "}
-            <a href="contact.html" style={{color:"var(--accent)"}}>talk to us directly</a>.
+            <a href="/contact" style={{color:"var(--accent)"}}>talk to us directly</a>.
             We respond to every enquiry personally, not with a support ticket queue.
           </p>
         </div>
@@ -585,7 +590,9 @@ const TrustExtended = () => (
       </div>
 
       <div style={{textAlign:"center",marginTop:48}} className="reveal">
-        <a href="security.html" className="btn btn-ghost">Read our full security documentation -></a>
+          <a href="/security" className="btn btn-ghost">
+            Read our full security documentation →
+          </a>
       </div>
     </div>
   </section>
@@ -608,7 +615,7 @@ const FinalCTA = () => (
         <a href="https://app.masononsite.com/register" className="btn btn-primary mason-border-sweep btn-lg">
           Start free trial <IconArrowRight size={18} stroke={2} />
         </a>
-        <a href="contact.html" className="btn btn-ghost btn-lg">Request a demo</a>
+        <a href="/contact" className="btn btn-ghost btn-lg">Request a demo</a>
       </div>
       <p style={{marginTop:24,fontSize:13,color:"var(--text-faint)",textAlign:"center"}}>
         No implementation fee. No consultant required. No six-week onboarding. Just the software.
@@ -626,3 +633,13 @@ Object.assign(window, {
   TrustExtended,
   FinalCTA
 });
+
+export {
+  HowItWorks,
+  CompareOldWay,
+  SocialProof,
+  PricingTeaser,
+  HomeFAQ,
+  TrustExtended,
+  FinalCTA,
+};

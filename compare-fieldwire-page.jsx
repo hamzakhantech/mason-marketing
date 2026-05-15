@@ -1,5 +1,7 @@
 // compare-fieldwire-page.jsx
 
+import React from "react";
+
 const CFHero = () => (
   <section className="page-hero">
     <div className="grid-bg" aria-hidden="true" /><div className="page-hero__glow" aria-hidden="true" />
@@ -97,7 +99,7 @@ const CFWhenToChoose = () => (
             "You have a small team that fits within Fieldwire's free user limit"
           ].map((item,i)=>(
             <div key={i} style={{display:"flex",gap:10,padding:"8px 0",borderBottom:"1px solid var(--line)"}}>
-              <span style={{color:"var(--text-muted)",fontWeight:700,flexShrink:0}}>-></span>
+              <span style={{color:"var(--text-muted)",fontWeight:700,flexShrink:0}}>→</span>
               <span style={{fontSize:14,color:"var(--text-muted)"}}>{item}</span>
             </div>
           ))}
@@ -127,9 +129,7 @@ const CFComparePage = () => {
     }
   }, []);
   return (
-    <React.Fragment>
-      <Header />
-      <main>
+    <main>
         <CFHero />
         <CFTable />
         <CFWhenToChoose />
@@ -142,15 +142,13 @@ const CFComparePage = () => {
               </p>
               <div style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
                 <a href="https://app.masononsite.com/register" className="btn btn-primary btn-lg">Start free trial</a>
-                <a href="contact.html" className="btn btn-ghost btn-lg">Book a demo</a>
+                <a href="/contact" className="btn btn-ghost btn-lg">Book a demo</a>
               </div>
             </div>
           </div>
         </section>
       </main>
-      <Footer />
-    </React.Fragment>
   );
 };
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<CFComparePage />);
+
+export default CFComparePage;

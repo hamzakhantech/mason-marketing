@@ -1,5 +1,7 @@
 // compare-procore-page.jsx
 
+import React from "react";
+
 const CPHero = () => (
   <section className="page-hero">
     <div className="grid-bg" aria-hidden="true" /><div className="page-hero__glow" aria-hidden="true" />
@@ -160,7 +162,7 @@ const CPWhenToChoose = () => (
             "You need a pre-built integration with a specific ERP that MASON does not yet support"
           ].map((item,i)=>(
             <div key={i} style={{display:"flex",gap:10,padding:"8px 0",borderBottom:"1px solid var(--line)"}}>
-              <span style={{color:"var(--text-muted)",fontWeight:700,flexShrink:0}}>-></span>
+              <span style={{color:"var(--text-muted)",fontWeight:700,flexShrink:0}}>→</span>
               <span style={{fontSize:14,color:"var(--text-muted)"}}>{item}</span>
             </div>
           ))}
@@ -234,9 +236,7 @@ const CPComparePage = () => {
     }
   }, []);
   return (
-    <React.Fragment>
-      <Header />
-      <main>
+    <main>
         <CPHero />
         <CPPriceBlock />
         <CPTable />
@@ -252,15 +252,13 @@ const CPComparePage = () => {
               </p>
               <div style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
                 <a href="https://app.masononsite.com/register" className="btn btn-primary btn-lg">Start free trial</a>
-                <a href="contact.html" className="btn btn-ghost btn-lg">Talk about migration</a>
+                <a href="/contact" className="btn btn-ghost btn-lg">Talk about migration</a>
               </div>
             </div>
           </div>
         </section>
       </main>
-      <Footer />
-    </React.Fragment>
   );
 };
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<CPComparePage />);
+
+export default CPComparePage;

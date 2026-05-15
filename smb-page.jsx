@@ -1,5 +1,7 @@
 // smb-page.jsx -- SMB audience page for MASON
 
+import React from "react";
+
 const SmbHero = () => (
   <section className="page-hero">
     <div className="grid-bg" aria-hidden="true" />
@@ -19,7 +21,7 @@ const SmbHero = () => (
         </p>
         <div className="page-hero__cta gsap-fade-up" style={{display:"flex",gap:14,flexWrap:"wrap",marginTop:32}}>
           <a href="https://app.masononsite.com/register" className="btn btn-primary btn-lg">Start free trial</a>
-          <a href="pricing.html" className="btn btn-ghost btn-lg">See pricing</a>
+          <a href="/pricing" className="btn btn-ghost btn-lg">See pricing</a>
         </div>
         <p className="gsap-fade-up" style={{fontSize:13,color:"var(--text-faint)",marginTop:16}}>
           30-day free trial. No credit card. All 12 modules from day one.
@@ -96,7 +98,7 @@ const SmbBIM = () => (
             live camera view. No specialist hardware. No dedicated AR viewer. Just the app your
             foreman already has on their phone.
           </p>
-          <a href="bim-ar.html" style={{color:"var(--accent)",display:"inline-flex",alignItems:"center",gap:6,fontWeight:600,marginTop:8,textDecoration:"none"}}>Read more about BIM and AR →</a>
+          <a href="/bim-ar" style={{color:"var(--accent)",display:"inline-flex",alignItems:"center",gap:6,fontWeight:600,marginTop:8,textDecoration:"none"}}>Read more about BIM and AR →</a>
         </div>
         <div className="gsap-slide-right">
           <div style={{background:"var(--bg-elev)",border:"1px solid var(--line)",borderRadius:16,padding:32}}>
@@ -177,7 +179,7 @@ const SmbPricing = () => (
       </div>
       <p style={{marginTop:32,fontSize:13,color:"var(--text-faint)",textAlign:"center"}}>
         All prices are per active project per month. Annual billing available with a 20% discount.
-        Unlimited team members on every plan. <a href="pricing.html" style={{color:"var(--accent)"}}>See full pricing details →</a>
+        Unlimited team members on every plan. <a href="/pricing" style={{color:"var(--accent)"}}>See full pricing details →</a>
       </p>
     </div>
   </section>
@@ -325,10 +327,10 @@ const SmbCTA = () => (
         </p>
         <div style={{display:"flex",gap:14,justifyContent:"center",flexWrap:"wrap"}}>
           <a href="https://app.masononsite.com/register" className="btn btn-primary btn-lg">Start free trial</a>
-          <a href="contact.html" className="btn btn-ghost btn-lg">Book a walkthrough</a>
+          <a href="/contact" className="btn btn-ghost btn-lg">Book a walkthrough</a>
         </div>
         <p style={{fontSize:13,color:"var(--text-faint)",marginTop:20}}>
-          Questions? <a href="contact.html" style={{color:"var(--accent)"}}>Talk to us first</a> — no pressure.
+          Questions? <a href="/contact" style={{color:"var(--accent)"}}>Talk to us first</a> — no pressure.
         </p>
       </div>
     </div>
@@ -355,9 +357,7 @@ const SmbPage = () => {
     }
   },[]);
   return (
-    <React.Fragment>
-      <Header />
-      <main>
+    <main>
         <SmbHero />
         <SmbWins />
         <SmbBIM />
@@ -367,10 +367,7 @@ const SmbPage = () => {
         <SmbFAQ />
         <SmbCTA />
       </main>
-      <Footer />
-    </React.Fragment>
   );
 };
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<SmbPage />);
+export default SmbPage;

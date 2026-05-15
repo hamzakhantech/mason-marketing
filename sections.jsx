@@ -1,6 +1,35 @@
 // sections.jsx -- Why MASON, Module grid, BIM, Surfaces, Trust, CTA.
 // Marketing footer: site-chrome.jsx only (never register Footer on window here).
 
+import React from "react";
+import {
+  IconDashboard,
+  IconProjects,
+  IconSchedule,
+  IconBIM,
+  IconIssues,
+  IconRFI,
+  IconSubmittals,
+  IconDocuments,
+  IconLogs,
+  IconConcierge,
+  IconCost,
+  IconReports,
+  IconTeam,
+  IconMessages,
+  IconMeetings,
+  IconQuality,
+  IconSafety,
+  IconAR,
+  IconSearch,
+  IconShield,
+  IconCheck,
+  IconBell,
+  IconArrowRight,
+  IconKey,
+  IconAudit,
+} from "./icons.jsx";
+
 // --- Why MASON: 3 pillars ---------------------------------------------------
 
 const Pillars = () => (
@@ -237,8 +266,8 @@ const BIMProof = () => (
           <li><IconCheck size={16} stroke={2} /> Create issues from AR view with photo, GPS, and model element captured</li>
           <li><IconCheck size={16} stroke={2} /> IFC 2x3 and IFC4 supported natively, no format conversion needed</li>
         </ul>
-        <a href="bim-ar.html" className="btn btn-ghost" style={{marginTop:24,display:"inline-flex",alignItems:"center",gap:8}}>
-          Read more about BIM and AR ->
+          <a href="/bim-ar" className="btn btn-ghost" style={{marginTop:24,display:"inline-flex",alignItems:"center",gap:8}}>
+            Read more about BIM and AR →
         </a>
       </div>
       <div className="bim-proof__visual">
@@ -525,3 +554,5 @@ const CTABand = () => (
 Object.assign(window, {
   Pillars, ModuleGrid, BIMProof, Surfaces, Trust, CTABand,
 });
+
+export { Pillars, ModuleGrid, BIMProof, Surfaces, Trust, CTABand };

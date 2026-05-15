@@ -1534,19 +1534,3 @@
   border-color: rgba(232,148,46,.4);
   background: linear-gradient(135deg, rgba(232,148,46,.08), rgba(232,148,46,.02));
 }
-
-/* ─── Changelog ──────────────────────────────────────────────── */
-.changelog-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-.changelog-entry {
-  padding: 40px 0;
-  border-bottom: 1px solid var(--line);
-}
-.changelog-entry:last-child { border-bottom: none; }
-.changelog-entry__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between

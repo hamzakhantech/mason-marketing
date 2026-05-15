@@ -1,5 +1,7 @@
 // bim-ar-page.jsx -- BIM & AR deep-dive
 
+import React from "react";
+
 const BIMARHero = () => (
   <section className="page-hero">
     <div className="page-hero__glow" aria-hidden="true" />
@@ -19,7 +21,7 @@ const BIMARHero = () => (
         <a href="https://app.masononsite.com/register" className="btn btn-primary">
           Try BIM free for 30 days <IconArrowRight size={16} stroke={2} />
         </a>
-        <a href="contact.html" className="btn btn-ghost">See a demo</a>
+        <a href="/contact" className="btn btn-ghost">See a demo</a>
       </div>
     </div>
   </section>
@@ -357,7 +359,7 @@ const BIMARCTA = () => (
         <a href="https://app.masononsite.com/register" className="btn btn-primary btn-lg">
           Start free trial <IconArrowRight size={18} stroke={2} />
         </a>
-        <a href="contact.html" className="btn btn-ghost btn-lg">Book a BIM demo</a>
+        <a href="/contact" className="btn btn-ghost btn-lg">Book a BIM demo</a>
       </div>
     </div>
   </section>
@@ -384,8 +386,7 @@ const BIMARPage = () => {
   }, []);
 
   return (
-    <div className="site">
-      <Header />
+    <>
       <BIMARHero />
       <BIMTechGrid />
       <IFCWorkflow />
@@ -394,9 +395,8 @@ const BIMARPage = () => {
       <ClashDetection />
       <BIMFAQ />
       <BIMARCTA />
-      <Footer />
-    </div>
+    </>
   );
 };
 
-ReactDOM.createRoot(document.getElementById("root")).render(<BIMARPage />);
+export default BIMARPage;

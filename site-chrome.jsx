@@ -1,12 +1,12 @@
 /**
- * Single global marketing header + footer (same DOM as index.html / live site).
- * Loaded on index.html and every public marketing page. Do not duplicate this markup elsewhere.
+ * Global marketing header + footer (single source for Vite SPA + legacy Babel pages).
  */
-/* global React */
+import React, { useEffect, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 
 const MASON_THEME_KEY = "mason-theme";
 
-/** Same `Icon` as index.html — used only inside this file for chrome. */
+/** Same stroke icons as legacy index — used only in chrome. */
 const ChromeIcon = ({ name, size = 18, stroke = 1.5 }) => {
   const props = {
     width: size,
@@ -189,52 +189,51 @@ const TICKER_ITEMS = [
 ];
 
 const NAV_LINKS = [
-  { key: "platform", label: "Platform", href: "features.html" },
-  { key: "pricing", label: "Pricing", href: "pricing.html" },
-  { key: "cases", label: "Case Studies", href: "case-studies.html" },
-  { key: "compare", label: "vs Procore", href: "compare-procore.html" },
-  { key: "blog", label: "Blog", href: "blog.html" },
+  { key: "platform", label: "Platform", to: "/platform" },
+  { key: "pricing", label: "Pricing", to: "/pricing" },
+  { key: "cases", label: "Case Studies", to: "/case-studies" },
+  { key: "compare", label: "vs Procore", to: "/vs-procore" },
+  { key: "blog", label: "Blog", to: "/blog" },
 ];
 
 const FCOLS = [
   {
     h: "Platform",
     items: [
-      ["BIM Viewer", "features.html"],
-      ["Schedule", "features.html"],
-      ["RFIs", "features.html"],
-      ["Issues and Punch", "features.html"],
-      ["Daily Logs", "features.html"],
-      ["AI Concierge", "features.html"],
-      ["Mobile Apps", "mobile.html"],
-      ["Integrations", "integrations.html"],
+      ["BIM Viewer", "/platform"],
+      ["Schedule", "/platform"],
+      ["RFIs", "/platform"],
+      ["Issues and Punch", "/platform"],
+      ["Daily Logs", "/platform"],
+      ["AI Concierge", "/platform"],
+      ["Mobile Apps", "/mobile"],
+      ["Integrations", "/integrations"],
     ],
   },
   {
     h: "Solutions",
     items: [
-      ["General Contractors", "enterprise.html"],
-      ["Owners and Developers", "enterprise.html"],
-      ["Subcontractors", "smb.html"],
-      ["Healthcare", "case-studies.html"],
-      ["Infrastructure", "case-studies.html"],
+      ["General Contractors", "/enterprise"],
+      ["Owners and Developers", "/enterprise"],
+      ["Subcontractors", "/smb"],
+      ["Healthcare", "/case-studies"],
+      ["Infrastructure", "/case-studies"],
     ],
   },
   {
     h: "Company",
     items: [
-      ["About", "about.html"],
-      ["Case Studies", "case-studies.html"],
-      ["Field Notes Blog", "blog.html"],
-      ["Security · SOC 2", "security.html"],
-      ["Contact", "contact.html"],
-      ["Pricing", "pricing.html"],
+      ["About", "/about"],
+      ["Case Studies", "/case-studies"],
+      ["Field Notes Blog", "/blog"],
+      ["Security · SOC 2", "/security"],
+      ["Contact", "/contact"],
+      ["Pricing", "/pricing"],
     ],
   },
 ];
 
 const HeaderShell = ({ dark, toggleDark }) => {
-  const { useState, useEffect } = React;
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [liveTime, setLiveTime] = useState("");
@@ -291,7 +290,7 @@ const HeaderShell = ({ dark, toggleDark }) => {
   }, []);
 
   return (
-    <React.Fragment>
+    <>
       <header className={"header-wrap" + (scrolled ? " is-scrolled" : "")}>
         <div className="ticker">
           <div className="badge">
@@ -329,15 +328,15 @@ const HeaderShell = ({ dark, toggleDark }) => {
         <div className="container">
           <nav className="nav">
             <div className="nav-left">
-              <a className="brand" href="index.html" aria-label="MASON home">
+              <Link className="brand" to="/" aria-label="MASON home">
                 <span className="brand-mark">M</span>
                 <span>MASON</span>
-              </a>
+              </Link>
               <div className="hide-md" style={{ display: "flex", gap: 22, alignItems: "center" }}>
                 {NAV_LINKS.map((n) => (
-                  <a key={n.key} href={n.href} className="nav-link">
+                  <NavLink key={n.key} to={n.to} className={({ isActive }) => "nav-link" + (isActive ? " is-active" : "")}>
                     {n.label}
-                  </a>
+                  </NavLink>
                 ))}
               </div>
             </div>
@@ -380,9 +379,9 @@ const HeaderShell = ({ dark, toggleDark }) => {
               <a className="btn ghost hide-md" href="https://app.masononsite.com">
                 Sign in
               </a>
-              <a className="btn primary mason-border-sweep" href="contact.html">
+              <Link className="btn primary mason-border-sweep" to="/contact">
                 Book a demo <ChromeIcon name="arrow" size={12} />
-              </a>
+              </Link>
             </div>
             <button className="nav-hamburger" onClick={() => setMobileOpen(true)} aria-label="Open navigation menu">
               <span></span>
@@ -393,40 +392,39 @@ const HeaderShell = ({ dark, toggleDark }) => {
         </div>
       </header>
       {mobileOpen && (
-        <React.Fragment>
+        <>
           <div className="mob-drawer-backdrop" onClick={() => setMobileOpen(false)} />
           <div className="mob-drawer">
             <div className="mob-drawer__head">
-              <a className="brand" href="index.html" aria-label="MASON home">
+              <Link className="brand" to="/" aria-label="MASON home">
                 <span className="brand-mark">M</span>
                 <span>MASON</span>
-              </a>
+              </Link>
               <button className="mob-drawer__close" onClick={() => setMobileOpen(false)} aria-label="Close menu">
                 ✕
               </button>
             </div>
             {NAV_LINKS.map((n) => (
-              <a key={n.key} href={n.href} className="mob-link">
+              <Link key={n.key} to={n.to} className="mob-link" onClick={() => setMobileOpen(false)}>
                 {n.label}
-              </a>
+              </Link>
             ))}
             <div className="mob-drawer__cta">
               <a href="https://app.masononsite.com" className="btn ghost" style={{ textAlign: "center" }}>
                 Sign in
               </a>
-              <a href="contact.html" className="btn primary" style={{ textAlign: "center" }}>
+              <Link to="/contact" className="btn primary" style={{ textAlign: "center" }} onClick={() => setMobileOpen(false)}>
                 Book a demo →
-              </a>
+              </Link>
             </div>
           </div>
-        </React.Fragment>
+        </>
       )}
-    </React.Fragment>
+    </>
   );
 };
 
 const Header = (props) => {
-  const { useState, useEffect } = React;
   const controlled =
     props && typeof props.toggleDark === "function" && typeof props.dark === "boolean";
   const [localDark, setLocalDark] = useState(
@@ -480,18 +478,18 @@ const Footer = () => (
             14-day pilot on your live project. We bring the model. No credit card, no procurement call.
           </p>
           <div style={{ display: "flex", gap: 10, marginTop: 22, flexWrap: "wrap" }}>
-            <a className="btn primary mason-border-sweep" href="contact.html">
+            <Link className="btn primary mason-border-sweep" to="/contact">
               Book a demo <ChromeIcon name="arrow" size={12} />
-            </a>
+            </Link>
           </div>
         </div>
         {FCOLS.map((col) => (
           <div className="footer-col" key={col.h}>
             <h5>{col.h}</h5>
             <ul>
-              {col.items.map(([label, href]) => (
+              {col.items.map(([label, to]) => (
                 <li key={label}>
-                  <a href={href}>{label}</a>
+                  <Link to={to}>{label}</Link>
                 </li>
               ))}
             </ul>
@@ -530,10 +528,10 @@ const Footer = () => (
       <div className="footer-base">
         <div>© 2026 MASON LABS, INC. · MADE IN OAKLAND, CA</div>
         <div className="links">
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
-          <a href="security.html">Security</a>
-          <a href="contact.html">Contact</a>
+          <Link to="/privacy">Privacy</Link>
+          <Link to="/terms">Terms</Link>
+          <Link to="/security">Security</Link>
+          <Link to="/contact">Contact</Link>
         </div>
         <div>V 4.2 · 2026-05-12</div>
       </div>
@@ -541,4 +539,5 @@ const Footer = () => (
   </footer>
 );
 
+export { ChromeIcon, Header, Footer };
 Object.assign(window, { Header, Footer });

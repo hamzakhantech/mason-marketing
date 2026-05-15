@@ -1,77 +1,58 @@
 {
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
       ]
     },
     {
       "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)\\.jsx",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "application/javascript"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600"
-        }
-      ]
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
     },
     {
       "source": "/content.json",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=300"
-        }
-      ]
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=300" }]
     },
     {
       "source": "/api/contact",
       "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        },
-        {
-          "key": "Access-Control-Allow-Methods",
-          "value": "POST, OPTIONS"
-        },
-        {
-          "key": "Access-Control-Allow-Headers",
-          "value": "Content-Type"
-        }
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "POST, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
       ]
     }
   ],
+  "redirects": [
+    { "source": "/about.html", "destination": "/about", "permanent": true },
+    { "source": "/features.html", "destination": "/platform", "permanent": true },
+    { "source": "/pricing.html", "destination": "/pricing", "permanent": true },
+    { "source": "/case-studies.html", "destination": "/case-studies", "permanent": true },
+    { "source": "/blog.html", "destination": "/blog", "permanent": true },
+    { "source": "/contact.html", "destination": "/contact", "permanent": true },
+    { "source": "/terms.html", "destination": "/terms", "permanent": true },
+    { "source": "/privacy.html", "destination": "/privacy", "permanent": true },
+    { "source": "/compare-procore.html", "destination": "/vs-procore", "permanent": true },
+    { "source": "/vs-procore.html", "destination": "/vs-procore", "permanent": true },
+    { "source": "/integrations.html", "destination": "/integrations", "permanent": true },
+    { "source": "/mobile.html", "destination": "/mobile", "permanent": true },
+    { "source": "/enterprise.html", "destination": "/enterprise", "permanent": true },
+    { "source": "/smb.html", "destination": "/smb", "permanent": true },
+    { "source": "/security.html", "destination": "/security", "permanent": true },
+    { "source": "/bim-ar.html", "destination": "/bim-ar", "permanent": true },
+    { "source": "/roi-calculator.html", "destination": "/roi-calculator", "permanent": true },
+    { "source": "/changelog.html", "destination": "/changelog", "permanent": true },
+    { "source": "/compare-fieldwire.html", "destination": "/compare-fieldwire", "permanent": true },
+    { "source": "/compare-asite.html", "destination": "/compare-asite", "permanent": true }
+  ],
   "rewrites": [
-    {
-      "source": "/app/(.*)",
-      "destination": "https://app.masononsite.com/$1"
-    }
+    { "source": "/app/(.*)", "destination": "https://app.masononsite.com/$1" },
+    { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }

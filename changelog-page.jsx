@@ -1,5 +1,7 @@
 // changelog-page.jsx
 
+import React from "react";
+
 const ChangelogHero = () => (
   <section className="page-hero">
     <div className="grid-bg" aria-hidden="true" /><div className="page-hero__glow" aria-hidden="true" />
@@ -236,15 +238,11 @@ const ChangelogPage = () => {
     }
   }, []);
   return (
-    <React.Fragment>
-      <Header />
-      <main>
+    <main>
         <ChangelogHero />
         <ChangelogEntries />
       </main>
-      <Footer />
-    </React.Fragment>
   );
 };
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<ChangelogPage />);
+
+export default ChangelogPage;
