@@ -16,92 +16,72 @@ const DEFAULT_PRICING = {
   annualSavingPct: 20,
   tiers: [
     {
-      id: 'starter', name: 'Starter',
-      tagline: 'For small contractors and independent PMs',
-      monthly: 49, annual: 39,
-      projectsLabel: 'Up to 3 active projects',
-      highlight: false, cta: 'Start free trial',
+      id: 'core', name: 'Core',
+      tagline: 'Everything you need to run a job. For teams on up to 3 active projects.',
+      monthly: 219, annual: 175,
+      projectsLabel: '10 users · 3 active projects',
+      highlight: false, cta: 'Book a call',
       features: [
-        'All 12 modules included',
-        'Unlimited team members per project',
-        'BIM viewer (IFC 2x3 + IFC4)',
-        'Interactive Gantt + CPM',
-        'RFI, Issues, Daily Logs',
-        'Document control',
-        'Submittals register',
-        'Cost control + FAC',
-        'AI Concierge (60 queries/project/month)',
-        'Mobile + Android app',
-        'PDF + Excel report export',
-        'Email support (48h response)',
-        'REST API: read-only',
-        '30-day free trial',
+        'Daily logs, photos, and field reports',
+        'RFIs with ball-in-court tracking',
+        'Change orders -- digital sign-off before work starts',
+        'Gantt schedule + critical path',
+        'Budget vs. actual cost tracking',
+        'AIA G702/G703 pay applications',
+        'Android app -- works offline on site',
+        'Mason AI -- 60 queries per project per month',
+        'Email support',
       ]
     },
     {
-      id: 'professional', name: 'Professional',
-      tagline: 'For growing GCs and project teams',
-      monthly: 149, annual: 119,
-      projectsLabel: 'Up to 15 active projects',
-      highlight: true, cta: 'Start free trial',
-      features: [
-        'Everything in Starter',
-        'AI Concierge (unlimited queries)',
-        'Scheduled report delivery',
-        'Custom report templates',
-        'Baseline + EoT export',
-        'REST API: full read/write',
-        'Webhooks (20 endpoints)',
-        'Google Drive + OneDrive sync',
-        'Xero + QuickBooks export',
-        'Priority email support (12h)',
-        'Onboarding call included',
-        'Migration assistance',
-        'Custom role creation',
-      ]
-    },
-    {
-      id: 'scale', name: 'Scale',
-      tagline: 'For principal contractors and programme managers',
+      id: 'pro', name: 'Pro',
+      tagline: 'Core PM plus BIM, Navisworks-class clash detection, AR, and Monte Carlo scheduling.',
       monthly: 399, annual: 319,
-      projectsLabel: 'Unlimited projects',
-      highlight: false, cta: 'Start free trial',
+      projectsLabel: '25 users · 10 active projects',
+      highlight: true, cta: 'Book a call',
       features: [
-        'Everything in Professional',
-        'SAML 2.0 SSO (Okta, Azure AD, etc.)',
-        'Organisation-level portfolio dashboard',
-        'Custom branding (logo + colours)',
-        'Dedicated onboarding consultant',
-        'SLA: 99.9% uptime commitment',
-        'Dedicated Slack / Teams channel',
-        'Data Processing Agreement',
-        'Audit log export',
-        'Multi-organisation management',
-        'Custom API rate limits',
-        'Early access to new features',
-        'Annual business review',
+        'Everything in Core',
+        'BIM viewer -- browser-based IFC, no Autodesk license needed',
+        'Clash detection -- BVH narrow-phase engine (same algorithm class as Navisworks)',
+        'AR walkthrough -- Android WebXR + iOS AR Quick Look',
+        'Monte Carlo scheduling -- P50 / P80 / P90 risk bands, 1,000-iteration simulation',
+        'Mason AI -- unlimited queries',
+        'Priority email support -- 24-hr response',
+      ]
+    },
+    {
+      id: 'founding-partner', name: 'Founding Partner',
+      tagline: 'Pro access at $129/month, locked for life. First 10 firms -- in exchange for direct feedback.',
+      monthly: 129, annual: 129,
+      projectsLabel: '25 users · 10 projects · price locked',
+      highlight: false, cta: 'Book a call',
+      features: [
+        'Everything in Pro',
+        'Price locked at $129/mo for life (stays as long as you stay subscribed)',
+        'Direct line to the founding team',
+        'Your input shapes what gets built next',
       ]
     },
   ],
   faq: [
-    { q: 'What counts as a project?', a: 'A project is any active construction project in your MASON account. Archived projects do not count toward your limit.' },
-    { q: 'Can I add unlimited team members?', a: 'Yes. Every plan includes unlimited team members per project at no extra cost. There are no per-seat fees anywhere in the product.' },
-    { q: 'What happens when my trial ends?', a: 'At day 30 you choose a plan. Your data stays exactly where it is -- no migration, no downtime, no re-importing anything.' },
-    { q: 'Do you offer annual billing?', a: 'Yes. Annual billing saves 20% compared to monthly. You can switch between monthly and annual at any time from your account settings.' },
-    { q: 'Can I change plans later?', a: 'Yes. You can upgrade, downgrade, or cancel at any time from your account settings. Upgrades are prorated to the day.' },
-    { q: 'Is there a setup fee?', a: 'No. There are no setup fees, onboarding fees, or implementation fees. The monthly price is the only cost.' },
+    { q: 'What counts toward the user limit?', a: 'Anyone with a MASON login on your account -- staff, subs, client reps. Core covers 10 users. Pro covers 25. Most site teams with a handful of subs fit comfortably in Pro.' },
+    { q: 'What counts as an active project?', a: 'Any project you're working in right now. Archive it when the job closes and it stops counting. Archived projects keep all their data -- they just don't take up a slot.' },
+    { q: 'What happens if we hit a limit?', a: 'We'll flag it and give you a window to upgrade before anything stops working. We're not going to lock you out mid-job.' },
+    { q: 'Is there a free trial?', a: 'We're running a hands-on pilot program right now -- not a self-serve trial. Book a call and we'll set your team up on a real job for 14 days. You get the full product, we handle setup, and at day 14 you decide whether to stay on.' },
+    { q: 'What is the Founding Partner offer?', a: 'Ten firms get Pro access at $129/month, locked permanently as long as they stay subscribed. That's BIM viewer, Navisworks-class clash detection, AR walkthrough, Monte Carlo scheduling, 25 users, 10 projects -- at $129 instead of $399. The trade: we want direct feedback on what to build next.' },
+    { q: 'Do you offer annual billing?', a: 'Yes. Annual billing on Core and Pro saves 20%. Founding Partner pricing is already locked at $129 -- no additional annual discount applies.' },
   ],
 };
 
 // --- Trial Banner --------------------------------------------------------------
 const TrialBanner = ({ appUrl, trialDays }) => (
   <div className="trial-banner">
-    <span className="trial-banner__badge">{trialDays || 30}-day free trial</span>
+    <span className="trial-banner__badge">14-day pilot</span>
     <span className="trial-banner__text">
-      Every plan starts with {trialDays || 30} days fully unlocked -- all features, all modules, unlimited team members. No credit card required.
+      We set your team up on a real job. Full product, no self-serve onboarding. Book a call to get started.
     </span>
-    <a href={`${appUrl}/register`} className="trial-banner__cta">
-      Start free <IconArrowRight size={14} stroke={2} />
+    <a href="contact" className="trial-banner__cta">
+      Book a call <IconArrowRight size={14} stroke={2} />
     </a>
   </div>
 );
@@ -119,9 +99,9 @@ const PricingHero = () => (
     }
     lead={
       <>
-        MASON is priced per project -- not per user. Add your entire team, every subcontractor,
-        every reviewer. The price doesn't change. Every plan includes every module. No feature gates.
-        No add-ons required to make the product useful.
+        Core is $219/month for 10 users and 3 jobs. Pro is $399/month for 25 users and 10 jobs.
+        That's the whole bill -- no add-ons, no module gates, no "call us for the price."
+        Founding Partner locks in at $129/month for life, first 10 firms only.
       </>
     }
   />
@@ -227,7 +207,7 @@ const PricingGrid = ({ billing, tiers, appUrl, onUpdate, editMode }) => (
                 ) : (
                   <span className="pricing-card__amount">${price}</span>
                 )}
-                <span className="pricing-card__period">/ project / month</span>
+                <span className="pricing-card__period">/ month</span>
               </div>
 
               {billing === 'annual' && (
@@ -241,7 +221,7 @@ const PricingGrid = ({ billing, tiers, appUrl, onUpdate, editMode }) => (
                 <p className="pricing-card__projects">{plan.projectsLabel}</p>
               )}
 
-              <a href={`${appUrl}/register`} className={"btn btn-lg" + (plan.highlight ? ' btn-primary' : ' btn-ghost')}>
+              <a href="/contact" className={"btn btn-lg" + (plan.highlight ? ' btn-primary' : ' btn-ghost')}>
                 {plan.cta || 'Start free trial'} <IconArrowRight size={16} stroke={2} />
               </a>
 
@@ -325,21 +305,21 @@ const PricingIncludes = () => (
     <div className="container">
       <div className="section__header gsap-fade-up">
         <span className="eyebrow">What you get</span>
-        <h2 className="h2">Every plan. Every module. No exceptions.</h2>
+        <h2 className="h2">What's in Core. What Pro adds.</h2>
         <p className="section__sub">
-          We made a deliberate decision: no feature gates. The smallest project on the Starter plan
-          has access to the BIM viewer, the AI Concierge, and every module. The only differences
-          between plans are the number of projects you can run and the support and integration level.
+          Core runs daily logs, RFIs, change orders, pay apps, schedule, and cost tracking.
+          Pro adds the BIM viewer, Navisworks-class clash detection, AR walkthrough, and Monte Carlo scheduling.
+          Both plans include Mason AI. No feature is locked behind an add-on.
         </p>
       </div>
       <div className="feature-grid">
         {[
-          { icon: <IconBIM size={24} />, title: 'BIM viewer -- everyone', body: 'A Starter-plan project on a $3M residential development deserves the same BIM capability as a Scale-plan megaproject. Every subscriber gets the full IFC viewer, federation, clash detection, and AR.' },
-          { icon: <IconConcierge size={24} />, title: 'AI Concierge -- everyone', body: 'Starter plans get 60 AI queries per project per month -- enough for daily use on a small project. Professional and Scale are unlimited. The intelligence is the same model on all plans.' },
-          { icon: <IconProjects size={24} />, title: 'Unlimited team members', body: 'Add your whole team, all your subcontractors, your client, the design team. No seat fees. On a $20M project with 40 subcontractors, you\'re not paying more because you have 200 users.' },
-          { icon: <IconSchedule size={24} />, title: 'Full Gantt + CPM', body: 'The interactive Gantt chart with critical path method analysis is standard on every plan. A schedule is fundamental to managing a construction project -- not a premium feature.' },
-          { icon: <IconDocuments size={24} />, title: 'Document control', body: 'Version-controlled documents with IFC approval workflow, permission-based access, and full-text search are on every plan. File storage is 100 GB on Starter, 500 GB on Professional, unlimited on Scale.' },
-          { icon: <IconIssues size={24} />, title: 'Issues + RFIs + Submittals', body: 'The three core quality and communication modules are fully featured on every plan. No limits on open items, no restrictions on attachments, no paywalling of the audit trail export.' },
+          { icon: <IconBIM size={24} />, title: 'BIM viewer (Pro)', body: 'Browser-based IFC viewer with no Autodesk license needed. Upload your IFC file, federate models, detect clashes -- on any device, in any browser.' },
+          { icon: <IconConcierge size={24} />, title: 'Clash detection (Pro)', body: 'BVH narrow-phase engine -- same algorithm class as Navisworks. Runs in the browser. Catches coordination conflicts before the crew is on site.' },
+          { icon: <IconProjects size={24} />, title: 'Mason AI (all plans)', body: 'Core gets 60 queries per project per month. Pro gets unlimited. Same model on both -- drafts RFIs, summarizes issues, flags schedule risks. On every screen.' },
+          { icon: <IconSchedule size={24} />, title: 'AIA pay applications (all plans)', body: 'G702/G703 pay apps built into the billing module. Change orders flow into the pay app automatically. No separate tool, no manual spreadsheet.' },
+          { icon: <IconDocuments size={24} />, title: 'Monte Carlo scheduling (Pro)', body: 'P50/P80/P90 risk bands, 1,000-iteration Latin Hypercube simulation. Shows which tasks have the most schedule risk before the delay happens.' },
+          { icon: <IconIssues size={24} />, title: 'Field app (all plans)', body: 'Android app built for offline use. Daily logs, photos, RFIs, and punch items logged on site -- syncs when you get back to signal.' },
         ].map((item, i) => (
           <div key={i} className="feature-card gsap-scale-in">
             <div className="feature-card__icon">{item.icon}</div>
@@ -359,23 +339,23 @@ const PricingPhilosophy = () => (
       <div className="split-sect gsap-slide-left">
         <div className="split-copy">
           <span className="eyebrow">Our pricing philosophy</span>
-          <h2 className="h2">Why per-project, not per-user?</h2>
-          <p className="split-copy__body">Construction project management software is typically priced per user -- which creates a perverse incentive: the better you collaborate (more stakeholders, more subcontractors, more visibility), the more you pay. We think that's backwards.</p>
-          <p className="split-copy__body">A project is a project. It has a scope, a budget, and a team. The overhead of managing it with MASON is fixed, regardless of whether you have 10 team members or 100. So we charge per project -- and let you add everyone who needs access.</p>
-          <p className="split-copy__body">The result: project managers add subcontractors, consultants, and owner's representatives without worrying about the bill increasing. More visibility. Better outcomes. No gaming the system.</p>
+          <h2 className="h2">How does the price compare?</h2>
+          <p className="split-copy__body">The enterprise stack for what Pro does -- Procore + Autodesk Construction Cloud + Navisworks + Bluebeam -- runs $27,500 to $44,000 a year. That's $2,300 to $3,700 a month before you count implementation and training.</p>
+          <p className="split-copy__body">MASON Pro is $399/month. $4,788 a year. Same BVH clash detection algorithm as Navisworks, same IFC-native BIM viewer, same Monte Carlo simulation. Built for teams that can't justify a six-figure software bill.</p>
+          <p className="split-copy__body">Core at $219 handles the PM fundamentals: RFIs, change orders, daily logs, pay applications, Gantt schedule, cost tracking. If you're running 1-3 jobs with a small crew, that's the right starting point.</p>
         </div>
         <div className="split-visual">
           <div className="pricing-philosophy-card">
             <div className="pp-card__row">
-              <span className="pp-card__label">Procore model</span>
-              <span className="pp-card__calc">$399/mo base + $19/user ? 50 users = <strong className="red">$1,349/mo</strong> per project</span>
+              <span className="pp-card__label">Enterprise stack (what Pro replaces)</span>
+              <span className="pp-card__calc">Procore + ACC + Navisworks + Bluebeam = <strong className="red">$2,300–$3,700/mo</strong></span>
             </div>
             <div className="pp-card__divider" />
             <div className="pp-card__row">
-              <span className="pp-card__label">MASON model</span>
-              <span className="pp-card__calc">$149/mo per project, unlimited users = <strong className="accent">$149/mo</strong> per project</span>
+              <span className="pp-card__label">MASON Pro</span>
+              <span className="pp-card__calc">$399/mo · $4,788/yr · BIM + clash + AR + Monte Carlo = <strong className="accent">$399/mo</strong></span>
             </div>
-            <div className="pp-card__note">On a 15-project Professional account, MASON costs $2,235/mo. The equivalent Procore stack would be $20,235/mo+.</div>
+            <div className="pp-card__note">Same BVH clash detection algorithm as Navisworks. Browser-based IFC viewer. Monte Carlo P50/P80/P90. No Autodesk license, no Bluebeam subscription, no per-seat fees.</div>
           </div>
         </div>
       </div>
@@ -389,47 +369,35 @@ const PricingCompareTable = ({ tiers }) => {
   const [t0, t1, t2] = tierNames;
 
   const sections = [
-    { heading: 'Core modules', rows: [
-      { feature: 'BIM viewer (IFC 2x3 + IFC4)', vals: [true, true, true] },
-      { feature: 'AR on Android', vals: [true, true, true] },
-      { feature: 'Interactive Gantt + CPM', vals: [true, true, true] },
-      { feature: 'RFI management', vals: [true, true, true] },
-      { feature: 'Issues register', vals: [true, true, true] },
-      { feature: 'Daily logs (offline)', vals: [true, true, true] },
-      { feature: 'Cost control + FAC', vals: [true, true, true] },
-      { feature: 'Document control', vals: [true, true, true] },
-      { feature: 'Submittals register', vals: [true, true, true] },
-      { feature: 'Report generation', vals: [true, true, true] },
-      { feature: 'Android native app', vals: [true, true, true] },
+    { heading: 'Core PM modules', rows: [
+      { feature: 'Daily logs + photos (offline)', vals: [true, true, true] },
+      { feature: 'RFI tracking with ball-in-court', vals: [true, true, true] },
+      { feature: 'Change orders -- digital sign-off', vals: [true, true, true] },
+      { feature: 'Gantt schedule + critical path', vals: [true, true, true] },
+      { feature: 'Budget vs. actual cost tracking', vals: [true, true, true] },
+      { feature: 'AIA G702/G703 pay applications', vals: [true, true, true] },
+      { feature: 'Android app (works offline)', vals: [true, true, true] },
     ]},
-    { heading: 'AI Concierge', rows: [
-      { feature: 'AI Concierge access', vals: [true, true, true] },
+    { heading: 'BIM, AR & advanced scheduling', rows: [
+      { feature: 'BIM viewer -- browser-based IFC', vals: [false, true, true] },
+      { feature: 'Clash detection (BVH engine / Navisworks-class)', vals: [false, true, true] },
+      { feature: 'AR walkthrough (WebXR + iOS AR Quick Look)', vals: [false, true, true] },
+      { feature: 'Monte Carlo scheduling P50/P80/P90', vals: [false, true, true] },
+    ]},
+    { heading: 'Mason AI', rows: [
+      { feature: 'Mason AI access', vals: [true, true, true] },
       { feature: 'Queries per project/month', vals: ['60', 'Unlimited', 'Unlimited'] },
-      { feature: 'Language support', vals: ['8 languages', '8 languages', '8 languages'] },
-      { feature: 'RFI / NCR drafting', vals: [true, true, true] },
+      { feature: 'RFI + issue drafting', vals: [true, true, true] },
       { feature: 'Schedule delay analysis', vals: [true, true, true] },
     ]},
-    { heading: 'Projects & team', rows: [
-      { feature: 'Concurrent projects', vals: ['3', '15', 'Unlimited'] },
-      { feature: 'Team members per project', vals: ['Unlimited', 'Unlimited', 'Unlimited'] },
-      { feature: 'Document storage', vals: ['100 GB', '500 GB', 'Unlimited'] },
-      { feature: 'File size per upload', vals: ['500 MB', '2 GB', '5 GB'] },
-    ]},
-    { heading: 'Integrations', rows: [
-      { feature: 'REST API', vals: ['Read-only', 'Full', 'Full + custom limits'] },
-      { feature: 'Webhooks', vals: [false, '20 endpoints', 'Unlimited'] },
-      { feature: 'Google Drive / OneDrive', vals: [false, true, true] },
-      { feature: 'Xero + QuickBooks export', vals: [false, true, true] },
-      { feature: 'SAML 2.0 SSO', vals: [false, false, true] },
-      { feature: 'Custom branding', vals: [false, false, true] },
+    { heading: 'Team & projects', rows: [
+      { feature: 'Users', vals: ['10', '25', '25'] },
+      { feature: 'Active projects', vals: ['3', '10', '10'] },
+      { feature: 'Price locked for life', vals: [false, false, true] },
     ]},
     { heading: 'Support', rows: [
-      { feature: 'Support channel', vals: ['Email', 'Priority email', 'Dedicated Slack/Teams'] },
-      { feature: 'Response time', vals: ['48 hours', '12 hours', '4 hours'] },
-      { feature: 'Onboarding call', vals: [false, true, 'Dedicated consultant'] },
-      { feature: 'Migration assistance', vals: [false, true, true] },
-      { feature: 'Uptime SLA', vals: ['--', '--', '99.9% + DPA'] },
-      { feature: 'Annual business review', vals: [false, false, true] },
+      { feature: 'Support channel', vals: ['Email', 'Priority email', 'Direct line to founding team'] },
+      { feature: 'Response time', vals: ['48 hours', '24 hours', 'Same day'] },
     ]},
   ];
 
@@ -444,7 +412,7 @@ const PricingCompareTable = ({ tiers }) => {
       <div className="container">
         <div className="section__header gsap-fade-up">
           <span className="eyebrow">Full comparison</span>
-          <h2 className="h2">Every feature, every plan.</h2>
+          <h2 className="h2">Core vs. Pro vs. Founding Partner.</h2>
         </div>
         <div className="compare-table-wrap gsap-fade-up">
           <table className="compare-table">
@@ -453,7 +421,7 @@ const PricingCompareTable = ({ tiers }) => {
                 <th style={{ width: '40%' }}>Feature</th>
                 {(tiers || []).map((t, i) => (
                   <th key={i} className={t.highlight ? 'compare-mason' : ''}>
-                    {t.name}<br /><small>${t.monthly}/project/mo</small>
+                    {t.name}<br /><small>${t.monthly}/mo</small>
                   </th>
                 ))}
               </tr>
@@ -486,15 +454,15 @@ const TrialExplainer = ({ appUrl, trialDays }) => (
     <div className="container">
       <div className="section__header gsap-fade-up">
         <span className="eyebrow">Free trial</span>
-        <h2 className="h2">{trialDays || 30} days. Full access. No card.</h2>
-        <p className="section__sub">We don't believe in trial versions. The free trial is the real product -- every feature, every module, every integration -- for {trialDays || 30} days.</p>
+        <h2 className="h2">14 days. Real job. We set it up.</h2>
+        <p className="section__sub">No self-serve trial. We get on a call, pick your messiest active job, and set MASON up for your team. You use it for 14 days. At day 14, you decide.</p>
       </div>
       <div className="steps gsap-fade-up">
         {[
-          { n: '01', heading: 'Sign up', body: 'Create your organisation account. No credit card. Takes 60 seconds.' },
-          { n: '02', heading: 'Import your project', body: 'Upload your IFC, import your schedule CSV, and invite your team. The onboarding wizard walks you through each step. Most teams are up and running in under an hour.' },
-          { n: '03', heading: 'Use the real product', body: `All 12 modules. Unlimited team members. AI Concierge without query limits. You're not using a demo environment -- you're using the same system paying customers use.` },
-          { n: '04', heading: 'Choose a plan', body: `At day ${trialDays || 30}, choose a plan based on how many projects you're running. Your data stays exactly where it is. There's no migration.` },
+          { n: '01', heading: 'Book a call', body: 'A 30-minute call with Moeed, the founder. Pick one active job to run MASON on. No commitment, no sales pitch -- just a working session.' },
+          { n: '02', heading: 'We set it up', body: 'We configure your account, import your project data, and get your foreman trained. Most teams are logging on site by day two.' },
+          { n: '03', heading: 'Use the real product', body: `Daily logs, RFIs, change orders, pay apps -- everything running on your actual job. If you're on Pro, the BIM viewer and clash detection are live too.` },
+          { n: '04', heading: 'Decide at day 14', body: `If the crew is using it, stay on. If not, we part ways. Your data exports as IFC + CSV. Nothing is locked in.` },
         ].map(s => (
           <div key={s.n} className="step">
             <div className="step__number">{s.n}</div>
@@ -540,13 +508,13 @@ const PricingFAQ = ({ faqItems }) => {
 const PricingCTA = ({ appUrl }) => (
   <section className="cta-band">
     <div className="container cta-band__inner">
-      <h2 className="cta-band__heading">Start with 30 days free.</h2>
-      <p className="cta-band__sub">No credit card. No sales call required. Import your IFC, invite your team, and see MASON running on your actual project in under an hour.</p>
+      <h2 className="cta-band__heading">Ready to run MASON on a real job?</h2>
+      <p className="cta-band__sub">Book a call. We'll pick one active project, set it up with you, and run a 14-day pilot. If the crew isn't using it by day 14, we shut it off.</p>
       <div className="cta-band__actions">
-        <a href={`${appUrl}/register`} className="btn btn-primary btn-lg">
-          Create free account <IconArrowRight size={18} stroke={2} />
+        <a href="/contact" className="btn btn-primary btn-lg">
+          Book a pilot call <IconArrowRight size={18} stroke={2} />
         </a>
-        <a href="/contact" className="btn btn-ghost btn-lg">Talk to us first</a>
+        <a href="/contact" className="btn btn-ghost btn-lg">Ask a question first</a>
       </div>
     </div>
   </section>
