@@ -38,6 +38,16 @@ const FCOLS = [
     ],
   },
   {
+    h: "Free Tools",
+    items: [
+      ["All Tools", "/tools"],
+      ["Retainage Calculator", "/tools/retainage-calculator"],
+      ["AIA G702/G703 Generator", "/tools/aia-g702-generator"],
+      ["Change Order Calculator", "/tools/change-order-calculator"],
+      ["ROI Calculator", "/tools/roi-calculator"],
+    ],
+  },
+  {
     h: "Company",
     items: [
       ["About", "/about"],

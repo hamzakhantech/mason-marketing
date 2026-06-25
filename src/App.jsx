@@ -16,6 +16,11 @@ import Pricing from "./pages/Pricing.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import Terms from "./pages/Terms.jsx";
 import VsProcore from "./pages/VsProcore.jsx";
+import RetainageCalculator from "./pages/tools/RetainageCalculator.jsx";
+import AIAGenerator from "./pages/tools/AIAGenerator.jsx";
+import ChangeOrderCalculator from "./pages/tools/ChangeOrderCalculator.jsx";
+import ROICalculator from "./pages/tools/ROICalculator.jsx";
+import Tools from "./pages/tools/Tools.jsx";
 
 export default function App() {
   return (
@@ -36,6 +41,11 @@ export default function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="terms" element={<Terms />} />
         <Route path="privacy" element={<Privacy />} />
+        <Route path="tools" element={<Tools />} />
+        <Route path="tools/retainage-calculator" element={<RetainageCalculator />} />
+        <Route path="tools/aia-g702-generator" element={<AIAGenerator />} />
+        <Route path="tools/change-order-calculator" element={<ChangeOrderCalculator />} />
+        <Route path="tools/roi-calculator" element={<ROICalculator />} />
       </Route>
     </Routes>
   );
