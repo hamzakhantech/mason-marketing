@@ -65,10 +65,10 @@ const DEFAULT_PRICING = {
   ],
   faq: [
     { q: 'What counts toward the user limit?', a: 'Anyone with a MASON login on your account -- staff, subs, client reps. Core covers 10 users. Pro covers 25. Most site teams with a handful of subs fit comfortably in Pro.' },
-    { q: 'What counts as an active project?', a: 'Any project you're working in right now. Archive it when the job closes and it stops counting. Archived projects keep all their data -- they just don't take up a slot.' },
-    { q: 'What happens if we hit a limit?', a: 'We'll flag it and give you a window to upgrade before anything stops working. We're not going to lock you out mid-job.' },
-    { q: 'Is there a free trial?', a: 'We're running a hands-on pilot program right now -- not a self-serve trial. Book a call and we'll set your team up on a real job for 14 days. You get the full product, we handle setup, and at day 14 you decide whether to stay on.' },
-    { q: 'What is the Founding Partner offer?', a: 'Ten firms get Pro access at $129/month, locked permanently as long as they stay subscribed. That's BIM viewer, Navisworks-class clash detection, AR walkthrough, Monte Carlo scheduling, 25 users, 10 projects -- at $129 instead of $399. The trade: we want direct feedback on what to build next.' },
+    { q: 'What counts as an active project?', a: "Any project you're working in right now. Archive it when the job closes and it stops counting. Archived projects keep all their data -- they just don't take up a slot." },
+    { q: 'What happens if we hit a limit?', a: "We'll flag it and give you a window to upgrade before anything stops working. We're not going to lock you out mid-job." },
+    { q: 'Is there a free trial?', a: "We're running a hands-on pilot program right now -- not a self-serve trial. Book a call and we'll set your team up on a real job for 14 days. You get the full product, we handle setup, and at day 14 you decide whether to stay on." },
+    { q: 'What is the Founding Partner offer?', a: "Ten firms get Pro access at $129/month, locked permanently as long as they stay subscribed. That's BIM viewer, Navisworks-class clash detection, AR walkthrough, Monte Carlo scheduling, 25 users, 10 projects -- at $129 instead of $399. The trade: we want direct feedback on what to build next." },
     { q: 'Do you offer annual billing?', a: 'Yes. Annual billing on Core and Pro saves 20%. Founding Partner pricing is already locked at $129 -- no additional annual discount applies.' },
   ],
 };
