@@ -12,10 +12,7 @@ const CPHero = () => (
     }
     lead={
       <>
-        Procore is the largest construction platform in the world. MASON is a newer platform
-        that makes different choices about pricing, BIM capability, and AI. This page is a
-        direct comparison. We try to be fair about what Procore does well and clear about
-        where we think MASON is the better choice.
+        Procore is the biggest name in construction project management software. MASON is newer and makes different choices: flat pricing instead of construction-volume billing, browser-native BIM instead of a Revit plugin, and an AI Concierge built into every module instead of a bolt-on add-on. This is a direct comparison — what each platform does, what it costs, and where each one wins.
       </>
     }
   />
@@ -92,7 +89,7 @@ const CPTable = () => {
     {feature:"SAML SSO",mason:"Scale plan",procore:"Enterprise plan"},
     {feature:"Audit logs",mason:"Yes, all plans",procore:"Yes, all plans"},
     {feature:"Data export",mason:"Full export, any time, all plans",procore:"Export available"},
-    {feature:"Free trial",mason:"30 days, all features, no card required",procore:"Demo only, no self-serve trial"},
+    {feature:"Free trial",mason:"14-day pilot, full platform, we set it up",procore:"Demo only, no self-serve trial"},
     {feature:"Support",mason:"Email all plans, priority on Pro and Scale",procore:"Phone and email on most plans"},
     {feature:"Onboarding",mason:"Included on Pro and Scale",procore:"Paid implementation typically required"}
   ];
@@ -137,7 +134,7 @@ const CPWhenToChoose = () => (
             "Your team needs browser native BIM without an Autodesk account",
             "You want an AI assistant that is actually project aware today",
             "You need full offline mobile capability in the field",
-            "You want a 30 day self-serve trial before committing",
+            "You want to run the platform on a real project before committing",
             "You need a full platform but cannot justify an enterprise contract",
             "Your project team crosses multiple companies, subs, and consultants",
             "You want AR model overlay on Android without extra hardware"
@@ -243,13 +240,13 @@ const CPComparePage = () => {
         <section className="section bg-subtle">
           <div className="container" style={{textAlign:"center",maxWidth:580}}>
             <div className="gsap-fade-up">
-              <h2 className="h2">Try MASON free for 30 days</h2>
+              <h2 className="h2">Run MASON on a real project for 14 days.</h2>
               <p style={{fontSize:16,color:"var(--text-muted)",lineHeight:1.7,margin:"20px 0 36px"}}>
-                No credit card. All 12 modules. Unlimited team members on your trial project.
+                All 12 modules. Your team, your project data. We handle the setup.
                 If you are migrating from Procore, book a demo and we will walk through the migration together.
               </p>
               <div style={{display:"flex",gap:12,justifyContent:"center",flexWrap:"wrap"}}>
-                <a href="https://app.masononsite.com/register" className="btn btn-primary btn-lg">Start free trial</a>
+                <a href="/contact" className="btn btn-primary btn-lg">Book your pilot</a>
                 <a href="/contact" className="btn btn-ghost btn-lg">Talk about migration</a>
               </div>
             </div>

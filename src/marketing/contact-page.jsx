@@ -14,9 +14,7 @@ const ContactHero = () => (
     }
     lead={
       <>
-        Whether you want to book a 30 minute demo, ask a specific question about a module,
-        or talk through migrating from another platform, there is a real person at MASON who
-        handles each of these things and will actually get back to you. Here is how to reach us.
+        Want to see MASON on a real project? Ask about migrating from Procore, Buildertrend, or Fieldwire? Or just have a specific question about a module? There's a real person here for each of those. We respond same day.
       </>
     }
   />

@@ -12,10 +12,7 @@ const CSHero = () => (
     }
     lead={
       <>
-        These are not hypothetical efficiency gains. They are documented outcomes from
-        real project teams who moved their coordination, BIM review, RFI management, and
-        field logging into MASON. Names and project locations have been anonymised at the
-        clients' request, but the data is accurate.
+        Documented outcomes from GC and specialty sub teams that replaced spreadsheets and email threads with MASON. BIM coordination, RFI management, daily logs, change order tracking — the numbers below are from real projects. Names and locations are anonymised at clients' request.
       </>
     }
   />

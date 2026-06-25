@@ -15,9 +15,7 @@ const BlogHero = () => (
     }
     lead={
       <>
-        Practical guides, case breakdowns, and honest takes on how the construction
-        industry uses technology. No sponsored content. No vendor fluff. Just
-        information that helps project teams work better.
+        Practical guides on construction project management, BIM coordination, RFI workflows, change order control, and field operations. Written for project managers and site supervisors — not executives. No sponsored content, no vendor fluff.
       </>
     }
   />

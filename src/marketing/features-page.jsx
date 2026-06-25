@@ -22,8 +22,8 @@ const FeaturesHero = () => (
     }
     actions={
       <>
-        <a href="https://app.masononsite.com/register" className="btn btn-primary">
-          Start 30-day free trial <IconArrowRight size={16} stroke={2} />
+        <a href="/contact" className="btn btn-primary">
+          Book a 14-day pilot <IconArrowRight size={16} stroke={2} />
         </a>
         <a href="/pricing" className="btn btn-ghost">
           See pricing
@@ -553,7 +553,7 @@ const CompareTable = () => {
     { feature: "Offline Android app",     mason: true,  procore: true,  asite: "limited", fieldwire: true },
     { feature: "8-language interface",    mason: true,  procore: "partial", asite: "partial", fieldwire: false },
     { feature: "Flat per-project pricing",mason: true,  procore: false, asite: false, fieldwire: false },
-    { feature: "30-day full trial",       mason: true,  procore: false, asite: false, fieldwire: "14 days" },
+    { feature: "14-day pilot, full platform", mason: true,  procore: false, asite: false, fieldwire: "14 days" },
     { feature: "No per-user seat fees",   mason: true,  procore: false, asite: false, fieldwire: false },
     { feature: "Schedule (Gantt + CPM)",  mason: true,  procore: true,  asite: true,  fieldwire: "basic" },
     { feature: "Submittal register",      mason: true,  procore: true,  asite: true,  fieldwire: false },
@@ -690,12 +690,12 @@ const FeaturesCTA = () => (
         Ready to see it on your project?
       </h2>
       <p className="cta-band__sub">
-        30-day free trial, all features unlocked, no credit card required.
+        14-day pilot on a real project. We set it up, you run it.
         Import your IFC, invite your team, and see MASON on your actual project data.
       </p>
       <div className="cta-band__actions">
-        <a href="https://app.masononsite.com/register" className="btn btn-primary btn-lg">
-          Start free trial <IconArrowRight size={18} stroke={2} />
+        <a href="/contact" className="btn btn-primary btn-lg">
+          Book your pilot <IconArrowRight size={18} stroke={2} />
         </a>
         <a href="/contact" className="btn btn-ghost btn-lg">Request a demo</a>
       </div>
