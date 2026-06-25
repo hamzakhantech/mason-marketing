@@ -19,7 +19,7 @@ const NAV_LINKS = [
   { key: "platform", label: "Platform", to: "/platform" },
   { key: "pricing", label: "Pricing", to: "/pricing" },
   { key: "cases", label: "Case Studies", to: "/case-studies" },
-  { key: "compare", label: "vs Procore", to: "/vs-procore" },
+  { key: "compare", label: "Compare", to: "/compare" },
   { key: "blog", label: "Blog", to: "/blog" },
 ];
 
@@ -45,7 +45,7 @@ const HeaderShell = ({ dark, toggleDark }) => {
         minute: "2-digit",
         hour12: false,
       });
-      setLiveTime(tzAbbr + "\u00a0" + hm);
+      setLiveTime(tzAbbr + " " + hm);
     }
     tick();
     const t = setInterval(tick, 30000);
@@ -72,7 +72,7 @@ const HeaderShell = ({ dark, toggleDark }) => {
         const usesF = fCountries.some((n) => country.indexOf(n) !== -1);
         const temp = usesF ? c.temp_F + "°F" : c.temp_C + "°C";
         const desc = c.weatherDesc[0].value;
-        setLiveWeather(temp + "\u00a0·\u00a0" + desc);
+        setLiveWeather(temp + " · " + desc);
       })
       .catch(() => {});
   }, []);
@@ -108,7 +108,7 @@ const HeaderShell = ({ dark, toggleDark }) => {
               }}
             >
               {liveTime}
-              {liveTime && liveWeather ? "\u00a0·\u00a0" : ""}
+              {liveTime && liveWeather ? " · " : ""}
               {liveWeather}
             </div>
           )}

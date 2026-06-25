@@ -27,6 +27,17 @@ const FCOLS = [
     ],
   },
   {
+    h: "Compare",
+    items: [
+      ["All Comparisons", "/compare"],
+      ["vs Procore", "/vs-procore"],
+      ["vs Buildertrend", "/alternatives/buildertrend"],
+      ["vs Fieldwire", "/alternatives/fieldwire"],
+      ["vs Autodesk ACC", "/alternatives/autodesk"],
+      ["Procore Alternatives", "/alternatives/procore"],
+    ],
+  },
+  {
     h: "Company",
     items: [
       ["About", "/about"],
@@ -96,18 +107,10 @@ export function Footer() {
               FOLLOW
             </span>
             <div className="socials">
-              <a href="#" aria-label="LinkedIn">
-                In
-              </a>
-              <a href="#" aria-label="X">
-                X
-              </a>
-              <a href="#" aria-label="YouTube">
-                Yt
-              </a>
-              <a href="#" aria-label="GitHub">
-                Gh
-              </a>
+              <a href="#" aria-label="LinkedIn">In</a>
+              <a href="#" aria-label="X">X</a>
+              <a href="#" aria-label="YouTube">Yt</a>
+              <a href="#" aria-label="GitHub">Gh</a>
             </div>
           </div>
         </div>
