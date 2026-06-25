@@ -1,20 +1,20 @@
 {
   "site": {
     "name": "MASON",
-    "tagline": "Construction project management software built for GC and specialty sub teams \u2014 BIM, RFIs, schedules, and cost tracking in one platform.",
+    "tagline": "Construction project management software built for GC and specialty sub teams — BIM, RFIs, schedules, and cost tracking in one platform.",
     "supportEmail": "support@masononsite.com",
-    "trialDays": 30,
+    "trialDays": 14,
     "appUrl": "https://app.masononsite.com"
   },
   "hero": {
-    "eyebrow": "Management \u00b7 Analytics \u00b7 Site",
+    "eyebrow": "Management · Analytics · Site",
     "headline": "One command center\nfor construction control.",
     "headlineAccent": "control",
-    "subheadline": "BIM, schedule, RFIs, daily logs, change orders, and cost tracking \u2014 one construction management platform for GC and specialty sub teams under 50 people. The AI Concierge knows your project. The pricing is flat.",
-    "ctaPrimary": "Start free trial",
+    "subheadline": "BIM, schedule, RFIs, daily logs, change orders, and cost tracking — one construction management platform for GC and specialty sub teams under 50 people. The AI Concierge knows your project. The pricing is flat.",
+    "ctaPrimary": "Book a demo",
     "ctaSecondary": "Book a demo",
     "meta1": "Live on 47 active projects",
-    "meta2": "Desk \u00b7 Mobile \u00b7 Android"
+    "meta2": "Desk · Mobile · Android"
   },
   "stats": [
     {
@@ -64,18 +64,18 @@
         "tagline": "Everything you need to run a job. For teams on up to 3 active projects.",
         "monthly": 219,
         "annual": 175,
-        "projectsLabel": "10 users \u00b7 3 active projects",
+        "projectsLabel": "10 users · 3 active projects",
         "highlight": false,
         "cta": "Book a call",
         "features": [
           "Daily logs, photos, and field reports",
           "RFIs with ball-in-court tracking",
-          "Change orders \u2014 digital sign-off before work starts",
+          "Change orders — digital sign-off before work starts",
           "Gantt schedule + critical path",
           "Budget vs. actual cost tracking",
           "AIA G702/G703 pay applications",
-          "Android app \u2014 works offline on site",
-          "Mason AI \u2014 60 queries per project per month",
+          "Android app — works offline on site",
+          "Mason AI — 60 queries per project per month",
           "Email support"
         ]
       },
@@ -85,26 +85,26 @@
         "tagline": "Core PM plus BIM, Navisworks-class clash detection, AR, and Monte Carlo scheduling.",
         "monthly": 399,
         "annual": 319,
-        "projectsLabel": "25 users \u00b7 10 active projects",
+        "projectsLabel": "25 users · 10 active projects",
         "highlight": true,
         "cta": "Book a call",
         "features": [
           "Everything in Core",
-          "BIM viewer \u2014 browser-based IFC, no Autodesk license needed",
-          "Clash detection \u2014 BVH narrow-phase engine (same algorithm class as Navisworks)",
-          "AR walkthrough \u2014 Android WebXR + iOS AR Quick Look",
-          "Monte Carlo scheduling \u2014 P50 / P80 / P90 risk bands, 1,000-iteration simulation",
-          "Mason AI \u2014 unlimited queries",
-          "Priority email support \u2014 24-hr response"
+          "BIM viewer — browser-based IFC, no Autodesk license needed",
+          "Clash detection — BVH narrow-phase engine (same algorithm class as Navisworks)",
+          "AR walkthrough — Android WebXR + iOS AR Quick Look",
+          "Monte Carlo scheduling — P50 / P80 / P90 risk bands, 1,000-iteration simulation",
+          "Mason AI — unlimited queries",
+          "Priority email support — 24-hr response"
         ]
       },
       {
         "id": "founding-partner",
         "name": "Founding Partner",
-        "tagline": "Pro access at $129/month, locked for life. First 10 firms \u2014 in exchange for direct feedback.",
+        "tagline": "Pro access at $129/month, locked for life. First 10 firms — in exchange for direct feedback.",
         "monthly": 129,
         "annual": 129,
-        "projectsLabel": "25 users \u00b7 10 projects \u00b7 price locked",
+        "projectsLabel": "25 users · 10 projects · price locked",
         "highlight": false,
         "cta": "Book a call",
         "features": [
@@ -116,7 +116,7 @@
       }
     ],
     "enterprise": {
-      "heading": "Enterprise \u2014 custom contract",
+      "heading": "Enterprise — custom contract",
       "body": "Managing 50+ concurrent projects, integrating with a corporate ERP, or requiring a dedicated infrastructure tenant? We build custom contracts for large programmes. Contact us to discuss volume pricing, on-premises options, and dedicated support.",
       "cta": "Contact sales"
     },
