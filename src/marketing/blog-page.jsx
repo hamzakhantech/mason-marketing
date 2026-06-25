@@ -26,7 +26,7 @@ const BlogFeatured = () => (
     <div className="container">
       <h2 className="h2 gsap-fade-up" style={{marginBottom:32}}>Featured</h2>
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:32,alignItems:"start"}} className="about-story-grid">
-        <a href="/blog" className="blog-card blog-card--featured gsap-slide-left cursor-card-hover hover-arrow-cursor magnetic-click-card" style={{textDecoration:"none",display:"block"}}>
+        <a href="/blog/what-is-clash-detection-bim" className="blog-card blog-card--featured gsap-slide-left cursor-card-hover hover-arrow-cursor magnetic-click-card" style={{textDecoration:"none",display:"block"}}>
           <div className="blog-card__img" style={{height:220,background:"linear-gradient(135deg,rgba(232,148,46,.15),rgba(232,148,46,.05))",borderRadius:"12px 12px 0 0",display:"flex",alignItems:"center",justifyContent:"center"}}><span dangerouslySetInnerHTML={{__html:BLOG_CARD_SVG}} /></div>
           <div className="blog-card__body">
             <div style={{display:"flex",gap:8,marginBottom:12}}>
@@ -54,26 +54,29 @@ const BlogFeatured = () => (
             {
               emoji:"article",
               tags:["RFIs","Workflow"],
-              title:"The RFI is the most important document on a construction project. Here is why it fails so often.",
-              excerpt:"Most RFI failures are not about the quality of the question. They are about the speed of the response and whether the answer reaches everyone who needed it.",
-              time:"9 min read . May 2026"
+              href:"/blog/what-is-rfi-construction",
+              title:"What Is an RFI in Construction? A Complete Guide",
+              excerpt:"What an RFI is, when to submit one, how to write one that gets a fast response, and how to manage the RFI log across a project with 100+ requests.",
+              time:"16 min read . June 2026"
             },
             {
               emoji:"article",
-              tags:["Mobile","Offline"],
-              title:"What actually happens when field teams lose connectivity on a 40-storey building site",
-              excerpt:"Most project management apps treat offline mode as a marketing checkbox. Here is what real offline capability looks like and why the difference matters.",
-              time:"7 min read . April 2026"
+              tags:["Change Orders","Project Finance"],
+              href:"/blog/how-to-write-construction-change-order",
+              title:"How to Write a Construction Change Order",
+              excerpt:"Notice requirements, the pricing formula (direct cost × overhead × profit + bond), what to include in the document, and field documentation that protects entitlement.",
+              time:"13 min read . June 2026"
             },
             {
               emoji:"article",
-              tags:["Pricing","Software"],
-              title:"Per user pricing in construction software is fundamentally broken. Here is a better model.",
-              excerpt:"When adding a subcontractor to a platform costs money, project managers find workarounds. Those workarounds cost more than the seat would have.",
-              time:"6 min read . April 2026"
+              tags:["Closeout","Punch List"],
+              href:"/blog/construction-project-closeout-checklist",
+              title:"Construction Project Closeout Checklist (42 Items)",
+              excerpt:"The complete closeout process — 8 phases from pre-closeout planning through warranty period — with a 42-item checklist covering every document, inspection, and approval.",
+              time:"15 min read . June 2026"
             }
           ].map((article,i)=>(
-            <a key={i} href="/blog" style={{textDecoration:"none",display:"flex",gap:16,padding:16,background:"var(--bg-elev)",border:"1px solid var(--line)",borderRadius:12,transition:"border-color .2s"}}
+            <a key={i} href={article.href||"/blog"} style={{textDecoration:"none",display:"flex",gap:16,padding:16,background:"var(--bg-elev)",border:"1px solid var(--line)",borderRadius:12,transition:"border-color .2s"}}
               onMouseEnter={e=>e.currentTarget.style.borderColor="rgba(232,148,46,.4)"}
               onMouseLeave={e=>e.currentTarget.style.borderColor="var(--line)"}>
               <div style={{fontSize:28,flexShrink:0,width:48,height:48,display:"flex",alignItems:"center",justifyContent:"center",background:"rgba(232,148,46,.08)",borderRadius:10}}>

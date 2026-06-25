@@ -21,6 +21,11 @@ import AIAGenerator from "./pages/tools/AIAGenerator.jsx";
 import ChangeOrderCalculator from "./pages/tools/ChangeOrderCalculator.jsx";
 import ROICalculator from "./pages/tools/ROICalculator.jsx";
 import Tools from "./pages/tools/Tools.jsx";
+import ClashDetectionBIM from "./pages/blog/ClashDetectionBIM.jsx";
+import AIAG702G703 from "./pages/blog/AIAG702G703.jsx";
+import ChangeOrder from "./pages/blog/ChangeOrder.jsx";
+import CloseoutChecklist from "./pages/blog/CloseoutChecklist.jsx";
+import RFIConstruction from "./pages/blog/RFIConstruction.jsx";
 
 export default function App() {
   return (
@@ -46,6 +51,11 @@ export default function App() {
         <Route path="tools/aia-g702-generator" element={<AIAGenerator />} />
         <Route path="tools/change-order-calculator" element={<ChangeOrderCalculator />} />
         <Route path="tools/roi-calculator" element={<ROICalculator />} />
+        <Route path="blog/what-is-clash-detection-bim" element={<ClashDetectionBIM />} />
+        <Route path="blog/how-to-fill-out-aia-g702-g703" element={<AIAG702G703 />} />
+        <Route path="blog/how-to-write-construction-change-order" element={<ChangeOrder />} />
+        <Route path="blog/construction-project-closeout-checklist" element={<CloseoutChecklist />} />
+        <Route path="blog/what-is-rfi-construction" element={<RFIConstruction />} />
       </Route>
     </Routes>
   );
