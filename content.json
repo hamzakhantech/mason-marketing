@@ -17,10 +17,26 @@
     "meta2": "Desk · Mobile · Android"
   },
   "stats": [
-    { "n": "47+",  "label": "Active projects\non MASON today", "note": "Across 6 countries" },
-    { "n": "8",    "label": "Languages\nfully supported",   "note": "Including RTL Arabic and Urdu" },
-    { "n": "12",   "label": "Construction modules\nin one system", "note": "No per-module add-ons" },
-    { "n": "30s",  "label": "BIM model opens\nin any browser", "note": "No plugin or install required" }
+    {
+      "n": "47+",
+      "label": "Active projects\non MASON today",
+      "note": "Across 6 countries"
+    },
+    {
+      "n": "8",
+      "label": "Languages\nfully supported",
+      "note": "Including RTL Arabic and Urdu"
+    },
+    {
+      "n": "12",
+      "label": "Construction modules\nin one system",
+      "note": "No per-module add-ons"
+    },
+    {
+      "n": "30s",
+      "label": "BIM model opens\nin any browser",
+      "note": "No plugin or install required"
+    }
   ],
   "testimonials": [
     {
@@ -43,81 +59,59 @@
     "annualSavingPct": 20,
     "tiers": [
       {
-        "id": "starter",
-        "name": "Starter",
-        "tagline": "For small contractors and independent PMs",
-        "monthly": 49,
-        "annual": 39,
-        "projectsLabel": "Up to 3 active projects",
+        "id": "core",
+        "name": "Core",
+        "tagline": "Everything you need to run a job. For teams on up to 3 active projects.",
+        "monthly": 219,
+        "annual": 175,
+        "projectsLabel": "10 users · 3 active projects",
         "highlight": false,
-        "cta": "Start free trial",
+        "cta": "Book a call",
         "features": [
-          "All 12 modules included",
-          "Unlimited team members per project",
-          "BIM viewer (IFC 2x3 + IFC4)",
-          "Interactive Gantt + CPM",
-          "RFI, Issues, Daily Logs",
-          "Document control",
-          "Submittals register",
-          "Cost control + FAC",
-          "AI Concierge (60 queries/project/month)",
-          "Mobile + Android app",
-          "PDF + Excel report export",
-          "Email support (48h response)",
-          "REST API: read-only",
-          "30-day free trial"
+          "Daily logs, photos, and field reports",
+          "RFIs with ball-in-court tracking",
+          "Change orders — digital sign-off before work starts",
+          "Gantt schedule + critical path",
+          "Budget vs. actual cost tracking",
+          "AIA G702/G703 pay applications",
+          "Android app — works offline on site",
+          "Mason AI — 60 queries per project per month",
+          "Email support"
         ]
       },
       {
-        "id": "professional",
-        "name": "Professional",
-        "tagline": "For growing GCs and project teams",
-        "monthly": 149,
-        "annual": 119,
-        "projectsLabel": "Up to 15 active projects",
-        "highlight": true,
-        "cta": "Start free trial",
-        "features": [
-          "Everything in Starter",
-          "Up to 15 active projects",
-          "AI Concierge (unlimited queries)",
-          "Scheduled report delivery",
-          "Custom report templates",
-          "Baseline + EoT export",
-          "REST API: full read/write",
-          "Webhooks (20 endpoints)",
-          "Google Drive + OneDrive sync",
-          "Xero + QuickBooks export",
-          "Priority email support (12h)",
-          "Onboarding call included",
-          "Migration assistance",
-          "Custom role creation"
-        ]
-      },
-      {
-        "id": "scale",
-        "name": "Scale",
-        "tagline": "For principal contractors and programme managers",
+        "id": "pro",
+        "name": "Pro",
+        "tagline": "Core PM plus BIM, Navisworks-class clash detection, AR, and Monte Carlo scheduling.",
         "monthly": 399,
         "annual": 319,
-        "projectsLabel": "Unlimited projects",
-        "highlight": false,
-        "cta": "Start free trial",
+        "projectsLabel": "25 users · 10 active projects",
+        "highlight": true,
+        "cta": "Book a call",
         "features": [
-          "Everything in Professional",
-          "Unlimited projects",
-          "SAML 2.0 SSO (Okta, Azure AD, etc.)",
-          "Organisation-level portfolio dashboard",
-          "Custom branding (logo + colours)",
-          "Dedicated onboarding consultant",
-          "SLA: 99.9% uptime commitment",
-          "Dedicated Slack / Teams channel",
-          "Data Processing Agreement",
-          "Audit log export",
-          "Multi-organisation management",
-          "Custom API rate limits",
-          "Early access to new features",
-          "Annual business review"
+          "Everything in Core",
+          "BIM viewer — browser-based IFC, no Autodesk license needed",
+          "Clash detection — BVH narrow-phase engine (same algorithm class as Navisworks)",
+          "AR walkthrough — Android WebXR + iOS AR Quick Look",
+          "Monte Carlo scheduling — P50 / P80 / P90 risk bands, 1,000-iteration simulation",
+          "Mason AI — unlimited queries",
+          "Priority email support — 24-hr response"
+        ]
+      },
+      {
+        "id": "founding-partner",
+        "name": "Founding Partner",
+        "tagline": "Pro access at $129/month, locked for life. First 10 firms — in exchange for direct feedback.",
+        "monthly": 129,
+        "annual": 129,
+        "projectsLabel": "25 users · 10 projects · price locked",
+        "highlight": false,
+        "cta": "Book a call",
+        "features": [
+          "Everything in Pro",
+          "Price locked at $129/mo for life (stays as long as you stay subscribed)",
+          "Direct line to the founding team",
+          "Your input shapes what gets built next"
         ]
       }
     ],
@@ -128,44 +122,28 @@
     },
     "faq": [
       {
-        "q": "What happens at the end of the 30-day trial?",
-        "a": "You'll receive an email on day 25 and day 30 reminding you to choose a plan. If you don't enter payment details by day 30, your account moves to read-only mode for 14 days — you can still export your data but cannot create new records. After 44 days total, the account is archived and your data is retained for 90 days before deletion."
+        "q": "What counts toward the user limit?",
+        "a": "Anyone with a MASON login on your account -- staff, subs, client reps. Core covers 10 users. Pro covers 25. Most site teams with a handful of subs fit comfortably in Pro."
       },
       {
-        "q": "Can I change plans mid-subscription?",
-        "a": "Yes. Upgrading takes effect immediately — you're charged the prorated difference for the remainder of the billing period. Downgrading takes effect at the end of the current billing period."
+        "q": "What counts as an active project?",
+        "a": "Any project you're working in right now. Archive it when the job closes and it stops counting. Archived projects keep all their data -- they just don't take up a slot."
       },
       {
-        "q": "Is the per-project price per month or per year?",
-        "a": "The advertised prices ($49, $149, $399) are per project per month when billed monthly. Annual billing gives you 20% off — $39, $119, $319 per project per month, billed as an annual lump sum."
+        "q": "What happens if we hit a limit?",
+        "a": "We'll flag it and give you a window to upgrade before anything stops working. We're not going to lock you out mid-job."
       },
       {
-        "q": "What counts as a 'project'?",
-        "a": "A project is a distinct contract or site. Sub-phases of the same contract can be managed within one project using MASON's phase/area structure — they don't need to be separate projects."
+        "q": "Is there a free trial?",
+        "a": "We're running a hands-on pilot program right now -- not a self-serve trial. Book a call and we'll set your team up on a real job for 14 days. You get the full product, we handle setup, and at day 14 you decide whether to stay on."
       },
       {
-        "q": "Is there a discount for charities, NGOs, or developing markets?",
-        "a": "Yes. We offer 50% off for registered non-profit organisations and academic institutions, and adjusted pricing for teams based in lower-income countries. Contact us with your situation."
+        "q": "What is the Founding Partner offer?",
+        "a": "Ten firms get Pro access at $129/month, locked permanently as long as they stay subscribed. That's BIM viewer, Navisworks-class clash detection, AR walkthrough, Monte Carlo scheduling, 25 users, 10 projects -- at $129 instead of $399. The trade: we want direct feedback on what to build next."
       },
       {
-        "q": "Can I use MASON for just one project with no ongoing commitment?",
-        "a": "Yes. The Starter plan is month-to-month. Start, complete your project, export your data, cancel. You'll pay $49/month for the duration of the project."
-      },
-      {
-        "q": "Do subcontractors need their own MASON subscription?",
-        "a": "No. Subcontractors are invited to your project by the main contractor. They operate as users on your subscription without a separate account."
-      },
-      {
-        "q": "What payment methods do you accept?",
-        "a": "Visa, Mastercard, and American Express via Stripe. For Scale tier and Enterprise customers, we also accept bank transfer / ACH / BACS on annual billing."
-      },
-      {
-        "q": "Can I get a refund?",
-        "a": "Monthly billing: refunds for the current month are available within 7 days of the billing date if you haven't meaningfully used the platform. Annual billing: pro-rated refund for unused months, less a 10% administration fee, if you cancel within the first 6 months."
-      },
-      {
-        "q": "Is MASON GDPR / CCPA compliant?",
-        "a": "Yes. Data is stored on infrastructure in the US with EU-region options on request. A Data Processing Agreement is available for Professional and Scale customers. We do not sell user data or use project data for AI training."
+        "q": "Do you offer annual billing?",
+        "a": "Yes. Annual billing on Core and Pro saves 20%. Founding Partner pricing is already locked at $129 -- no additional annual discount applies."
       }
     ]
   },
