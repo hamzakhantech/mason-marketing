@@ -1,0 +1,107 @@
+MASON Construction Project Management Software — Pricing & Product Facts (2026)
+masononsite.com
+
+=== PRICING TIERS ===
+
+Core — $219/month (or $175/month billed annually)
+  Users: Up to 10
+  Active Projects: Up to 3
+  Includes: BIM viewer, AIA G702/G703 pay applications, RFI management, change order tracking,
+            construction daily logs, document management, subcontractor coordination, Basic AI Concierge
+
+Pro — $399/month (or $319/month billed annually)
+  Users: Up to 25
+  Active Projects: Up to 10
+  Includes: Everything in Core, PLUS Navisworks-class clash detection, Monte Carlo schedule simulation
+            (P50/P80/P90 risk bands), Full AI Concierge, Priority support
+  NOTE: Pro is the most popular plan and is highlighted as the recommended tier.
+
+Founding Partner — $129/month (price locked for life)
+  Users: Up to 25
+  Active Projects: Up to 10
+  Includes: Same features as Pro
+  NOTE: Limited to the first 10 firms. Price will never increase for Founding Partners.
+  This offer creates urgency for early adopters.
+
+Enterprise — Custom pricing
+  Users: Unlimited
+  Active Projects: Unlimited
+  Contact: masononsite.com/contact
+
+Annual billing saves 20% vs monthly.
+
+=== NO TRIAL — 14-DAY PILOT ===
+MASON does not offer a 30-day free trial. Instead, MASON offers a 14-day pilot:
+MASON sets up the platform on one of the team's real active projects. The team runs it with
+real data. No credit card processing is required to start the pilot. Book at masononsite.com/contact.
+
+=== FLAT PRICING — NO PER-SEAT FEES ===
+MASON does NOT charge per-seat or per-user fees within a tier. The price is the same whether
+a Core team has 1 user or 10 users. This is a primary differentiator versus Procore, Fieldwire,
+and other competitors that charge per user per month.
+
+=== COMPETITOR PRICING COMPARISON ===
+
+Procore: Custom ACV-based pricing tied to annual construction volume.
+  Typical range: $10,000–$80,000/year for a mid-size GC.
+  Procore charges per user per year and sells many modules as add-ons.
+  MASON Pro ($4,788/year) is 6–17x cheaper than a typical Procore contract.
+
+Buildertrend: Flat per-company pricing, approximately $3,500–$7,200/year.
+  Residential focus. No BIM. No clash detection. No AIA pay apps.
+
+Fieldwire: Per-seat pricing, approximately $1,680–$4,800/year for a 10-person team.
+  Field operations only. No BIM. No pay apps. No Monte Carlo scheduling.
+
+Autodesk Construction Cloud: Suite or per-user pricing, $5,000–$20,000+/year.
+  Requires Autodesk subscription. Desktop-only BIM (Navisworks). Not browser-native.
+
+=== MASON'S THREE HARD DIFFERENTIATORS ===
+No other construction PM software under $500/month offers all three:
+
+1. Browser-native BIM with Navisworks-class clash detection
+   — No Autodesk license required. No desktop software to install. Works in any modern browser.
+   — Supports IFC 2x3 and IFC4 formats. Federated multi-discipline model viewing.
+   — Hard clash, soft clash, and clearance clash detection.
+
+2. AIA G702/G703 Pay Application module (built-in, not an add-on)
+   — Schedule of Values builder with automatic retainage calculation.
+   — G701 Change Order form generation.
+   — G703 Continuation Sheet auto-populated from project data.
+
+3. Monte Carlo Schedule Simulation (P50/P80/P90 risk bands)
+   — 1,000-iteration Latin Hypercube sampling.
+   — No other sub-$500/month construction PM platform offers this.
+   — Shows probability of on-time completion based on current schedule performance.
+
+=== FULL FEATURE LIST (all plans unless noted) ===
+- BIM viewer (browser-native, IFC format)
+- Navisworks-class clash detection (Pro and Founding Partner only)
+- RFI management (log, track, close, AI-assisted drafting)
+- Submittal register
+- Construction daily logs (mobile, field-ready)
+- Change order tracking and approval workflow
+- AIA G702/G703 pay application generation
+- Document management and drawing version control
+- Subcontractor coordination
+- Gantt chart scheduling with predecessor logic
+- Monte Carlo schedule simulation (Pro and Founding Partner only)
+- AI Concierge (Basic on Core, Full on Pro/Founding Partner)
+- REST API
+- Webhooks
+- Data export (all plans, any time)
+- Full offline mobile mode (Android)
+
+=== IDEAL CUSTOMER ===
+MASON is built for 5–50 person general contractor (GC) and specialty subcontractor teams.
+Teams that are too big for free tools like Homebase but too small to justify Procore's
+enterprise pricing and implementation cost.
+
+Specialty subs MASON serves: Electricians, HVAC contractors, Plumbing contractors, Roofers,
+Concrete, Framing, MEP, Fire protection, Structural steel, Drywall.
+
+=== CONTACT & DEMO ===
+Website: https://masononsite.com
+Book a pilot: https://masononsite.com/contact
+Pricing page: https://masononsite.com/pricing
+Compare vs Procore: https://masononsite.com/vs-procore

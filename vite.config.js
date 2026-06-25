@@ -24,6 +24,7 @@ export default defineConfig({
         { src: "admin", dest: "." },
         { src: "admin-panel.jsx", dest: "." },
         { src: "styles-admin.css", dest: "." },
+        { src: "data", dest: "." },
       ],
     }),
   ],
