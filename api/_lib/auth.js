@@ -66,7 +66,7 @@ function buildClearCookie() {
   return parts.join('; ');
 }
 
-module.exports = {
+export {
   COOKIE,
   signAdminToken,
   verifyAdminToken,

@@ -1,6 +1,6 @@
-const { readFile } = require('fs/promises');
-const { join } = require('path');
-const { verifyAdminToken, getTokenFromReq } = require('../_lib/auth.js');
+import { readFile } from 'fs/promises';
+import { join } from 'path';
+import { verifyAdminToken, getTokenFromReq } from '../_lib/auth.js';
 
 async function readLocalContentJson() {
   const p = join(process.cwd(), 'content.json');
@@ -26,7 +26,7 @@ async function getMergedPublicContent() {
   return readLocalContentJson();
 }
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'GET') {
     res.setHeader('Allow', 'GET');
@@ -39,4 +39,4 @@ module.exports = async (req, res) => {
     console.error('[cms/public-content]', e);
     return res.status(500).json({ error: 'Could not load site content' });
   }
-};
+}

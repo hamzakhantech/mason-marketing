@@ -1,6 +1,6 @@
-const { verifyAdminToken, getTokenFromReq } = require('../_lib/auth.js');
+import { verifyAdminToken, getTokenFromReq } from '../_lib/auth.js';
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -56,4 +56,4 @@ module.exports = async (req, res) => {
     console.error('[cms/upload]', e);
     return res.status(500).json({ error: 'Upload failed', detail: String(e.message || e) });
   }
-};
+}

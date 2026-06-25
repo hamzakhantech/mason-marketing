@@ -1,6 +1,6 @@
-const { verifyAdminToken, getTokenFromReq } = require('../_lib/auth.js');
+import { verifyAdminToken, getTokenFromReq } from '../_lib/auth.js';
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -53,4 +53,4 @@ module.exports = async (req, res) => {
     console.error('[cms/save]', e);
     return res.status(500).json({ error: 'Save failed', detail: String(e.message || e) });
   }
-};
+}

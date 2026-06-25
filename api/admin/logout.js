@@ -1,6 +1,6 @@
-const { buildClearCookie } = require('../_lib/auth.js');
+import { buildClearCookie } from '../_lib/auth.js';
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -8,4 +8,4 @@ module.exports = async (req, res) => {
   }
   res.setHeader('Set-Cookie', buildClearCookie());
   return res.status(200).json({ ok: true });
-};
+}

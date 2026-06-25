@@ -1,5 +1,5 @@
-const { timingSafeEqual, createHash } = require('crypto');
-const { signAdminToken, buildSetCookie } = require('../_lib/auth.js');
+import { createHash, timingSafeEqual } from 'crypto';
+import { signAdminToken, buildSetCookie } from '../_lib/auth.js';
 
 function sha256hex(s) {
   return createHash('sha256').update(String(s), 'utf8').digest('hex');
@@ -11,7 +11,7 @@ function safeEqualPassword(expected, given) {
   return a.length === b.length && timingSafeEqual(a, b);
 }
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
@@ -51,4 +51,4 @@ module.exports = async (req, res) => {
       hint: e.message,
     });
   }
-};
+}

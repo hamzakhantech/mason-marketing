@@ -1,6 +1,6 @@
-const { verifyAdminToken, getTokenFromReq } = require('../_lib/auth.js');
+import { verifyAdminToken, getTokenFromReq } from '../_lib/auth.js';
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'GET') {
     res.setHeader('Allow', 'GET');
@@ -10,4 +10,4 @@ module.exports = async (req, res) => {
   const user = await verifyAdminToken(token);
   if (!user) return res.status(401).json({ ok: false });
   return res.status(200).json({ ok: true, role: user.role });
-};
+}
