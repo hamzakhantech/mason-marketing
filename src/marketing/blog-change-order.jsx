@@ -213,6 +213,18 @@ const BlogChangeOrder = () => {
         lead="Notice requirements, the pricing formula, what to include in the document, and the documentation habits that protect entitlement when owners push back."
         meta={<><span>13 min read</span><span style={{margin:"0 8px",opacity:.4}}>·</span><span>June 2026</span></>}
       />
+
+      {/* Blog hero image */}
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px 48px" }}>
+        <img
+          src="/images/blog/change-order.svg"
+          alt="Construction change order pricing formula: Direct Cost times Overhead times Profit"
+          width="1200"
+          height="630"
+          style={{ width: "100%", height: "auto", borderRadius: 12, border: "1px solid var(--line)", display: "block" }}
+          loading="eager"
+        />
+      </div>
       <section className="section">
         <div className="container">
           <Article />

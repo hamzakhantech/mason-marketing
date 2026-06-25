@@ -93,6 +93,13 @@ const MasonCTA = () => (
   </section>
 );
 
+const HeroImg = () => (
+  <div style={{maxWidth:1100,margin:"0 auto",padding:"0 24px 48px"}}>
+    <img src="/images/tools-hub.svg" alt="MASON free construction calculators — retainage, AIA G702/G703, change order, ROI" width="1200" height="400"
+      style={{width:"100%",height:"auto",borderRadius:12,border:"1px solid var(--line)",display:"block"}} loading="eager"/>
+  </div>
+);
+
 const ToolsHubPage = () => {
   useEffect(() => {
     if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {

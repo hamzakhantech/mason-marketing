@@ -213,6 +213,18 @@ const BlogAIAG702G703 = () => {
         lead="A step-by-step walkthrough of every column, every line, and every field on the G703 Schedule of Values and G702 Application for Payment — including the mistakes that delay payment."
         meta={<><span>14 min read</span><span style={{margin:"0 8px",opacity:.4}}>·</span><span>June 2026</span></>}
       />
+
+      {/* Blog hero image */}
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px 48px" }}>
+        <img
+          src="/images/blog/aia-g702-g703.svg"
+          alt="AIA G702 G703 Schedule of Values billing grid with orange highlighted totals"
+          width="1200"
+          height="630"
+          style={{ width: "100%", height: "auto", borderRadius: 12, border: "1px solid var(--line)", display: "block" }}
+          loading="eager"
+        />
+      </div>
       <section className="section">
         <div className="container">
           <Article />

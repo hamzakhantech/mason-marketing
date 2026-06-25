@@ -27,7 +27,9 @@ const BlogFeatured = () => (
       <h2 className="h2 gsap-fade-up" style={{marginBottom:32}}>Featured</h2>
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:32,alignItems:"start"}} className="about-story-grid">
         <a href="/blog/what-is-clash-detection-bim" className="blog-card blog-card--featured gsap-slide-left cursor-card-hover hover-arrow-cursor magnetic-click-card" style={{textDecoration:"none",display:"block"}}>
-          <div className="blog-card__img" style={{height:220,background:"linear-gradient(135deg,rgba(232,148,46,.15),rgba(232,148,46,.05))",borderRadius:"12px 12px 0 0",display:"flex",alignItems:"center",justifyContent:"center"}}><span dangerouslySetInnerHTML={{__html:BLOG_CARD_SVG}} /></div>
+          <div className="blog-card__img" style={{height:220,borderRadius:"12px 12px 0 0",overflow:"hidden"}}>
+            <img src="/images/blog/clash-detection-bim.svg" alt="BIM clash detection wireframe building model" style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}}/>
+          </div>
           <div className="blog-card__body">
             <div style={{display:"flex",gap:8,marginBottom:12}}>
               <span className="blog-tag">BIM</span>
@@ -54,7 +56,9 @@ const BlogFeatured = () => (
             {
               emoji:"article",
               tags:["RFIs","Workflow"],
+              img:"/images/blog/rfi-construction.svg",
               href:"/blog/what-is-rfi-construction",
+              img:"/images/blog/rfi-construction.svg",
               title:"What Is an RFI in Construction? A Complete Guide",
               excerpt:"What an RFI is, when to submit one, how to write one that gets a fast response, and how to manage the RFI log across a project with 100+ requests.",
               time:"16 min read . June 2026"
@@ -62,7 +66,9 @@ const BlogFeatured = () => (
             {
               emoji:"article",
               tags:["Change Orders","Project Finance"],
+              img:"/images/blog/change-order.svg",
               href:"/blog/how-to-write-construction-change-order",
+              img:"/images/blog/change-order.svg",
               title:"How to Write a Construction Change Order",
               excerpt:"Notice requirements, the pricing formula (direct cost × overhead × profit + bond), what to include in the document, and field documentation that protects entitlement.",
               time:"13 min read . June 2026"
@@ -70,7 +76,9 @@ const BlogFeatured = () => (
             {
               emoji:"article",
               tags:["Closeout","Punch List"],
+              img:"/images/blog/closeout-checklist.svg",
               href:"/blog/construction-project-closeout-checklist",
+              img:"/images/blog/closeout-checklist.svg",
               title:"Construction Project Closeout Checklist (42 Items)",
               excerpt:"The complete closeout process — 8 phases from pre-closeout planning through warranty period — with a 42-item checklist covering every document, inspection, and approval.",
               time:"15 min read . June 2026"
@@ -79,8 +87,8 @@ const BlogFeatured = () => (
             <a key={i} href={article.href||"/blog"} style={{textDecoration:"none",display:"flex",gap:16,padding:16,background:"var(--bg-elev)",border:"1px solid var(--line)",borderRadius:12,transition:"border-color .2s"}}
               onMouseEnter={e=>e.currentTarget.style.borderColor="rgba(232,148,46,.4)"}
               onMouseLeave={e=>e.currentTarget.style.borderColor="var(--line)"}>
-              <div style={{fontSize:28,flexShrink:0,width:48,height:48,display:"flex",alignItems:"center",justifyContent:"center",background:"rgba(232,148,46,.08)",borderRadius:10}}>
-                <span dangerouslySetInnerHTML={{__html:BLOG_ICON}}/>
+              <div style={{flexShrink:0,width:72,height:72,borderRadius:8,overflow:"hidden",background:"rgba(232,148,46,.08)"}}>
+                {article.img ? <img src={article.img} alt={article.title} style={{width:"100%",height:"100%",objectFit:"cover"}}/> : <span style={{display:"flex",alignItems:"center",justifyContent:"center",width:"100%",height:"100%"}} dangerouslySetInnerHTML={{__html:BLOG_ICON}}/>}
               </div>
               <div>
                 <div style={{display:"flex",gap:6,marginBottom:6}}>

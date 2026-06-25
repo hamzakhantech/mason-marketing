@@ -213,6 +213,18 @@ const BlogRFIConstruction = () => {
         lead="The request for information is the most important document in construction project management. Here's what it is, when to use one, how to write one that gets a fast response, and how to manage RFIs at scale without drowning in email threads."
         meta={<><span>16 min read</span><span style={{margin:"0 8px",opacity:.4}}>·</span><span>June 2026</span></>}
       />
+
+      {/* Blog hero image */}
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px 48px" }}>
+        <img
+          src="/images/blog/rfi-construction.svg"
+          alt="RFI workflow diagram showing document routing from field to architect with active log"
+          width="1200"
+          height="630"
+          style={{ width: "100%", height: "auto", borderRadius: 12, border: "1px solid var(--line)", display: "block" }}
+          loading="eager"
+        />
+      </div>
       <section className="section">
         <div className="container">
           <Article />

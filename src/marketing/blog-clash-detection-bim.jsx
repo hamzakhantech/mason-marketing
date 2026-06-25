@@ -200,6 +200,18 @@ const BlogClashDetectionBIM = () => {
         lead="Clash detection finds conflicts between building systems before construction begins. Here's what the three clash types mean, what the traditional Navisworks workflow costs, and why browser-native BIM is changing who can access this capability."
         meta={<><span>12 min read</span><span style={{margin:"0 8px",opacity:.4}}>·</span><span>June 2026</span></>}
       />
+
+      {/* Blog hero image */}
+      <div style={{ maxWidth: 1100, margin: "0 auto", padding: "0 24px 48px" }}>
+        <img
+          src="/images/blog/clash-detection-bim.svg"
+          alt="3D wireframe building model with orange clash conflict markers showing BIM coordination conflicts"
+          width="1200"
+          height="630"
+          style={{ width: "100%", height: "auto", borderRadius: 12, border: "1px solid var(--line)", display: "block" }}
+          loading="eager"
+        />
+      </div>
       <section className="section">
         <div className="container">
           <Article />
